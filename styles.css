@@ -4,12 +4,14 @@
 /* Homepage music controls */
 .bgmPlayer{display:flex;align-items:center;flex-wrap:wrap;gap:10px;width:fit-content;max-width:100%;margin:0 0 22px;padding:9px 14px;background:#08141cdd;border:1px solid #aa8c5c;border-radius:8px;box-shadow:0 8px 24px #0005;color:#e7d4af}.bgmTitle{font-family:Cinzel,serif;font-weight:700;font-size:12px;letter-spacing:1px}.bgmToggle{border:1px solid #b3925d;border-radius:5px;background:#233342;color:#f0d6a4;padding:6px 11px;font-weight:700;min-width:68px}.bgmToggle:hover{background:#33485a}.bgmVolumeLabel,.bgmPlayer #bgmVolumeValue{font-size:12px;color:#d7c6a5}.bgmPlayer input[type=range]{width:95px;accent-color:#d4ac71;cursor:pointer}@media(max-width:420px){.bgmPlayer{gap:7px;padding:8px}.bgmPlayer input[type=range]{width:75px}}
 
-/* Compact BGM player in the top-right corner of the homepage banner */
-.hero .heroInner{position:relative;padding-top:56px}
-.heroBgmCorner{position:absolute;top:12px;right:0;z-index:2}
-.heroBgmCorner .bgmPlayer{gap:6px;margin:0;padding:5px 8px;border-radius:6px;box-shadow:0 4px 12px #0006}
-.heroBgmCorner .bgmTitle{font-size:10px;letter-spacing:0}
-.heroBgmCorner .bgmToggle{font-size:11px;min-width:48px;padding:4px 7px}
-.heroBgmCorner .bgmVolumeLabel,.heroBgmCorner #bgmVolumeValue{font-size:10px}
-.heroBgmCorner input[type=range]{width:66px}
-@media(max-width:480px){.hero .heroInner{padding-top:70px}.heroBgmCorner{top:10px;right:0}.heroBgmCorner .bgmPlayer{gap:5px;padding:4px 6px}.heroBgmCorner .bgmTitle{font-size:9px}.heroBgmCorner .bgmVolumeLabel{display:none}.heroBgmCorner input[type=range]{width:54px}}
+/* Small BGM control directly to the right of the homepage character search */
+.hero .heroInner{position:relative;padding-top:0}
+.heroSearch{display:inline-flex;vertical-align:middle;max-width:calc(100% - 195px)}
+.heroBgmInline{display:inline-flex;vertical-align:middle;margin:30px 0 0 10px}
+.heroBgmInline .bgmPlayer{gap:4px;margin:0;padding:4px 6px;border-radius:5px;flex-wrap:nowrap;box-shadow:none}
+.heroBgmInline .bgmTitle{font-size:9px;letter-spacing:0;white-space:nowrap}
+.heroBgmInline .bgmToggle{font-size:10px;min-width:40px;padding:3px 5px}
+.heroBgmInline .bgmVolumeLabel{display:none}
+.heroBgmInline #bgmVolumeValue{font-size:9px}
+.heroBgmInline input[type=range]{width:45px}
+@media(max-width:760px){.heroSearch{display:flex;max-width:100%;width:100%}.heroBgmInline{display:flex;justify-content:flex-end;margin:8px 0 0}}
