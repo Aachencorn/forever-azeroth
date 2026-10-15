@@ -17,12 +17,12 @@
 @media(max-width:760px){.nav>.bgmPlayer{display:flex;gap:3px;padding:3px 5px}.nav>.bgmPlayer .bgmTitle{display:none}.nav>.bgmPlayer input[type=range]{width:40px}}
 
 /* Distinct banner images per tab, shared across list and detail pages. */
-.page-adventurers .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-adventurers.svg')}
-.page-guilds .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-guilds.svg')}
-.page-world .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-world.svg')}
-.page-events .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-events.svg')}
-.page-chronicle .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-chronicle.svg')}
-.page-favorites .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-favorites.svg')}
+.page-adventurers .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-adventurers.jpg')}
+.page-guilds .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-guilds.jpg')}
+.page-world .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-world.jpg')}
+.page-events .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-events.jpg')}
+.page-chronicle .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-chronicle.jpg')}
+.page-favorites .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-favorites.jpg')}
 .page-other .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-other.svg')}
 .pageHero{background-size:cover;background-position:center}
 
@@ -31,10 +31,10 @@
 .pageContent .pageHero{position:relative;isolation:isolate;overflow:hidden;background-image:none!important;background-color:#101e29}
 .pageContent .pageHero::before{content:"";position:absolute;inset:-9px;z-index:-2;background-image:var(--zone-banner,linear-gradient(110deg,#142737,#243b48));background-size:cover;background-position:center;filter:blur(2.5px) saturate(.85);transform:scale(1.03)}
 .pageContent .pageHero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,16,25,.86) 0%,rgba(5,16,25,.64) 42%,rgba(5,16,25,.38) 100%)}
-.page-adventurers{--zone-banner:url('assets/banner-adventurers.svg')}
-.page-guilds{--zone-banner:url('assets/banner-guilds.svg')}
-.page-world{--zone-banner:url('assets/banner-world.svg')}
-.page-events{--zone-banner:url('assets/banner-events.svg')}
-.page-chronicle{--zone-banner:url('assets/banner-chronicle.svg')}
-.page-favorites{--zone-banner:url('assets/banner-favorites.svg')}
+.page-adventurers{--zone-banner:url('assets/banner-adventurers.jpg')}
+.page-guilds{--zone-banner:url('assets/banner-guilds.jpg')}
+.page-world{--zone-banner:url('assets/banner-world.jpg')}
+.page-events{--zone-banner:url('assets/banner-events.jpg')}
+.page-chronicle{--zone-banner:url('assets/banner-chronicle.jpg')}
+.page-favorites{--zone-banner:url('assets/banner-favorites.jpg')}
 .page-other{--zone-banner:url('assets/banner-other.svg')}
