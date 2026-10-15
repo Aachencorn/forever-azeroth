@@ -58,3 +58,12 @@
 
 /* Keep the complete image width visible on narrow screens as well. */
 @media(max-width:780px){.pageContent .pageHero::before{background-size:100% auto}}
+
+/* Taller section artwork with a wider visible composition on desktop. */
+@media(min-width:781px){
+  .pageContent .pageHero{min-height:250px;display:flex;align-items:center;padding:42px 0}
+  .pageContent .pageHero::before{background-size:100% auto;background-position:center center}
+}
+@media(max-width:780px){
+  .pageContent .pageHero{min-height:165px}
+}
