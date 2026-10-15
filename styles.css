@@ -29,7 +29,7 @@
 /* Subdued section banner treatment: scenery sits behind text as on the homepage.
    Existing content widths, positions and navigation are intentionally unchanged. */
 .pageContent .pageHero{position:relative;isolation:isolate;overflow:hidden;background-image:none!important;background-color:#101e29}
-.pageContent .pageHero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--zone-banner,linear-gradient(110deg,#142737,#243b48));background-size:82% auto;background-repeat:no-repeat;background-position:center;filter:saturate(.98);transform:none}
+.pageContent .pageHero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--zone-banner,linear-gradient(110deg,#142737,#243b48));background-size:100% auto;background-repeat:no-repeat;background-position:center 46%;filter:saturate(.98);transform:none}
 .pageContent .pageHero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,16,25,.76) 0%,rgba(5,16,25,.52) 42%,rgba(5,16,25,.28) 100%)}
 .page-adventurers{--zone-banner:url('assets/banner-adventurers.jpg')}
 .page-guilds{--zone-banner:url('assets/banner-guilds.jpg')}
@@ -56,5 +56,5 @@
   .pageContent:not(.page-home) > .wrap.section{width:calc(100% - 26px)}
 }
 
-/* On narrow screens, keep the banner area filled rather than leaving side gaps. */
-@media(max-width:780px){.pageContent .pageHero::before{background-size:cover}}
+/* Keep the complete image width visible on narrow screens as well. */
+@media(max-width:780px){.pageContent .pageHero::before{background-size:100% auto}}
