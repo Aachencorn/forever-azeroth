@@ -15,3 +15,13 @@
 .hero .heroInner{padding-top:0}
 .heroSearch{display:flex;width:min(600px,100%);max-width:100%}
 @media(max-width:760px){.nav>.bgmPlayer{display:flex;gap:3px;padding:3px 5px}.nav>.bgmPlayer .bgmTitle{display:none}.nav>.bgmPlayer input[type=range]{width:40px}}
+
+/* Distinct banner images per tab, shared across list and detail pages. */
+.page-adventurers .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-adventurers.svg')}
+.page-guilds .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-guilds.svg')}
+.page-world .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-world.svg')}
+.page-events .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-events.svg')}
+.page-chronicle .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-chronicle.svg')}
+.page-favorites .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-favorites.svg')}
+.page-other .pageHero{background-image:linear-gradient(90deg,#09151be9,#0a1b2870),url('assets/banner-other.svg')}
+.pageHero{background-size:cover;background-position:center;min-height:160px}
