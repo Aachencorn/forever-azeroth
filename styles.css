@@ -422,3 +422,47 @@ body{background:radial-gradient(ellipse at 52% -8%,rgba(43,105,120,.29) 0%,trans
 .page-home .homeStats .stat+.stat{border-left:1px solid rgba(214,180,123,.36)}
 .page-home .homeStats .stat strong{color:#f0d39d}
 .page-home .homeStats .stat span{color:#f2eee4}
+
+/* WAPO BOOK first concept: library entrance and readable parchment encyclopedia pages */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;600;700;800&display=swap');
+:root{--bg:#241d18;--panel:#e8d8b6;--panel2:#f0e2c6;--line:#a4865a;--gold:#c8a46a;--gold2:#efd39a;--text:#f2e9d7;--muted:#c8bba5}
+html{background:#241d18}
+body{background:radial-gradient(ellipse at 50% -8%,#54402d 0%,transparent 60%),repeating-linear-gradient(90deg,#231d18 0px,#2a211b 95px,#241d18 100px);color:#f2e9d7}
+.header{background:linear-gradient(180deg,rgba(31,23,18,.98),rgba(43,30,21,.97));border-bottom:2px solid #99744b;box-shadow:0 4px 16px #110d0b99}
+.logo{display:flex;align-items:center;gap:9px;font:800 26px 'Noto Serif KR',serif;color:#f3d49a;text-shadow:0 2px 3px #100b07}
+.logo small{font:700 9px Cinzel,serif;letter-spacing:3px;color:#c8aa77;margin-top:3px}
+.brandBookIcon{display:grid;place-items:center;width:39px;height:45px;background:linear-gradient(110deg,#50301e,#382318);border:2px double #c49b5c;border-radius:4px 9px 9px 4px;box-shadow:inset 4px 0 #24140f,2px 2px 0 #a1804d;font-size:20px}
+.links a{color:#e6d5b7}.links a.active{color:#f8d898;border-bottom:1px solid #b99257}
+.hero{min-height:500px;background:linear-gradient(90deg,rgba(22,14,9,.85),rgba(31,19,12,.55) 58%,rgba(22,14,9,.65)),url('forever-city.webp') center/cover;border-bottom:3px solid #87623c}
+.heroInner{position:relative;min-height:500px;display:flex;flex-direction:column;justify-content:center;padding-left:min(34%,380px)}
+.hero h1{font:800 clamp(30px,3.7vw,52px)/1.38 'Noto Serif KR',serif;color:#f5d69e;letter-spacing:-1.5px;text-shadow:0 3px 12px #150c06}
+.hero p{color:#f0dfc4}
+.homeBookCover{position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(-5deg);width:min(30%,330px);height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:23px;color:#edc887;background:radial-gradient(ellipse at center,#583622,#2b1913 72%),linear-gradient(#583622,#2b1913);border:9px ridge #8b6339;outline:2px solid #24140f;outline-offset:3px;border-radius:10px 22px 22px 10px;box-shadow:inset 12px 0 12px #130b08a8,inset 0 0 0 7px #b78b4b,inset 0 0 0 10px #3a2418,14px 22px 30px #100b08a8}
+.coverTitle{font:800 clamp(30px,3.6vw,52px) 'Noto Serif KR',serif;text-shadow:0 3px 3px #1d1009;white-space:nowrap}
+.coverSub{font:700 13px Cinzel,serif;letter-spacing:3px}.coverOrnament{font-size:34px;color:#d5ae6d}
+.pageContent.bookPage{padding-bottom:38px}
+.bookPage .pageHero{background:linear-gradient(90deg,#302016de,#44302088),url('assets/city.webp') center/cover;min-height:140px;border-bottom:2px solid #a28050}
+.bookPage .pageHero h1{font:800 clamp(26px,3vw,38px) 'Noto Serif KR',serif;color:#f5d7a2}
+.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){position:relative;background:radial-gradient(ellipse at 20% 12%,#f7e9ca,#e4d0a8 75%);color:#433021;border:12px solid #5a3924;border-radius:12px 18px 18px 12px;box-shadow:inset 0 0 0 2px #aa8b5d,inset 0 0 45px #9d754c3d,0 16px 30px #0c0808a6;max-width:1260px;padding:30px 38px;margin-top:26px;min-height:420px}
+.bookPage>.wrap.section:before,.bookPage>.wrap:not(.pageHero .wrap):before{content:'';position:absolute;top:14px;bottom:14px;left:50%;width:2px;background:linear-gradient(90deg,#9b7c5940,#6e4d3450,#ffffff33);pointer-events:none}
+.bookPage .panel,.bookPage .tile,.bookPage .member,.bookPage .guildCard,.bookPage .adventurer,.bookPage .stat{background:linear-gradient(145deg,#f4e7ca,#e7d3ad);border:1px solid #b69a6e;color:#493521;box-shadow:0 2px 8px #85633b25}
+.bookPage h1,.bookPage h2,.bookPage h3,.bookPage .sectionTitle h2,.bookPage .pageTitle{font-family:'Noto Serif KR',serif;color:#503722}
+.bookPage p,.bookPage .muted,.bookPage .stat span,.bookPage .adventurer p,.bookPage small{color:#6e5742}
+.bookPage .field,.bookPage .tab,.bookPage .searchtop{background:#f6ead1;color:#4d3926;border:1px solid #a88a61}
+.bookPage .field::placeholder{color:#8a7660}
+.bookPage .tab.active,.bookPage .btn{background:linear-gradient(#75543a,#4b3222);color:#f7e6c4;border-color:#ad8c57}
+.bookPage .stat strong,.bookPage .adventurer h3{color:#664522}
+.bookPage .member .avatar,.bookPage .adventurer .portrait{background:linear-gradient(135deg,#d3b88e,#a88964);color:#493521}
+.bookPage .track{background:#c9b391}.bookPage .fill{background:linear-gradient(90deg,#82603b,#c29a55)}
+.bookPage .timeline{border-color:#9c7850}.bookPage .moment{border-color:#ae8d5c}
+.bookPage a:not(.btn):hover{color:#946025}
+.sectionTitle h2,.pageTitle{font-family:'Noto Serif KR',serif}
+.page-home .homeStats .stat strong{color:#edca8c}
+.page-home .homeStats .stat span{color:#eadcc4}
+.page-home .member,.page-home .panel,.page-home .homePulsePane{background:linear-gradient(145deg,#55402f,#34271f);border:1px solid #98754c;color:#f3e8d2}
+.page-home .member .avatar{background:#32241c;border-color:#aa8955}
+.page-home .homeStats .stat{background:none;border:0;box-shadow:none}
+.page-home .homeStats .stat+.stat{border-left:1px solid #b58e5755}
+.footer{background:#1e1712;color:#bfae94;border-top:1px solid #77583a}
+@media(max-width:800px){.heroInner{padding-left:0;padding-top:310px;min-height:610px;text-align:center;align-items:center}.hero{min-height:610px}.homeBookCover{top:18px;left:50%;transform:translateX(-50%) rotate(-4deg);width:205px;height:260px;gap:10px}.coverTitle{font-size:35px}.coverOrnament{font-size:22px}.heroSearch{max-width:520px}.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){padding:22px 15px;border-width:7px}.bookPage>.wrap.section:before,.bookPage>.wrap:not(.pageHero .wrap):before{display:none}}
+@media(max-width:480px){.heroInner{padding-top:300px}.bookPage .cards{grid-template-columns:repeat(2,minmax(0,1fr))}.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){width:calc(100% - 20px)}}
