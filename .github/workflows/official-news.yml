@@ -1,0 +1,26 @@
+name: Refresh Forever official news links
+on:
+  schedule:
+    - cron: '23 */3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect official news links
+        run: python scripts/update_official_news.py
+      - name: Commit new links only
+        run: |
+          if ! git diff --quiet -- data/official-news.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/official-news.json
+            git commit -m "Update Blizzard Forever official news links"
+            git push
+          fi
