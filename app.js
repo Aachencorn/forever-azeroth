@@ -59,8 +59,8 @@ function setBgmVolume(value){
  localStorage.setItem('fa-bgm-volume',String(bgmVolume));
  const label=document.getElementById('bgmVolumeValue');if(label)label.textContent=bgmVolume+'%';
 }
-const nav=[['/','⌂ 홈'],['/adventurers','♜ 모험가 도감'],['/guilds','♢ 길드 도감'],['/world','◉ 월드 현황'],['/events','♔ 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기']];
-function bannerCategory(r){if(r==='/')return 'home';if(r.startsWith('/adventurer'))return 'adventurers';if(r.startsWith('/guild'))return 'guilds';if(r.startsWith('/world'))return 'world';if(r.startsWith('/event'))return 'events';if(r.startsWith('/chronicle'))return 'chronicle';if(r.startsWith('/favorites'))return 'favorites';return 'other'}
+const nav=[['/','⌂ 홈'],['/adventurers','♜ 모험가 도감'],['/guilds','♢ 길드 도감'],['/world','◉ 월드 현황'],['/live','● 라이브'],['/events','♔ 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기']];
+function bannerCategory(r){if(r==='/')return 'home';if(r.startsWith('/adventurer'))return 'adventurers';if(r.startsWith('/guild'))return 'guilds';if(r.startsWith('/world'))return 'world';if(r.startsWith('/live'))return 'live';if(r.startsWith('/event'))return 'events';if(r.startsWith('/chronicle'))return 'chronicle';if(r.startsWith('/favorites'))return 'favorites';return 'other'}
 function layout(body){let r=route();document.getElementById('app').innerHTML=`<header class="header"><div class="wrap nav"><a class="logo" href="#/">FOREVER AZEROTH<small>포에버 아제로스</small></a><nav class="links" id="navlinks">${nav.map(([path,label])=>`<a class="${r===path?'active':''}" href="#${path}">${label}</a>`).join('')}</nav>${bgmControls()}<button class="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button></div></header><main class="pageContent page-${bannerCategory(r)}">${body}</main><footer class="footer"><div class="wrap">FOREVER AZEROTH · 와우 포에버 비공식 팬 아카이브<br>본 사이트는 공식 서비스가 아니며, 표시된 예시 정보는 실제 게임 기록을 의미하지 않습니다. <a href="#/admin">관리자(데모)</a></div></footer>`}
 const head=(title,desc)=>`<section class="pageHero"><div class="wrap"><h1>${title}</h1><p>${desc}</p></div></section>`;
 const section=(title,link,body)=>`<section class="section"><div class="sectionTitle"><h2>${title}</h2>${link?`<a href="#${link}">전체 보기 ›</a>`:''}</div>${body}</section>`;
@@ -103,5 +103,47 @@ function editEvent(id){const e=data.events.find(x=>x.id===id)||{id:slug(),title:
 function editChronicle(id){const c=data.chronicle.find(x=>x.id===id)||{id:slug(),title:'',date:'',category:'주요 사건',description:'',source:''};formShell(id?'연대기 수정':'연대기 등록',field('사건명 *','title',c.title)+field('발생 날짜','date',c.date,'date')+field('분류','category',c.category)+area('사건 설명','description',c.description)+field('출처 URL','source',c.source,'url'),f=>{if(!f.get('title').trim())return alert('사건명을 입력하세요');for(const k of ['title','date','category','description','source'])c[k]=f.get(k);if(!id)data.chronicle.push(c);save();render()})}
 function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='forever-azeroth-backup.json';a.click();URL.revokeObjectURL(a.href)}
 function importData(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);if(!Array.isArray(parsed.people)||!Array.isArray(parsed.guilds)||!Array.isArray(parsed.slots))throw Error();if(confirm('현재 데이터를 백업 파일로 덮어쓸까요?')){data=parsed;save();render()}}catch{alert('올바른 백업 파일이 아닙니다.')}};reader.readAsText(file)}
-function render(){const r=route().split('?')[0];if(r==='/')home();else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/events')events();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
+
+/* Live hub UI preview. Real SOOP status/category/viewer counts are NOT connected. */
+let livePreview=false,liveOfflineExpanded=false;
+function liveSoopUrl(p){
+ const url=String(p.soop||'').trim();
+ try{const u=new URL(url);return u.protocol==='https:'&&/(^|\\.)sooplive\\.co\\.kr$/.test(u.hostname)?u.href:''}catch{return ''}
+}
+function liveCard(p,info){
+ const url=liveSoopUrl(p),isLive=Boolean(info),c=main(p),g=guild(c.guildId);
+ const title=isLive?info.title:'현재 방송 상태 미연동';
+ const image=p.image?`<img src="${esc(p.image)}" alt="">`:'♟';
+ return `<article class="liveCard ${isLive?'isLive':'isOffline'}">
+  <div class="liveThumb">${image}<span class="liveState ${isLive?'on':''}">${isLive?'● LIVE':'OFFLINE'}</span></div>
+  <div class="liveCardBody"><h3>${esc(p.name)}</h3><p class="liveTitle">${esc(title)}</p>
+  <p class="liveMeta">${esc(g?.name||'길드 미확인')}${isLive?' · '+esc(info.category):''}</p>
+  ${isLive?`<p class="liveViewers">◉ ${info.viewers.toLocaleString('ko-KR')}명 시청 중 · 예시</p>`:''}
+  ${url?`<a class="btn small secondary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">SOOP 방송국 ↗</a>`:`<span class="liveUnlinked">SOOP 링크 미등록</span>`}
+  <a class="liveProfileLink" href="#/adventurer/${encodeURIComponent(p.id)}">모험가 프로필 →</a></div></article>`;
+}
+function livePage(){
+ const people=[...data.people].sort((a,b)=>a.name.localeCompare(b.name,'ko'));
+ // Demonstration values only, not a claim about anyone's actual broadcasts.
+ const examples=livePreview?people.slice(0,Math.min(3,people.length)).map((p,i)=>({p,info:[
+  {category:'월드 오브 워크래프트',viewers:420,title:'아제로스 모험 중 · 화면 예시'},
+  {category:'월드 오브 워크래프트',viewers:95,title:'던전 탐험 · 화면 예시'},
+  {category:'다른 카테고리',viewers:1100,title:'방송 진행 중 · 화면 예시'}
+ ][i]})):[];
+ const activeIds=new Set(examples.map(x=>x.p.id));
+ const active=examples.sort((a,b)=>(b.info.category==='월드 오브 워크래프트')-(a.info.category==='월드 오브 워크래프트')||b.info.viewers-a.info.viewers);
+ const offline=people.filter(p=>!activeIds.has(p.id));
+ const visible=liveOfflineExpanded?offline:offline.slice(0,20);
+ layout(head('라이브 스트리밍','아제로스 모험가들의 방송을 찾아 SOOP에서 시청하세요')+
+ `<div class="wrap section liveHub"><div class="liveNotice"><strong>라이브 메뉴 미리보기</strong><p>현재 SOOP 방송 상태·카테고리·시청자 수 연동 전이야. 실제 방송 여부는 확인하지 않으며, 아래 미리보기는 화면 구성을 위한 가상 예시야.</p>
+ <button class="btn small secondary" onclick="livePreview=!livePreview;liveOfflineExpanded=false;livePage()">${livePreview?'예시 방송 숨기기':'예시 방송 3개 보기'}</button></div>
+ <div class="sectionTitle"><h2><span class="liveDot">●</span> 방송 중 <span class="liveCount">${livePreview?active.length:'—'}</span></h2><span class="muted">와우 카테고리 우선 · 시청자 수순</span></div>
+ ${active.length?`<div class="liveCards">${active.map(x=>liveCard(x.p,x.info)).join('')}</div>`:'<div class="liveEmpty">실시간 SOOP 연동 준비 중 · 예시 방송 버튼을 누르면 카드 구성을 미리 볼 수 있어.</div>'}
+ <div class="sectionTitle liveOfflineHeading"><h2>방송 종료 / 상태 미확인 <span class="liveCount">${offline.length}</span></h2><span class="muted">이름 가나다순</span></div>
+ ${offline.length?`<div class="liveCards">${visible.map(p=>liveCard(p,null)).join('')}</div>`:'<div class="liveEmpty">표시할 모험가가 없어.</div>'}
+ ${offline.length>20?`<div class="liveMore"><button class="btn secondary" onclick="liveOfflineExpanded=!liveOfflineExpanded;livePage()">${liveOfflineExpanded?'접기':'더 보기 ('+(offline.length-20)+'명)'}</button></div>`:''}
+ </div>`);
+}
+
+function render(){const r=route().split('?')[0];if(r==='/')home();else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/live')livePage();else if(r==='/events')events();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
 window.addEventListener('hashchange',()=>{profileTab='character';filter='';render();window.scrollTo(0,0)});render();
