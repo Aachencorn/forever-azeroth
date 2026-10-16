@@ -64,7 +64,24 @@ function bannerCategory(r){if(r==='/')return 'home';if(r.startsWith('/adventurer
 function layout(body){let r=route();document.getElementById('app').innerHTML=`<header class="header"><div class="wrap nav"><a class="logo" href="#/">FOREVER AZEROTH<small>포에버 아제로스</small></a><nav class="links" id="navlinks">${nav.map(([path,label])=>`<a class="${(path==='/updates'&&['/updates','/news','/events'].includes(r))||r===path?'active':''}" href="#${path}">${label}</a>`).join('')}</nav>${bgmControls()}<button class="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button></div></header><main class="pageContent page-${bannerCategory(r)}">${body}</main><footer class="footer"><div class="wrap">FOREVER AZEROTH · 와우 포에버 비공식 팬 아카이브<br>본 사이트는 공식 서비스가 아니며, 표시된 예시 정보는 실제 게임 기록을 의미하지 않습니다. <a href="#/admin">관리자(데모)</a></div></footer>`}
 const head=(title,desc)=>`<section class="pageHero"><div class="wrap"><h1>${title}</h1><p>${desc}</p></div></section>`;
 const section=(title,link,body)=>`<section class="section"><div class="sectionTitle"><h2>${title}</h2>${link?`<a href="#${link}">전체 보기 ›</a>`:''}</div>${body}</section>`;
-function stats(){const chars=data.people.flatMap(p=>p.characters||[]);const lv=chars.map(x=>Number(x.level)).filter(x=>x>0);return `<div class="stats"><div class="stat"><strong>${data.people.length}</strong><span>등록된 모험가</span></div><div class="stat"><strong>${data.guilds.length}</strong><span>등록된 길드</span></div><div class="stat"><strong>${lv.length?Math.max(...lv):'—'}</strong><span>최고 확인 레벨</span></div></div>`}
+function stats(){return `<div class="stats homeStats"><div class="stat"><strong class="countUp" data-count="${data.people.length}">${data.people.length}</strong><span>등록된 모험가</span></div><div class="stat"><strong class="countUp" data-count="${data.guilds.length}">${data.guilds.length}</strong><span>등록된 길드</span></div></div>`}
+function animateHomeStats(){
+ const nodes=[...document.querySelectorAll('.homeStats .countUp')];
+ if(!nodes.length)return;
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const observer=new IntersectionObserver((entries)=>{
+  for(const entry of entries){
+   if(!entry.isIntersecting)continue;
+   observer.unobserve(entry.target);
+   const node=entry.target,target=Number(node.dataset.count)||0;
+   if(target<=0){node.textContent='0';continue}
+   const duration=1300,start=performance.now();
+   function tick(now){if(!node.isConnected)return;const t=Math.min(1,(now-start)/duration);const eased=1-Math.pow(1-t,3);node.textContent=Math.round(target*eased).toLocaleString('ko-KR');if(t<1)requestAnimationFrame(tick);else node.textContent=target.toLocaleString('ko-KR')}
+   node.textContent='0';requestAnimationFrame(tick);
+  }
+ },{threshold:0.45});
+ nodes.forEach(node=>observer.observe(node));
+}
 function slot(p,i){return p?`<a class="member" href="#/adventurer/${p.id}"><div class="avatar">${p.image?`<img src="${esc(p.image)}" alt="">`:'♟'}</div><span>${esc(p.name)}</span></a>`:`<div class="member empty" title="아직 확정되지 않은 멤버"><div class="avatar">?</div><span>?</span></div>`}
 /* Compact homepage pulse: live status remains unknown until SOOP integration. */
 function homePulse(){
@@ -207,5 +224,5 @@ async function loadOfficialNews(){
  }catch{officialNewsLoaded=false}
 }
 
-function render(){const r=route().split('?')[0];if(r==='/')home();else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/live')livePage();else if(r==='/news'||r==='/updates')newsPage();else if(r==='/events')eventsHub();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
+function render(){const r=route().split('?')[0];if(r==='/'){home();animateHomeStats()}else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/live')livePage();else if(r==='/news'||r==='/updates')newsPage();else if(r==='/events')eventsHub();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
 window.addEventListener('hashchange',()=>{profileTab='character';filter='';render();window.scrollTo(0,0)});render();loadOfficialNews();
