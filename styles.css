@@ -179,3 +179,12 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 @media(max-width:1100px){.liveCards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:780px){.liveCards{grid-template-columns:repeat(2,minmax(0,1fr))}.liveThumb{height:115px}.liveCardBody{padding:11px}.liveHub .sectionTitle{align-items:flex-start;flex-direction:column}}
 @media(max-width:420px){.liveCards{gap:9px}.liveThumb{height:100px}}
+
+
+/* Navigation legibility and clear red live indicator */
+.header .links a{color:#f2f2ee;font-weight:600;text-shadow:0 1px 2px #10182088;transition:color .15s ease,background-color .15s ease}
+.header .links a:hover,.header .links a:focus-visible{color:#ffe3ad;background:#ffffff13;border-radius:5px}
+.header .links a.active{color:#ffe2a4;font-weight:800}
+.navLiveDot{color:#f15b5b;font-size:13px;line-height:1;vertical-align:1px;text-shadow:0 0 7px #f15b5b55}
+.header .links a.active .navLiveDot{color:#ff6969}
+@media(max-width:780px){.header .links a{padding:10px 12px}}
