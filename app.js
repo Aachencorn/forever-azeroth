@@ -182,13 +182,13 @@ function livePage(){
 /* Official-link news feed, populated by scheduled GitHub Actions. */
 let officialNews=[],officialNewsLoaded=false,newsFilter='all';
 const newsFallback=[
- {title:'Choose Your Ruleset in World of Warcraft: Forever',url:'https://worldofwarcraft.blizzard.com/en-us/news/24302070',date:'2026-09-21',category:'소식'},
- {title:'Create the Hero You Want to Be in World of Warcraft: Forever',url:'https://worldofwarcraft.blizzard.com/en-us/news/24304075/erschafft-den-helden-der-ihr-sein-wollt-in-world-of-warcraft-forever',date:'2026-09-22',category:'소식'},
- {title:'The World of Warcraft: Forever Beta Now Live',url:'https://worldofwarcraft.blizzard.com/en-us/news/24304160/',date:'2026-09-17',category:'공지'}
+ {title:'월드 오브 워크래프트: 포에버 심층 탐구 패널 요약',url:'https://worldofwarcraft.blizzard.com/ko-kr/news/24303313',date:'2026-09-13',category:'소식'},
+ {title:'월드 오브 워크래프트: 포에버에서 새로운 길을 개척하세요',url:'https://worldofwarcraft.blizzard.com/ko-kr/news/24302093',date:'2026-09-12',category:'소식'},
+ {title:'월드 오브 워크래프트: 포에버 다음 행보 패널 요약',url:'https://worldofwarcraft.blizzard.com/ko-kr/news/24303862',date:'',category:'소식'}
 ];
 function validOfficialNews(items){
  if(!Array.isArray(items))return [];
- return items.filter(x=>x&&typeof x.title==='string'&&typeof x.url==='string'&&/^https:\/\/worldofwarcraft\.blizzard\.com\/(?:ko-kr|en-us|en-gb)\/news\/\d+/.test(x.url)).slice(0,80);
+ return items.filter(x=>x&&typeof x.title==='string'&&typeof x.url==='string'&&/^https:\/\/worldofwarcraft\.blizzard\.com\/ko-kr\/news\/\d+/.test(x.url)).slice(0,80);
 }
 function newsItems(){return officialNewsLoaded&&officialNews.length?officialNews:newsFallback}
 function newsRow(n){
@@ -206,7 +206,7 @@ function updatesTabs(active){
 function eventsHub(){events();updatesTabs('events')}
 function newsPage(){
  const items=newsItems().filter(x=>newsFilter==='all'||(x.category||'소식')===newsFilter);
- layout(head('포에버 소식','블리자드 공식 발표를 한곳에서 확인하고 원문으로 이동하세요')+
+ layout(head('포에버 소식','한국 블리자드 공식 발표와 패치노트를 확인하고 원문으로 이동하세요')+
  `<div class="wrap section"><div class="newsIntro"><strong>공식 소식 바로가기</strong><p>제목을 누르면 블리자드 공식 사이트가 새 탭으로 열려. 이 사이트는 원문을 복제하지 않아.</p><a href="https://worldofwarcraft.blizzard.com/ko-kr/news" target="_blank" rel="noopener noreferrer">블리자드 새소식 전체 보기 ↗</a></div>
  <div class="newsFilters">${[['all','전체'],['패치노트','패치노트'],['공지','공지'],['소식','소식']].map(([v,t])=>`<button class="newsFilter ${newsFilter===v?'selected':''}" onclick="newsFilter='${v}';newsPage()">${t}</button>`).join('')}</div>
  <div class="officialNewsList">${items.length?items.map(newsRow).join(''):'<div class="emptyState">이 분류에 등록된 공식 소식이 없어.</div>'}</div>
