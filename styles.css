@@ -335,3 +335,9 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 .page-home .homeStatsSection{width:100%;display:block;position:relative;left:0;right:0;margin-inline:auto;padding:0}
 .page-home .homeStats{width:min(860px,100%);max-width:860px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);justify-items:stretch;transform:none}
 .page-home .homeStats .stat{width:100%;margin:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+/* Final alignment fix: position the counter pair from the viewport center. */
+.pageContent.page-home .homeStatsSection{display:block;width:100%;max-width:none;position:relative;margin:24px 0 32px;padding:0}
+.pageContent.page-home .homeStatsSection .homeStats{position:relative;left:50%;transform:translateX(-50%);width:min(860px,calc(100vw - 44px));max-width:none;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.pageContent.page-home .homeStatsSection .homeStats .stat{box-sizing:border-box;min-width:0;width:100%;text-align:center;align-items:center}
+@media(max-width:580px){.pageContent.page-home .homeStatsSection{margin:14px 0 22px}.pageContent.page-home .homeStatsSection .homeStats{width:calc(100vw - 28px)}}
