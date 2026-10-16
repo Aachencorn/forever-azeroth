@@ -59,9 +59,9 @@ function setBgmVolume(value){
  localStorage.setItem('fa-bgm-volume',String(bgmVolume));
  const label=document.getElementById('bgmVolumeValue');if(label)label.textContent=bgmVolume+'%';
 }
-const nav=[['/','⌂ 홈'],['/adventurers','♜ 모험가 도감'],['/guilds','♢ 길드 도감'],['/world','◉ 월드 현황'],['/live','<span class="navLiveDot" aria-hidden="true">●</span> 라이브'],['/news','▤ 포에버 소식'],['/events','♔ 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기']];
-function bannerCategory(r){if(r==='/')return 'home';if(r.startsWith('/adventurer'))return 'adventurers';if(r.startsWith('/guild'))return 'guilds';if(r.startsWith('/world'))return 'world';if(r.startsWith('/live'))return 'live';if(r.startsWith('/news'))return 'news';if(r.startsWith('/event'))return 'events';if(r.startsWith('/chronicle'))return 'chronicle';if(r.startsWith('/favorites'))return 'favorites';return 'other'}
-function layout(body){let r=route();document.getElementById('app').innerHTML=`<header class="header"><div class="wrap nav"><a class="logo" href="#/">FOREVER AZEROTH<small>포에버 아제로스</small></a><nav class="links" id="navlinks">${nav.map(([path,label])=>`<a class="${r===path?'active':''}" href="#${path}">${label}</a>`).join('')}</nav>${bgmControls()}<button class="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button></div></header><main class="pageContent page-${bannerCategory(r)}">${body}</main><footer class="footer"><div class="wrap">FOREVER AZEROTH · 와우 포에버 비공식 팬 아카이브<br>본 사이트는 공식 서비스가 아니며, 표시된 예시 정보는 실제 게임 기록을 의미하지 않습니다. <a href="#/admin">관리자(데모)</a></div></footer>`}
+const nav=[['/','⌂ 홈'],['/adventurers','♜ 모험가 도감'],['/guilds','♢ 길드 도감'],['/world','◉ 월드 현황'],['/live','<span class="navLiveDot" aria-hidden="true">●</span> 라이브'],['/updates','▤ 소식 · 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기']];
+function bannerCategory(r){if(r==='/')return 'home';if(r.startsWith('/adventurer'))return 'adventurers';if(r.startsWith('/guild'))return 'guilds';if(r.startsWith('/world'))return 'world';if(r.startsWith('/live'))return 'live';if(r.startsWith('/news')||r.startsWith('/updates'))return 'news';if(r.startsWith('/event'))return 'events';if(r.startsWith('/chronicle'))return 'chronicle';if(r.startsWith('/favorites'))return 'favorites';return 'other'}
+function layout(body){let r=route();document.getElementById('app').innerHTML=`<header class="header"><div class="wrap nav"><a class="logo" href="#/">FOREVER AZEROTH<small>포에버 아제로스</small></a><nav class="links" id="navlinks">${nav.map(([path,label])=>`<a class="${(path==='/updates'&&['/updates','/news','/events'].includes(r))||r===path?'active':''}" href="#${path}">${label}</a>`).join('')}</nav>${bgmControls()}<button class="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button></div></header><main class="pageContent page-${bannerCategory(r)}">${body}</main><footer class="footer"><div class="wrap">FOREVER AZEROTH · 와우 포에버 비공식 팬 아카이브<br>본 사이트는 공식 서비스가 아니며, 표시된 예시 정보는 실제 게임 기록을 의미하지 않습니다. <a href="#/admin">관리자(데모)</a></div></footer>`}
 const head=(title,desc)=>`<section class="pageHero"><div class="wrap"><h1>${title}</h1><p>${desc}</p></div></section>`;
 const section=(title,link,body)=>`<section class="section"><div class="sectionTitle"><h2>${title}</h2>${link?`<a href="#${link}">전체 보기 ›</a>`:''}</div>${body}</section>`;
 function stats(){const chars=data.people.flatMap(p=>p.characters||[]);const lv=chars.map(x=>Number(x.level)).filter(x=>x>0);return `<div class="stats"><div class="stat"><strong>${data.people.length}</strong><span>등록된 모험가</span></div><div class="stat"><strong>${data.guilds.length}</strong><span>등록된 길드</span></div><div class="stat"><strong>${lv.length?Math.max(...lv):'—'}</strong><span>최고 확인 레벨</span></div></div>`}
@@ -77,7 +77,7 @@ function homePulse(){
   <a class="homePulseAction" href="#/live">라이브 페이지로 이동 →</a>
  </div>
  <div class="homePulsePane">
-  <div class="sectionTitle"><h2>포에버 공식 소식</h2><a href="#/news">전체 보기 ›</a></div>
+  <div class="sectionTitle"><h2>포에버 공식 소식</h2><a href="#/updates">전체 보기 ›</a></div>
   <div class="homePulseNews">${news.map(n=>`<a href="${esc(n.url)}" target="_blank" rel="noopener noreferrer" title="${esc(n.title)}"><span>${esc(n.title)}</span><b>↗</b></a>`).join('')}</div>
  </div>
  </section>`;
@@ -177,6 +177,16 @@ function newsItems(){return officialNewsLoaded&&officialNews.length?officialNews
 function newsRow(n){
  return `<a class="officialNewsRow" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer"><span class="newsTag">${esc(n.category||'공식 소식')}</span><span class="newsRowText"><strong>${esc(n.title)}</strong><small>${esc(n.date||'블리자드 공식 소식')} · 공식 원문 ↗</small></span><span class="newsExternal" aria-hidden="true">↗</span></a>`;
 }
+function updatesTabs(active){
+ const main=document.querySelector('main.pageContent');
+ if(!main)return;
+ const bar=document.createElement('div');
+ bar.className='updatesTabs wrap';
+ bar.innerHTML=`<a class="${active==='news'?'selected':''}" href="#/updates">공식 소식 · 패치노트</a><a class="${active==='events'?'selected':''}" href="#/events">우왁굳 주최 이벤트</a>`;
+ const hero=main.querySelector('.pageHero');
+ if(hero)hero.insertAdjacentElement('afterend',bar);
+}
+function eventsHub(){events();updatesTabs('events')}
 function newsPage(){
  const items=newsItems().filter(x=>newsFilter==='all'||(x.category||'소식')===newsFilter);
  layout(head('포에버 소식','블리자드 공식 발표를 한곳에서 확인하고 원문으로 이동하세요')+
@@ -184,6 +194,7 @@ function newsPage(){
  <div class="newsFilters">${[['all','전체'],['패치노트','패치노트'],['공지','공지'],['소식','소식']].map(([v,t])=>`<button class="newsFilter ${newsFilter===v?'selected':''}" onclick="newsFilter='${v}';newsPage()">${t}</button>`).join('')}</div>
  <div class="officialNewsList">${items.length?items.map(newsRow).join(''):'<div class="emptyState">이 분류에 등록된 공식 소식이 없어.</div>'}</div>
  <p class="newsFootnote">자동 수집은 GitHub Actions로 주기적으로 확인해. 공식 사이트의 구조나 접근 정책이 바뀌면 새 소식 수집이 지연될 수 있어.</p></div>`);
+ updatesTabs('news');
 }
 async function loadOfficialNews(){
  try{
@@ -196,5 +207,5 @@ async function loadOfficialNews(){
  }catch{officialNewsLoaded=false}
 }
 
-function render(){const r=route().split('?')[0];if(r==='/')home();else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/live')livePage();else if(r==='/news')newsPage();else if(r==='/events')events();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
+function render(){const r=route().split('?')[0];if(r==='/')home();else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/live')livePage();else if(r==='/news'||r==='/updates')newsPage();else if(r==='/events')eventsHub();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
 window.addEventListener('hashchange',()=>{profileTab='character';filter='';render();window.scrollTo(0,0)});render();loadOfficialNews();
