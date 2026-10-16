@@ -293,3 +293,17 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 .updatesTabs a{display:inline-block;padding:11px 17px;border:1px solid #7e8c95;border-radius:7px;background:#24343e;color:#e4e7e5;font-weight:700;font-size:14px}
 .updatesTabs a.selected{border-color:#d6b57f;color:#f5d8a5;background:#4c463d}
 @media(max-width:780px){.updatesTabs{gap:7px}.updatesTabs a{flex:1;text-align:center;font-size:12px;padding:10px 8px}}
+
+
+/* Navigation fine-tuning: slightly right-shifted, more breathing room, still one line. */
+@media(min-width:1051px){
+ .header .nav{gap:16px}
+ .header .links{justify-content:center;gap:13px;padding-left:14px}
+ .header .links>a{padding-left:6px;padding-right:6px}
+}
+@media(min-width:781px) and (max-width:1050px){
+ .header .links{justify-content:flex-start;gap:10px;padding-left:12px}
+}
+/* Three actual stats fill the full homepage row without a blank fourth slot. */
+.page-home .stats,.pageContent.page-home .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:580px){.page-home .stats,.pageContent.page-home .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.page-home .stat{padding:13px 5px}.page-home .stat strong{font-size:22px}.page-home .stat span{font-size:10px}}
