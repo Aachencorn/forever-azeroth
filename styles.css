@@ -67,3 +67,50 @@
 @media(max-width:780px){
   .pageContent .pageHero{min-height:165px}
 }
+
+
+/* Forever Azeroth palette: mossy forest 60% + airy teal 40%.
+   Color-only refresh; layout, images, sizing and behavior remain unchanged. */
+:root{
+  --bg:#172b29;--panel:#243d3a;--panel2:#31514c;--line:#648079;
+  --gold:#d6b77b;--gold2:#f0d59b;--text:#f5eddb;--muted:#c2cec4;
+  --green:#a4c88d;--red:#e79a8d;
+}
+body{background:radial-gradient(ellipse at 55% -8%,#42665e 0,transparent 52%),linear-gradient(180deg,#203934 0%,#172b29 75%);color:var(--text)}
+.header{background:#1b302aeF;border-bottom-color:#c7a46a55}
+.logo small{color:#dfc99d}
+.links a{color:#e3e9dd}
+.searchtop,.heroSearch{background:#233e38ed;border-color:#a5a481;color:var(--text)}
+.hero{background-image:linear-gradient(90deg,#19352de8,#244c3b66 55%,#1c3a32a3),url('forever-city.webp');border-bottom-color:#cbb17870}
+.hero h1{color:#f2d69e;text-shadow:0 3px 15px #10211c}
+.hero p,.pageHero p{color:#f0e8d8}
+.btn{background:linear-gradient(#e7c98d,#c9a467);border-color:#d4b278;color:#21352f}
+.btn.secondary{background:#34544d;color:#f4e5c8}
+.stat,.panel,.tile,.member,.guildCard,.adventurer{background:linear-gradient(145deg,#35534c,#243e39);border-color:#8a9a775e}
+.stat strong,.tile strong{color:#f3dba8}
+.member .avatar{background:#3c5a52;border-color:#a8a17d;color:#e5d4b3}
+.member.empty{opacity:.82}
+.tile{background:linear-gradient(120deg,#3b5d55,#29453f)}
+.eventFeature{background-image:linear-gradient(90deg,#1c342ee8,#23423888),url('assets/event.webp')}
+.pageHero{background-image:linear-gradient(90deg,#19352de0,#29493c80),url('assets/city.webp')}
+.field,.tab{background:#29463f;border-color:#70877b;color:#f3ecdc}
+.tab.active{background:#3b594c}
+.adventurer .portrait,.profilePic{background:linear-gradient(135deg,#537269,#29423c)}
+.adventurer h3,.panel h2,.panel h3{color:#f0d7a4}
+.profileMeta span:nth-child(odd),.kv label{color:#cbd7c5}
+.charRow,.raid{border-color:#71867c}
+.raid,.track{background:#35554e}
+.fill{background:linear-gradient(90deg,#75aa93,#d9ba7c)}
+.formGroup label,.notice{color:#e4d3ac}
+.notice{background:#6c5b3424;border-color:#bca27078}
+.adminSide button{background:#2b4740;border-color:#70877b;color:#f3ecdc}
+.footer{color:#b7c9bd;border-top-color:#a89b725c}
+.emptyState{color:#c2cec4}
+.bgmPlayer{background:#203a33ed;border-color:#c2a875;color:#f0dcb4}
+.bgmToggle{background:#3a5c51;color:#f6dfb0}
+.bgmToggle:hover{background:#4b7264}
+.bgmVolumeLabel,.bgmPlayer #bgmVolumeValue{color:#ead9b5}
+@media(max-width:780px){.links{background:#213b34}}
+.pageContent .pageHero{background-color:#29473d}
+.pageContent .pageHero::before{filter:saturate(1.06)}
+.pageContent .pageHero::after{background:linear-gradient(90deg,rgba(19,44,34,.64) 0%,rgba(22,47,37,.37) 43%,rgba(19,44,34,.16) 100%)}
