@@ -219,3 +219,21 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 .homeNewsList .officialNewsRow{padding:14px 18px}
 @media(max-width:1100px){.navExtra summary{font-size:11px}.navExtraMenu{min-width:170px}}
 @media(max-width:780px){.navExtra{width:100%}.navExtra summary{font-size:14px;padding:8px}.navExtraMenu{position:static;box-shadow:none;border:0;background:#ffffff0a;margin:4px 0 0 10px}.navExtraMenu a{font-size:14px!important}.officialNewsRow{padding:13px 11px;gap:9px}.newsTag{font-size:10px;padding:4px 6px}}
+
+
+/* Compact homepage live + news strip. Keep the 20-member grid untouched. */
+.homePulse{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:25px 0 30px}
+.homePulsePane{min-width:0;background:linear-gradient(135deg,#45545d,#37444b);border:1px solid #88969a8c;border-radius:9px;padding:17px 19px}
+.homePulsePane .sectionTitle{margin:0 0 12px}
+.homePulsePane .sectionTitle h2{font-size:17px}
+.homePulsePane .sectionTitle a{font-size:12px;white-space:nowrap}
+.homePulseStatus{margin:5px 0 6px;color:#ead6b2;font-weight:600;font-size:13px}
+.homePulseDescription{font-size:12px;color:#d0d8dc;line-height:1.6;margin:0 0 12px}
+.homePulseAction{font-size:12px;color:#f0d29d}
+.homePulseNews{display:flex;flex-direction:column;gap:0}
+.homePulseNews a{display:flex;gap:10px;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff22;padding:7px 0;font-size:12px;min-width:0}
+.homePulseNews a:first-child{padding-top:0}
+.homePulseNews a:last-child{border-bottom:0;padding-bottom:0}
+.homePulseNews span{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;min-width:0}
+.homePulseNews b{color:#ead1a1;flex-shrink:0}
+@media(max-width:780px){.homePulse{grid-template-columns:1fr;gap:10px}.homePulsePane{padding:15px}.homePulsePane .sectionTitle h2{font-size:16px}}
