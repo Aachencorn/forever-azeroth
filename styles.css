@@ -114,3 +114,38 @@ body{background:radial-gradient(ellipse at 58% -8%,#49443e 0,transparent 52%),li
 .pageContent .pageHero{background-color:#343434}
 .pageContent .pageHero::before{filter:saturate(1.04)}
 .pageContent .pageHero::after{background:linear-gradient(90deg,rgba(28,28,29,.64) 0%,rgba(36,33,30,.36) 43%,rgba(33,31,29,.16) 100%)}
+
+
+/* Multi-tone visual hierarchy: bronze base, navy navigation, slate cards, amber events.
+   Keep all original image URLs, geometry, and application behavior intact. */
+:root{--panel:#454d52;--panel2:#505b60;--line:#79858a}
+body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),linear-gradient(180deg,#292b2d 0%,#202326 78%)}
+.header{background:#25384bf2;border-bottom-color:#a9b5bc55}
+.links a{color:#e1e8ed}
+.links a.active{color:#f0d49f}
+.searchtop{background:#2b4357;border-color:#71879a}
+.nav>.bgmPlayer{background:#30475b;border-color:#b7a17c}
+.bgmToggle{background:#3e5a70}
+.bgmToggle:hover{background:#4c6b82}
+@media(max-width:780px){.links{background:#25384b}}
+.stat,.panel,.member,.guildCard,.adventurer{background:linear-gradient(145deg,#505b60,#41494e);border-color:#89959a90}
+.stat{background:linear-gradient(150deg,#4c5458,#363d42)}
+.stat strong{color:#f0d8ab}
+.member .avatar{background:#343f47;border-color:#a69b82}
+.member.empty{background:linear-gradient(145deg,#41494d,#353a3e)}
+.adventurer .portrait{background:linear-gradient(135deg,#67737a,#3b4850)}
+.tile{background:linear-gradient(125deg,#3d5360,#303c46);border-color:#738a9780}
+.tile strong{color:#f1d7a7}
+.guildCard{background:linear-gradient(145deg,#4b545b,#3b454b)}
+.eventFeature{background-image:linear-gradient(90deg,#3a2b25e8,#70513b80),url('assets/event.webp');border-color:#b48b637a}
+.eventFeature h2{color:#f1d2a2}
+.pill{background:#78543b55;border-color:#d4a46d;color:#f4d6a4}
+.pageContent .pageHero{background-color:#353b40}
+.pageContent .pageHero::after{background:linear-gradient(90deg,rgba(24,33,40,.68) 0%,rgba(34,39,43,.36) 43%,rgba(31,34,38,.14) 100%)}
+.field,.tab{background:#38464d;border-color:#798991}
+.tab.active{background:#4c504b;border-color:#c9a875}
+.raid,.track{background:#3d4b52}
+.charRow,.raid{border-color:#839095}
+.adminSide button{background:#384850;border-color:#758b96}
+.adminSide button.active{background:#5c4b39}
+.notice{background:#70513b38;border-color:#b79266}
