@@ -69,48 +69,48 @@
 }
 
 
-/* Stormwind Classic palette — royal blue, antique gold and ivory.
-   Color-only refresh; preserves all existing layouts, images and features. */
+/* Dark Fantasy Bronze — neutral charcoal, warm bronze, ivory.
+   Palette-only change: preserve layout, assets and behavior. */
 :root{
-  --bg:#172c43;--panel:#26415e;--panel2:#315578;--line:#708aa1;
-  --gold:#c6a467;--gold2:#ecd09a;--text:#f4eddf;--muted:#c3cfda;
-  --green:#9fbea9;--red:#e69a90;
+  --bg:#202326;--panel:#333638;--panel2:#414443;--line:#766957;
+  --gold:#c9a875;--gold2:#ead2a4;--text:#f0e5d2;--muted:#c3beb5;
+  --green:#a4b99b;--red:#df978e;
 }
-body{background:radial-gradient(ellipse at 58% -8%,#3c6186 0,transparent 52%),linear-gradient(180deg,#203e5b 0%,#172c43 75%);color:var(--text)}
-.header{background:#192f49ed;border-bottom-color:#c6a46755}
-.logo small{color:#ddc59b}
-.links a{color:#e5e8e9}
-.searchtop,.heroSearch{background:#1c3754eb;border-color:#a48d69;color:var(--text)}
-.hero{background-image:linear-gradient(90deg,#152e48e3,#244b7370 55%,#172e49a3),url('forever-city.webp');border-bottom-color:#c6a46770}
-.hero h1{color:#f0d39c;text-shadow:0 3px 15px #102338}
-.hero p,.pageHero p{color:#eee7db}
-.btn{background:linear-gradient(#e8cd95,#c5a064);border-color:#c7a467;color:#172b42}
-.btn.secondary{background:#35597c;color:#f2e3c8}
-.stat,.panel,.tile,.member,.guildCard,.adventurer{background:linear-gradient(145deg,#345779,#233e5b);border-color:#a3a0826b}
-.stat strong,.tile strong{color:#f0d8a9}
-.member .avatar{background:#3c5e7d;border-color:#aa9878;color:#e8d7b5}
+body{background:radial-gradient(ellipse at 58% -8%,#49443e 0,transparent 52%),linear-gradient(180deg,#292c2d 0%,#202326 75%);color:var(--text)}
+.header{background:#242729ed;border-bottom-color:#a88a6055}
+.logo small{color:#d5bd97}
+.links a{color:#e0dbd2}
+.searchtop,.heroSearch{background:#292b2ceb;border-color:#9d8566;color:var(--text)}
+.hero{background-image:linear-gradient(90deg,#222527e3,#39332c66 55%,#232528a3),url('forever-city.webp');border-bottom-color:#c9a87570}
+.hero h1{color:#ead2a4;text-shadow:0 3px 15px #171719}
+.hero p,.pageHero p{color:#eee4d6}
+.btn{background:linear-gradient(#e5c99b,#c29d66);border-color:#c9a875;color:#252524}
+.btn.secondary{background:#49433c;color:#f1dec0}
+.stat,.panel,.tile,.member,.guildCard,.adventurer{background:linear-gradient(145deg,#424343,#323536);border-color:#95806478}
+.stat strong,.tile strong{color:#ecd2a5}
+.member .avatar{background:#4b4b49;border-color:#a38d6d;color:#e6d5b6}
 .member.empty{opacity:.82}
-.tile{background:linear-gradient(120deg,#3a6185,#274563)}
-.eventFeature{background-image:linear-gradient(90deg,#162e49e8,#284b7188),url('assets/event.webp')}
-.pageHero{background-image:linear-gradient(90deg,#18334ee0,#32577c80),url('assets/city.webp')}
-.field,.tab{background:#2b4a69;border-color:#8094a4;color:#f4eddf}
-.tab.active{background:#3b5672}
-.adventurer .portrait,.profilePic{background:linear-gradient(135deg,#587b99,#2b4564)}
-.adventurer h3,.panel h2,.panel h3{color:#f0d7a5}
-.profileMeta span:nth-child(odd),.kv label{color:#d0d8dc}
-.charRow,.raid{border-color:#71899e}
-.raid,.track{background:#365574}
-.fill{background:linear-gradient(90deg,#719bbd,#d9b879)}
-.formGroup label,.notice{color:#e8d5b1}
-.notice{background:#69522d24;border-color:#bfa17478}
-.adminSide button{background:#2d4b69;border-color:#7d91a3;color:#f4eddf}
-.footer{color:#b9c9d7;border-top-color:#a89b725c}
-.emptyState{color:#c3cfda}
-.bgmPlayer{background:#1b3551ed;border-color:#c4a36e;color:#f0dcb7}
-.bgmToggle{background:#365a7a;color:#f6dfb2}
-.bgmToggle:hover{background:#476d90}
-.bgmVolumeLabel,.bgmPlayer #bgmVolumeValue{color:#ead8b8}
-@media(max-width:780px){.links{background:#213e5b}}
-.pageContent .pageHero{background-color:#294764}
-.pageContent .pageHero::before{filter:saturate(1.03)}
-.pageContent .pageHero::after{background:linear-gradient(90deg,rgba(15,34,55,.67) 0%,rgba(23,45,68,.39) 43%,rgba(21,43,66,.17) 100%)}
+.tile{background:linear-gradient(120deg,#494846,#343637)}
+.eventFeature{background-image:linear-gradient(90deg,#232426e8,#44372e80),url('assets/event.webp')}
+.pageHero{background-image:linear-gradient(90deg,#252629df,#453c3380),url('assets/city.webp')}
+.field,.tab{background:#3c3e3e;border-color:#827769;color:#f0e5d2}
+.tab.active{background:#514a40}
+.adventurer .portrait,.profilePic{background:linear-gradient(135deg,#68645c,#393b3c)}
+.adventurer h3,.panel h2,.panel h3{color:#ecd1a1}
+.profileMeta span:nth-child(odd),.kv label{color:#d0c6b8}
+.charRow,.raid{border-color:#83796b}
+.raid,.track{background:#454543}
+.fill{background:linear-gradient(90deg,#9a9784,#d7ae75)}
+.formGroup label,.notice{color:#e1cda8}
+.notice{background:#6c573224;border-color:#bfa17478}
+.adminSide button{background:#3b3d3c;border-color:#83796b;color:#f0e5d2}
+.footer{color:#bfb9af;border-top-color:#9880645c}
+.emptyState{color:#c3beb5}
+.bgmPlayer{background:#292a29ed;border-color:#b79a70;color:#ead6b6}
+.bgmToggle{background:#50493f;color:#f2dab2}
+.bgmToggle:hover{background:#625747}
+.bgmVolumeLabel,.bgmPlayer #bgmVolumeValue{color:#e5d2b5}
+@media(max-width:780px){.links{background:#303233}}
+.pageContent .pageHero{background-color:#343434}
+.pageContent .pageHero::before{filter:saturate(1.04)}
+.pageContent .pageHero::after{background:linear-gradient(90deg,rgba(28,28,29,.64) 0%,rgba(36,33,30,.36) 43%,rgba(33,31,29,.16) 100%)}
