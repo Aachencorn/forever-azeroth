@@ -314,3 +314,13 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 .page-home .homeStats .stat strong{font-size:36px;font-variant-numeric:tabular-nums}
 .page-home .homeStats .stat span{font-size:13px}
 @media(max-width:580px){.page-home .homeStats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.page-home .homeStats .stat{padding:18px 7px}.page-home .homeStats .stat strong{font-size:29px}.page-home .homeStats .stat span{font-size:12px}}
+
+/* Hero-adjacent open counters: oversized fantasy numerals without card borders. */
+.page-home .homeStatsSection{margin-top:24px;margin-bottom:32px}
+.page-home .homeStats{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.page-home .homeStats .stat{background:none;border:0;border-radius:0;box-shadow:none;padding:26px 12px 30px;min-width:0}
+.page-home .homeStats .stat+.stat{border-left:1px solid rgba(201,164,107,.22)}
+.page-home .homeStats .stat strong{font-family:'Cinzel',Georgia,serif;font-size:clamp(64px,8vw,112px);font-weight:700;line-height:1.12;letter-spacing:-.035em;color:#e9c98e;font-variant-numeric:tabular-nums;text-shadow:0 2px 18px rgba(201,164,107,.16)}
+.page-home .homeStats .stat strong::after{content:'';display:block;width:42px;height:2px;margin:13px auto 12px;background:#92754a}
+.page-home .homeStats .stat span{font-size:15px;font-weight:600;color:#e0ded5}
+@media(max-width:580px){.page-home .homeStatsSection{margin-top:14px;margin-bottom:22px}.page-home .homeStats .stat{padding:19px 4px 22px}.page-home .homeStats .stat strong{font-size:clamp(45px,12vw,66px)}.page-home .homeStats .stat span{font-size:12px}}
