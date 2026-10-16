@@ -371,3 +371,28 @@ body{background:radial-gradient(ellipse at 55% -12%,#465452 0,transparent 53%),l
 /* The homepage counters intentionally remain borderless. */
 .page-home .homeStats .stat{background:none;border:0;box-shadow:none}
 .page-home .homeStats .stat+.stat{border-left:1px solid rgba(232,197,138,.3)}
+
+/* Noticeably brighter warm-stone Azeroth theme (high contrast from former charcoal). */
+:root{--bg:#697575;--panel:#83908c;--panel2:#8e9a95;--line:#b7b5a2;--gold:#f0cf93;--gold2:#ffe0a9;--text:#fff9ed;--muted:#e8e8de}
+html{background:#697575}
+body{background:radial-gradient(ellipse at 50% 0%,#89958d 0%,transparent 56%),linear-gradient(180deg,#75837f 0%,#657370 100%);color:var(--text)}
+.header{background:rgba(74,89,87,.97);border-bottom:1px solid rgba(240,207,147,.62)}
+.links a{color:#fff9ef}
+.stat,.panel,.tile,.member,.guildCard,.adventurer{background:linear-gradient(145deg,#909b95,#7d8985);border:1px solid rgba(240,221,184,.75);box-shadow:0 5px 20px rgba(34,49,48,.13)}
+.tile{background:linear-gradient(125deg,#96a39b,#7e8d87)}
+.member .avatar{background:#637775;border-color:#d6c29e;color:#ffe0a9}
+.member.empty{opacity:1}
+.field,.tab,.searchtop{background:#788884;border-color:#d1c5a9;color:#fff9ed}
+.heroSearch{background:rgba(80,97,93,.88);border-color:#d5bb8f}
+.btn.secondary{background:#82918a;color:#fff6e5}
+.homePulsePane{background:linear-gradient(135deg,#929f98,#7d8d88);border-color:#d9c6a4}
+.newsIntro{background:linear-gradient(120deg,#93a098,#7b8b85);border-color:#d9c6a4}
+.newsFilter{background:#7e908a;border-color:#d0c4ac;color:#fff9ed}
+.adventurer .portrait{background:linear-gradient(135deg,#9ca9a0,#718680)}
+.profilePic{background:linear-gradient(135deg,#9aa99f,#71857d)}
+.pageHero{background-image:linear-gradient(90deg,rgba(48,64,62,.63),rgba(67,82,75,.20)),url('assets/city.webp')}
+.hero{background-image:linear-gradient(90deg,rgba(40,58,55,.63),rgba(55,71,64,.16) 55%,rgba(40,58,55,.32)),url('forever-city.webp')}
+.page-home .homeStats .stat{background:transparent;border:0;box-shadow:none}
+.page-home .homeStats .stat+.stat{border-left:1px solid rgba(255,224,169,.55)}
+.page-home .homeStats .stat strong{color:#ffe0a9;text-shadow:0 2px 12px rgba(35,48,42,.28)}
+.page-home .homeStats .stat span{color:#fff9ed}
