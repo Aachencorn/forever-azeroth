@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
 ROOT = "https://worldofwarcraft.blizzard.com"
-SOURCE = ROOT + "/en-us/news"
+SOURCE = ROOT + "/ko-kr/news"
 DEST = Path(__file__).resolve().parents[1] / "data" / "official-news.json"
 NEWS_URL = re.compile(r"^/(?:en-us|ko-kr|en-gb)/news/(\d+)(?:/[^?#]*)?$", re.I)
 TOPIC = re.compile(r"\bforever\b|포에버", re.I)
@@ -47,8 +47,8 @@ def category(title):
 
 def main():
     previous = json.loads(DEST.read_text(encoding="utf-8"))
-    existing = previous.get("items", [])
-    req = urllib.request.Request(SOURCE, headers={"User-Agent": "ForeverAzerothFanArchive/1.0 (official news link index)", "Accept-Language": "en-US,en;q=0.8"})
+    existing = [item for item in previous.get("items", []) if urlparse(item.get("url", "")).path.startswith("/ko-kr/news/")]
+    req = urllib.request.Request(SOURCE, headers={"User-Agent": "ForeverAzerothFanArchive/1.0 (official news link index)", "Accept-Language": "ko-KR,ko;q=0.9"})
     try:
         with urllib.request.urlopen(req, timeout=25) as response:
             html = response.read(3_000_000).decode("utf-8", "replace")
@@ -62,7 +62,7 @@ def main():
             if parts.hostname != "worldofwarcraft.blizzard.com":
                 continue
             match = NEWS_URL.match(parts.path)
-            if not match or not TOPIC.search(title) or len(title) < 12 or len(title) > 220:
+            if not match or not parts.path.lower().startswith("/ko-kr/news/") or not TOPIC.search(title) or len(title) < 8 or len(title) > 220:
                 continue
             ident = match.group(1)
             if ident in seen:
@@ -70,7 +70,7 @@ def main():
             seen.add(ident)
             found.append({"title": title, "url": ROOT + parts.path, "date": "", "category": category(title)})
         if not found:
-            print("No matching official links parsed; preserving previous feed.")
+            print("No matching Korean official links parsed; preserving previous feed.")
             return
         # Retain existing dates and preferred labels; add new official links at the top.
         old_by_id = {}
@@ -91,7 +91,7 @@ def main():
             merged.append(item)
         result = {"source": SOURCE, "updated_at": datetime.now(timezone.utc).isoformat(), "items": merged[:80]}
         # Avoid committing every run when no links have changed.
-        if result["items"] == existing:
+        if result["items"] == existing and previous.get("source") == SOURCE:
             print("No new links.")
             return
         DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
