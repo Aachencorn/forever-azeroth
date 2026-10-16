@@ -307,3 +307,10 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 /* Three actual stats fill the full homepage row without a blank fourth slot. */
 .page-home .stats,.pageContent.page-home .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:580px){.page-home .stats,.pageContent.page-home .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.page-home .stat{padding:13px 5px}.page-home .stat strong{font-size:22px}.page-home .stat span{font-size:10px}}
+
+/* Homepage: two large, evenly sized world-status counters. */
+.page-home .homeStats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.page-home .homeStats .stat{padding:24px 18px}
+.page-home .homeStats .stat strong{font-size:36px;font-variant-numeric:tabular-nums}
+.page-home .homeStats .stat span{font-size:13px}
+@media(max-width:580px){.page-home .homeStats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.page-home .homeStats .stat{padding:18px 7px}.page-home .homeStats .stat strong{font-size:29px}.page-home .homeStats .stat span{font-size:12px}}
