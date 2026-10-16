@@ -149,3 +149,33 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 .adminSide button{background:#384850;border-color:#758b96}
 .adminSide button.active{background:#5c4b39}
 .notice{background:#70513b38;border-color:#b79266}
+
+
+/* Live hub preview; inherits current multi-tone palette. */
+.page-live{--zone-banner:url('assets/banner-world.jpg')}
+.liveHub{padding-bottom:12px}
+.liveNotice{background:linear-gradient(115deg,#354856,#41403b);border:1px solid #bba17b80;border-radius:9px;padding:18px 20px;margin-bottom:30px}
+.liveNotice strong{color:#f1d7a7;font-size:16px}
+.liveNotice p{color:#d6dce0;line-height:1.7;margin:8px 0 14px}
+.liveDot{color:#e36d68;font-size:15px;vertical-align:middle}
+.liveCount{font-size:14px;color:#c8cdd0;font-weight:500}
+.liveCards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.liveCard{min-width:0;border:1px solid #8b969b85;background:linear-gradient(145deg,#505b60,#374249);border-radius:10px;overflow:hidden}
+.liveCard.isLive{border-color:#b69b728f}
+.liveThumb{height:135px;background:linear-gradient(135deg,#425a69,#293b49);position:relative;display:grid;place-items:center;font-size:50px;color:#c7b18b;overflow:hidden}
+.liveThumb img{width:100%;height:100%;object-fit:cover}
+.liveCard.isOffline .liveThumb{filter:saturate(.55);opacity:.8}
+.liveState{position:absolute;top:10px;left:10px;background:#20272cd9;color:#cdd1d4;font-size:10px;font-weight:800;letter-spacing:.5px;border-radius:4px;padding:5px 8px}
+.liveState.on{background:#bb4141;color:#fff}
+.liveCardBody{padding:15px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.liveCardBody h3{font-size:17px;margin:0;color:#f1dfc0}
+.liveCardBody p{margin:0}
+.liveTitle{font-size:13px;line-height:1.5}
+.liveMeta,.liveViewers,.liveUnlinked{font-size:12px;color:#c2ccd0}
+.liveProfileLink{font-size:12px;color:#e5c48c}
+.liveEmpty{padding:38px 20px;text-align:center;border:1px dashed #89959a77;border-radius:9px;color:#c3cbd0}
+.liveOfflineHeading{margin-top:35px}
+.liveMore{text-align:center;margin:24px 0}
+@media(max-width:1100px){.liveCards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:780px){.liveCards{grid-template-columns:repeat(2,minmax(0,1fr))}.liveThumb{height:115px}.liveCardBody{padding:11px}.liveHub .sectionTitle{align-items:flex-start;flex-direction:column}}
+@media(max-width:420px){.liveCards{gap:9px}.liveThumb{height:100px}}
