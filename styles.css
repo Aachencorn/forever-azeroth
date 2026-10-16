@@ -330,3 +330,8 @@ body{background:radial-gradient(ellipse at 50% -12%,#414247 0,transparent 49%),l
 .page-home .homeStats{width:min(100%,860px);margin-inline:auto;justify-content:center}
 .page-home .homeStats .stat{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 @media(max-width:580px){.page-home .homeStats{width:100%}}
+
+/* Exact viewport-centered stat group, independent of surrounding section layout. */
+.page-home .homeStatsSection{width:100%;display:block;position:relative;left:0;right:0;margin-inline:auto;padding:0}
+.page-home .homeStats{width:min(860px,100%);max-width:860px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);justify-items:stretch;transform:none}
+.page-home .homeStats .stat{width:100%;margin:0;display:flex;flex-direction:column;align-items:center;text-align:center}
