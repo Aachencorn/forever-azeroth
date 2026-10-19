@@ -10,9 +10,10 @@ for path in ['index.html','app.js','final-book.js','styles.css','styles/final-bo
 html=(ROOT/'index.html').read_text()
 for ref in re.findall(r'(?:src|href)="([^"?#]+)',html):
  if not re.match(r'https?://',ref):assert (ROOT/ref).is_file(),ref
-css=ROOT/'styles/final-book-theme.css'
-for ref in re.findall(r'url\([\'"]?([^\)\'\"]+)',css.read_text()):
- if not ref.startswith(('data:','https:')):assert (css.parent/ref).is_file(),ref
+for name in ['styles/final-book-theme.css','styles/review-fixes.css']:
+ css=ROOT/name
+ for ref in re.findall(r'url\([\'"]?([^\)\'\"]+)',css.read_text()):
+  if not ref.startswith(('data:','https:')):assert (css.parent/ref).is_file(),ref
 if OUT.exists():shutil.rmtree(OUT)
 OUT.mkdir()
 for name in ['index.html','app.js','final-book.js','styles.css','forever-city.webp']:

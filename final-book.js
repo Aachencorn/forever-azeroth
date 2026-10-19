@@ -1,6 +1,7 @@
 /* Approved ten-screen book UI. Presentation state never writes archive records. */
 let bookFilters={className:'',race:'',guildId:'',faction:'',style:'',size:''};
-let bookView='grid',favoriteType='people',modalOrigin='/adventurers',pendingSearch=null;
+let bookView='grid',favoriteType='people',modalOrigin=route().startsWith('/guild/')?'/guilds':'/adventurers',pendingSearch=null;
+let bookReturnState=null;
 const baseLayout=layout;
 const emptyBook=(text='등록된 기록이 없습니다.')=>`<div class="bookEmpty"><span aria-hidden="true">✧</span><p>${esc(text)}</p></div>`;
 const imageArt=(url,cls='')=>url?`<img class="${cls}" src="${esc(url)}" alt="" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('imageMissing')">`:`<span class="artPlaceholder" aria-hidden="true">✧</span>`;
@@ -55,12 +56,13 @@ function toggleGuildFavorite(id){toggleFav('guilds',id)}
 function guildCardBook(g){const n=data.people.filter(p=>p.characters?.some(c=>c.guildId===g.id)).length;return `<article class="wapGuild"><a href="${recordLink('guild',g.id)}"><div class="wapGuildArt" style="${g.image?'background-image:url(&quot;'+esc(g.image)+'&quot;)':''}"><span class="guildStandard" aria-hidden="true"></span><h3>${esc(g.name)}</h3><p>${esc(g.description||'길드 소개 미등록')}</p></div><div class="wapGuildNumbers"><span>총 길드원 수<b>${g.total!==''&&g.total!=null?esc(g.total)+'명':'미확인'}</b></span><span>VTuber 수<b>${n}명</b></span></div><span class="wapView">상세 보기 ›</span></a><button class="cardFavorite ${isFav('guilds',g.id)?'on':''}" aria-label="${esc(g.name)} 즐겨찾기" aria-pressed="${isFav('guilds',g.id)}" onclick="${action('toggleGuildFavorite',g.id)}">${isFav('guilds',g.id)?'★':'☆'}</button></article>`}
 function peopleList(){layout(head('모험가 도감','아제로스를 누비는 모든 모험가들의 기록입니다.')+bookControls('people')+pagedBook(filteredPeople(),16,'peopleGrid',personCard))}
 function guildList(){layout(head('길드 도감','아제로스에서 활동하는 모든 길드들의 기록입니다.')+bookControls('guild')+pagedBook(filteredGuilds(),4,'guildGrid',guildCardBook))}
-function favorites(){const f=fav(),isPeople=favoriteType==='people';const items=isPeople?filteredPeople(data.people.filter(p=>f.people.includes(p.id))):filteredGuilds(data.guilds.filter(g=>f.guilds.includes(g.id)));layout(head('즐겨찾기','관심 있는 모험가와 길드를 모아 빠르게 확인할 수 있습니다.')+bookControls(isPeople?'people':'guild')+pagedBook(items,isPeople?12:4,isPeople?'peopleGrid favoriteGrid':'guildGrid',isPeople?personCard:guildCardBook,'아직 저장한 즐겨찾기가 없습니다. 도감에서 별을 눌러 보세요.'));document.querySelector('.bookFilters').insertAdjacentHTML('beforebegin',`<div class="favoriteTabs"><button class="${isPeople?'active':''}" onclick="favoriteType='people';resetBookFilters();render()">♟ 모험가 즐겨찾기</button><button class="${!isPeople?'active':''}" onclick="favoriteType='guilds';resetBookFilters();render()">♜ 길드 즐겨찾기</button></div>`)}
+function favorites(){const f=fav(),isPeople=favoriteType==='people';const items=isPeople?filteredPeople(data.people.filter(p=>f.people.includes(p.id))):filteredGuilds(data.guilds.filter(g=>f.guilds.includes(g.id)));layout(head('즐겨찾기','관심 있는 모험가와 길드를 모아 빠르게 확인할 수 있습니다.')+bookControls(isPeople?'people':'guild')+pagedBook(items,isPeople?12:4,isPeople?'peopleGrid favoriteGrid':'guildGrid',isPeople?personCard:guildCardBook,(isPeople?f.people.length:f.guilds.length)?'검색 조건에 맞는 즐겨찾기가 없습니다.':'아직 저장한 즐겨찾기가 없습니다. 도감에서 별을 눌러 보세요.'));document.querySelector('.bookFilters').insertAdjacentHTML('beforebegin',`<div class="favoriteTabs"><button class="${isPeople?'active':''}" onclick="favoriteType='people';resetBookFilters();render()">♟ 모험가 즐겨찾기</button><button class="${!isPeople?'active':''}" onclick="favoriteType='guilds';resetBookFilters();render()">♜ 길드 즐겨찾기</button></div>`)}
 function livePage(){const items=filteredPeople();layout(head('라이브','지금 아제로스에서 모험 중인 방송을 확인하세요.')+bookControls('people')+pagedBook(items,8,'liveGrid',p=>{const c=main(p);return `<article class="wapLiveCard"><div class="liveScenery"><span class="liveUnknown">방송 상태 미연동</span></div><a href="${recordLink('adventurer',p.id)}" class="liveIdentity"><div class="liveAvatar">${imageArt(p.image)}</div><div><b>${esc(p.name)}</b><small>${esc(c.name||'캐릭터 미확인')} | ${c.level?'Lv. '+esc(c.level):'레벨 미확인'} | ${esc(guild(c.guildId)?.name||'길드 미확인')}</small></div></a>${p.soop?`<a class="stationLink" href="${esc(p.soop)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} SOOP 방송국">↗</a>`:''}</article>`}));document.querySelector('.wapBook').insertAdjacentHTML('afterend','<p class="wapLiveNotice">SOOP 실시간 상태와 시청자 수는 아직 연동되지 않았습니다. 등록된 방송국으로 이동할 수 있습니다.</p>')}
 function goSearch(value){pendingSearch=value;resetBookFilters();bookQuery=value;location.hash='/adventurers';render()}
 function chartBook(values,kind='bar'){
  const entries=Object.entries(values),total=entries.reduce((s,[,v])=>s+v,0);
  if(!total)return emptyBook('확인된 데이터가 없습니다.');
+ if(kind==='level')return `<div class="levelChart">${entries.map(([k,v],i)=>`<div class="levelColumn" style="--chart-color:${['#69adc7','#388bd0','#8bbd59','#e4bd43','#e88b42','#cf5357','#df82b5'][i%7]}"><b>${v}</b><div class="levelTrack"><i style="height:${v/Math.max(...entries.map(e=>e[1]))*100}%"></i></div><span>${esc(k)}</span></div>`).join('')}</div>`;
  return `<div class="bookChart ${kind==='level'?'levelChart':''}">${entries.map(([k,v],i)=>`<div class="chartRow" style="--chart-color:${['#cf5357','#df82b5','#8bbd59','#e4bd43','#69adc7','#388bd0','#9c69bc','#e88b42'][i%8]};--value:${v/Math.max(...entries.map(e=>e[1]))*100}%"><span>${esc(k)}</span><div class="chartTrack"><i></i></div><b>${v} <small>(${(v/total*100).toFixed(1)}%)</small></b></div>`).join('')}</div>`;
 }
 function world(){
@@ -91,27 +93,42 @@ function showBookModal(markup,kind){
  document.body.classList.add('modalOpen');document.querySelector('.wapClose')?.focus();
 }
 function closeBookModal(){location.hash=modalOrigin;}
+function modalBackground(kind){if(modalOrigin==='/favorites')favorites();else if(modalOrigin==='/live')livePage();else if(kind==='guilds')guildList();else peopleList()}
 function profile(id){
- const p=data.people.find(x=>x.id===id);if(!p)return notFound();const c=main(p),g=guild(c.guildId);peopleList();
+ const p=data.people.find(x=>x.id===id);if(!p)return notFound();const c=main(p),g=guild(c.guildId);modalBackground('people');
  const row=(k,v)=>`<div class="wapDetailRow"><span>${k}</span><b>${esc(v||'미확인')}</b></div>`;
- showBookModal(`<div class="wapDetailPhoto">${imageArt(p.image)}</div><div class="wapDetailInfo"><h1 id="detailTitle">${esc(p.name)} <button class="heart ${isFav('people',id)?'on':''}" aria-label="즐겨찾기" aria-pressed="${isFav('people',id)}" onclick="${action('togglePersonFavorite',id)}">${isFav('people',id)?'★':'☆'}</button></h1>${row('인게임 닉네임',c.name)}${row('레벨',c.level)}${row('종족',c.race)}${row('직업',c.className)}${row('전문화',(c.spec||'미확인')+(c.role?' ('+c.role+')':''))}<div class="wapDetailRow"><span>현 길드</span>${g?`<a href="${recordLink('guild',g.id)}">${esc(g.name)} ›</a>`:'<b>미확인</b>'}</div>${p.soop?`<div class="wapDetailRow"><span>SOOP 방송국</span><a class="wapSoop" target="_blank" rel="noopener noreferrer" href="${esc(p.soop)}">↗ 바로가기</a></div>`:''}${row('정보 최종 확인일',p.verified)}</div>${p.past?.participated==='no'?'<span class="detailNew">NEW</span>':''}<section class="wapSeason"><h2>이전 시즌 참여 기록</h2><p>${esc(({yes:'이전 시즌 참여',no:'신규 모험가',unknown:'참여 여부 미확인'})[p.past?.participated||'unknown'])}</p>${p.past?.participated==='yes'?`<p>Lv. ${esc(p.past.level||'미확인')} · ${esc(p.past.className||'직업 미확인')} · ${esc(p.past.spec||'전문화 미확인')}</p><p>${esc((p.past.raids||[]).join(' · ')||'레이드 기록 미등록')}</p>`:''}${(p.characters||[]).length>1?`<h2>다른 캐릭터</h2>${p.characters.filter(x=>x!==c).map(x=>`<div class="wapDetailRow"><span>${esc(x.name)}</span><b>Lv. ${esc(x.level||'?')} · ${esc(x.className||'미확인')} · ${esc(guild(x.guildId)?.name||'길드 미확인')}</b></div>`).join('')}`:''}<a class="detailReport" href="#/report">정보 수정 제보 ›</a></section>`,'person');
+ showBookModal(`<div class="wapDetailPhoto">${imageArt(p.image)}</div><div class="wapDetailInfo"><h1 id="detailTitle">${esc(p.name)} <button class="heart ${isFav('people',id)?'on':''}" aria-label="즐겨찾기" aria-pressed="${isFav('people',id)}" onclick="${action('togglePersonFavorite',id)}">${isFav('people',id)?'★':'☆'}</button></h1>${row('인게임 닉네임',c.name)}${row('레벨',c.level)}${row('종족',c.race)}${row('직업',c.className)}${row('전문화',(c.spec||'미확인')+(c.role?' ('+c.role+')':''))}<div class="wapDetailRow"><span>현 길드</span>${g?`<a href="${recordLink('guild',g.id)}">${esc(g.name)} ›</a>`:'<b>미확인</b>'}</div>${p.soop?`<div class="wapDetailRow"><span>SOOP 방송국</span><a class="wapSoop" target="_blank" rel="noopener noreferrer" href="${esc(p.soop)}">↗ 바로가기</a></div>`:''}${row('정보 최종 확인일',p.verified)}</div>${p.past?.participated==='no'?'<span class="detailNew"><span>NEW</span></span>':''}<section class="wapSeason"><h2>이전 시즌 참여 기록</h2><p>${esc(({yes:'이전 시즌 참여',no:'신규 모험가',unknown:'참여 여부 미확인'})[p.past?.participated||'unknown'])}</p>${p.past?.participated==='yes'?`<p>Lv. ${esc(p.past.level||'미확인')} · ${esc(p.past.className||'직업 미확인')} · ${esc(p.past.spec||'전문화 미확인')}</p><p>${esc((p.past.raids||[]).join(' · ')||'레이드 기록 미등록')}</p>`:''}${(p.characters||[]).length>1?`<h2>다른 캐릭터</h2>${p.characters.filter(x=>x!==c).map(x=>`<div class="wapDetailRow"><span>${esc(x.name)}</span><b>Lv. ${esc(x.level||'?')} · ${esc(x.className||'미확인')} · ${esc(guild(x.guildId)?.name||'길드 미확인')}</b></div>`).join('')}`:''}<a class="detailReport" href="#/report">정보 수정 제보 ›</a></section>`,'person');
 }
 function guildDetail(id){
- const g=guild(id);if(!g)return notFound();guildList();const members=data.people.filter(p=>p.characters?.some(c=>c.guildId===id)),records=data.chronicle.filter(c=>c.guildId===id||c.guildIds?.includes(id)||((c.title||'')+' '+(c.description||'')).includes(g.name)).sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,5);
+ const g=guild(id);if(!g)return notFound();modalBackground('guilds');const members=data.people.filter(p=>p.characters?.some(c=>c.guildId===id)),records=data.chronicle.filter(c=>c.guildId===id||c.guildIds?.includes(id)||((c.title||'')+' '+(c.description||'')).includes(g.name)).sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,5);
  showBookModal(`<div class="wapLeaf"><div class="guildDetailScenery"><span class="guildStandard"></span></div><h1 id="detailTitle">${esc(g.name)} <button class="heart ${isFav('guilds',id)?'on':''}" aria-label="길드 즐겨찾기" aria-pressed="${isFav('guilds',id)}" onclick="${action('toggleGuildFavorite',id)}">${isFav('guilds',id)?'★':'☆'}</button></h1><div class="wapDetailRow"><span>길드장</span><b>${esc(g.leader||'미확인')}</b></div><div class="wapDetailRow"><span>전체 길드원 수</span><b>${g.total!==''&&g.total!=null?esc(g.total)+'명':'미확인'}</b></div><div class="wapDetailRow"><span>등록 VTuber 수</span><b>${members.length}명</b></div><p>${esc(g.description||'길드 소개 미등록')}</p><h2>⚑ 길드 활동 기록</h2><div class="wapActivity">${records.map(c=>`<div><small>${esc(c.date||'날짜 미확인')}</small><b>${esc(c.title)}</b></div>`).join('')||emptyBook('아직 등록된 활동 기록이 없습니다.')}</div><a class="detailReport" href="#/chronicle">전체 기록 보기 ›</a></div><div class="wapLeaf"><h2>♟ 길드원 목록 (${members.length}명)</h2><div class="wapMemberGrid">${members.map(p=>`<a href="${recordLink('adventurer',p.id)}"><div class="memberPortrait">${imageArt(p.image)}</div><strong>${esc(p.name)}</strong><small>${esc(main(p).className||'직업 미확인')}</small></a>`).join('')||emptyBook('등록된 모험가가 없습니다.')}</div></div>`,'guild');
 }
 const oldRender=render;
 render=function(){document.querySelector('.bookModalBackdrop')?.remove();document.body.classList.remove('modalOpen');oldRender()};
 let previousBookRoute=route();
+window.removeEventListener('hashchange',onArchiveHashChange);
 window.addEventListener('hashchange',()=>{
- const current=route();
- if(/^\/(adventurer|guild)\//.test(current)&&!/^\/(adventurer|guild)\//.test(previousBookRoute))modalOrigin=['/favorites','/live','/guilds','/adventurers'].includes(previousBookRoute)?previousBookRoute:current.startsWith('/guild/')?'/guilds':'/adventurers';
- if(!/^\/(adventurer|guild)\//.test(current)){
-  Object.keys(bookFilters).forEach(k=>bookFilters[k]='');
-  if(previousBookRoute!==current){journalQuery='';journalCategory=current==='/events'?'event':'all';journalPage=0;journalIndex=0;}
+ const current=route(),previous=previousBookRoute;
+ const isDetail=/^\/(adventurer|guild)\//.test(current),wasDetail=/^\/(adventurer|guild)\//.test(previous);
+ const returning=wasDetail&&!isDetail&&current===modalOrigin&&bookReturnState;
+ if(isDetail&&!wasDetail){
+  modalOrigin=['/favorites','/live','/guilds','/adventurers'].includes(previous)?previous:current.startsWith('/guild/')?'/guilds':'/adventurers';
+  bookReturnState={bookIndex,bookQuery,bookSort,bookView,favoriteType,filters:{...bookFilters},scrollY};
+ }
+ if(!isDetail){
+  if(returning){
+   ({bookIndex,bookQuery,bookSort,bookView,favoriteType}=bookReturnState);
+   bookFilters={...bookReturnState.filters};
+  }else if(previous!==current){
+   resetBookFilters();filter='';journalQuery='';journalCategory=current==='/events'?'event':'all';journalPage=0;journalIndex=0;
+  }
  }
  if(pendingSearch!==null){bookQuery=pendingSearch;pendingSearch=null}
- previousBookRoute=current;render();
+ profileTab='character';previousBookRoute=current;render();
+ if(returning){
+  window.scrollTo(0,bookReturnState.scrollY);
+  [...document.querySelectorAll('a[href]')].find(a=>a.getAttribute('href')==='#'+previous)?.focus({preventScroll:true});
+ }else if(!isDetail)window.scrollTo(0,0);
 });
 document.addEventListener('keydown',e=>{const modal=document.querySelector('[role="dialog"]');if(!modal)return;if(e.key==='Escape'){closeBookModal();return}if(e.key==='Tab'){const all=[...modal.querySelectorAll('a[href],button,input,select,[tabindex="0"]')].filter(n=>!n.disabled);const first=all[0],last=all.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}});
 render();
