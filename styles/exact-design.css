@@ -358,3 +358,25 @@
  .approvedDesign .guildBookModal { background:url('../assets/wapobook/person-parchment.webp') center/100% 100% no-repeat local!important;padding:50px 26px 40px; }
  .approvedDesign .guildBookModal .approvedModalPaper { display:none; }
 }
+
+/* Continuous parchment replaces rectangular fills and pager cover patches. */
+@media(min-width:1100px) {
+ .approvedDesign #app .approvedPaper { display:block;left:6%;right:3%;top:25%;bottom:2%;background:url('../assets/wapobook/person-parchment.webp') center/125% 150% no-repeat; }
+ .approvedDesign .approvedPaper .paperLeaf { display:none; }
+ .approvedDesign #app[data-reference="home"] .approvedPaper { top:50%;bottom:3%;background:url('../assets/wapobook/person-parchment.webp') center/125% 160% no-repeat; }
+ .approvedDesign .approvedPagerCover { display:none!important; }
+ .approvedDesign .portalRoster .portalPanelTitle h2 { opacity:1;font-size:calc(var(--u) * 23);padding:calc(var(--u) * 13) calc(var(--u) * 24);margin:0;color:#241909; }
+ .approvedDesign .page-home .portalMembers { height:76%;top:20%; }
+}
+/* Socket art stays circular, including unregistered or unavailable portraits. */
+.approvedDesign .page-home .portalMembers .member .avatar { clip-path:circle(49%);border-radius:50%;isolation:isolate; }
+.approvedDesign .page-home .portalMembers .member .avatar img { width:74%;height:74%;border-radius:50%;object-fit:cover; }
+.approvedDesign .portalMembers .member,.approvedDesign .portalMembers .member:hover { background:transparent!important;border:0!important;box-shadow:none!important; }
+
+@media(min-width:1100px) {
+ .approvedDesign #app .approvedPaper,.approvedDesign #app[data-reference="home"] .approvedPaper { background-color:#f1e6d4;background-blend-mode:multiply; }
+}
+@media(min-width:1100px) {
+ .approvedDesign .page-world .wapBook>.wapLeaf { overflow:auto!important; }
+ .approvedDesign .page-world .statSection .bookEmpty { height:auto;min-height:0;padding:20px 12px; }
+}

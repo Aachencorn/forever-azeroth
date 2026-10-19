@@ -21,7 +21,7 @@ async def run():
    await p.evaluate('''async()=>{let i=new Image();i.src=getComputedStyle(document.querySelector('.approvedArtwork')).backgroundImage.slice(5,-2);await i.decode();await document.fonts.ready}''')
    await p.wait_for_timeout(50)
    shot=Image.open(io.BytesIO(await p.screenshot())).convert('RGB');original=Image.open(SOURCE/manifest[key]['source']).convert('RGB').resize((1536,1024),Image.Resampling.BILINEAR)
-   regions={'header':(70,0,1465,124),'binding':(0,0,60,1015),'right-frame':(1498,0,1536,1015),'banner':(90,110,950,245) if key=='live' else (90,145,950,285) if key!='home' else (90,145,1460,310)}
+   regions={'header':(70,0,1465,124),'binding':(0,0,60,1015),'right-frame':(1498,0,1536,1015),'banner':(90,110,950,245) if key=='live' else (90,145,950,260) if key=='favorites' else (90,145,950,285) if key!='home' else (90,145,1460,310)}
    for label,rect in regions.items():
     diff=ImageChops.difference(original.crop(rect),shot.crop(rect));error=sum(ImageStat.Stat(diff).mean)/3
     assert error<2.0,(key,label,error)
