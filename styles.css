@@ -423,91 +423,44 @@ body{background:radial-gradient(ellipse at 52% -8%,rgba(43,105,120,.29) 0%,trans
 .page-home .homeStats .stat strong{color:#f0d39d}
 .page-home .homeStats .stat span{color:#f2eee4}
 
-/* WAPO BOOK first concept: library entrance and readable parchment encyclopedia pages */
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;600;700;800&display=swap');
-:root{--bg:#241d18;--panel:#e8d8b6;--panel2:#f0e2c6;--line:#a4865a;--gold:#c8a46a;--gold2:#efd39a;--text:#f2e9d7;--muted:#c8bba5}
-html{background:#241d18}
-body{background:radial-gradient(ellipse at 50% -8%,#54402d 0%,transparent 60%),repeating-linear-gradient(90deg,#231d18 0px,#2a211b 95px,#241d18 100px);color:#f2e9d7}
-.header{background:linear-gradient(180deg,rgba(31,23,18,.98),rgba(43,30,21,.97));border-bottom:2px solid #99744b;box-shadow:0 4px 16px #110d0b99}
-.logo{display:flex;align-items:center;gap:9px;font:800 26px 'Noto Serif KR',serif;color:#f3d49a;text-shadow:0 2px 3px #100b07}
-.logo small{font:700 9px Cinzel,serif;letter-spacing:3px;color:#c8aa77;margin-top:3px}
-.brandBookIcon{display:grid;place-items:center;width:39px;height:45px;background:linear-gradient(110deg,#50301e,#382318);border:2px double #c49b5c;border-radius:4px 9px 9px 4px;box-shadow:inset 4px 0 #24140f,2px 2px 0 #a1804d;font-size:20px}
-.links a{color:#e6d5b7}.links a.active{color:#f8d898;border-bottom:1px solid #b99257}
-.hero{min-height:500px;background:linear-gradient(90deg,rgba(22,14,9,.85),rgba(31,19,12,.55) 58%,rgba(22,14,9,.65)),url('forever-city.webp') center/cover;border-bottom:3px solid #87623c}
-.heroInner{position:relative;min-height:500px;display:flex;flex-direction:column;justify-content:center;padding-left:min(34%,380px)}
-.hero h1{font:800 clamp(30px,3.7vw,52px)/1.38 'Noto Serif KR',serif;color:#f5d69e;letter-spacing:-1.5px;text-shadow:0 3px 12px #150c06}
-.hero p{color:#f0dfc4}
-.homeBookCover{position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(-5deg);width:min(30%,330px);height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:23px;color:#edc887;background:radial-gradient(ellipse at center,#583622,#2b1913 72%),linear-gradient(#583622,#2b1913);border:9px ridge #8b6339;outline:2px solid #24140f;outline-offset:3px;border-radius:10px 22px 22px 10px;box-shadow:inset 12px 0 12px #130b08a8,inset 0 0 0 7px #b78b4b,inset 0 0 0 10px #3a2418,14px 22px 30px #100b08a8}
-.coverTitle{font:800 clamp(30px,3.6vw,52px) 'Noto Serif KR',serif;text-shadow:0 3px 3px #1d1009;white-space:nowrap}
-.coverSub{font:700 13px Cinzel,serif;letter-spacing:3px}.coverOrnament{font-size:34px;color:#d5ae6d}
-.pageContent.bookPage{padding-bottom:38px}
-.bookPage .pageHero{background:linear-gradient(90deg,#302016de,#44302088),url('assets/city.webp') center/cover;min-height:140px;border-bottom:2px solid #a28050}
-.bookPage .pageHero h1{font:800 clamp(26px,3vw,38px) 'Noto Serif KR',serif;color:#f5d7a2}
-.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){position:relative;background:radial-gradient(ellipse at 20% 12%,#f7e9ca,#e4d0a8 75%);color:#433021;border:12px solid #5a3924;border-radius:12px 18px 18px 12px;box-shadow:inset 0 0 0 2px #aa8b5d,inset 0 0 45px #9d754c3d,0 16px 30px #0c0808a6;max-width:1260px;padding:30px 38px;margin-top:26px;min-height:420px}
-.bookPage>.wrap.section:before,.bookPage>.wrap:not(.pageHero .wrap):before{content:'';position:absolute;top:14px;bottom:14px;left:50%;width:2px;background:linear-gradient(90deg,#9b7c5940,#6e4d3450,#ffffff33);pointer-events:none}
-.bookPage .panel,.bookPage .tile,.bookPage .member,.bookPage .guildCard,.bookPage .adventurer,.bookPage .stat{background:linear-gradient(145deg,#f4e7ca,#e7d3ad);border:1px solid #b69a6e;color:#493521;box-shadow:0 2px 8px #85633b25}
-.bookPage h1,.bookPage h2,.bookPage h3,.bookPage .sectionTitle h2,.bookPage .pageTitle{font-family:'Noto Serif KR',serif;color:#503722}
-.bookPage p,.bookPage .muted,.bookPage .stat span,.bookPage .adventurer p,.bookPage small{color:#6e5742}
-.bookPage .field,.bookPage .tab,.bookPage .searchtop{background:#f6ead1;color:#4d3926;border:1px solid #a88a61}
-.bookPage .field::placeholder{color:#8a7660}
-.bookPage .tab.active,.bookPage .btn{background:linear-gradient(#75543a,#4b3222);color:#f7e6c4;border-color:#ad8c57}
-.bookPage .stat strong,.bookPage .adventurer h3{color:#664522}
-.bookPage .member .avatar,.bookPage .adventurer .portrait{background:linear-gradient(135deg,#d3b88e,#a88964);color:#493521}
-.bookPage .track{background:#c9b391}.bookPage .fill{background:linear-gradient(90deg,#82603b,#c29a55)}
-.bookPage .timeline{border-color:#9c7850}.bookPage .moment{border-color:#ae8d5c}
-.bookPage a:not(.btn):hover{color:#946025}
-.sectionTitle h2,.pageTitle{font-family:'Noto Serif KR',serif}
-.page-home .homeStats .stat strong{color:#edca8c}
-.page-home .homeStats .stat span{color:#eadcc4}
-.page-home .member,.page-home .panel,.page-home .homePulsePane{background:linear-gradient(145deg,#55402f,#34271f);border:1px solid #98754c;color:#f3e8d2}
-.page-home .member .avatar{background:#32241c;border-color:#aa8955}
+
+/* WAPO BOOK — restrained clean design. No simulated book, giant logo, or ornate frames. */
+:root{--bg:#20272b;--panel:#2b3438;--panel2:#323d42;--line:#536066;--gold:#c4a474;--gold2:#e2c79a;--text:#f2f0eb;--muted:#b6bfc1}
+html{background:#20272b}
+body{background:linear-gradient(180deg,#263136 0%,#20272b 540px);color:var(--text);font-family:'Noto Sans KR',sans-serif}
+.header{height:70px;background:#20292df5;border-bottom:1px solid #71808755;box-shadow:none;backdrop-filter:blur(12px)}
+.nav{gap:22px}.logo{display:flex;align-items:center;gap:10px;font:800 23px 'Noto Sans KR',sans-serif;letter-spacing:-1px;color:#f2e6cf;text-shadow:none}
+.logo small{font:600 9px 'Noto Sans KR',sans-serif;letter-spacing:2px;margin-top:4px;color:#b9b5ac}
+.brandBookIcon{display:grid;place-items:center;width:33px;height:37px;background:#314148;border:1px solid #9a8b73;border-radius:7px;box-shadow:none;font-size:17px}
+.links{gap:17px}.links a{color:#d3d9d9;font-size:13px}.links a.active{color:#f2d4a2;font-weight:700}
+.page-home .hero{min-height:350px;background:linear-gradient(90deg,#162329f0 0%,#1c3038cc 50%,#1c3038b3),url('forever-city.webp') center/cover;border-bottom:1px solid #8b807044}
+.page-home .heroInner{min-height:350px;padding:55px 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left}
+.page-home .hero .eyebrow{font-size:12px;letter-spacing:1.5px;color:#d5bb90}
+.page-home .hero h1{font:800 clamp(31px,4vw,48px)/1.38 'Noto Sans KR',sans-serif;letter-spacing:-2px;color:#f5f0e6;margin:12px 0;text-shadow:0 2px 8px #0c1a20aa}
+.page-home .hero p{font-size:14px;color:#d3d9d8;margin:4px 0}
+.heroSearch{width:min(560px,100%);margin-top:25px;background:#202d33e8;border:1px solid #738187;border-radius:8px;box-shadow:none}
+.heroSearch input{color:#f5f5f2}.heroSearch input::placeholder{color:#b4bec0}
+.btn{background:#c6a778;color:#1e282d;border:1px solid #c6a778;border-radius:6px;box-shadow:none}
+.btn.secondary{background:#33434a;color:#f1e8d8;border:1px solid #728087}
+.btn.ghost{background:transparent;color:#e2c79a}
+.section{margin:26px 0}.sectionTitle{padding:0 0 11px;border-bottom:1px solid #61707870;margin-bottom:16px}
+.sectionTitle h2,.pageTitle{font:700 21px 'Noto Sans KR',sans-serif;letter-spacing:-.7px;color:#eee6d7}
+.sectionTitle a{font-size:12px;color:#c5cacc}
+.stat,.panel,.tile,.member,.guildCard,.adventurer,.homePulsePane,.newsIntro{background:#2c373c;border:1px solid #516167;border-radius:9px;box-shadow:none;color:#f0ede5}
+.tile{background:#2e3c42}
+.page-home .homeStatsSection{background:none;border:0;margin-top:15px;margin-bottom:12px}
 .page-home .homeStats .stat{background:none;border:0;box-shadow:none}
-.page-home .homeStats .stat+.stat{border-left:1px solid #b58e5755}
-.footer{background:#1e1712;color:#bfae94;border-top:1px solid #77583a}
-@media(max-width:800px){.heroInner{padding-left:0;padding-top:310px;min-height:610px;text-align:center;align-items:center}.hero{min-height:610px}.homeBookCover{top:18px;left:50%;transform:translateX(-50%) rotate(-4deg);width:205px;height:260px;gap:10px}.coverTitle{font-size:35px}.coverOrnament{font-size:22px}.heroSearch{max-width:520px}.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){padding:22px 15px;border-width:7px}.bookPage>.wrap.section:before,.bookPage>.wrap:not(.pageHero .wrap):before{display:none}}
-@media(max-width:480px){.heroInner{padding-top:300px}.bookPage .cards{grid-template-columns:repeat(2,minmax(0,1fr))}.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){width:calc(100% - 20px)}}
-
-
-
-/* WAPO BOOK visual system — bronze, azure enamel, dark leather and illuminated parchment.
-   The emblem is decorative typography inspired by the supplied Forever logo, not a copied asset. */
-:root{--bg:#121a21;--panel:#202f38;--panel2:#293d45;--line:#977448;--gold:#d6ad6b;--gold2:#f4d39a;--text:#eee8db;--muted:#c2bdaf}
-html{background:#121a21}
-body{background:radial-gradient(ellipse at 50% -10%,#26576b88,transparent 50%),linear-gradient(120deg,#121b24,#1a2329 55%,#151b21);color:var(--text)}
-.header{background:linear-gradient(180deg,#101b25f7,#192832f7);border-bottom:2px solid #ac8650;box-shadow:0 4px 18px #03090e99}
-.logo{color:#f4d8a5;text-shadow:0 2px 8px #080f18}
-.brandBookIcon{background:radial-gradient(circle at 60% 35%,#307b91,#152a39 70%);border-color:#c9a166;box-shadow:inset 3px 0 #0d1b27,2px 2px 0 #84613b}
-.links a{color:#e9dfcd}.links a.active{color:#f4d39a}
-.page-home .hero{position:relative;isolation:isolate;min-height:540px;background:linear-gradient(90deg,#0c1824ef,#102d3cdd 55%,#0d1b28e8),url('forever-city.webp') center/cover;border-bottom:3px solid #b18a53}
-.page-home .hero:before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 26% 50%,#2f8da04f,transparent 44%),repeating-linear-gradient(45deg,transparent 0 52px,#c5a56d08 53px 54px)}
-.page-home .heroInner{min-height:540px;padding-left:min(43%,530px)}
-.page-home .hero h1{font:800 clamp(34px,4vw,57px)/1.4 'Noto Serif KR',serif;color:#f8e3b8;letter-spacing:-1.8px;text-shadow:0 3px 14px #07101c}
-.page-home .hero .eyebrow{font-size:12px;letter-spacing:3px;color:#e5bd7e}
-.page-home .hero p{color:#e5e2d8;font-size:15px}
-.wafoSigil{position:absolute;left:2%;top:50%;transform:translateY(-50%);width:min(37%,450px);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 16px 24px #050b12bb)}
-.wafoSigil:before{content:'';position:absolute;inset:0;background:conic-gradient(from 22deg,#9b6c37,#edce94,#7e522e,#c89c5a,#f0d7a2,#84532c,#d8b577,#9b6c37);clip-path:polygon(50% 0,61% 11%,78% 8%,84% 23%,100% 31%,91% 49%,100% 67%,83% 77%,78% 94%,60% 90%,50% 100%,40% 90%,22% 94%,17% 77%,0 67%,9% 49%,0 31%,16% 23%,22% 8%,39% 11%);box-shadow:inset 0 0 0 8px #714c2d}
-.wafoSigilOuter{position:relative;width:83%;aspect-ratio:1;border-radius:50%;padding:8%;border:12px ridge #d4a968;background:repeating-conic-gradient(#8b5c31 0deg 8deg,#d2aa6b 9deg 17deg,#8b5c31 18deg 20deg);box-shadow:0 0 0 5px #49301f,0 0 0 9px #c39a5b,inset 0 0 0 5px #493321}
-.wafoSigilInner{width:100%;height:100%;border-radius:50%;border:5px solid #d9b477;background:radial-gradient(circle at 40% 24%,#49bed2 0,#1687a6 29%,#145779 53%,#102c4a 80%,#0b2038 100%);box-shadow:inset 0 0 24px #06172a,0 0 0 3px #74502e;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#f4d4a0;text-shadow:0 3px 3px #07172d,1px 1px #6b4629;font-family:Cinzel,serif}
-.sigilWorld{font-size:clamp(10px,1.4vw,18px);letter-spacing:2px;font-weight:700}
-.wafoSigilInner strong{font-size:clamp(17px,3vw,37px);font-weight:800;letter-spacing:-1px;line-height:1.4;color:#ffe4ae;-webkit-text-stroke:.5px #755030}
-.sigilForever{font-size:clamp(17px,3.2vw,43px);font-weight:800;letter-spacing:1px;line-height:1.1}
-.sigilInfinity{font-size:clamp(26px,4.5vw,55px);line-height:.8;color:#d5a96d}
-.heroSearch{background:#0e2330e8;border:1px solid #c69d62;border-radius:8px;box-shadow:0 0 0 3px #07141b88,0 7px 22px #040c14aa}
-.heroSearch input{color:#f7ecda}.heroSearch input::placeholder{color:#bfcbd0}
-.btn{background:linear-gradient(180deg,#f0d49d,#bc8d4c);border-color:#f0d59f;color:#17232b}
-.btn.secondary{background:#234354;color:#f4e1be;border-color:#ac8959}
-.page-home .homeStatsSection{margin-top:20px;margin-bottom:18px;border-top:1px solid #97774b66;border-bottom:1px solid #97774b66;background:linear-gradient(90deg,transparent,#1b3b48a8,transparent)}
-.page-home .homeStats .stat strong{color:#f3d49a}.page-home .homeStats .stat span{color:#d9d4c9}
-.page-home .sectionTitle{border-bottom:1px solid #a48a625c;padding-bottom:10px}
-.sectionTitle h2,.pageTitle{font-family:'Noto Serif KR',serif;color:#f0d39d}
-.page-home .member,.page-home .panel,.page-home .homePulsePane,.tile,.guildCard,.adventurer{background:linear-gradient(150deg,#2d4652,#1c2d37 75%);border:1px solid #98774b;box-shadow:inset 0 1px #e6c18a18,0 7px 16px #0710195c}
-.page-home .member .avatar{background:radial-gradient(circle,#365d6c,#192b39);border-color:#b89b65}
-.page-home .member:hover,.guildCard:hover,.adventurer:hover{border-color:#e4c68c;box-shadow:0 0 0 1px #d8ae6b,0 10px 25px #050d1699;transform:translateY(-2px)}
-.homePulsePane,.newsIntro{background:linear-gradient(140deg,#2c4752,#1b303d);border-color:#9d7b4d}
-.pageHero{background-image:linear-gradient(90deg,#0d1d2fe8,#14506688),url('assets/city.webp');border-bottom:2px solid #a68550}
-.pageHero h1{font-family:'Noto Serif KR',serif;color:#f3d6a1}
-.bookPage>.wrap.section,.bookPage>.wrap:not(.pageHero .wrap){background:radial-gradient(ellipse at 22% 10%,#f9edcf,#e8d5ad 72%);border-color:#65462d}
-.bookPage .panel,.bookPage .tile,.bookPage .member,.bookPage .guildCard,.bookPage .adventurer,.bookPage .stat{background:linear-gradient(145deg,#faf0d8,#e9d7b4);color:#47331f}
-.footer{background:#101c27;border-top:2px solid #8e7048}
-@media(max-width:800px){.page-home .hero,.page-home .heroInner{min-height:690px}.page-home .heroInner{padding:350px 0 35px;text-align:center;align-items:center}.wafoSigil{top:20px;left:50%;transform:translateX(-50%);width:min(72vw,310px)}.wafoSigilInner strong{font-size:clamp(19px,5vw,31px)}.sigilWorld{font-size:clamp(11px,2.7vw,16px)}.sigilForever{font-size:clamp(20px,5vw,35px)}.sigilInfinity{font-size:35px}}
-@media(max-width:480px){.page-home .hero,.page-home .heroInner{min-height:640px}.page-home .heroInner{padding-top:310px}.wafoSigil{width:min(75vw,270px)}.wafoSigilOuter{border-width:8px}.wafoSigilInner{border-width:3px}}
+.page-home .homeStats .stat+.stat{border-left:1px solid #63717666}
+.page-home .homeStats .stat strong{color:#f0d19c}.page-home .homeStats .stat span{color:#c7d0d0}
+.page-home .member .avatar{background:#35464d;border-color:#6f8187;color:#d8c19d}
+.member.empty{opacity:.85}
+.panel,.tile,.guildCard,.adventurer{transition:border-color .15s,background .15s,transform .15s}
+.guildCard:hover,.adventurer:hover,.tile:hover{background:#35444b;border-color:#a58f6c;transform:translateY(-2px)}
+.field,.tab,.searchtop,.newsFilter{background:#26343a;border:1px solid #63737a;color:#f2f0e9;border-radius:7px}
+.pageHero{background-image:linear-gradient(90deg,#19272edb,#26373fb0),url('assets/city.webp');border-bottom:1px solid #68777a55}
+.pageHero h1{font:800 clamp(27px,3vw,36px) 'Noto Sans KR',sans-serif;color:#f3e9d8}
+.profilePic,.adventurer .portrait{background:#34474f}
+.homePulsePane,.newsIntro{background:#2c383e;border-color:#53646b}
+.footer{background:#1b2429;border-top:1px solid #4f5b61;color:#b7c0bf}
+@media(max-width:800px){.page-home .hero,.page-home .heroInner{min-height:320px}.page-home .heroInner{padding:40px 0;align-items:flex-start;text-align:left}.page-home .hero h1{font-size:clamp(29px,6vw,43px)}}
+@media(max-width:480px){.page-home .hero,.page-home .heroInner{min-height:315px}.page-home .heroInner{padding:35px 0}.page-home .hero h1{font-size:31px}.heroSearch{margin-top:20px}}
