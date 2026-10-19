@@ -588,3 +588,13 @@ body{background:#161b1c}
 .footer{background:#1b2022;border-top:1px solid #8c6c46}
 @media(max-width:950px){.page-home{width:calc(100% - 24px);padding:14px 15px 23px 27px;border-width:9px;border-left-width:13px}.page-home:before{inset:12px}.page-home .bookPage{padding:16px}}
 @media(max-width:600px){.page-home{width:calc(100% - 12px);margin:9px auto 40px;padding:8px 8px 17px 15px;border-width:6px;border-left-width:9px;border-radius:16px}.page-home:before{inset:7px;border-radius:10px}.page-home:after{display:none}.page-home .portalHero{min-height:220px;margin:3px 3px 0 0}.page-home .portalHeroInner{min-height:220px}.page-home .bookShell{width:calc(100% - 3px);margin-right:3px}.page-home .bookPage{padding:11px 9px 19px}.page-home .portalSummary{gap:10px}}
+
+/* Asset-pack preview styles: images activate when /assets/wapobook/*.webp is uploaded. */
+.page-home{background-image:linear-gradient(#1b151294,#1b151294),url('assets/wapobook/leather_texture.webp');background-size:auto,350px auto}
+.page-home .portalHero{border-image:none;box-shadow:inset 0 0 45px #080e13d0,0 0 0 5px #211711,0 0 0 7px #a77b44}
+.page-home .bookPage{background-image:linear-gradient(#1c2b34eb,#1c2b34eb),url('assets/wapobook/parchment_texture.webp');background-size:auto,350px auto}
+.page-home .portalPanel{background-image:linear-gradient(#20313de6,#20313de6),url('assets/wapobook/leather_texture.webp');background-size:auto,250px auto}
+.page-home .portalRoster{position:relative}
+.page-home .portalRoster:before,.page-home .portalRoster:after{content:'';position:absolute;z-index:1;width:76px;height:76px;background-size:contain;background-repeat:no-repeat;pointer-events:none}
+.page-home .portalRoster:before{left:0;top:0;background-image:url('assets/wapobook/corner_top_left.webp')}
+.page-home .portalRoster:after{right:0;top:0;background-image:url('assets/wapobook/corner_top_right.webp')}
