@@ -1,0 +1,62 @@
+{
+  "home": {
+    "source": "와포북 판타지 항구 포털 UI.png",
+    "width": 1534,
+    "height": 1025,
+    "bytes": 1827146
+  },
+  "adventurers": {
+    "source": "와포북 모험가 도감_ NEW 카드.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2025202
+  },
+  "guilds": {
+    "source": "화산 요새 배경의 길드 도감 책 интерфейс.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1790124
+  },
+  "world": {
+    "source": "와포북 아제로스 월드 현황판.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1778996
+  },
+  "news": {
+    "source": "와포북 소식과 이벤트 책장.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1921258
+  },
+  "chronicle": {
+    "source": "와포북 연대기_ 아제로스의 기록.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1825600
+  },
+  "favorites": {
+    "source": "즐겨찾기 모험가 도감 UI.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2059862
+  },
+  "live": {
+    "source": "와포북 라이브 방송 도감 UI.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2316138
+  },
+  "person-detail": {
+    "source": "뉴 리본이 돋보이는 모험가 도감.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1666290
+  },
+  "guild-detail": {
+    "source": "와우동 길드 도감 활동 기록.png",
+    "width": 1532,
+    "height": 1027,
+    "bytes": 1816572
+  }
+}

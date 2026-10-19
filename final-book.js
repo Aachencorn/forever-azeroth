@@ -4,7 +4,7 @@ let bookView='grid',favoriteType='people',modalOrigin=route().startsWith('/guild
 let bookReturnState=null;
 const baseLayout=layout;
 const emptyBook=(text='등록된 기록이 없습니다.')=>`<div class="bookEmpty"><span aria-hidden="true">✧</span><p>${esc(text)}</p></div>`;
-const imageArt=(url,cls='')=>url?`<img class="${cls}" src="${esc(url)}" alt="" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('imageMissing')">`:`<span class="artPlaceholder" aria-hidden="true">✧</span>`;
+const imageArt=(url,cls='')=>url?`<img class="${cls} archiveImage" src="${esc(url)}" alt="" loading="lazy" onload="this.classList.add('imageReady')" onerror="this.hidden=true;this.parentElement.classList.add('imageMissing')">`:`<span class="artPlaceholder" aria-hidden="true">✧</span>`;
 const recordLink=(type,id)=>`#/${type}/${encodeURIComponent(id)}`;
 const action=(fn,value)=>`${fn}(${esc(JSON.stringify(value))})`;
 layout=function(body){

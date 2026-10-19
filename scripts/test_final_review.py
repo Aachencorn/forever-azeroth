@@ -18,7 +18,7 @@ async def run():
    localStorage.setItem(KEY,JSON.stringify(data));localStorage.setItem('fa-favs',JSON.stringify({people:data.people.map(p=>p.id),guilds:data.guilds.map(g=>g.id)}));
   }''');await p.reload()
   await p.goto(BASE+'/#/adventurers');await p.wait_for_timeout(50)
-  await p.locator('#bookSearch').fill('검수');await p.locator('select[aria-label="종족"]').select_option('인간');await p.locator('#bookSort').select_option('level');await p.locator('[aria-label="다음 펼침"]').first.click()
+  await p.locator('#bookSearch').fill('검수');await p.locator('select[aria-label="종족"]').select_option('인간');await p.locator('#bookSort').select_option('level');await p.locator('[aria-label="다음 펼침"]:visible').first.click()
   state=await p.evaluate('JSON.stringify({bookIndex,bookQuery,bookSort,bookFilters})');await p.locator('.personLink').first.click();await p.wait_for_timeout(50)
   assert await p.locator('[role="dialog"]').count()==1
   await p.keyboard.press('Escape');await p.wait_for_timeout(50)
@@ -31,7 +31,7 @@ async def run():
    for route in ['','adventurers','guilds','world','updates','chronicle','favorites','live','adventurer/p0','guild/g0']:
     await p.goto(BASE+'/#/'+route);await p.wait_for_timeout(60)
     assert not await p.evaluate('document.documentElement.scrollWidth>innerWidth'),(width,route)
-    assert await p.evaluate('''()=>[...document.images].filter(i=>i.complete&&i.naturalWidth===0&&getComputedStyle(i).display!=='none').length''')==0,('Visible broken image',width,route)
+    assert await p.evaluate('''()=>[...document.images].filter(i=>i.complete&&i.naturalWidth===0&&getComputedStyle(i).display!=='none'&&getComputedStyle(i).visibility!=='hidden'&&i.getBoundingClientRect().width>0&&i.getBoundingClientRect().height>0).length''')==0,('Visible broken image',width,route)
     if route=='world':
      assert await p.evaluate('''()=>[...document.querySelectorAll('.levelColumn>span')].every(n=>{let a=n.getBoundingClientRect(),b=n.closest('.wapLeaf').getBoundingClientRect();return a.bottom<=b.bottom+1})'''),('Level labels clipped',width)
     if route in ['adventurer/p0','guild/g0']:

@@ -1,0 +1,166 @@
+{
+  "lossless_originals": 10,
+  "decorative_comparisons": [
+    {
+      "page": "home",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.6595
+    },
+    {
+      "page": "home",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.6582
+    },
+    {
+      "page": "home",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.4859
+    },
+    {
+      "page": "home",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.5208
+    },
+    {
+      "page": "adventurers",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "header",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "right-frame",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "banner",
+      "mean_absolute_rgb_error": 0.0
+    }
+  ],
+  "layout": "card and both popup reference coordinates passed"
+}

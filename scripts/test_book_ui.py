@@ -29,9 +29,9 @@ async def run():
   stored=await page.evaluate('(k)=>localStorage.getItem(k)',KEY)
   await page.goto(BASE+'/#/adventurers');await page.wait_for_timeout(70)
   assert await page.locator('.wapPerson').count()==32
-  await page.locator('button[aria-label="다음 펼침"]').first.click();assert await page.locator('.wapPerson').count()==32
-  await page.locator('button[aria-label="다음 펼침"]').first.click();assert await page.locator('.wapPerson').count()==6
-  assert await page.locator('button[aria-label="다음 펼침"]').first.is_disabled()
+  await page.locator('button[aria-label="다음 펼침"]:visible').first.click();assert await page.locator('.wapPerson').count()==32
+  await page.locator('button[aria-label="다음 펼침"]:visible').first.click();assert await page.locator('.wapPerson').count()==6
+  assert await page.locator('button[aria-label="다음 펼침"]:visible').first.is_disabled()
   await page.locator('#bookSearch').fill('검증모험가01');assert await page.locator('.wapPerson').count()==1
   await page.locator('#bookSearch').fill('검증');assert await page.locator('#bookSearch').input_value()=='검증'
   await page.locator('#bookSearch').press('End');await page.locator('#bookSearch').press('1');assert await page.locator('#bookSearch').input_value()=='검증1'
@@ -46,13 +46,13 @@ async def run():
   await page.keyboard.press('Escape');await page.wait_for_timeout(70);assert await page.locator('[role="dialog"]').count()==0
   await page.goto(BASE+'/#/favorites');await page.wait_for_timeout(50);assert await page.locator('.wapPerson').count()==1
   await page.goto(BASE+'/#/guilds');await page.wait_for_timeout(50);assert await page.locator('.wapGuild').count()==8
-  await page.locator('button[aria-label="다음 펼침"]').first.click();assert await page.locator('.wapGuild').count()==2
+  await page.locator('button[aria-label="다음 펼침"]:visible').first.click();assert await page.locator('.wapGuild').count()==2
   await page.locator('.wapGuild>a').first.click();await page.wait_for_timeout(70);assert await page.locator('.guildBookModal').count()==1
   assert await page.locator('.wapMemberGrid a').count()==7
   await page.locator('.guildBookModal .heart').click();assert await page.evaluate('fav().guilds.length')==1
   await page.locator('.wapClose').click();await page.wait_for_timeout(70)
   await page.goto(BASE+'/#/live');await page.wait_for_timeout(50);assert await page.locator('.wapLiveCard').count()==16
-  await page.locator('button[aria-label="다음 펼침"]').first.click();assert await page.locator('.wapLiveCard').count()==16
+  await page.locator('button[aria-label="다음 펼침"]:visible').first.click();assert await page.locator('.wapLiveCard').count()==16
   assert await page.locator('.liveUnknown').first.inner_text()=='방송 상태 미연동'
   await page.goto(BASE+'/#/');await page.wait_for_timeout(50);await page.locator('#mainSearch').fill('검증모험가03');await page.locator('#mainSearch').press('Enter');await page.wait_for_timeout(70)
   assert await page.locator('.wapPerson').count()==1;assert await page.locator('#bookSearch').input_value()=='검증모험가03'
