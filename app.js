@@ -205,7 +205,7 @@ async function loadOfficialNews(){
   const parsed=await res.json();
   officialNews=validOfficialNews(parsed.items);
   officialNewsLoaded=true;
-  if(route()==='/'||route()==='/news')render();
+  if(['/', '/news', '/updates', '/events'].includes(route()))render();
  }catch{officialNewsLoaded=false}
 }
 

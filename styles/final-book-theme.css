@@ -1,20 +1,2608 @@
 /* Final Wafobook art direction — additive, non-destructive theme foundation.
    Source references: ten approved 1536px book-layout mockups.
    No example data or persistence logic is changed here. */
-:root{
- --book-leather:#28150e;--book-leather-deep:#100b09;
- --book-parchment:#e8bd7f;--book-ink:#28190f;
- --book-gold:#d8a14e;--book-gold-bright:#ffcf77;
- --book-sapphire:#168cc5;
+:root {
+  --book-leather:#28150e;
+  --book-leather-deep:#100b09;
+  --book-parchment:#e8bd7f;
+  --book-ink:#28190f;
+  --book-gold:#d8a14e;
+  --book-gold-bright:#ffcf77;
+  --book-sapphire:#168cc5;
 }
-body{background:radial-gradient(ellipse at 50% 0,#382215 0,#100b09 65%,#070607 100%);}
-.header{background:linear-gradient(180deg,#24160fee,#090909f7);border-bottom:2px solid #a56a2f;box-shadow:0 4px 16px #0009;}
-.logo{color:#f4bd64;text-shadow:0 2px 0 #432008,0 0 18px #b36c28;}
-.links a.active{color:#ffcc77;text-shadow:0 0 12px #e8a24a;}
-.hero{border:2px solid #855020;border-radius:14px;box-shadow:inset 0 0 0 3px #20100b,0 9px 25px #0008;}
-.hero h1{color:#ffe0a2;text-shadow:0 3px 3px #180e0a,0 0 15px #000;}
-.btn{background:linear-gradient(180deg,#f3c77b,#b67b36);border:1px solid #73431c;color:#25140a;box-shadow:inset 0 1px #ffe2a7,0 2px 5px #0005;}
-.btn.secondary{background:linear-gradient(#39271b,#1c130f);color:#f2d39d;border-color:#9c682d;}
-.heroSearch,.searchtop{background:#09131be8;border:1px solid #d09a4d;box-shadow:0 0 0 2px #28160c,0 0 12px #9c5b2640;}
-:focus-visible{outline:3px solid #f6c46b;outline-offset:3px;}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+body {
+  background:radial-gradient(ellipse at 50% 0,#382215 0,#100b09 65%,#070607 100%);
+}
+.header {
+  background:linear-gradient(180deg,#24160fee,#090909f7);
+  border-bottom:2px solid #a56a2f;
+  box-shadow:0 4px 16px #0009;
+}
+.logo {
+  color:#f4bd64;
+  text-shadow:0 2px 0 #432008,0 0 18px #b36c28;
+}
+.links a.active {
+  color:#ffcc77;
+  text-shadow:0 0 12px #e8a24a;
+}
+.hero {
+  border:2px solid #855020;
+  border-radius:14px;
+  box-shadow:inset 0 0 0 3px #20100b,0 9px 25px #0008;
+}
+.hero h1 {
+  color:#ffe0a2;
+  text-shadow:0 3px 3px #180e0a,0 0 15px #000;
+}
+.btn {
+  background:linear-gradient(180deg,#f3c77b,#b67b36);
+  border:1px solid #73431c;
+  color:#25140a;
+  box-shadow:inset 0 1px #ffe2a7,0 2px 5px #0005;
+}
+.btn.secondary {
+  background:linear-gradient(#39271b,#1c130f);
+  color:#f2d39d;
+  border-color:#9c682d;
+}
+.heroSearch,.searchtop {
+  background:#09131be8;
+  border:1px solid #d09a4d;
+  box-shadow:0 0 0 2px #28160c,0 0 12px #9c5b2640;
+}
+:focus-visible {
+  outline:3px solid #f6c46b;
+  outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+}
+/* Atlas is one 328 KiB WebP: blank book / leather / harbor / logo.
+   Quadrants are addressed in CSS so no full-size mockup is shipped as a page. */
+:root {
+  --atlas:url('../assets/wapobook/final-atlas.webp');
+  --ink:#35210f;
+  --paper:#ecc68b;
+  --gold:#c68c3e;
+  --text:#f0dbb3;
+  --muted:#a68b66;
+  --page-width:1440px
+}
+body {
+  padding:14px 24px 0;
+  background:#100b08;
+  color:var(--text);
+  font-family:'Noto Sans KR',sans-serif
+}
+#app {
+  max-width:var(--page-width);
+  margin:auto;
+  position:relative;
+  padding:12px 24px 6px 38px;
+  background:linear-gradient(90deg,#150d08,#58341b 1%,#24140c 3%,#100b08 98%,#8f5b25 99%,#1a0e09);
+  border:6px ridge #875024;
+  border-radius:12px;
+  box-shadow:0 0 0 2px #160c06,0 12px 40px #000,inset 0 0 0 3px #b37f37
+}
+#app::before {
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:1px;
+  width:27px;
+  z-index:35;
+  border-radius:15px;
+  background:repeating-linear-gradient(0deg,transparent 0 48px,#daa14b 49px,#39220e 53px,#d5a052 56px,#160e09 61px,transparent 64px),linear-gradient(90deg,#160b06,#ba7834 15%,#321a0c 30%,#694020 60%,#150c07 90%);
+  box-shadow:3px 0 8px #000;
+  pointer-events:none
+}
+.wrap,.pageContent:not(.page-home)>.wrap,.pageContent:not(.page-home)>.pageHero>.wrap,.pageContent:not(.page-home)>.wrap.section {
+  width:100%;
+  max-width:none;
+  margin:0 auto
+}
+.header {
+  height:88px;
+  position:relative;
+  top:auto;
+  z-index:20;
+  border:2px solid #92602c;
+  border-radius:11px;
+  background:linear-gradient(#17140f,#080b0d 55%,#19120d);
+  box-shadow:inset 0 0 0 2px #2b1a0e,0 3px 4px #000;
+  backdrop-filter:none
+}
+.nav {
+  gap:12px;
+  padding:0 18px 0 4px
+}
+.logo {
+  width:202px;
+  flex-shrink:0;
+  align-self:stretch;
+  position:relative;
+  z-index:2
+}
+.headerLogoArt {
+  position:absolute!important;
+  inset:-16px 0 -12px!important;
+  width:auto!important;
+  height:auto!important;
+  background-image:var(--atlas)!important;
+  background-size:200% 200%!important;
+  background-position:100% 100%!important;
+  display:block!important;
+  border:0!important;
+  filter:drop-shadow(0 3px 2px #000);
+  border-radius:0!important
+}
+.headerLogoFallback {
+  position:absolute;
+  inset:0;
+  opacity:0
+}
+.links {
+  gap:3px;
+  justify-content:space-evenly
+}
+.links a {
+  font-size:12px;
+  padding:11px 9px;
+  border:1px solid transparent;
+  border-radius:5px;
+  color:#e5dcc8;
+  transition:background .15s,border-color .15s
+}
+.links a.active {
+  border-color:#ce913e;
+  color:#ffe2a2;
+  background:linear-gradient(#67421c88,#22160d);
+  box-shadow:0 0 10px #d1943f80,inset 0 0 7px #b97f2a55
+}
+.links a:hover {
+  background:#ae783d22;
+  color:#ffd98e
+}
+.navLiveDot {
+  color:#f12b57;
+  text-shadow:0 0 8px #ff235a
+}
+.nav>.bgmPlayer {
+  position:absolute;
+  right:5px;
+  top:calc(100% + 6px);
+  z-index:4;
+  opacity:.75;
+  transform:scale(.8);
+  transform-origin:top right;
+  background:#15110ee8
+}
+.bgmVolumeLabel,.bgmTitle,.bgmPlayer #bgmVolumeValue {
+  display:none
+}
+.nav>.bgmPlayer input[type=range] {
+  width:40px
+}
+.frameGem {
+  width:22px;
+  height:22px;
+  position:absolute;
+  left:50%;
+  bottom:-12px;
+  transform:translateX(-50%) rotate(45deg);
+  z-index:6;
+  border:3px ridge #d39c45;
+  background:linear-gradient(135deg,#61d7fb,#0878ad 43%,#032b48 45%,#1399d0);
+  box-shadow:0 0 0 3px #352112,0 0 0 4px #996b2e,2px 3px 7px #000
+}
+.headerGem {
+  bottom:auto;
+  top:-12px;
+  width:15px;
+  height:15px;
+  background:linear-gradient(135deg,#ffdf83,#9e5e21)
+}
+.pageContent {
+  min-height:0
+}
+.pageContent .pageHero {
+  height:166px;
+  min-height:0;
+  margin:0;
+  padding:37px 34px 30px;
+  background:none!important;
+  border:2px solid #7b4b22;
+  border-radius:10px 10px 5px 5px;
+  overflow:visible;
+  box-shadow:inset 0 0 0 2px #2b1b0b,0 3px 5px #000;
+  isolation:isolate
+}
+.pageContent .pageHero::before {
+  border-radius:8px;
+  background-size:cover;
+  background-position:center 48%;
+  filter:saturate(.95)
+}
+.pageContent .pageHero::after {
+  border-radius:8px;
+  background:linear-gradient(90deg,#050b10bb,transparent 65%)
+}
+.pageHero h1 {
+  font-family:Georgia,'Noto Serif KR',serif;
+  color:#fff0c5;
+  font-size:38px;
+  letter-spacing:2px;
+  text-shadow:0 3px 4px #000;
+  margin:0 0 8px;
+  line-height:1.2
+}
+.pageHero p {
+  font-size:12px;
+  color:#f0e2c7;
+  margin:0
+}
+.page-news,.page-live {
+  --zone-banner:url('../assets/banner-events.jpg')
+}
+.page-live {
+  --zone-banner:url('../assets/banner-world.jpg')
+}
+.wapBook,.pageContent:not(.page-home) .wrap.wapBook {
+  width:100%;
+  max-width:none;
+  min-height:650px;
+  margin:0;
+  padding:66px 28px 25px 48px;
+  gap:44px;
+  border:0;
+  border-radius:0;
+  background-image:var(--atlas);
+  background-size:200% 200%;
+  background-position:0 0;
+  box-shadow:none;
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)
+}
+.wapBook::before {
+  display:none
+}
+.wapBook::after {
+  display:none
+}
+.wapLeaf {
+  min-width:0;
+  padding:0;
+  border:0!important;
+  background:none!important;
+  box-shadow:none;
+  border-radius:0!important;
+  color:var(--ink);
+  display:flex;
+  flex-direction:column
+}
+.wapLeaf h2,.wapLeaf h3 {
+  color:#34210f
+}
+.wapLeaf h2 {
+  font-size:18px
+}
+.bookGem {
+  bottom:0;
+  width:17px;
+  height:17px
+}
+.wapControls,.wapChronTabs {
+  position:absolute;
+  top:23px;
+  left:48px;
+  right:30px;
+  margin:0;
+  max-width:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  z-index:5;
+  color:var(--ink)
+}
+.bookFilters {
+  display:flex;
+  gap:10px;
+  min-width:0;
+  flex:1
+}
+.wapControls .field {
+  border-radius:4px;
+  padding:6px 9px;
+  height:31px;
+  font-size:11px;
+  background:linear-gradient(#2a2115,#15140f);
+  color:#f4d9a6;
+  border:1px solid #9f7339;
+  box-shadow:0 1px 2px #6f481f66;
+  min-width:0;
+  width:135px;
+  max-width:150px
+}
+.bookSort {
+  display:flex;
+  gap:10px;
+  align-items:center
+}
+.bookSort label {
+  font-size:11px;
+  white-space:nowrap
+}
+.bookSort select {
+  width:125px
+}
+.bookSearch {
+  position:absolute;
+  bottom:19px;
+  right:25px;
+  width:32%;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  border:1px solid #c29348;
+  box-shadow:0 0 0 2px #332210,0 2px 5px #000;
+  background:#04121ce8;
+  border-radius:30px;
+  color:#e1bb75;
+  padding:8px 15px
+}
+.bookSearch span {
+  font-size:24px;
+  line-height:1
+}
+.bookSearch input {
+  width:100%;
+  min-width:0;
+  background:none;
+  border:0;
+  color:#f4d9a6;
+  font-size:11px;
+  outline:0
+}
+.bookSearch input::placeholder {
+  color:#b3ac9d
+}
+.viewSwitch {
+  display:flex;
+  border:1px solid #a6793b;
+  border-radius:4px;
+  overflow:hidden
+}
+.viewSwitch button {
+  height:29px;
+  width:34px;
+  background:#cda870;
+  color:#573819;
+  border:0;
+  font-size:22px;
+  line-height:1
+}
+.viewSwitch button.active {
+  background:#231b11;
+  color:#e8b65d
+}
+.wapGrid {
+  gap:9px;
+  min-height:0;
+  flex:1;
+  align-content:start
+}
+.peopleGrid {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-rows:repeat(4,minmax(0,1fr));
+  height:520px
+}
+.wapPerson {
+  position:relative;
+  display:block;
+  min-width:0;
+  border:2px solid #9a6e35;
+  border-radius:6px;
+  background:linear-gradient(110deg,#f6d79a,#e4b977);
+  box-shadow:inset 0 0 0 1px #ffe4a6,0 2px 4px #58311477;
+  padding:0;
+  color:#24190d;
+  overflow:hidden
+}
+.personLink {
+  display:block;
+  height:100%;
+  padding-bottom:5px
+}
+.personLink:hover {
+  color:#643b0f
+}
+.wapPortrait {
+  height:57px;
+  background:radial-gradient(ellipse at 50% 10%,#574d36,#211d17);
+  border-bottom:1px solid #7a5129;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  color:#cfaa69;
+  overflow:hidden
+}
+.wapPortrait img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 24%
+}
+.wapPerson strong {
+  display:block;
+  font-size:12px;
+  line-height:1.35;
+  margin:4px 0 2px;
+  padding:0 6px
+}
+.wapPerson small {
+  display:block;
+  font-size:9px;
+  line-height:1.4;
+  padding:0 6px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+.cardGuild {
+  color:#453420
+}
+.wapNew {
+  top:6px;
+  right:-23px;
+  padding:1px 27px;
+  border:1px solid #e7c267;
+  background:linear-gradient(#b53f25,#78200f);
+  font-family:Georgia,serif;
+  box-shadow:0 2px 3px #0007;
+  font-size:10px;
+  z-index:2;
+  pointer-events:none
+}
+.cardFavorite {
+  position:absolute;
+  top:3px;
+  right:3px;
+  background:#15120dbb;
+  border:0;
+  border-radius:50%;
+  width:23px;
+  height:23px;
+  color:#d5bb87;
+  font-size:19px;
+  padding:0;
+  z-index:3;
+  line-height:23px
+}
+.cardFavorite.on {
+  color:#ffca4e;
+  text-shadow:0 0 5px #7d390d
+}
+.wapPerson:has(.wapNew) .cardFavorite {
+  top:33px
+}
+.leafPager {
+  display:flex;
+  gap:23px;
+  align-items:center;
+  justify-content:center;
+  padding-top:10px;
+  font-weight:700;
+  color:#442610;
+  min-height:40px
+}
+.leafPager button,.journalPager button {
+  border:1px solid #af7d39;
+  background:linear-gradient(#31251a,#0f1312);
+  color:#f3c574;
+  padding:0;
+  width:34px;
+  height:28px;
+  font-size:28px;
+  line-height:23px;
+  border-radius:4px;
+  box-shadow:0 2px 2px #75481588
+}
+.leafPager button:disabled,.journalPager button:disabled {
+  opacity:.35;
+  cursor:default
+}
+.leafPager span {
+  font-size:12px;
+  letter-spacing:2px
+}
+.bookEmpty {
+  grid-column:1/-1;
+  margin:auto;
+  text-align:center;
+  padding:45px 12px;
+  color:#795b35;
+  font-size:12px;
+  max-width:100%
+}
+.bookEmpty>span {
+  display:block;
+  font-size:44px;
+  color:#9d773f66
+}
+.bookEmpty p {
+  line-height:1.8
+}
+.bookListView {
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:none;
+  height:auto;
+  min-height:520px;
+  align-content:start
+}
+.bookListView .wapPerson {
+  height:90px
+}
+.bookListView .wapPortrait {
+  width:68px;
+  height:100%;
+  float:left;
+  margin-right:5px
+}
+.bookListView .wapPerson strong {
+  padding-top:5px
+}
+.bookListView .wapPerson small {
+  white-space:normal
+}
+.guildGrid {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  height:520px;
+  gap:14px
+}
+.wapGuild {
+  position:relative;
+  background:#eec68a;
+  border:3px ridge #a77a3b;
+  border-radius:6px;
+  box-shadow:0 2px 5px #66401b99;
+  overflow:hidden;
+  text-align:left;
+  min-width:0
+}
+.wapGuildArt {
+  height:145px;
+  background:linear-gradient(0deg,#070c0ff0,transparent 90%),url('../assets/banner-adventurers.jpg') center/cover!important;
+  position:relative;
+  color:#f3e8cd;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:flex-start;
+  padding:0 8px 9px 88px;
+  font-size:12px
+}
+.wapGuild:nth-child(2n) .wapGuildArt {
+  background-image:linear-gradient(0deg,#070c0ff0,transparent 90%),url('../assets/banner-world.jpg')!important
+}
+.wapGuildArt h3 {
+  margin:0 0 3px;
+  color:#fff0cf;
+  font-size:16px
+}
+.wapGuildArt p {
+  font-size:10px;
+  line-height:1.5;
+  margin:0;
+  max-height:30px;
+  overflow:hidden
+}
+.guildStandard {
+  position:absolute;
+  left:4px;
+  top:7px;
+  width:80px;
+  height:130px;
+  background:url('../assets/wapobook/guild-banner.svg') center/contain no-repeat;
+  filter:drop-shadow(2px 4px 2px #0009)
+}
+.wapGuildNumbers {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding:0;
+  border-top:1px solid #b07c3b;
+  gap:3px;
+  background:#684522
+}
+.wapGuildNumbers span {
+  background:#edc786;
+  text-align:center;
+  padding:5px 2px;
+  color:#44311c;
+  font-size:10px
+}
+.wapGuildNumbers b {
+  display:block;
+  font-size:16px;
+  color:#251a0c
+}
+.wapGuild>a {
+  display:block;
+  height:100%
+}
+.wapView {
+  background:linear-gradient(#47301b,#1c150e);
+  border:1px solid #b68844;
+  border-radius:4px;
+  color:#f7d59c;
+  padding:4px 12px;
+  font-size:10px;
+  margin:6px 5px 5px;
+  float:right;
+  box-shadow:0 1px 2px #76501f88
+}
+.wapView:hover {
+  color:#fff2c9
+}
+.bookListView.guildGrid {
+  grid-template-columns:1fr;
+  grid-template-rows:none
+}
+.bookListView .wapGuildArt {
+  height:90px
+}
+.bookListView .wapGuild {
+  height:130px
+}
+.bookListView .wapGuildNumbers {
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:55%
+}
+.bookListView .guildStandard {
+  height:100px
+}
+.bookListView .wapView {
+  position:absolute;
+  bottom:5px;
+  left:5px
+}
+.favoriteTabs {
+  display:flex;
+  width:100%;
+  gap:4px;
+  margin-bottom:5px
+}
+.favoriteTabs button,.journalTabs button,.wapChronTabs button {
+  border:1px solid #ae844d66;
+  border-radius:3px;
+  background:#e8c48966;
+  color:#422d14;
+  padding:7px 15px;
+  font-size:12px
+}
+.favoriteTabs button.active,.journalTabs button.active,.wapChronTabs button.active {
+  background:linear-gradient(#5a3b17,#201a10);
+  border-color:#e1b259;
+  color:#ffe5a6;
+  box-shadow:0 0 6px #b27d3477
+}
+.page-favorites .wapControls {
+  flex-wrap:wrap;
+  top:22px;
+  gap:6px
+}
+.page-favorites .wapBook {
+  padding-top:100px
+}
+.favoriteGrid {
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  height:486px
+}
+.favoriteGrid .wapPortrait {
+  height:85px
+}
+.liveGrid {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(4,minmax(0,1fr));
+  height:520px;
+  gap:10px
+}
+.wapLiveCard {
+  padding:0;
+  background:linear-gradient(#f4d59e,#e5bb7b);
+  border:2px solid #9b713a;
+  border-radius:5px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 2px 3px #67451e77
+}
+.liveScenery {
+  height:67px;
+  position:relative;
+  background:linear-gradient(0deg,#0006,transparent),url('../assets/banner-world.jpg') center/cover
+}
+.wapLiveCard:nth-child(2n) .liveScenery {
+  background-image:linear-gradient(0deg,#0006,transparent),url('../assets/banner-guilds.jpg')
+}
+.liveUnknown {
+  position:absolute;
+  top:5px;
+  left:5px;
+  background:#151713c9;
+  border:1px solid #b99150;
+  color:#e9d2ab;
+  padding:2px 5px;
+  border-radius:4px;
+  font-size:9px
+}
+.liveIdentity {
+  display:flex;
+  gap:7px;
+  padding:5px;
+  align-items:center;
+  min-width:0
+}
+.liveIdentity>div:last-child {
+  min-width:0
+}
+.liveIdentity b {
+  font-size:12px
+}
+.liveIdentity small {
+  display:block;
+  font-size:9px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+.liveAvatar {
+  width:34px;
+  height:34px;
+  border:1px solid #926431;
+  border-radius:5px;
+  overflow:hidden;
+  background:#433b2b;
+  flex-shrink:0;
+  display:grid;
+  place-items:center
+}
+.liveAvatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.stationLink {
+  position:absolute;
+  right:4px;
+  bottom:4px;
+  background:#332615;
+  color:#e8c98b;
+  border-radius:4px;
+  padding:1px 4px
+}
+.wapLiveNotice {
+  font-size:11px;
+  color:#ad9677;
+  margin:13px auto;
+  line-height:1.7
+}
+.bookListView.liveGrid {
+  grid-template-columns:1fr;
+  grid-template-rows:none;
+  height:auto
+}
+.bookListView .wapLiveCard {
+  height:70px
+}
+.bookListView .liveScenery {
+  width:35%;
+  height:100%;
+  float:left;
+  margin-right:6px
+}
+/* Home portal: scenery, three live/data panels, twenty portrait sockets. */
+.page-home {
+  background:none!important
+}
+.page-home .portalHero {
+  height:355px;
+  min-height:0;
+  border:2px solid #93612f;
+  border-radius:7px;
+  margin:0;
+  position:relative;
+  overflow:hidden;
+  background:none!important;
+  box-shadow:inset 0 0 0 2px #20140a
+}
+.portalHero::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:var(--atlas);
+  background-size:200% 200%;
+  background-position:0 100%;
+  z-index:0
+}
+.page-home .portalHeroInner {
+  height:100%;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0
+}
+.page-home .portalSearch {
+  position:relative;
+  left:auto;
+  top:auto;
+  transform:none;
+  margin:50px 0 0;
+  width:44%;
+  border-radius:30px;
+  min-height:42px;
+  padding:4px 12px;
+  background:#07131dee;
+  border:2px solid #b18746;
+  box-shadow:0 0 0 2px #33210d,0 4px 8px #0009
+}
+.portalSearch input {
+  font-size:12px
+}
+.portalMagnify {
+  font-size:27px;
+  color:#d9b364
+}
+.portalSearch .btn {
+  background:none;
+  box-shadow:none;
+  border:0;
+  color:#e5c180;
+  padding:5px;
+  font-size:11px
+}
+.page-home .bookShell {
+  background:none!important;
+  box-shadow:none;
+  border:0;
+  margin:0;
+  padding:0
+}
+.bookBinding {
+  display:none
+}
+.page-home .bookPage {
+  background:none!important;
+  box-shadow:none;
+  border:0;
+  padding:0!important;
+  border-radius:0
+}
+.portalHome {
+  padding:8px 24px 25px;
+  background-image:var(--atlas);
+  background-size:200% 200%;
+  background-position:0 0;
+  border-radius:0 0 12px 12px
+}
+.portalSummary {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+  margin:0 0 10px
+}
+.page-home .portalPanel {
+  border:2px ridge #a47a42;
+  background:linear-gradient(110deg,#302013,#171410)!important;
+  box-shadow:inset 0 0 0 2px #392718,0 2px 3px #38210e77;
+  border-radius:7px;
+  min-height:135px;
+  overflow:hidden;
+  color:#e3cba4
+}
+.portalPanelTitle {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:0;
+  padding:10px 12px 3px;
+  margin:0
+}
+.portalPanelTitle h2 {
+  font-size:13px;
+  color:#e5c58b;
+  margin:0
+}
+.portalPanelTitle>a {
+  font-size:9px;
+  color:#c4ab7e;
+  white-space:nowrap
+}
+.portalPanelBody {
+  padding:9px 12px;
+  min-height:0
+}
+.portalPanelBody p,.portalEmpty {
+  font-size:11px;
+  color:#b8a17e;
+  line-height:1.7
+}
+.portalEmpty {
+  padding:0;
+  margin:0
+}
+.portalPanelBody p {
+  margin:5px 0
+}
+.portalNews a {
+  display:block;
+  font-size:11px;
+  line-height:1.5;
+  margin:0 0 6px
+}
+.portalNews a+a {
+  padding-top:5px;
+  border-top:1px solid #aa875233
+}
+.portalEvent {
+  display:flex;
+  flex-direction:column;
+  gap:12px
+}
+.portalEvent strong {
+  font-size:12px
+}
+.portalEvent span {
+  font-size:10px;
+  color:#b4a187
+}
+.page-home .portalRoster {
+  background:transparent!important;
+  border:1px solid #a1764266;
+  min-height:200px;
+  color:#342311;
+  box-shadow:inset 0 0 10px #95603133
+}
+.portalRoster .portalPanelTitle h2 {
+  color:#2b2114;
+  font-size:18px
+}
+.portalRoster .portalPanelTitle>a {
+  color:#634722
+}
+.rosterNote {
+  font-size:10px;
+  margin-left:8px;
+  color:#82633e
+}
+.portalMembers {
+  display:grid;
+  grid-template-columns:repeat(10,minmax(0,1fr));
+  gap:10px 14px;
+  padding:6px 20px 14px
+}
+.portalMembers .member {
+  background:none;
+  border:0;
+  box-shadow:none;
+  min-height:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+  color:#241c13;
+  overflow:visible
+}
+.portalMembers .avatar {
+  width:64px;
+  height:64px;
+  max-width:100%;
+  aspect-ratio:1;
+  border-radius:50%;
+  border:3px ridge #b98d4e;
+  background:radial-gradient(#172027,#060c0f);
+  box-shadow:0 0 0 2px #372819,0 3px 5px #5d371c99;
+  display:grid;
+  place-items:center;
+  font:28px Georgia,serif;
+  color:#9f8c72;
+  overflow:hidden
+}
+.portalMembers .member::before {
+  content:'◆';
+  position:absolute;
+  top:-6px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#2581ae;
+  text-shadow:0 0 2px #161008;
+  font-size:14px;
+  z-index:2
+}
+.portalMembers .member span {
+  display:block;
+  font-size:10px;
+  margin:4px 0 0;
+  text-align:center
+}
+.portalMembers .empty span {
+  display:none
+}
+.portalMembers .avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.portalMembers .member.empty {
+  opacity:1
+}
+.footer {
+  background:none;
+  border:0;
+  margin:10px 0 0;
+  padding:16px 0;
+  color:#927d61;
+  font-size:10px;
+  line-height:1.8
+}
+.footer a {
+  color:#c6a36f
+}
+/* Statistical and editorial leaves. */
+.wapStatPair {
+  gap:8px;
+  margin:0 0 18px
+}
+.wapStatPair>div {
+  border:0;
+  background:none;
+  padding:8px;
+  box-shadow:none;
+  text-align:center
+}
+.wapStatPair span {
+  color:#3a2916;
+  font-size:12px;
+  font-weight:bold
+}
+.wapStatPair strong {
+  font-family:Georgia,serif;
+  font-size:35px
+}
+.wapStatPair strong small {
+  font-size:14px;
+  font-weight:normal
+}
+.statSection {
+  padding:10px 0 16px;
+  border-bottom:1px solid #b8894955;
+  margin-bottom:8px
+}
+.statSection h2 {
+  margin:0 0 14px;
+  color:#35200f
+}
+.bookChart {
+  display:flex;
+  flex-direction:column;
+  gap:10px
+}
+.chartRow {
+  display:grid;
+  grid-template-columns:80px 1fr 92px;
+  gap:10px;
+  align-items:center;
+  font-size:11px
+}
+.chartRow>b {
+  font-weight:normal;
+  white-space:nowrap;
+  font-size:11px
+}
+.chartRow small {
+  font-size:10px
+}
+.chartTrack {
+  height:15px;
+  background:#926d3540;
+  border-radius:3px;
+  overflow:hidden;
+  box-shadow:inset 0 1px 2px #815d2533
+}
+.chartTrack i {
+  width:var(--value);
+  height:100%;
+  display:block;
+  background:linear-gradient(90deg,var(--chart-color),var(--chart-color));
+  border-radius:3px
+}
+.levelChart {
+  flex-direction:row;
+  height:133px;
+  align-items:flex-end;
+  gap:9px
+}
+.levelChart .chartRow {
+  height:100%;
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+  padding-top:20px;
+  gap:5px
+}
+.levelChart .chartRow>span {
+  order:3;
+  font-size:9px
+}
+.levelChart .chartTrack {
+  height:var(--value);
+  width:100%;
+  min-height:3px;
+  position:relative;
+  background:var(--chart-color)
+}
+.levelChart .chartTrack i {
+  width:100%
+}
+.levelChart b {
+  font-size:10px
+}
+.levelChart small {
+  display:none
+}
+.page-world .wapBook {
+  padding-top:38px
+}
+.journalTabs {
+  display:flex;
+  gap:5px;
+  margin:0 0 12px
+}
+.journalTabs button {
+  flex:1;
+  padding:8px 4px;
+  font-size:11px;
+  white-space:nowrap
+}
+.journalSearch {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:7px 10px;
+  border:1px solid #a67c3e55;
+  background:#bf91482b;
+  border-radius:4px;
+  margin:0 0 8px
+}
+.journalSearch input {
+  border:0;
+  background:none;
+  min-width:0;
+  width:100%;
+  color:#402a13;
+  font-size:11px;
+  outline:0
+}
+.page-news .wapBook,.page-chronicle .wapBook,.page-events .wapBook {
+  padding-top:32px
+}
+.wapTimeline {
+  gap:4px;
+  flex:1
+}
+.wapTimeline button {
+  display:flex;
+  flex-direction:row;
+  gap:12px;
+  padding:7px 5px;
+  border:1px solid #a67b3b55;
+  border-radius:3px;
+  background:#e5bc7620;
+  align-items:center;
+  min-width:0;
+  text-align:left;
+  min-height:68px;
+  color:#35220f
+}
+.wapTimeline button.active {
+  background:#ffe4a133;
+  border-color:#e0ad4c;
+  box-shadow:inset 0 0 0 1px #ffe4a777
+}
+.wapTimeline button>span {
+  flex:1;
+  min-width:0
+}
+.wapTimeline small {
+  font-size:9px;
+  color:#926d3a;
+  display:block;
+  margin-bottom:4px
+}
+.wapTimeline strong {
+  font-size:12px;
+  line-height:1.5
+}
+.wapTimeline p {
+  font-size:10px;
+  line-height:1.5;
+  margin:3px 0 0;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden
+}
+.journalThumb {
+  flex-shrink:0;
+  width:120px;
+  height:58px;
+  border-radius:3px;
+  background:url('../assets/banner-adventurers.jpg') center/cover;
+  overflow:hidden
+}
+.eventThumb {
+  background-image:url('../assets/banner-guilds.jpg')
+}
+.raidThumb {
+  background-image:url('../assets/banner-events.jpg')
+}
+.journalThumb img {
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.journalPager {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  margin-top:10px;
+  font-size:11px;
+  color:#56391b
+}
+.journalDetail {
+  padding:6px 8px
+}
+.journalDetail .wapDate {
+  display:block;
+  color:#795124;
+  font-size:12px;
+  margin:0 0 9px
+}
+.journalBadge {
+  display:inline-block;
+  background:#68814d;
+  color:#fff2c6;
+  font-size:10px;
+  border-radius:4px;
+  padding:3px 10px
+}
+.journalDetail h2 {
+  font-family:Georgia,'Noto Serif KR',serif;
+  font-size:27px;
+  margin:10px 0 15px;
+  line-height:1.35
+}
+.journalDetail .journalThumb {
+  width:100%;
+  height:170px;
+  border-radius:0;
+  margin-bottom:16px
+}
+.journalDetail p {
+  font-size:12px;
+  line-height:1.9
+}
+.journalDetail .wapView {
+  float:none;
+  display:inline-block;
+  padding:7px 14px;
+  margin:18px 0
+}
+.page-chronicle .wapTimeline {
+  border-left:1px solid #80592b;
+  padding-left:12px
+}
+.page-chronicle .wapTimeline button {
+  position:relative
+}
+.page-chronicle .wapTimeline button::before {
+  content:'';
+  position:absolute;
+  left:-18px;
+  width:10px;
+  height:10px;
+  border:2px solid #8d602e;
+  border-radius:50%;
+  background:#e2bf80
+}
+.page-chronicle .wapTimeline button.active::before {
+  background:#ffdf85;
+  border-color:#cf8a1b
+}
+.page-chronicle .journalSearch {
+  display:none
+}
+/* Actual dialogs preserve a functional book behind the scrim. */
+.modalOpen {
+  overflow:hidden
+}
+.bookModalBackdrop {
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:#000b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:35px 20px;
+  overflow:auto
+}
+.personBookModal {
+  position:relative;
+  width:min(880px,100%);
+  max-height:90vh;
+  overflow:auto;
+  display:grid;
+  grid-template-columns:38% minmax(0,1fr);
+  gap:25px;
+  padding:60px 65px 45px;
+  color:var(--ink);
+  background:radial-gradient(ellipse at center,#f7dca0,#e8bd79 75%,#9b622e);
+  box-shadow:inset 0 0 0 7px #b37d3d,inset 0 0 35px 10px #9e622f,0 18px 50px #000;
+  border:2px solid #7e4f25;
+  border-radius:9% 3% 8% 2% / 3% 7% 3% 8%;
+  clip-path:polygon(0 2%,3% 0,7% 1%,11% 0,17% 1%,25% 0,36% 1%,45% 0,53% 1%,62% 0,74% 1%,83% 0,93% 1%,100% 0,99% 13%,100% 27%,99% 39%,100% 52%,99% 66%,100% 82%,99% 94%,100% 100%,93% 99%,85% 100%,73% 99%,62% 100%,51% 99%,42% 100%,31% 99%,19% 100%,10% 99%,0 100%,1% 88%,0 73%,1% 58%,0 45%,1% 31%)
+}
+.personBookModal::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:url('../assets/wapobook/parchment.svg') center/cover;
+  opacity:.18
+}
+.wapClose {
+  right:14px;
+  top:13px;
+  border:2px ridge #bf8b42;
+  border-radius:50%;
+  background:#33210f;
+  color:#ffe6b5;
+  box-shadow:0 2px 4px #54321899;
+  width:34px;
+  height:34px;
+  padding:0;
+  font-size:27px;
+  line-height:26px;
+  position:absolute;
+  z-index:8
+}
+.wapDetailPhoto {
+  height:315px;
+  border:3px ridge #ac7c3c;
+  border-radius:7px;
+  background:#372f24;
+  display:grid;
+  place-items:center;
+  color:#bea06b;
+  overflow:hidden;
+  z-index:1
+}
+.wapDetailPhoto img {
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.wapDetailInfo {
+  z-index:1
+}
+.wapDetailInfo h1 {
+  font-family:Georgia,'Noto Serif KR',serif;
+  font-size:32px;
+  margin:0 0 10px;
+  color:#291b0e
+}
+.wapDetailRow {
+  font-size:12px;
+  border-bottom:1px solid #a4763d44;
+  padding:8px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px
+}
+.wapDetailRow b {
+  font-weight:500;
+  text-align:right
+}
+.wapDetailRow a {
+  color:#21719b
+}
+.wapSoop {
+  margin:0;
+  font-size:12px
+}
+.wapSeason {
+  grid-column:1/-1;
+  position:relative;
+  z-index:1;
+  margin-top:5px;
+  min-height:100px;
+  border-top:1px solid #9e7036;
+  padding-top:13px
+}
+.wapSeason h2 {
+  font-size:15px;
+  color:#422b13;
+  margin:0 0 8px
+}
+.wapSeason p {
+  font-size:12px;
+  color:#6c502d
+}
+.detailReport {
+  float:right;
+  font-size:11px;
+  color:#755326;
+  margin-top:10px
+}
+.detailNew {
+  position:absolute;
+  right:-30px;
+  top:21px;
+  background:linear-gradient(#ab341c,#761e10);
+  color:#ffe2a0;
+  border:2px solid #e1af55;
+  transform:rotate(45deg);
+  font:24px Georgia,serif;
+  letter-spacing:1px;
+  padding:6px 54px;
+  z-index:4;
+  box-shadow:0 3px 4px #552a14aa;
+  pointer-events:none
+}
+.guildBookModal {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:44px;
+  width:min(1100px,100%);
+  max-height:90vh;
+  overflow:auto;
+  position:relative;
+  padding:36px 37px 37px 59px;
+  background-image:var(--atlas);
+  background-position:0 0;
+  background-size:200% 200%;
+  min-height:620px;
+  color:var(--ink)
+}
+.guildBookModal .wapClose {
+  top:18px;
+  right:18px;
+  border-radius:4px
+}
+.guildDetailScenery {
+  position:relative;
+  height:170px;
+  background:url('../assets/banner-adventurers.jpg') center/cover;
+  border:2px ridge #ad7d3d;
+  border-radius:5px;
+  margin-bottom:12px
+}
+.guildDetailScenery .guildStandard {
+  height:205px;
+  width:130px;
+  top:23px;
+  left:0;
+  z-index:2
+}
+.guildBookModal h1 {
+  font-family:Georgia,'Noto Serif KR',serif;
+  font-size:29px;
+  margin:10px 0;
+  padding-left:125px;
+  color:#30200e;
+  min-height:40px
+}
+.guildBookModal h2 {
+  font-size:16px;
+  margin:16px 0 12px
+}
+.guildBookModal p {
+  font-size:12px;
+  line-height:1.7
+}
+.guildBookModal .wapMemberGrid {
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px
+}
+.wapMemberGrid a {
+  padding:4px;
+  border:1px solid #ab7a39;
+  background:#eac68a;
+  border-radius:6px;
+  color:#30200f
+}
+.memberPortrait {
+  height:61px;
+  background:#483e2c;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border-radius:4px
+}
+.memberPortrait img {
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.wapMemberGrid strong,.wapMemberGrid small {
+  font-size:10px;
+  display:block;
+  line-height:1.6;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+.wapActivity>div {
+  font-size:11px;
+  padding:9px 0;
+  border-bottom:1px solid #ad844c66
+}
+.wapActivity small {
+  font-size:10px
+}
+.page-other .panel,.page-other .notice,.page-other .field,.page-other .adminSide button,.page-other .reportBox {
+  border-color:#9e763a
+}
+.page-other .section {
+  margin:25px auto
+}
+.page-other .panel {
+  background:linear-gradient(#33291d,#201b14)
+}
+.page-other .field {
+  background:#181712;
+  color:#ead4ad
+}
+.page-other .adminSide button {
+  background:#292219
+}
+.page-other .formGroup label {
+  color:#e7c994
+}
+.artPlaceholder {
+  font-size:28px;
+  color:#c5a87299
+}
+.imageMissing::after {
+  content:'✧';
+  font-size:26px;
+  color:#c5a87299
+}
+.personBookModal .heart,.guildBookModal .heart {
+  color:#71512a;
+  font-size:24px
+}
+.personBookModal .heart.on,.guildBookModal .heart.on {
+  color:#a76c09
+}
+@media(min-width:1550px) {
+  body {
+    padding-top:28px
+  }
+}
+@media(max-width:1200px) {
+  body {
+    padding:8px 10px 0
+  }
+  #app {
+    padding-left:30px;
+    padding-right:12px
+  }
+  .header {
+    height:77px
+  }
+  .logo {
+    width:170px
+  }
+  .nav {
+    padding-right:6px;
+    gap:6px
+  }
+  .links a {
+    font-size:10px;
+    padding:10px 5px
+  }
+  .wapBook,.pageContent:not(.page-home) .wrap.wapBook {
+    padding-left:39px;
+    padding-right:24px;
+    gap:35px;
+    min-height:610px
+  }
+  .peopleGrid,.guildGrid,.liveGrid {
+    height:490px
+  }
+  .wapPortrait {
+    height:52px
+  }
+  .wapPerson small {
+    font-size:8px
+  }
+  .wapGuildArt {
+    height:130px;
+    padding-left:68px
+  }
+  .guildStandard {
+    width:65px;
+    height:115px
+  }
+  .wapGuildArt h3 {
+    font-size:14px
+  }
+  .wapGuildArt p {
+    font-size:9px
+  }
+  .bookFilters {
+    gap:7px
+  }
+  .wapControls {
+    left:39px;
+    right:24px
+  }
+  .wapControls .field {
+    width:112px
+  }
+  .portalMembers {
+    gap:8px
+  }
+  .portalMembers .avatar {
+    width:58px;
+    height:58px
+  }
+  .chartRow {
+    grid-template-columns:70px 1fr 82px;
+    gap:6px
+  }
+  .journalThumb {
+    width:100px
+  }
+  .guildBookModal {
+    width:1000px
+  }
+}
+@media(max-width:900px) {
+  .logo {
+    width:148px
+  }
+  .links a {
+    font-size:9px;
+    padding:9px 3px
+  }
+  .nav {
+    gap:2px
+  }
+  .wapBook,.pageContent:not(.page-home) .wrap.wapBook {
+    padding-left:32px;
+    padding-right:22px;
+    gap:30px
+  }
+  .bookFilters {
+    gap:4px
+  }
+  .wapControls {
+    left:32px;
+    right:22px;
+    gap:5px
+  }
+  .wapControls .field {
+    width:88px;
+    font-size:10px;
+    padding:4px
+  }
+  .bookSort {
+    gap:5px
+  }
+  .viewSwitch button {
+    width:27px
+  }
+  .bookSort label {
+    display:none
+  }
+  .wapPerson strong {
+    font-size:10px
+  }
+  .wapPerson small {
+    font-size:7px;
+    padding:0 4px
+  }
+  .wapPortrait {
+    height:48px
+  }
+  .peopleGrid {
+    gap:6px
+  }
+  .wapPerson strong {
+    padding:0 4px
+  }
+  .wapGuildArt {
+    padding-left:58px
+  }
+  .guildStandard {
+    width:55px;
+    height:105px
+  }
+  .portalMembers .avatar {
+    width:48px;
+    height:48px
+  }
+  .portalHome {
+    padding:8px 20px 22px
+  }
+  .portalPanelTitle {
+    padding:8px 7px 3px
+  }
+  .portalPanelTitle h2 {
+    font-size:11px
+  }
+  .portalPanelBody {
+    padding:7px
+  }
+  .portalPanelTitle>a {
+    font-size:8px
+  }
+  .portalMembers {
+    padding:8px
+  }
+  .chartRow {
+    grid-template-columns:58px 1fr 72px;
+    font-size:10px
+  }
+  .chartRow>b {
+    font-size:10px
+  }
+  .chartRow small {
+    font-size:8px
+  }
+  .journalThumb {
+    width:75px
+  }
+  .wapTimeline strong {
+    font-size:11px
+  }
+  .journalDetail h2 {
+    font-size:22px
+  }
+  .guildBookModal {
+    padding:35px;
+    gap:24px
+  }
+  .guildBookModal .wapMemberGrid {
+    grid-template-columns:repeat(4,minmax(0,1fr))
+  }
+  .personBookModal {
+    padding:50px 45px 35px;
+    gap:20px
+  }
+  .pageHero h1 {
+    font-size:32px
+  }
+}
+@media(max-width:700px) {
+  body {
+    padding:6px 5px 0
+  }
+  #app {
+    padding:8px 8px 0 22px;
+    border-width:4px
+  }
+  #app::before {
+    width:18px
+  }
+  .header {
+    height:68px
+  }
+  .nav {
+    padding:0 10px
+  }
+  .logo {
+    width:140px
+  }
+  .menu {
+    display:block;
+    margin-left:auto;
+    color:#e4b966;
+    border-color:#a57538;
+    background:#21190f
+  }
+  .links {
+    display:none;
+    position:absolute;
+    top:66px;
+    left:0;
+    right:0;
+    background:#17140ff5;
+    padding:14px;
+    gap:4px;
+    border:1px solid #a67536;
+    border-radius:5px
+  }
+  .links.open {
+    display:flex
+  }
+  .links a {
+    font-size:13px;
+    padding:10px
+  }
+  .nav>.bgmPlayer {
+    position:static;
+    transform:none;
+    margin-left:auto;
+    margin-right:7px
+  }
+  .nav>.bgmPlayer input[type=range] {
+    display:none
+  }
+  .pageContent .pageHero {
+    height:155px;
+    padding:25px 20px
+  }
+  .pageHero h1 {
+    font-size:29px
+  }
+  .pageHero p {
+    font-size:10px
+  }
+  .bookSearch {
+    width:calc(100% - 40px);
+    right:20px;
+    bottom:12px;
+    padding:5px 12px
+  }
+  .bookSearch input {
+    font-size:10px
+  }
+  .wapBook,.pageContent:not(.page-home) .wrap.wapBook {
+    grid-template-columns:1fr;
+    padding:98px 24px 28px 33px;
+    gap:30px;
+    min-height:660px;
+    background-size:200% 200%;
+    background-position:0 0
+  }
+  .wapBook::after {
+    display:none
+  }
+  .wapLeaf {
+    padding:0!important
+  }
+  .wapControls {
+    left:33px;
+    right:24px;
+    top:28px;
+    flex-wrap:wrap;
+    gap:7px
+  }
+  .bookFilters {
+    width:100%;
+    flex:auto;
+    justify-content:space-between
+  }
+  .wapControls .field {
+    flex:1;
+    width:30%;
+    max-width:none;
+    height:28px;
+    font-size:10px
+  }
+  .bookSort {
+    width:100%;
+    justify-content:flex-end
+  }
+  .bookSort select {
+    flex:0;
+    width:130px
+  }
+  .peopleGrid {
+    height:auto;
+    min-height:0;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-rows:none;
+    gap:7px
+  }
+  .wapPerson {
+    min-height:122px
+  }
+  .wapPortrait {
+    height:61px
+  }
+  .wapPerson strong {
+    font-size:11px
+  }
+  .wapPerson small {
+    font-size:8px
+  }
+  .cardFavorite {
+    width:20px;
+    height:20px;
+    font-size:16px;
+    line-height:20px
+  }
+  .leafPager {
+    padding-top:13px
+  }
+  .wapLeaf:nth-of-type(2) {
+    border-top:1px solid #a5793d66!important;
+    padding-top:20px!important
+  }
+  .guildGrid {
+    height:auto;
+    min-height:0;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:none;
+    gap:10px
+  }
+  .wapGuild {
+    min-height:211px
+  }
+  .wapGuildArt {
+    height:130px;
+    padding-left:64px
+  }
+  .guildStandard {
+    height:105px;
+    width:60px
+  }
+  .wapGuildArt h3 {
+    font-size:13px
+  }
+  .wapGuildArt p {
+    font-size:9px
+  }
+  .bookListView .wapPerson {
+    min-height:0
+  }
+  .liveGrid {
+    height:auto;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:none
+  }
+  .wapLiveCard {
+    min-height:120px
+  }
+  .liveScenery {
+    height:70px
+  }
+  .liveIdentity small {
+    font-size:8px
+  }
+  .bookListView .wapLiveCard {
+    min-height:0
+  }
+  .page-favorites .wapBook {
+    padding-top:135px
+  }
+  .favoriteTabs button {
+    padding:7px 9px;
+    font-size:11px
+  }
+  .favoriteGrid {
+    grid-template-rows:none;
+    height:auto
+  }
+  .favoriteGrid .wapPortrait {
+    height:65px
+  }
+  .page-home .portalHero {
+    height:275px
+  }
+  .page-home .portalSearch {
+    width:82%;
+    margin-top:65px
+  }
+  .portalSummary {
+    grid-template-columns:1fr;
+    gap:7px
+  }
+  .page-home .portalPanel {
+    min-height:95px
+  }
+  .portalPanelTitle h2 {
+    font-size:12px
+  }
+  .portalPanelTitle>a {
+    font-size:10px
+  }
+  .portalPanelBody {
+    padding:8px 10px
+  }
+  .portalHome {
+    padding:12px 18px 25px 26px
+  }
+  .portalMembers {
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:12px 7px
+  }
+  .portalMembers .avatar {
+    width:48px;
+    height:48px
+  }
+  .portalMembers .member span {
+    font-size:9px
+  }
+  .rosterNote {
+    font-size:9px;
+    display:none
+  }
+  .portalRoster .portalPanelTitle h2 {
+    font-size:15px
+  }
+  .footer {
+    font-size:9px
+  }
+  .page-world .wapBook,.page-news .wapBook,.page-chronicle .wapBook,.page-events .wapBook {
+    padding-top:32px
+  }
+  .chartRow {
+    grid-template-columns:70px 1fr 90px;
+    font-size:11px
+  }
+  .chartRow>b {
+    font-size:11px
+  }
+  .chartRow small {
+    font-size:10px
+  }
+  .journalThumb {
+    width:92px
+  }
+  .journalDetail h2 {
+    font-size:24px
+  }
+  .personBookModal {
+    grid-template-columns:35% minmax(0,1fr);
+    gap:15px;
+    padding:45px 25px 28px;
+    max-height:91vh
+  }
+  .wapDetailPhoto {
+    height:225px
+  }
+  .wapDetailInfo h1 {
+    font-size:25px
+  }
+  .wapDetailRow {
+    font-size:10px;
+    gap:7px;
+    padding:7px 0
+  }
+  .personBookModal .wapSoop {
+    font-size:10px
+  }
+  .wapSeason {
+    min-height:70px
+  }
+  .wapSeason h2 {
+    font-size:13px
+  }
+  .wapSeason p {
+    font-size:11px
+  }
+  .detailNew {
+    font-size:15px;
+    top:17px;
+    padding:4px 43px
+  }
+  .bookModalBackdrop {
+    padding:20px 10px
+  }
+  .guildBookModal {
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:35px 25px 30px 35px;
+    width:96%;
+    max-height:90vh
+  }
+  .guildBookModal .wapMemberGrid {
+    grid-template-columns:repeat(5,minmax(0,1fr))
+  }
+  .guildBookModal .wapLeaf {
+    padding:0
+  }
+  .guildBookModal h1 {
+    padding-left:110px
+  }
+  .guildDetailScenery .guildStandard {
+    width:100px;
+    height:170px
+  }
+  .guildDetailScenery {
+    height:140px
+  }
+  .memberPortrait {
+    height:50px
+  }
+  .wapMemberGrid strong,.wapMemberGrid small {
+    font-size:9px
+  }
+  .page-other .adminLayout {
+    grid-template-columns:1fr
+  }
+  .page-other .adminSide {
+    display:flex;
+    flex-direction:row;
+    overflow:auto
+  }
+  .page-other .formGrid {
+    grid-template-columns:1fr
+  }
+  .page-other .pageHero {
+    padding-bottom:25px
+  }
+  .page-other .section {
+    margin-top:18px
+  }
+  .adminRow {
+    flex-wrap:wrap
+  }
+  .adminActions {
+    flex-wrap:wrap
+  }
+  .page-other .panel {
+    padding:15px
+  }
+  .formGroup input,.formGroup select,.formGroup textarea {
+    min-width:0
+  }
+  .bookListView {
+    grid-template-columns:1fr!important;
+    min-height:0
+  }
+}
+@media(max-width:390px) {
+  .peopleGrid {
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
+  .wapPortrait {
+    height:65px
+  }
+  .wapPerson small {
+    font-size:8px
+  }
+  .portalMembers .avatar {
+    width:39px;
+    height:39px
+  }
+  .portalMembers {
+    gap:10px 4px
+  }
+  .guildGrid {
+    grid-template-columns:1fr
+  }
+  .personBookModal {
+    grid-template-columns:1fr
+  }
+  .wapDetailPhoto {
+    width:130px;
+    height:150px;
+    margin:auto
+  }
+  .wapSeason {
+    grid-column:1
+  }
+  .guildBookModal .wapMemberGrid {
+    grid-template-columns:repeat(4,minmax(0,1fr))
+  }
+  .liveGrid {
+    grid-template-columns:1fr
+  }
+}
+/* Reset legacy homepage cover and header rules before the final composition. */
+.page-home {
+  width:100%;
+  margin:0;
+  padding:0;
+  min-height:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  overflow:visible;
+  isolation:auto
+}
+.page-home::before,.page-home::after {
+  display:none
+}
+.header .nav {
+  width:100%;
+  gap:12px
+}
+.header .logo {
+  flex:0 0 202px
+}
+.page-home .portalHeroInner {
+  min-height:0
+}
+.page-home .portalSearch {
+  width:44%;
+  margin:50px 0 0;
+  padding:4px 12px
+}
+.page-home .portalSearch .btn {
+  background:none;
+  box-shadow:none;
+  border:0;
+  color:#e5c180;
+  padding:5px;
+  font-size:11px
+}
+.page-home .bookShell {
+  width:100%;
+  margin:0
+}
+.page-home .bookPage {
+  width:100%;
+  margin:0;
+  min-height:0
+}
+.portalSummary .portalPanel:last-child {
+  grid-column:auto
+}
+.page-home .portalEmpty,.page-home .portalNews a,.page-home .portalEvent {
+  background:none;
+  border:0;
+  border-radius:0;
+  padding:0
+}
+.page-home .portalRoster .portalPanelTitle h2 {
+  color:#30210e
+}
+.page-home .portalPanelTitle {
+  border:0;
+  margin:0
+}
+.page-home .portalPanelTitle a {
+  color:#c8ac78
+}
+.page-home .portalPanelBody p {
+  color:#b8a17e
+}
+.page-home .portalMembers .member .avatar {
+  background:radial-gradient(#172027,#060c0f);
+  border:3px ridge #b98d4e;
+  box-shadow:0 0 0 2px #372819,0 3px 5px #5d371c99;
+  color:#9f8c72
+}
+.page-home .portalMembers .member span {
+  color:#30210e
+}
+.page-home .portalMembers .member.empty .avatar {
+  border-color:#a9844d
+}
+.page-home .portalMembers .member.empty {
+  opacity:1
+}
+.page-home .portalRoster .rosterNote {
+  color:#82633e
+}
+.page-home .portalHero {
+  margin:0;
+  min-height:0
+}
+.page-home .portalRoster {
+  margin:0
+}
+.header .bgmPlayer {
+  display:flex
+}
+@media(min-width:701px) {
+  .header .links {
+    display:flex;
+    position:static;
+    flex-direction:row;
+    background:none;
+    padding:0;
+    box-shadow:none;
+    gap:3px
+  }
+  .header .links a {
+    font-size:12px;
+    padding:11px 9px
+  }
+  .header .menu {
+    display:none
+  }
+}
+@media(max-width:1200px) and (min-width:701px) {
+  .header .logo {
+    flex-basis:170px
+  }
+  .header .links a {
+    font-size:10px;
+    padding:10px 5px
+  }
+}
+@media(max-width:900px) and (min-width:701px) {
+  .header .logo {
+    flex-basis:148px
+  }
+  .header .nav {
+    gap:2px
+  }
+  .header .links a {
+    font-size:9px;
+    padding:9px 3px
+  }
+}
+@media(max-width:700px) {
+  .header .logo {
+    flex-basis:140px
+  }
+  .header .nav {
+    gap:2px
+  }
+  .header .links {
+    top:66px;
+    background:#17140ff5
+  }
+  .header .links a {
+    font-size:13px;
+    padding:10px
+  }
+  .page-home .portalSearch {
+    width:82%;
+    margin-top:65px
+  }
+  .page-home .portalHero,.page-home .portalHeroInner {
+    min-height:0
+  }
+  .page-home .portalMembers {
+    padding:8px;
+    grid-template-columns:repeat(5,minmax(0,1fr))
+  }
+  .page-home .portalMembers .member .avatar {
+    width:48px;
+    height:48px
+  }
+  .page-home .portalMembers .member span {
+    font-size:9px
+  }
+  .page-home .portalSummary {
+    gap:7px
+  }
+  .page-home .portalRoster .portalPanelTitle {
+    padding:10px
+  }
+  .page-home .portalPanelBody {
+    padding:8px 10px
+  }
+}
+@media(min-width:701px) {
+  .wapBook,.pageContent:not(.page-home) .wrap.wapBook {
+    height:650px;
+    min-height:650px;
+    grid-template-rows:minmax(0,1fr);
+    padding:87px 5% 58px 10%;
+    gap:5%
+  }
+  .wapGrid {
+    flex:1 1 0;
+    min-height:0;
+    height:auto
+  }
+  .wapControls {
+    top:36px;
+    left:10%;
+    right:5%
+  }
+  .page-world .wapBook,.page-news .wapBook,.page-chronicle .wapBook,.page-events .wapBook {
+    padding-top:65px
+  }
+  .page-favorites .wapBook {
+    padding-top:120px;
+    height:680px
+  }
+  .wapLeaf {
+    overflow:hidden
+  }
+  .leafPager {
+    flex:0 0 37px;
+    min-height:37px;
+    padding-top:6px
+  }
+  .wapPerson {
+    min-height:0
+  }
+  .page-world .statSection {
+    padding:8px 0 10px
+  }
+  .page-world .bookChart {
+    gap:7px
+  }
+  .page-world .bookEmpty {
+    padding:20px 12px
+  }
+  .page-world .wapStatPair {
+    margin-bottom:5px
+  }
+  .page-world .statSection h2 {
+    margin-bottom:10px
+  }
+  .page-news .wapTimeline,.page-events .wapTimeline,.page-chronicle .wapTimeline {
+    overflow:auto
+  }
+  .journalDetail {
+    overflow:auto
+  }
+  .header .links {
+    justify-content:space-evenly
+  }
+  .header .links a {
+    flex-shrink:0
+  }
+  .headerLogoArt {
+    mix-blend-mode:screen
+  }
+}
+.wapBook,.guildBookModal,.portalHome {
+  background-size:200% 206.5%;
+  background-repeat:no-repeat
+}
+.portalHome {
+  padding-left:8%;
+  padding-right:4%
+}
+.pageContent:not(.page-home) {
+  padding-bottom:0
+}
+.page-home .portalMembers {
+  padding-left:8px;
+  padding-right:8px
+}
+.page-home .portalMembers .member .avatar {
+  height:auto;
+  aspect-ratio:1;
+  min-height:0
+}
+.page-home .portalRoster .portalPanelTitle h2 {
+  font-size:17px
+}
+.headerLogoArt {
+  mix-blend-mode:screen
+}
+@media(max-width:700px) {
+  .wapBook,.pageContent:not(.page-home) .wrap.wapBook {
+    height:auto;
+    min-height:650px;
+    background:linear-gradient(90deg,#a67a42 0,#edd09a 9%,#f0cf92 48%,#e3bc7d 52%,#f1d29a 95%,#9e6c33 100%);
+    border:4px ridge #8b5b2e;
+    border-radius:10px;
+    padding-left:18px;
+    padding-right:18px
+  }
+  .wapControls {
+    left:18px;
+    right:18px
+  }
+  .wapBook::before {
+    display:block;
+    inset:-5px;
+    background:url('../assets/wapobook/gold-corner.svg') left top/48px no-repeat,url('../assets/wapobook/gold-corner.svg') right bottom/48px no-repeat
+  }
+  .portalHome {
+    padding-left:22px;
+    padding-right:18px
+  }
+  .guildBookModal {
+    background:linear-gradient(90deg,#ad7d40,#edcc90 8%,#f2d7a0 95%,#a27138);
+    border:5px ridge #95612b;
+    border-radius:12px
+  }
+  .page-home .portalMembers .member .avatar {
+    width:48px;
+    height:auto
+  }
+}
+.pageContent:not(.page-home) .wrap.wapBook {
+  background-size:200% 213.5%
+}
+@media(max-width:700px) {
+  .pageContent:not(.page-home) .wrap.wapBook {
+    background-size:auto
+  }
+}
+.personBookModal {
+  background-image:url('../assets/wapobook/torn-parchment.webp');
+  background-size:100% 100%;
+  border:0;
+  box-shadow:0 15px 50px #0009;
+  border-radius:0
+}
+.personBookModal::before {
+  display:none
+}
+@media(min-width:701px) {
+  .pageContent:not(.page-home) .wrap.wapBook {
+    background-size:213% 213.5%;
+    background-position:5.7% 0;
+    padding-left:6%;
+    padding-right:5%;
+    gap:5%
+  }
+  .wapControls {
+    left:6%
+  }
+  .page-home .portalHome {
+    background-size:213% 213.5%;
+    background-position:5.7% 0;
+    padding-left:4%;
+    padding-right:4%
+  }
+  .guildBookModal {
+    background-size:213% 213.5%;
+    background-position:5.7% 0;
+    padding-left:5%;
+    padding-right:4%
+  }
+}
+@media(min-width:701px) {
+  .wapPortrait {
+    height:50px
+  }
+  .wapPerson small {
+    line-height:1.25;
+    font-size:9px
+  }
+  .wapPerson strong {
+    line-height:1.25;
+    margin:3px 0 2px
+  }
+  .favoriteGrid .wapPortrait {
+    height:78px
+  }
+  .guildGrid .wapGuildArt {
+    height:128px
+  }
+  .guildGrid .wapGuildNumbers span {
+    padding:4px 2px
+  }
+  .guildGrid .wapView {
+    margin:4px 5px
+  }
+  .guildBookModal .wapLeaf {
+    overflow:auto
+  }
+  .liveScenery {
+    height:60px
+  }
+  .liveIdentity {
+    padding:4px 5px
+  }
+  .wapLiveCard small {
+    font-size:9px
+  }
+}
+@media(min-width:701px) {
+  .pageContent:not(.page-home) .wrap.wapBook,.guildBookModal {
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)
+  }
+  .pageHero>.frameGem {
+    left:47%
+  }
+  .bookGem {
+    left:47%
+  }
+}
