@@ -339,3 +339,22 @@
 /* Show photos after successful decode, so a failed request never flashes a broken-image icon. */
 .archiveImage { visibility:hidden; }
 .archiveImage.imageReady { visibility:visible; }
+/* Keep the invisible hit targets as tall as the painted desktop tabs. */
+@media(min-width:1100px) {
+ .approvedDesign .header .links { grid-template-rows:minmax(0,1fr);align-content:stretch; }
+ .approvedDesign .header .links a { height:100%;min-height:44px;align-self:stretch;cursor:pointer; }
+
+}
+/* One continuous alpha-backed sheet per dialog; never stretch screenshot strips. */
+.approvedDesign .approvedModal { clip-path:none;isolation:isolate;filter:drop-shadow(0 10px 14px #0008); }
+.approvedDesign .approvedModal .approvedModalArtwork { display:none; }
+.approvedDesign .personBookModal .approvedModalPaper { background:url('../assets/wapobook/person-parchment.webp') center/100% 100% no-repeat!important; }
+.approvedDesign .guildBookModal .approvedModalPaper { background:url('../assets/wapobook/guild-book.webp') center/100% 100% no-repeat!important; }
+.approvedDesign .personBookModal,.approvedDesign .guildBookModal { background:none!important; }
+.approvedDesign .guildBookModal .wapLeaf { background:none!important;box-shadow:none!important;border:0; }
+.approvedDesign [data-reference="home"] .logo::after { content:'';position:absolute;left:16.5%;top:49.7%;width:4.8%;height:15%;border-radius:50%;background:radial-gradient(ellipse at 65% 65%,#42321e,#17130d 75%);box-shadow:inset 1px 1px 2px #080705,1px 0 1px #a47b39;pointer-events:none; }
+@media(max-width:1099px) {
+ /* A narrow screen reads the guild as one sheet; the background scrolls with its contents. */
+ .approvedDesign .guildBookModal { background:url('../assets/wapobook/person-parchment.webp') center/100% 100% no-repeat local!important;padding:50px 26px 40px; }
+ .approvedDesign .guildBookModal .approvedModalPaper { display:none; }
+}

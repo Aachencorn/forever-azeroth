@@ -39,6 +39,15 @@ async def run():
      assert await p.evaluate('''()=>{let n=document.querySelector('[role="dialog"]');return n.scrollWidth<=n.clientWidth+1}'''),('Modal horizontal scroll',width,route)
    if width<=1000:
     await p.goto(BASE+'/#/adventurers');await p.locator('.menu').click();assert await p.locator('.links').is_visible();await p.get_by_role('link',name='♜ 길드 도감',exact=True).click();await p.wait_for_timeout(40);assert await p.locator('h1').inner_text()=='길드 도감'
+  # Click the painted desktop menu centers rather than navigating by URL.
+  for width in [1536,1366,1100]:
+   await p.set_viewport_size({'width':width,'height':1024})
+   for href in ['#/adventurers','#/guilds','#/world','#/updates','#/events','#/chronicle','#/favorites','#/live','#/']:
+    await p.goto(BASE+'/#/');await p.wait_for_timeout(30)
+    a=p.locator('.header .links a[href="'+href+'"]')
+    r=await a.bounding_box();assert r and r['height']>=44,('Collapsed menu hit target',width,href,r)
+    await p.mouse.click(r['x']+r['width']/2,r['y']+r['height']/2)
+    await p.wait_for_timeout(40);assert await p.evaluate('location.hash')==href,('Menu click failed',width,href)
   await p.set_viewport_size({'width':1536,'height':1024});await p.goto(BASE+'/#/admin');await p.wait_for_timeout(50)
   # Register records through the same forms used by an administrator.
   await p.get_by_role('button',name='+ 모험가 등록',exact=True).click();await p.locator('[name="name"]').fill('관리자 신규등록 검수');await p.get_by_role('button',name='저장하고 공개',exact=True).click()
@@ -55,5 +64,5 @@ async def run():
   assert not errors,errors
   assert all('/qa-intentional-missing.png' in url for url in failures),failures
   await ctx.close();await b.close()
-  print('PASS: dialog list-state restoration; favorites overlap/empty search; 10 screens at 7 widths (320–1536); broken-image fallback; chart labels; modal width; mobile menu; administrator person/guild/event/chronicle registration and durable edit/save; no unexpected HTTP failures or JS errors.')
+  print('PASS: dialog list-state restoration; favorites overlap/empty search; 10 screens at 7 widths (320–1536); broken-image fallback; chart labels; modal width; desktop menu coordinate clicks at 3 widths; mobile menu; administrator person/guild/event/chronicle registration and durable edit/save; no unexpected HTTP failures or JS errors.')
 asyncio.run(run())
