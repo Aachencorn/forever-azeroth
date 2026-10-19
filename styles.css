@@ -516,3 +516,8 @@ body{background:linear-gradient(180deg,#263136 0%,#20272b 540px);color:var(--tex
 @media(max-width:1250px){.header .nav{gap:8px}.header .logo{flex-basis:110px}.headerLogoArt{width:110px}.links a{font-size:11px;padding:9px 6px}.header .bgmPlayer{display:none}}
 @media(max-width:950px){.header .logo{flex-basis:130px}.headerLogoArt{width:125px}.header .menu{display:block;margin-left:auto}.header .links{display:none;position:absolute;top:78px;left:0;right:0;padding:12px 22px;background:#101c29;box-shadow:0 12px 20px #0009;flex-direction:column;align-items:stretch}.header .links.open{display:flex}.header .links a{padding:13px;font-size:13px}.portalSummary{grid-template-columns:1fr 1fr}.portalSummary .portalPanel:last-child{grid-column:1/-1}.portalMembers{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:600px){.page-home .portalHero,.page-home .portalHeroInner{min-height:285px}.portalSummary{grid-template-columns:1fr}.portalSummary .portalPanel:last-child{grid-column:auto}.portalMembers{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.portalRoster .portalPanelTitle{padding:14px}.portalMembers{padding:0 9px 12px}.portalMembers .member .avatar{width:65px;max-width:90%}.portalBelow{flex-direction:column;align-items:stretch}.portalCount{width:100%}.portalQuick{justify-content:center}}
+
+/* Show a readable fallback until the exact approved logo PNG is uploaded. */
+.headerLogoArt{display:flex;align-items:center;justify-content:center}
+.headerLogoFallback{display:block;color:#f2d39a;font:800 24px 'Noto Sans KR',sans-serif;letter-spacing:-1px;text-shadow:0 2px 3px #000,0 0 8px #b38750}
+@supports (background-image:url('assets/wapobook-logo.png')){.headerLogoArt{background-image:url('assets/wapobook-logo.png')}}
