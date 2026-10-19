@@ -2,33 +2,7 @@ const KEY='forever-azeroth-v1';
 const seed={people:[{id:'wak',name:'우왁굳',race:'미확인',className:'미확인',soop:'',image:'',returning:'unknown',characters:[{id:'wak-main',name:'미확인',level:'',race:'',className:'',spec:'',role:'',guildId:'',main:true}],past:{participated:'unknown',level:'',className:'',spec:'',raids:[]}}],guilds:[],events:[],chronicle:[],reports:[],slots:['wak',...Array(19).fill('')],featuredEvent:'',settings:{siteName:'와포북'}};
 let data;try{data=JSON.parse(localStorage.getItem(KEY))||structuredClone(seed)}catch{data=structuredClone(seed)};
 
-// One-time example data for preview; preserve any existing local edits.
-if(!localStorage.getItem('fa-example-data-20261015')){
-  for(const [id,name] of [['wafo','와포동'],['jindeugi','진드기']]){
-    if(!data.guilds.some(g=>g.name===name))data.guilds.push({id,name,leader:'',total:'',description:'테스트용 길드',verified:''});
-  }
-  const examples=[
-    ['wak','우왁굳','왁두',40,'나이트엘프','도적','잠행','딜러','와포동'],
-    ['aachencorn-demo','아헨콘','아헨콘',50,'스카이본','드루이드','조화','딜러','진드기'],
-    ['neez-demo','니즈','블니즈컨',50,'인간','성기사','보호','탱커','진드기']
-  ];
-  for(const [id,name,nickname,level,race,className,spec,role,guildName] of examples){
-    let p=data.people.find(x=>x.name===name);
-    if(!p){p={id,name,soop:'',image:'',returning:'unknown',characters:[],past:{participated:'unknown',level:'',className:'',spec:'',raids:[]}};data.people.push(p);}
-    if(!Array.isArray(p.characters))p.characters=[];
-    const guildId=data.guilds.find(g=>g.name===guildName).id;
-    const sample={id:id+'-main',name:nickname,level,race,className,spec,role,guildId,main:true};
-    const old=p.characters.find(c=>c.name===nickname);
-    if(!old){
-      if(p.characters.length===1&&p.characters[0].name==='미확인')p.characters=[sample];
-      else {sample.main=p.characters.length===0;p.characters.push(sample);}
-    }
-  }
-  if(!Array.isArray(data.slots))data.slots=['wak',...Array(19).fill('')];
-  data.slots[0]='wak';
-  localStorage.setItem(KEY,JSON.stringify(data));
-  localStorage.setItem('fa-example-data-20261015','yes');
-}
+// Preserve existing saved records. Never insert design-mockup or preview records automatically.
 const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slug=()=>Math.random().toString(36).slice(2,10);
