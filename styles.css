@@ -521,3 +521,41 @@ body{background:linear-gradient(180deg,#263136 0%,#20272b 540px);color:var(--tex
 .headerLogoArt{display:flex;align-items:center;justify-content:center}
 .headerLogoFallback{display:block;color:#f2d39a;font:800 24px 'Noto Sans KR',sans-serif;letter-spacing:-1px;text-shadow:0 2px 3px #000,0 0 8px #b38750}
 @supports (background-image:url('assets/wapobook-logo.png')){.headerLogoArt{background-image:url('assets/wapobook-logo.png')}}
+
+/* Homepage as a single finely bound WAPO BOOK. Keep the content interactive and legible. */
+.page-home{padding-bottom:56px;background:radial-gradient(ellipse at 50% 8%,#34505a 0,#18242b 58%,#131c22 100%)}
+.page-home .portalHero{min-height:270px;background:linear-gradient(180deg,#0d1c29a0,#142b37a6 65%,#1b3034),url('forever-city.webp') center 43%/cover}
+.page-home .portalHeroInner{min-height:270px}
+.page-home .bookShell{position:relative;width:min(1310px,calc(100% - 44px));margin:0 auto 40px;padding:20px 24px 26px 57px;background:linear-gradient(90deg,#3a241a 0,#68412a 2%,#b88b55 3%,#5c3b2b 4.2%,#3d281e 5%,#795139 5.4%,#3c281e 6.1%,#5b3925 97%,#9e7044 98.5%,#2b1c15 100%);border:2px solid #b58a51;border-radius:25px 17px 23px 26px;box-shadow:0 7px 0 #aa885f,0 13px 0 #6e5338,0 19px 0 #c5af88,0 24px 0 #3c2c22,0 36px 46px #050b0fc4;isolation:isolate}
+.page-home .bookShell:before{content:'';position:absolute;inset:10px 9px 12px 49px;border:2px solid #b18a51;border-radius:9px;pointer-events:none;z-index:1}
+.page-home .bookShell:after{content:'✦';position:absolute;right:20px;top:18px;font-size:17px;color:#b68b4e;text-shadow:0 1px #e8c88a;pointer-events:none;z-index:3}
+.page-home .bookBinding{position:absolute;left:13px;top:7%;height:86%;width:32px;border-radius:13px;background:repeating-linear-gradient(0deg,#493022 0 14px,#94623b 15px 20px,#332119 21px 62px);border:2px ridge #b38852;box-shadow:inset 3px 0 5px #1b120e,4px 0 5px #1b120e77}
+.page-home .bookPage{position:relative;z-index:0;padding:32px 29px 38px;background:radial-gradient(ellipse at 45% 8%,#fff3d9 0,#f3e3c1 54%,#e5cda3 100%);border:1px solid #d5bb8d;border-radius:5px 12px 12px 5px;box-shadow:inset 13px 0 24px #9d805333,inset -8px 0 18px #b2926244;min-height:440px;color:#40372c}
+.page-home .bookPage:before{content:'';position:absolute;inset:13px;border:1px solid #ad8a5570;border-radius:3px 7px 7px 3px;pointer-events:none}
+.page-home .bookHeading{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;margin:0 0 27px;text-align:center}
+.page-home .bookHeading span{font:700 10px Cinzel,serif;letter-spacing:3px;color:#8d6c46}
+.page-home .bookHeading strong{font:800 clamp(24px,2.6vw,34px) 'Noto Serif KR',serif;color:#3e3327;letter-spacing:-1px}
+.page-home .bookHeading i{font-style:normal;color:#b38b53;font-size:18px}
+.page-home .portalHome{margin:0}
+.page-home .portalSummary{gap:13px}
+.page-home .portalPanel{background:#fbf1db;border:1px solid #c7ab7b;border-radius:8px;box-shadow:0 2px 6px #6c4a1f13;color:#463829}
+.page-home .portalPanelTitle{border-bottom:1px solid #d5bd96;margin:0 13px;padding:14px 5px 11px}
+.page-home .portalPanelTitle h2{color:#4c3926}
+.page-home .portalPanelTitle a{color:#806037;font-weight:700}
+.page-home .portalPanelBody{padding:13px 17px 18px}
+.page-home .portalEmpty,.page-home .portalNews a,.page-home .portalEvent{background:#f1e2c3;border:1px solid #dfc8a2;color:#554432;box-shadow:none}
+.page-home .portalPanelBody p{color:#756148}
+.page-home .portalNews a span{color:#806037}
+.page-home .portalEvent span{color:#806d53}
+.page-home .portalRoster{margin-top:18px;padding-bottom:0}
+.page-home .portalRoster .portalPanelTitle{margin:0 15px;padding:15px 5px 12px}
+.page-home .rosterNote{color:#85725b}
+.page-home .portalMembers{padding:16px 17px 20px}
+.page-home .portalMembers .member{background:transparent;border:0;box-shadow:none}
+.page-home .portalMembers .member .avatar{background:linear-gradient(145deg,#ded0b4,#c8b28c);border:2px solid #aa8957;box-shadow:0 0 0 3px #eee0c1;color:#6d593c}
+.page-home .portalMembers .member span{color:#46382b}
+.page-home .portalMembers .member.empty .avatar{border-color:#bba987}
+.page-home .portalMembers .member.empty{opacity:.8}
+.page-home .portalSearch{border-color:#c9a471}
+@media(max-width:950px){.page-home .bookShell{padding:15px 15px 19px 39px}.page-home .bookBinding{left:8px;width:24px}.page-home .bookShell:before{left:34px}.page-home .bookPage{padding:25px 18px 30px}}
+@media(max-width:600px){.page-home{padding-bottom:36px}.page-home .portalHero,.page-home .portalHeroInner{min-height:220px}.page-home .bookShell{width:calc(100% - 20px);padding:9px 9px 14px 22px;border-radius:12px;margin-bottom:25px}.page-home .bookBinding{left:3px;width:15px}.page-home .bookShell:before{inset:5px 4px 8px 17px}.page-home .bookPage{padding:25px 12px 22px}.page-home .bookHeading{margin-bottom:18px}.page-home .bookHeading span{font-size:8px;letter-spacing:1px}.page-home .portalPanelTitle{margin:0 8px}.page-home .portalPanelTitle h2{font-size:13px}.page-home .portalPanelBody{padding:11px}.page-home .portalMembers{padding:10px 6px 15px}.page-home .portalMembers .member span{font-size:10px}}
