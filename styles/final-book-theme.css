@@ -1,0 +1,20 @@
+/* Final Wafobook art direction — additive, non-destructive theme foundation.
+   Source references: ten approved 1536px book-layout mockups.
+   No example data or persistence logic is changed here. */
+:root{
+ --book-leather:#28150e;--book-leather-deep:#100b09;
+ --book-parchment:#e8bd7f;--book-ink:#28190f;
+ --book-gold:#d8a14e;--book-gold-bright:#ffcf77;
+ --book-sapphire:#168cc5;
+}
+body{background:radial-gradient(ellipse at 50% 0,#382215 0,#100b09 65%,#070607 100%);}
+.header{background:linear-gradient(180deg,#24160fee,#090909f7);border-bottom:2px solid #a56a2f;box-shadow:0 4px 16px #0009;}
+.logo{color:#f4bd64;text-shadow:0 2px 0 #432008,0 0 18px #b36c28;}
+.links a.active{color:#ffcc77;text-shadow:0 0 12px #e8a24a;}
+.hero{border:2px solid #855020;border-radius:14px;box-shadow:inset 0 0 0 3px #20100b,0 9px 25px #0008;}
+.hero h1{color:#ffe0a2;text-shadow:0 3px 3px #180e0a,0 0 15px #000;}
+.btn{background:linear-gradient(180deg,#f3c77b,#b67b36);border:1px solid #73431c;color:#25140a;box-shadow:inset 0 1px #ffe2a7,0 2px 5px #0005;}
+.btn.secondary{background:linear-gradient(#39271b,#1c130f);color:#f2d39d;border-color:#9c682d;}
+.heroSearch,.searchtop{background:#09131be8;border:1px solid #d09a4d;box-shadow:0 0 0 2px #28160c,0 0 12px #9c5b2640;}
+:focus-visible{outline:3px solid #f6c46b;outline-offset:3px;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important;}}
