@@ -42,7 +42,7 @@ async def run():
   # Click the painted desktop menu centers rather than navigating by URL.
   for width in [1536,1366,1100]:
    await p.set_viewport_size({'width':width,'height':1024})
-   for href in ['#/adventurers','#/guilds','#/world','#/updates','#/events','#/chronicle','#/favorites','#/live','#/']:
+   for href in ['#/adventurers','#/guilds','#/world','#/updates','#/chronicle','#/favorites','#/live','#/']:
     await p.goto(BASE+'/#/');await p.wait_for_timeout(30)
     a=p.locator('.header .links a[href="'+href+'"]')
     r=await a.bounding_box();assert r and r['height']>=44,('Collapsed menu hit target',width,href,r)

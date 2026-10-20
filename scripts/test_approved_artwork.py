@@ -24,7 +24,7 @@ async def run():
    shot=Image.open(io.BytesIO(await p.screenshot())).convert('RGB');original=Image.open(SOURCE/manifest[key]['source']).convert('RGB').resize((1536,1024),Image.Resampling.BILINEAR)
    regions={'common-header-frame':(330,0,1465,34),'binding':(0,128,60,1015),'right-frame':(1498,128,1536,1015),'banner':(90,160,950,245) if key=='live' else (90,160,950,260) if key=='favorites' else (90,160,950,285) if key!='home' else (90,160,1460,310)}
    for label,rect in regions.items():
-    expected=home_header if label=="common-header-frame" else original
+    expected=home_header if label in ["common-header-frame","binding"] else original
     diff=ImageChops.difference(expected.crop(rect),shot.crop(rect));error=sum(ImageStat.Stat(diff).mean)/3
     assert error<2.0,(key,label,error)
     results.append({'page':key,'area':label,'mean_absolute_rgb_error':round(error,4)})

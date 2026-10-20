@@ -32,14 +32,14 @@ function applyApprovedArtwork(){
 // Every route uses the home navigation, including detail and administrator routes.
 function applyUnifiedHeader(){
  document.body.classList.add('unifiedHeader');
- const items=[['/','⌂ 홈'],['/adventurers','▣ 모험가 도감'],['/guilds','♜ 길드 도감'],['/world','◉ 월드 현황'],['/updates','▤ 포에버 소식'],['/events','♜ 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기'],['/live','● 라이브']];
+ const items=[['/','⌂ 홈'],['/adventurers','▣ 모험가 도감'],['/guilds','♜ 길드 도감'],['/world','◉ 월드 현황'],['/updates','▤ 포에버 소식 · 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기'],['/live','● 라이브']];
  let current=route();
  if(current.startsWith('/adventurer/'))current='/adventurers';
  if(current.startsWith('/guild/'))current='/guilds';
- if(current==='/news')current='/updates';
+ if(['/news','/events'].includes(current)||current.startsWith('/event/'))current='/updates';
  const links=document.querySelector('.header .links');
  links.classList.remove('splitNavigation');
- links.innerHTML=items.map(([href,label])=>`<a href="#${href}" title="${label.replace(/^[^ ]+ /,'')}" ${current===href?'aria-current="page"':''}>${label}</a>`).join('');
+ links.innerHTML=items.map(([href,label])=>`<a href="#${href}" title="${label.replace(/^[^ ]+ /,'')}" ${current===href?'aria-current="page"':''}>${href==='/live'?'<span class="navLiveDot" aria-hidden="true"></span>라이브':label}</a>`).join('');
  document.querySelector('.logo')?.setAttribute('aria-label','와포북 홈');
  const menu=document.querySelector('.header .menu');
  menu.setAttribute('aria-label','전체 메뉴');menu.setAttribute('aria-controls','navlinks');menu.setAttribute('aria-expanded','false');

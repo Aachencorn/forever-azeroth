@@ -390,7 +390,7 @@
 .unifiedHeader .header .logo::after { content:'';position:absolute;left:12.8%;top:41.1%;width:5.2%;height:12.5%;border-radius:50%;background:radial-gradient(ellipse at 65% 65%,#42321e,#17130d 75%);box-shadow:inset 1px 1px 2px #080705;pointer-events:none; }
 .unifiedHeader .header .headerLogoArt { display:block!important;position:absolute;inset:0!important;opacity:1;mix-blend-mode:normal;background:url('../assets/approved/home.webp') 6.17284% 0 /640% 660.64516% no-repeat!important;clip-path:polygon(0 26%,15% 26%,15% 8%,40% 8%,50% 0,60% 8%,82% 8%,82% 26%,100% 26%,100% 81%,71% 81%,64% 91%,52% 100%,39% 91%,33% 81%,0 81%); }
 .unifiedHeader .headerLogoFallback { display:none; }
-.unifiedHeader .header .links { position:absolute;left:21.5%;right:6.2%;top:33%;width:auto;height:56%;display:grid;grid-template-columns:90fr 162fr 125fr 124fr 146fr 103fr 111fr 113fr 136fr;grid-template-rows:minmax(0,1fr);align-content:stretch;align-items:stretch;gap:0;padding:0;border:0;border-radius:4px;background:#121314;box-shadow:none; }
+.unifiedHeader .header .links { position:absolute;left:21.5%;right:6.2%;top:33%;width:auto;height:56%;display:grid;grid-template-columns:90fr 162fr 125fr 124fr 249fr 111fr 113fr 136fr;grid-template-rows:minmax(0,1fr);align-content:stretch;align-items:stretch;gap:0;padding:0;border:0;border-radius:4px;background:#121314;box-shadow:none; }
 .unifiedHeader .header .links a { display:flex;align-items:center;justify-content:center;align-self:stretch;height:100%;min-height:44px;min-width:0;padding:0 3px;border:1px solid transparent!important;border-radius:5px;font-size:clamp(10px,.96vw,15px);line-height:1.25;white-space:nowrap;color:#e4c287!important;background:transparent!important;box-shadow:none!important;text-shadow:0 1px 2px #000;cursor:pointer; }
 .unifiedHeader .header .links a:hover,.unifiedHeader .header .links a[aria-current="page"] { border-color:#bc8738!important;background:linear-gradient(#59401e88,#2a1b0c88)!important;color:#ffe4ad!important;box-shadow:inset 0 0 8px #b57e2a33!important; }
 .unifiedHeader .header .menu { display:none; }
@@ -420,3 +420,19 @@
 .unifiedHeader .header .headerLogoArt { mix-blend-mode:lighten; }
 .unifiedHeader .header .logo { mix-blend-mode:lighten;filter:none!important; }
 .unifiedHeader .header .headerLogoArt { clip-path:polygon(50% 0,55% 10%,65% 14%,74% 25%,77% 31%,95% 31%,95% 48%,100% 53%,96% 66%,96% 84%,75% 84%,65% 92%,52% 100%,40% 92%,29% 84%,4% 84%,1% 75%,5% 63%,5% 42%,13% 36%,26% 32%,29% 23%,38% 14%,46% 10%); }
+
+/* One binding asset and one news/events entry on every page. */
+.unifiedHeader #app::before { content:'';display:block;position:absolute;top:0;bottom:0;left:0;width:3.90625%;z-index:35;border:0;border-radius:0;box-shadow:none;pointer-events:none;background:url('../assets/approved/home.webp') left top/2560% auto repeat-y; }
+@media(min-width:1100px) {
+ .unifiedHeader.approvedDesign #app::before { bottom:auto;height:min(66.666667vw,1024px); }
+}
+@media(max-width:1099px) {
+ .unifiedHeader #app::before { width:18px;background-size:460.8px auto; }
+}
+.unifiedHeader .header .links .navLiveDot { display:inline-block;flex:0 0 auto;width:10px;height:10px;margin-right:7px;border-radius:50%;background:#ef4444;color:#ef4444;box-shadow:0 0 8px #ef444466; }
+@media(min-width:1100px) {
+ .unifiedHeader.approvedDesign #app::before { background-size:2560% 100%;background-repeat:no-repeat; }
+}
+@media(max-width:1099px) {
+ .unifiedHeader .header .links a[href="#/updates"] { grid-column:1/-1; }
+}
