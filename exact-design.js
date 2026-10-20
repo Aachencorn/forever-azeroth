@@ -6,6 +6,7 @@ layout=function(body){approvedLayout(body);applyApprovedArtwork()};
 function applyApprovedArtwork(){
  const page=document.querySelector('main'),key=page?.className.match(/page-(\w+)/)?.[1],asset=approvedPages[key];
  document.body.classList.toggle('approvedDesign',Boolean(asset));
+ applyUnifiedHeader();
  if(!asset)return;
  const root=document.getElementById('app');root.style.setProperty('--approved',`url('${new URL('assets/approved/'+asset+'.webp',document.baseURI).href}')`);root.dataset.reference=asset;
  // Replace the whole inner paper surface, following its rounded book edges.
@@ -16,14 +17,7 @@ function applyApprovedArtwork(){
  const shapes=asset==='home'?
   '<rect x=".092" y=".551" width=".271" height=".096" rx=".003"/><rect x=".379" y=".551" width=".273" height=".096" rx=".003"/><rect x=".663" y=".551" width=".28" height=".096" rx=".003"/><rect x=".094" y=".671" width=".85" height=".263" rx=".012"/>' : sheet(.066,.491)+sheet(.52,right);
  const tiles='<div class="paperLeaf"></div>';
- root.insertAdjacentHTML('afterbegin',`<svg class="artMaskDefinitions" aria-hidden="true"><defs><filter id="paperEdgeBlend" x="-.05" y="-.05" width="1.1" height="1.1" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".003"/></filter><mask id="approvedDecorMask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox" style="mask-type:luminance"><rect width="1" height="1" fill="white"/><g fill="black" filter="url(#paperEdgeBlend)">${shapes}</g></mask></defs></svg><div class="approvedPaper" aria-hidden="true">${tiles}${tiles}</div><div class="approvedArtwork" aria-hidden="true"></div>`);
- const links=document.querySelector('.header .links');
- // Retain accessible real links over the original navigation artwork.
- const split=['home','adventurers','guilds','world'].includes(asset);
- const items=[['/','⌂ 홈'],['/adventurers','▣ 모험가 도감'],['/guilds','♜ 길드 도감'],['/world','◉ 월드 현황'],['/updates',split?'▤ 포에버 소식':'▤ 포에버 소식 · 이벤트'],...(split?[['/events','♜ 이벤트']]:[]),['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기'],['/live','● 라이브']];
- if(asset==='live')items.splice(-2,2,['/live','● 라이브'],['/favorites','☆ 즐겨찾기']);
- links.innerHTML=items.map(([href,label])=>`<a href="#${href}" title="${label.replace(/^[^ ]+ /,'')}" ${route()===href?'aria-current="page"':''}>${label}</a>`).join('');links.classList.toggle('splitNavigation',split);
- document.querySelector('.logo')?.setAttribute('aria-label','와포북 홈');
+ root.insertAdjacentHTML('afterbegin',`<svg class="artMaskDefinitions" aria-hidden="true"><defs><filter id="paperEdgeBlend" x="-.05" y="-.05" width="1.1" height="1.1" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".003"/></filter><mask id="approvedDecorMask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox" style="mask-type:luminance"><rect width="1" height="1" fill="white"/><rect width="1" height=".125" fill="black"/><g fill="black" filter="url(#paperEdgeBlend)">${shapes}</g></mask></defs></svg><div class="approvedPaper" aria-hidden="true">${tiles}${tiles}</div><div class="approvedArtwork" aria-hidden="true"></div>`);
  root.querySelectorAll('img').forEach(img=>{img.classList.add('archiveImage');if(img.complete&&img.naturalWidth>0)img.classList.add('imageReady');else img.addEventListener('load',()=>img.classList.add('imageReady'),{once:true})});
  const controls=document.querySelector('.wapControls');if(controls)page.appendChild(controls);
  document.querySelectorAll('.wapLeaf').forEach(leaf=>leaf.classList.add('approvedLeaf'));
@@ -34,6 +28,23 @@ function applyApprovedArtwork(){
   card.insertAdjacentHTML('beforeend',`<span class="classSeal" style="--seal:${color}" aria-hidden="true">${symbol}</span>`);
  });
  const search=document.querySelector('.bookSearch input');if(search)search.placeholder=asset==='guilds'?'길드명을 검색해보세요.':'이름, 캐릭터명, 길드명으로 검색해보세요.';
+}
+// Every route uses the home navigation, including detail and administrator routes.
+function applyUnifiedHeader(){
+ document.body.classList.add('unifiedHeader');
+ const items=[['/','⌂ 홈'],['/adventurers','▣ 모험가 도감'],['/guilds','♜ 길드 도감'],['/world','◉ 월드 현황'],['/updates','▤ 포에버 소식'],['/events','♜ 이벤트'],['/chronicle','▤ 연대기'],['/favorites','☆ 즐겨찾기'],['/live','● 라이브']];
+ let current=route();
+ if(current.startsWith('/adventurer/'))current='/adventurers';
+ if(current.startsWith('/guild/'))current='/guilds';
+ if(current==='/news')current='/updates';
+ const links=document.querySelector('.header .links');
+ links.classList.remove('splitNavigation');
+ links.innerHTML=items.map(([href,label])=>`<a href="#${href}" title="${label.replace(/^[^ ]+ /,'')}" ${current===href?'aria-current="page"':''}>${label}</a>`).join('');
+ document.querySelector('.logo')?.setAttribute('aria-label','와포북 홈');
+ const menu=document.querySelector('.header .menu');
+ menu.setAttribute('aria-label','전체 메뉴');menu.setAttribute('aria-controls','navlinks');menu.setAttribute('aria-expanded','false');
+ menu.onclick=()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))};
+ links.addEventListener('keydown',e=>{if(e.key==='Escape'){links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
 }
 const approvedShowModal=showBookModal;
 showBookModal=function(markup,kind){

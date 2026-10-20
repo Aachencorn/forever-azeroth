@@ -13,6 +13,7 @@ async def run():
  for key,item in manifest.items():
   original=Image.open(SOURCE/item['source']).convert('RGB');asset=Image.open(ROOT/f'assets/approved/{key}.webp').convert('RGB')
   assert original.size==asset.size and ImageChops.difference(original,asset).getbbox() is None,('Changed original pixels',key)
+ home_header=Image.open(SOURCE/manifest["home"]["source"]).convert("RGB").resize((1536,1024),Image.Resampling.BILINEAR)
  results=[]
  async with async_playwright() as pw:
   b=await pw.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);p=await b.new_page(viewport={'width':1536,'height':1024},device_scale_factor=1)
@@ -21,9 +22,10 @@ async def run():
    await p.evaluate('''async()=>{let i=new Image();i.src=getComputedStyle(document.querySelector('.approvedArtwork')).backgroundImage.slice(5,-2);await i.decode();await document.fonts.ready}''')
    await p.wait_for_timeout(50)
    shot=Image.open(io.BytesIO(await p.screenshot())).convert('RGB');original=Image.open(SOURCE/manifest[key]['source']).convert('RGB').resize((1536,1024),Image.Resampling.BILINEAR)
-   regions={'header':(70,0,1465,124),'binding':(0,0,60,1015),'right-frame':(1498,0,1536,1015),'banner':(90,110,950,245) if key=='live' else (90,145,950,260) if key=='favorites' else (90,145,950,285) if key!='home' else (90,145,1460,310)}
+   regions={'common-header-frame':(330,0,1465,34),'binding':(0,128,60,1015),'right-frame':(1498,128,1536,1015),'banner':(90,160,950,245) if key=='live' else (90,160,950,260) if key=='favorites' else (90,160,950,285) if key!='home' else (90,160,1460,310)}
    for label,rect in regions.items():
-    diff=ImageChops.difference(original.crop(rect),shot.crop(rect));error=sum(ImageStat.Stat(diff).mean)/3
+    expected=home_header if label=="common-header-frame" else original
+    diff=ImageChops.difference(expected.crop(rect),shot.crop(rect));error=sum(ImageStat.Stat(diff).mean)/3
     assert error<2.0,(key,label,error)
     results.append({'page':key,'area':label,'mean_absolute_rgb_error':round(error,4)})
   # Check reference coordinate alignment of real cards, with no mockup registration.
