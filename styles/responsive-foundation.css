@@ -20,12 +20,6 @@ button, input, select, textarea { max-width: 100%; }
 }
 /* Tablet and small laptop: real reflow, not a scaled desktop screenshot. */
 @media (max-width: 1099px) {
-  body.unifiedHeader .header,
-  body.unifiedHeader.approvedDesign .header {
-    min-height: 76px;
-    height: 76px;
-  }
-  body.unifiedHeader .header .links { max-height: calc(100dvh - 76px); }
   .wapBook, .portalHome, .bookShell { max-width: 100%; }
   .wapLeaf, .portalPanel { min-width: 0; }
   .wapDetailRow, .wapGuildNumbers { overflow-wrap: anywhere; }
