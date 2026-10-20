@@ -1,49 +1,69 @@
 {
   "lossless_originals": 10,
-  "decorative_comparisons": [
+  "common_book_comparisons": [
     {
       "page": "home",
-      "area": "header",
-      "mean_absolute_rgb_error": 0.6595
-    },
-    {
-      "page": "home",
-      "area": "binding",
-      "mean_absolute_rgb_error": 0.6582
-    },
-    {
-      "page": "home",
-      "area": "right-frame",
-      "mean_absolute_rgb_error": 0.4859
-    },
-    {
-      "page": "home",
-      "area": "banner",
-      "mean_absolute_rgb_error": 0.5208
-    },
-    {
-      "page": "adventurers",
-      "area": "header",
+      "area": "book-top",
       "mean_absolute_rgb_error": 0.0
     },
     {
-      "page": "adventurers",
+      "page": "home",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "home",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "home",
       "area": "binding",
+      "mean_absolute_rgb_error": 0.0056
+    },
+    {
+      "page": "home",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "adventurers",
-      "area": "right-frame",
+      "area": "book-top",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "adventurers",
-      "area": "banner",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "guilds",
-      "area": "header",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "book-right",
       "mean_absolute_rgb_error": 0.0
     },
     {
@@ -53,17 +73,22 @@
     },
     {
       "page": "guilds",
-      "area": "right-frame",
-      "mean_absolute_rgb_error": 0.0
-    },
-    {
-      "page": "guilds",
-      "area": "banner",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "world",
-      "area": "header",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "book-right",
       "mean_absolute_rgb_error": 0.0
     },
     {
@@ -73,17 +98,22 @@
     },
     {
       "page": "world",
-      "area": "right-frame",
-      "mean_absolute_rgb_error": 0.0
-    },
-    {
-      "page": "world",
-      "area": "banner",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "news",
-      "area": "header",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "book-right",
       "mean_absolute_rgb_error": 0.0
     },
     {
@@ -93,17 +123,47 @@
     },
     {
       "page": "news",
-      "area": "right-frame",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
-      "page": "news",
-      "area": "banner",
+      "page": "events",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "chronicle",
-      "area": "header",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "book-right",
       "mean_absolute_rgb_error": 0.0
     },
     {
@@ -113,17 +173,22 @@
     },
     {
       "page": "chronicle",
-      "area": "right-frame",
-      "mean_absolute_rgb_error": 0.0
-    },
-    {
-      "page": "chronicle",
-      "area": "banner",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "favorites",
-      "area": "header",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.1097
+    },
+    {
+      "page": "favorites",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "book-right",
       "mean_absolute_rgb_error": 0.0
     },
     {
@@ -133,17 +198,22 @@
     },
     {
       "page": "favorites",
-      "area": "right-frame",
-      "mean_absolute_rgb_error": 0.0
-    },
-    {
-      "page": "favorites",
-      "area": "banner",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     },
     {
       "page": "live",
-      "area": "header",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "book-right",
       "mean_absolute_rgb_error": 0.0
     },
     {
@@ -153,12 +223,7 @@
     },
     {
       "page": "live",
-      "area": "right-frame",
-      "mean_absolute_rgb_error": 0.0
-    },
-    {
-      "page": "live",
-      "area": "banner",
+      "area": "book-bottom",
       "mean_absolute_rgb_error": 0.0
     }
   ],

@@ -9,15 +9,14 @@ function applyApprovedArtwork(){
  applyUnifiedHeader();
  if(!asset)return;
  const root=document.getElementById('app');root.style.setProperty('--approved',`url('${new URL('assets/approved/'+asset+'.webp',document.baseURI).href}')`);root.dataset.reference=asset;
- // Replace the whole inner paper surface, following its rounded book edges.
- // Narrow screenshot cut-outs left visible rectangular seams inside the pages.
- const top=asset==='live'?.257:asset==='favorites'?.27:.306;
- const right=['live','favorites'].includes(asset)?.967:.941;
- const sheet=(left,end)=>`<path d="M ${left+.027} ${top} Q ${left} ${top} ${left} ${top+.026} L ${left} .941 Q ${left} .969 ${left+.027} .969 L ${end-.024} .969 Q ${end} .969 ${end} .941 L ${end} ${top+.027} Q ${end} ${top} ${end-.025} ${top} Z"/>`;
- const shapes=asset==='home'?
-  '<rect x=".092" y=".551" width=".271" height=".096" rx=".003"/><rect x=".379" y=".551" width=".273" height=".096" rx=".003"/><rect x=".663" y=".551" width=".28" height=".096" rx=".003"/><rect x=".094" y=".671" width=".85" height=".263" rx=".012"/>' : sheet(.066,.491)+sheet(.52,right);
- const tiles='<div class="paperLeaf"></div>';
- root.insertAdjacentHTML('afterbegin',`<svg class="artMaskDefinitions" aria-hidden="true"><defs><linearGradient id="naturalPageEdge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="black" stop-opacity="0"/><stop offset=".35" stop-color="black"/></linearGradient><filter id="paperEdgeBlend" x="-.05" y="-.05" width="1.1" height="1.1" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".003"/></filter><mask id="approvedDecorMask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox" style="mask-type:luminance"><rect width="1" height="1" fill="white"/><rect width="1" height=".125" fill="black"/><g fill="black" filter="url(#paperEdgeBlend)">${shapes}</g>${asset==='home'?'':'<rect x=".04" y=".865" width=".94" height=".135" fill="url(#naturalPageEdge)"/>'}</mask></defs></svg><div class="approvedPaper" aria-hidden="true">${tiles}${tiles}</div><div class="approvedArtwork" aria-hidden="true"></div>`);
+ // Only the scenery/title band changes. Every route shares the complete blank book.
+ const crop=asset==='home'?[80,145,1395,173]:asset==='favorites'?[80,120,1395,143]:asset==='live'?[80,120,1395,129]:[80,145,1395,156];
+ const mobileScene=asset==='live'||asset==='home'?'world':asset==='news'?'events':asset;
+ root.style.setProperty('--mobile-banner',`url('${new URL('assets/banner-'+mobileScene+'.jpg',document.baseURI).href}')`);
+ const [x,y,w,h]=crop;
+ root.style.setProperty('--banner-size',`${1536/w*100}% ${1024/h*100}%`);
+ root.style.setProperty('--banner-position',`${x/(1536-w)*100}% ${y/(1024-h)*100}%`);
+ root.insertAdjacentHTML('afterbegin','<div class="approvedPaper" aria-hidden="true"></div><div class="approvedArtwork" aria-hidden="true"></div>');
  root.querySelectorAll('img').forEach(img=>{img.classList.add('archiveImage');if(img.complete&&img.naturalWidth>0)img.classList.add('imageReady');else img.addEventListener('load',()=>img.classList.add('imageReady'),{once:true})});
  const controls=document.querySelector('.wapControls');if(controls)page.appendChild(controls);
  document.querySelectorAll('.wapLeaf').forEach(leaf=>leaf.classList.add('approvedLeaf'));

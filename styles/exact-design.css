@@ -487,3 +487,62 @@
 @media(min-width:1100px) {
  .approvedDesign #app:not([data-reference="home"]) .approvedPaper { inset:0;background:url('../assets/wapobook/clean-open-book.webp') center/100% 100% no-repeat;background-blend-mode:normal; }
 }
+
+/* One complete book, with no page-specific decorative masks or border slices. */
+@media(min-width:1100px) {
+ .approvedDesign #app[data-reference] .approvedPaper { display:block;inset:0;background:url('../assets/wapobook/clean-open-book.webp') center/100% 100% no-repeat;background-blend-mode:normal; }
+ .approvedDesign #app[data-reference] .approvedArtwork { display:block;inset:auto;left:5.208333%;top:12.5%;width:90.820313%;height:16.894531%;background-image:var(--approved);background-size:var(--banner-size);background-position:var(--banner-position);background-repeat:no-repeat;mask:none!important; }
+ .approvedDesign .pageContent .wrap.wapBook { left:calc(var(--u) * 124);width:calc(var(--u) * 1290);gap:calc(var(--u) * 72); }
+ .approvedDesign .page-live .wrap.wapBook { top:calc(var(--u) * 379);height:calc(var(--u) * 575); }
+ .approvedDesign .liveGrid { height:calc(var(--u) * 575); }
+ .approvedDesign .page-live .wapControls { left:calc(var(--u) * 130);top:calc(var(--u) * 326);width:calc(var(--u) * 1280);height:calc(var(--u) * 44); }
+ .approvedDesign .page-favorites .wrap.wapBook { left:calc(var(--u) * 124);top:calc(var(--u) * 434);width:calc(var(--u) * 1290);height:calc(var(--u) * 520);gap:calc(var(--u) * 72); }
+ .approvedDesign .favoriteGrid { height:calc(var(--u) * 520); }
+ .approvedDesign .page-favorites .wapControls { left:calc(var(--u) * 130);top:calc(var(--u) * 326);width:calc(var(--u) * 1280);height:calc(var(--u) * 94); }
+ .approvedDesign .page-live .bookSort label { display:block; }
+ .approvedDesign .page-live .bookSearch,.approvedDesign .page-home .portalSearch { left:calc(var(--u) * 1014);top:calc(var(--u) * 235);width:calc(var(--u) * 424);height:calc(var(--u) * 48);padding:0;border:2px solid #b38a43;background:#07131bef;border-radius:30px;box-shadow:0 1px 4px #0006; }
+ .approvedDesign .page-favorites .bookSearch { left:calc(var(--u) * 1047);top:calc(var(--u) * 244);width:calc(var(--u) * 415);height:calc(var(--u) * 44); }
+ .approvedDesign .page-live .bookSearch input { left:12%;width:82%;color:#e9d8b9; }
+ .approvedDesign .page-live .bookSearch input::placeholder { color:#b6b6ae; }
+ .approvedDesign .page-live .bookSearch::before { border-color:#c4984e; }
+ .approvedDesign .page-live .bookSearch::after { background:#c4984e; }
+ .approvedDesign .page-home .portalSearch input { left:12%;width:82%;font-size:calc(var(--u) * 13); }
+ .approvedDesign .page-home .portalSearch .btn { left:2%;width:9%; }
+ .approvedDesign .portalSummary { left:calc(var(--u) * 124);top:calc(var(--u) * 334);width:calc(var(--u) * 1290);height:calc(var(--u) * 180);gap:calc(var(--u) * 16); }
+ .approvedDesign .portalSummary .portalPanel { background:linear-gradient(110deg,#342619,#211b13)!important;border:2px ridge #af8245;border-radius:7px;box-shadow:0 2px 3px #52331477; }
+ .approvedDesign .portalSummary .portalPanelTitle { height:30%;padding:calc(var(--u) * 12) calc(var(--u) * 10);border-bottom:1px solid #9b6e3455; }
+ .approvedDesign .portalSummary .portalPanelTitle h2 { opacity:1;color:#e7c782;font-size:calc(var(--u) * 15); }
+ .approvedDesign .portalSummary .portalPanelTitle>a { color:#d2b271!important;font-size:calc(var(--u) * 11);width:auto;height:auto;right:3%;top:32%; }
+ .approvedDesign .portalSummary .portalPanelBody { background:none;padding:calc(var(--u) * 10); }
+ .approvedDesign .page-home .portalRoster { left:calc(var(--u) * 124);top:calc(var(--u) * 540);width:calc(var(--u) * 1290);height:calc(var(--u) * 390);background:none!important; }
+ .approvedDesign .page-home .portalMembers { top:20%;height:76%; }
+}
+@media(max-width:1099px) {
+ .approvedDesign .wapBook,.approvedDesign .portalHome { border-image:url('../assets/wapobook/clean-open-book.webp') 32 60 35 70 stretch!important;border-style:solid;border-width:15px!important;background:url('../assets/wapobook/person-parchment.webp') center/110% 120% no-repeat!important; }
+ .approvedDesign .page-home .portalRoster { background:none!important; }
+}
+/* Guild detail uses the same paper, gold corners and blue gems as the main book. */
+.approvedDesign .guildBookModal .approvedModalPaper { background:url('../assets/wapobook/clean-open-book.webp') 58.8235% 95.5414%/109.7143% 144.2254% no-repeat!important; }
+@media(min-width:1100px) {
+ /* Scene crops never carry over the old logo or the old book's top ornaments. */
+ .approvedDesign #app[data-reference] .approvedArtwork { clip-path:polygon(17% 0,100% 0,100% 100%,0 100%,0 21%,17% 21%);mask-image:linear-gradient(#000 0%,#000 87%,transparent 98%)!important; }
+ .approvedDesign .page-guilds .wapControls { top:calc(var(--u) * 326); }
+}
+@media(min-width:1100px) {
+ .approvedDesign #app[data-reference] .approvedArtwork { clip-path:none; }
+ .approvedDesign .pageContent .pageHero { isolation:auto; }
+ .approvedDesign .pageContent .bookSearch,.approvedDesign .page-home .portalSearch { left:calc(var(--u) * 1008);top:calc(var(--u) * 224);width:calc(var(--u) * 460);height:calc(var(--u) * 64);padding:0;border:2px solid #b38a43;border-radius:32px;background:#07131bf7;box-shadow:0 1px 4px #0006; }
+ .approvedDesign .bookSearch input,.approvedDesign .page-live .bookSearch input,.approvedDesign .portalSearch input { left:13%;top:20%;width:82%;height:60%;background:none;color:#e9d8b9;font-size:calc(var(--u) * 14); }
+ .approvedDesign .bookSearch::before,.approvedDesign .portalSearch::before { content:'';position:absolute;left:calc(var(--u) * 20);top:calc(var(--u) * 21);width:calc(var(--u) * 14);height:calc(var(--u) * 14);border:2px solid #c4984e;border-radius:50%;pointer-events:none; }
+ .approvedDesign .bookSearch::after,.approvedDesign .portalSearch::after { content:'';position:absolute;left:calc(var(--u) * 33);top:calc(var(--u) * 36);width:calc(var(--u) * 11);height:2px;background:#c4984e;transform:rotate(45deg);pointer-events:none; }
+}
+@media(min-width:1100px) {
+ .approvedDesign .liveScenery { height:calc(var(--u) * 72); }
+}
+@media(max-width:1099px) {
+ .approvedDesign .wapBook,.approvedDesign .portalHome { border-style:solid!important; }
+}
+@media(max-width:1099px) {
+ /* Plain scenery keeps the small-screen banner free of baked-in book controls. */
+ .approvedDesign .pageContent .pageHero::before { background-image:var(--mobile-banner)!important;background-size:cover!important;background-position:center!important; }
+}
