@@ -48,13 +48,15 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 /* Nine-slice preserves the parchment edge and grain at every panel proportion. */
 .tavernPanel::after {content:'';position:absolute;inset:-3px;z-index:-1;border:12px solid transparent;border-image:url('../assets/tavern/parchment-panel.webp') 52 fill stretch;filter:drop-shadow(0 4px 5px #0008);pointer-events:none;}
 .tavernLive::after {inset:0;border-width:12px;filter:drop-shadow(0 1px 2px #22120566);}
+.tavernNews::before,.tavernEvents::before,.tavernWorld::before {content:'';position:absolute;inset:-3px;z-index:-2;border:6px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/900px auto;box-shadow:0 3px 8px #0007;pointer-events:none;}
+.tavernNews::after,.tavernEvents::after,.tavernWorld::after {inset:2px;}
 .tavernPanelTitle {display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;padding:14px 18px 8px;}
 .tavernPanelTitle h2 {font-family:'Batang',Georgia,serif;font-size:18px;font-weight:800;line-height:1.4;letter-spacing:-.4px;margin:0;}
 .tavernPanelTitle>a {flex-shrink:0;color:#614021;font-size:10px;white-space:nowrap;}
 .tavernPanelTitle>a:hover {text-decoration:underline;}
 .tavernPanelBody {padding:0 18px 14px;}
-.tavernLive {align-self:stretch;position:relative;background:#352215 url('../assets/tavern/wood-grain.svg') center/cover;border:9px solid #4c321b;border-radius:3px;display:flex;flex-direction:column;box-shadow:0 0 0 1px #b98a47,0 8px 14px #0009;}
-.tavernLive::before,.tavernRoster::before {content:'';position:absolute;inset:-8px;border:1px solid #b08a4e;pointer-events:none;clip-path:polygon(0 0,18px 0,18px 2px,2px 2px,2px 18px,0 18px,0 0,100% 0,100% 18px,calc(100% - 2px) 18px,calc(100% - 2px) 2px,calc(100% - 18px) 2px,calc(100% - 18px) 0,100% 0,100% 100%,calc(100% - 18px) 100%,calc(100% - 18px) calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) calc(100% - 18px),100% calc(100% - 18px),100% 100%,0 100%,0 calc(100% - 18px),2px calc(100% - 18px),2px calc(100% - 2px),18px calc(100% - 2px),18px 100%,0 100%);}
+.tavernLive {align-self:stretch;position:relative;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/max(900px,130%) auto;border:9px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;border-radius:3px;display:flex;flex-direction:column;box-shadow:0 0 0 1px #b98a47,0 8px 14px #0009;}
+.tavernLive::before,.tavernRoster::before {content:none;}
 .tavernLive .tavernPanelTitle {justify-content:center;padding:8px 8px 6px;}
 .tavernLive .tavernPanelTitle>a {display:none;}
 .tavernLive .tavernPanelBody {padding:0 15px 12px;display:flex;flex-direction:column;flex:1;}
@@ -72,9 +74,8 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 .tavernEmpty>span {font-size:35px;color:#8d683a;opacity:.6;}
 .tavernEmpty p {font-size:12px;margin:10px 0;}.tavernEmpty small {max-width:170px;font-size:11px;line-height:1.7;color:#856441;}
 .tavernWelcome {display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;padding:20px 0;color:#f9dba1;text-align:center;}
-.tavernWelcomeSign {width:100%;max-width:300px;padding:15px 20px 10px;border:1px solid #9b723b;border-radius:4px;background:linear-gradient(#160e09c9,#28190fd9),url('../assets/tavern/wood-grain.svg') center/cover;box-shadow:0 6px 12px #0009,inset 0 0 0 3px #27170c;transform:rotate(-1deg);}
-.tavernWelcomeSign>p {font-family:Georgia,'Batang',serif;font-size:13px;font-weight:700;line-height:1.7;margin:0 0 8px;text-shadow:0 2px 3px #000;}
-.tavernWelcome h1 {margin:0;line-height:0;}.tavernWelcome h1 img {display:block;width:100%;height:auto;max-height:135px;object-fit:contain;filter:drop-shadow(0 2px 2px #0008);}
+.tavernWelcomeSign {display:flex;align-items:center;justify-content:center;width:100%;max-width:300px;min-height:190px;padding:16px 20px;border:10px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/900px auto;box-shadow:0 6px 12px #0009;transform:rotate(-1deg);}
+.tavernWelcome h1 {margin:0;line-height:0;}.tavernWelcome h1 img {display:block;width:100%;height:auto;max-height:155px;object-fit:contain;filter:drop-shadow(0 2px 2px #0008);}
 .tavernIntroduction {font-family:Georgia,'Batang',serif;font-size:13px;font-weight:600;line-height:1.7;margin:20px 0 0;text-shadow:0 2px 4px #000,0 0 8px #000;}
 .tavernNotices {display:grid;grid-template-rows:minmax(135px,1fr) minmax(135px,1fr);gap:14px;padding-top:8px;}
 .tavernNews ul {margin:0;padding:0;list-style:none;}
@@ -86,7 +87,7 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 .tavernEvent strong {display:block;font-size:11px;line-height:1.5;}.tavernEvent small {display:block;font-size:9px;color:#7c5c33;margin-top:2px;}.tavernEvent b {display:grid;place-items:center;margin-left:auto;flex-shrink:0;width:23px;height:24px;border:1px solid #9d773b;border-radius:3px;background:#352919;color:#e5c486;font-size:21px;}
 .tavernEmptyText {font-size:12px;line-height:1.8;margin:8px 0;color:#745330;}.tavernEmptyText small {font-size:11px;}
 .tavernBottomGrid {display:grid;grid-template-columns:minmax(0,2.15fr) minmax(0,1fr);gap:36px;align-items:stretch;margin-top:20px;}
-.tavernRoster {position:relative;min-width:0;padding:0 10px 10px;border:8px solid #4d311b;border-radius:2px;background:#352215 url('../assets/tavern/wood-grain.svg') center/cover;box-shadow:0 0 0 1px #b28a49,0 5px 15px #0009;}
+.tavernRoster {position:relative;min-width:0;padding:0 10px 10px;border:8px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;border-radius:2px;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/max(900px,130%) auto;box-shadow:0 0 0 1px #b28a49,0 5px 15px #0009;}
 .tavernRoster .tavernPanelTitle {padding:0 4px 8px;color:#f4d390;}.tavernRoster .tavernPanelTitle h2 {font-size:18px;}.tavernRoster .tavernPanelTitle>a {color:#d3b279;}
 .tavernMembers {display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:5px;align-items:start;}
 .tavernMember {display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;color:#efd8a7;}
