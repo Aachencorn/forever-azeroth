@@ -1,0 +1,59 @@
+/* WAPO BOOK desktop usability refinements — 2026-10-20
+   Layout-only overrides; no JS, saved data, or admin logic changed. */
+@media (min-width: 1101px) {
+  /* Use more of the viewport without stretching content infinitely. */
+  .wrap { width: min(1720px, calc(100% - 40px)); }
+  .header .nav { width: min(1780px, calc(100% - 36px)); }
+  .pageContent:not(.page-home) .wrap.wapBook {
+    width: min(1720px, calc(100% - 40px));
+  }
+  .page-home {
+    width: min(1780px, calc(100% - 28px));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-home .bookShell { max-width: none; }
+  .wapControls, .wapChronTabs { max-width: 1640px; }
+}
+/* Slimmer navigation, proportional brand mark, and compact BGM pill. */
+@media (min-width: 951px) {
+  .header { height: 62px; }
+  .header .nav { gap: 10px; }
+  .header .logo { flex: 0 0 115px; }
+  .headerLogoArt { width: 115px; height: 52px; }
+  .header .links { gap: 2px; justify-content: center; }
+  .header .links a { padding: 7px 8px; font-size: clamp(10px, .82vw, 13px); white-space: nowrap; }
+  .header .bgmPlayer {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 5px;
+    margin: 0 0 0 5px;
+    padding: 5px 9px;
+    transform: none;
+    border: 1px solid #8e6c42;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #30231c, #17120f);
+    box-shadow: inset 0 1px #d6b47a22;
+    max-width: 225px;
+    min-width: 0;
+  }
+  .header .bgmTitle { font-size: 10px; white-space: nowrap; }
+  .header .bgmToggle { padding: 4px 7px; min-height: 25px; font-size: 10px; white-space: nowrap; }
+  .header .bgmVolumeLabel { display: none; }
+  .header #bgmVolume { width: 56px; min-width: 40px; margin: 0; accent-color: #e1ad65; }
+  .header #bgmVolumeValue { display: none; }
+}
+/* Keep the mobile menu aligned with the actual header height. */
+@media (min-width: 951px) and (max-width: 1240px) {
+  .header .logo { flex-basis: 98px; }
+  .headerLogoArt { width: 98px; }
+  .header .links a { padding-inline: 5px; font-size: 10px; }
+  .header .bgmPlayer { padding: 4px 6px; max-width: 170px; }
+  .header .bgmTitle { display: none; }
+}
+@media (max-width: 950px) {
+  .header { height: 62px; }
+  .header .links { top: 62px; }
+  .headerLogoArt { height: 50px; }
+}
