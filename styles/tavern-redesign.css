@@ -73,3 +73,113 @@ body.tavernDesign .pageContent .wapBook {
 body.tavernDesign .portalPanel,body.tavernDesign .portalRoster {border:1px solid #a88a58;border-radius:8px;box-shadow:0 6px 18px #0006;}
 body.tavernDesign .portalPanelTitle {border-bottom:1px solid #a88a5877;}
 body.tavernDesign .page-home .bookBinding {display:none!important;}
+
+/* Actual content reflow: override the 1536px painted-book coordinates. */
+@media(min-width:1100px) {
+ body.tavernDesign.approvedDesign #app .pageContent .wrap.wapBook {
+   position:relative;inset:auto;width:min(1280px,100%);height:auto;min-height:560px;
+   margin:28px auto;padding:32px 36px!important;gap:32px;
+   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+   background:var(--tavern-paper)!important;
+   border:12px solid transparent!important;
+   border-image:url('../assets/wapobook/clean-open-book.webp') 32 60 35 70 stretch!important;
+ }
+ body.tavernDesign.approvedDesign .wapBook>.wapLeaf {
+   position:relative;height:auto;min-height:480px;overflow:visible;
+ }
+}
+body.tavernDesign.approvedDesign .pageContent {position:relative;min-height:65vh;padding:0 0 60px;}
+body.tavernDesign.approvedDesign .pageContent .pageHero {
+ position:relative;width:100%;height:auto;min-height:145px;margin:0 auto;
+ background:linear-gradient(90deg,#20140ee8,#39251ba8),url('../assets/tavern/inn-interior.webp') center 38%/cover!important;
+ border:1px solid #8d7148;border-radius:6px;
+}
+body.tavernDesign.approvedDesign .pageContent .pageHero>.wrap {
+ position:relative;inset:auto;opacity:1;pointer-events:auto;
+ width:100%;height:auto;overflow:visible;padding:28px 20px;
+}
+body.tavernDesign.approvedDesign .pageContent .pageHero::before,
+body.tavernDesign.approvedDesign .pageContent .pageHero::after {display:none!important;}
+body.tavernDesign.approvedDesign .page-home {
+ position:relative;width:min(1440px,calc(100% - 32px));height:auto;min-height:65vh;
+ margin:0 auto;padding:28px 0 80px;
+}
+body.tavernDesign.approvedDesign .page-home .portalHero {
+ position:relative;width:100%;height:auto;min-height:240px;margin:0 0 20px;
+ display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(#150e0a66,#150e0a99),url('../assets/tavern/inn-interior.webp') center 45%/cover!important;
+ border:1px solid #8d7148;border-radius:10px;overflow:hidden;
+}
+body.tavernDesign.approvedDesign .page-home .portalHeroInner {
+ position:relative;width:100%;height:auto;min-height:150px;
+ display:flex;align-items:end;justify-content:center;padding:24px;
+}
+body.tavernDesign.approvedDesign .page-home .portalSearch,
+body.tavernDesign.approvedDesign .page-home .portalSearch input,
+body.tavernDesign.approvedDesign .page-home .portalSearch .btn {
+ position:relative;inset:auto;width:auto;height:auto;transform:none;
+}
+body.tavernDesign.approvedDesign .page-home .portalSearch {
+ display:flex;align-items:center;gap:8px;width:min(620px,100%);
+ padding:10px 12px;border:1px solid #a88a58;border-radius:12px;
+ background:#1d1611eb;
+}
+body.tavernDesign.approvedDesign .page-home .portalSearch input {
+ flex:1;min-width:0;padding:10px 12px;font-size:15px;
+}
+body.tavernDesign.approvedDesign .page-home .bookShell,
+body.tavernDesign.approvedDesign .page-home .bookPage,
+body.tavernDesign.approvedDesign .page-home .portalHome {
+ position:relative;width:100%;height:auto;max-width:none;overflow:visible;
+ background:none!important;border:0!important;box-shadow:none;
+}
+body.tavernDesign.approvedDesign .page-home .portalSummary {
+ position:relative;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:18px;width:100%;height:auto;
+}
+body.tavernDesign.approvedDesign .page-home .portalPanel,
+body.tavernDesign.approvedDesign .page-home .portalRoster {
+ position:relative;inset:auto;width:100%;height:auto;min-height:230px;
+ padding:20px;border:1px solid #967649!important;border-radius:8px;
+ background:linear-gradient(#f0dfbc,#e2c89b)!important;
+ color:#342319;box-shadow:0 8px 20px #0007!important;
+}
+body.tavernDesign.approvedDesign .page-home .portalPanelTitle {
+ position:relative;display:flex;align-items:center;justify-content:space-between;
+ min-height:38px;border-bottom:1px solid #ae956c;
+}
+body.tavernDesign.approvedDesign .portalPanelTitle h2 {opacity:1;color:#392718;font-size:clamp(16px,1.25vw,20px);}
+body.tavernDesign.approvedDesign .portalPanelTitle>a {
+ position:relative;inset:auto;width:auto;height:auto;color:#775326!important;font-size:12px;
+}
+body.tavernDesign.approvedDesign .portalPanelBody {
+ position:relative;inset:auto;width:100%;height:auto;max-height:250px;
+ padding:12px 0;background:none;color:#352415;overflow:auto;
+}
+body.tavernDesign.approvedDesign .portalPanelBody p,
+body.tavernDesign.approvedDesign .portalEmpty {font-size:14px;color:#5c4732;}
+body.tavernDesign.approvedDesign .page-home .portalRoster {margin-top:20px;min-height:300px;}
+body.tavernDesign.approvedDesign .page-home .portalMembers {
+ position:relative;inset:auto;width:100%;height:auto;min-height:210px;
+ display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px;padding:18px 0;
+}
+body.tavernDesign.approvedDesign .page-home .portalMembers .member .avatar {
+ background:#6a5039!important;color:#f2dfbc;font-size:20px;
+ border:2px solid #b99460;border-radius:50%;clip-path:none;
+}
+body.tavernDesign.approvedDesign .page-home .portalMembers .member .avatar img {
+ width:100%;height:100%;object-fit:cover;
+}
+@media(max-width:1099px) {
+ body.tavernDesign.approvedDesign .page-home .portalSummary {grid-template-columns:1fr;}
+ body.tavernDesign.approvedDesign .page-home .portalMembers {grid-template-columns:repeat(5,minmax(0,1fr));}
+ body.tavernDesign.approvedDesign .page-home .portalPanel,
+ body.tavernDesign.approvedDesign .page-home .portalRoster {min-height:0;}
+}
+@media(max-width:650px) {
+ body.tavernDesign.approvedDesign .page-home .portalMembers {grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+ body.tavernDesign.approvedDesign .page-home .portalHero {min-height:170px;}
+ body.tavernDesign.approvedDesign .pageContent .wrap.wapBook {display:block;padding:16px!important;}
+ body.tavernDesign.approvedDesign .page-home .portalSearch {padding:6px;}
+ body.tavernDesign.approvedDesign .page-home .portalSearch input {font-size:13px;}
+}
