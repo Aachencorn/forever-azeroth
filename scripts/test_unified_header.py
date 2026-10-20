@@ -23,6 +23,11 @@ async def run():
      assert ImageChops.difference(spine_reference,spine_image).getbbox() is None,(w,route,'Binding differs from home')
     logo=await p.locator('.logo').bounding_box();assert abs(logo['width']/logo['height']-240/155)<.005,(w,route,'Distorted logo')
     assert not await p.evaluate('document.documentElement.scrollWidth>innerWidth'),(w,route,'Horizontal overflow')
+    header_rect=await p.locator('.header').bounding_box();bgm_rect=await p.locator('.header .bgmPlayer').bounding_box()
+    assert bgm_rect['y']<header_rect['y']+32 and bgm_rect['x']>header_rect['x']+header_rect['width']/2,(w,route,'BGM not in upper right')
+    assert await p.locator('#bgmVolume').is_visible(),(w,route,'Volume slider hidden')
+    if w>=1100:
+     nav_rect=await p.locator('.links').bounding_box();assert bgm_rect['y']+bgm_rect['height']<=nav_rect['y']+1,(w,route,'BGM overlaps navigation')
     if w<1100:
      bgm=await p.locator('.header .bgmPlayer').bounding_box();assert logo['x']+logo['width']<=bgm['x']+1,(w,route,'Logo overlaps controls')
      await p.locator('.menu').click();assert await p.locator('.menu').get_attribute('aria-expanded')=='true'
@@ -38,6 +43,9 @@ async def run():
     assert await p.evaluate('location.hash')=='#/updates',(w,route,'Click failed')
    # Resizing the same page must switch menu modes without stale inline state.
    await p.goto(BASE+'/#/');await p.set_viewport_size({'width':1001,'height':700});await p.locator('.menu').click();await p.locator('.links a').last.focus();await p.keyboard.press('Escape');assert not await p.locator('.links').is_visible()
+  # The native range control still updates volume and preserves it after reload.
+  await p.locator('#bgmVolume').focus();await p.keyboard.press('Home');await p.keyboard.press('ArrowRight');assert await p.evaluate('bgm.volume')==.01
+  await p.reload();assert await p.locator('#bgmVolume').input_value()=='1'
   await b.close()
  print('PASS: 10 routes × 10 screen sizes; same eight menu items and positions; identical home binding pixels; red live dot; proportional logo; no overlap/overflow; real combined-menu clicks; tablet breakpoint and Escape close.')
 asyncio.run(run())

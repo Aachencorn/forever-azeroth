@@ -22,12 +22,16 @@ async def run():
    await p.evaluate('''async()=>{let i=new Image();i.src=getComputedStyle(document.querySelector('.approvedArtwork')).backgroundImage.slice(5,-2);await i.decode();await document.fonts.ready}''')
    await p.wait_for_timeout(50)
    shot=Image.open(io.BytesIO(await p.screenshot())).convert('RGB');original=Image.open(SOURCE/manifest[key]['source']).convert('RGB').resize((1536,1024),Image.Resampling.BILINEAR)
-   regions={'common-header-frame':(330,0,1465,34),'binding':(0,128,60,1015),'right-frame':(1498,128,1536,980),'banner':(90,160,950,245) if key=='live' else (90,160,950,260) if key=='favorites' else (90,160,950,285) if key!='home' else (90,160,1460,310)}
+   regions={'common-header-frame':(330,0,1280,34),'binding':(0,128,60,1015),'right-frame':(1506,128,1536,880),'banner':(90,160,950,245) if key=='live' else (90,160,950,260) if key=='favorites' else (90,160,950,285) if key!='home' else (90,160,1460,310)}
    for label,rect in regions.items():
     expected=home_header if label in ["common-header-frame","binding"] else original
     diff=ImageChops.difference(expected.crop(rect),shot.crop(rect));error=sum(ImageStat.Stat(diff).mean)/3
     assert error<2.0,(key,label,error)
     results.append({'page':key,'area':label,'mean_absolute_rgb_error':round(error,4)})
+   if key!='home':
+    clean=Image.open(ROOT/'assets/wapobook/clean-open-book.webp').convert('RGB');rect=(600,946,900,1024)
+    error=sum(ImageStat.Stat(ImageChops.difference(clean.crop(rect),shot.crop(rect))).mean)/3
+    assert error<1,(key,'natural lower page edge',error)
   # Check reference coordinate alignment of real cards, with no mockup registration.
   await p.goto(BASE+'/#/adventurers');box=await p.locator('.wapPerson').first.bounding_box()
   assert abs(box['x']-124)<=1 and abs(box['y']-379)<=1
