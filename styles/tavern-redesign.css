@@ -44,13 +44,16 @@ body.tavernHomeView main.page-home::before,body.tavernHomeView main.page-home::a
 body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;padding:12px 15px;}
 .tavernHome {width:min(1240px,calc(100% - 48px));margin:56px auto 0;}
 .tavernTopGrid {display:grid;grid-template-columns:250fr 460fr 390fr;gap:36px;align-items:stretch;min-height:310px;margin-left:80px;}
-.tavernPanel {position:relative;min-width:0;color:var(--inn-ink);background:#e9c991 url('../assets/wapobook/person-parchment.webp') center/140% 150%;border:1px solid #b18a50;border-radius:2px;box-shadow:0 4px 12px #0008,inset 0 0 18px #b3824a55;}
+.tavernPanel {position:relative;isolation:isolate;min-width:0;color:var(--inn-ink);background:none;border:1px solid transparent;border-radius:2px;}
+/* Nine-slice preserves the parchment edge and grain at every panel proportion. */
+.tavernPanel::after {content:'';position:absolute;inset:-3px;z-index:-1;border:12px solid transparent;border-image:url('../assets/tavern/parchment-panel.webp') 52 fill stretch;filter:drop-shadow(0 4px 5px #0008);pointer-events:none;}
+.tavernLive::after {inset:0;border-width:12px;filter:drop-shadow(0 1px 2px #22120566);}
 .tavernPanelTitle {display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;padding:14px 18px 8px;}
 .tavernPanelTitle h2 {font-family:'Batang',Georgia,serif;font-size:18px;font-weight:800;line-height:1.4;letter-spacing:-.4px;margin:0;}
 .tavernPanelTitle>a {flex-shrink:0;color:#614021;font-size:10px;white-space:nowrap;}
 .tavernPanelTitle>a:hover {text-decoration:underline;}
 .tavernPanelBody {padding:0 18px 14px;}
-.tavernLive {align-self:stretch;position:relative;border:9px solid #4c321b;border-radius:3px;display:flex;flex-direction:column;box-shadow:0 0 0 1px #b98a47,0 8px 14px #0009;}
+.tavernLive {align-self:stretch;position:relative;background:#352215 url('../assets/tavern/wood-grain.svg') center/cover;border:9px solid #4c321b;border-radius:3px;display:flex;flex-direction:column;box-shadow:0 0 0 1px #b98a47,0 8px 14px #0009;}
 .tavernLive::before,.tavernRoster::before {content:'';position:absolute;inset:-8px;border:1px solid #b08a4e;pointer-events:none;clip-path:polygon(0 0,18px 0,18px 2px,2px 2px,2px 18px,0 18px,0 0,100% 0,100% 18px,calc(100% - 2px) 18px,calc(100% - 2px) 2px,calc(100% - 18px) 2px,calc(100% - 18px) 0,100% 0,100% 100%,calc(100% - 18px) 100%,calc(100% - 18px) calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) calc(100% - 18px),100% calc(100% - 18px),100% 100%,0 100%,0 calc(100% - 18px),2px calc(100% - 18px),2px calc(100% - 2px),18px calc(100% - 2px),18px 100%,0 100%);}
 .tavernLive .tavernPanelTitle {justify-content:center;padding:8px 8px 6px;}
 .tavernLive .tavernPanelTitle>a {display:none;}
