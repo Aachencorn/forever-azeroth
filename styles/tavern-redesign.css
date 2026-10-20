@@ -6,7 +6,7 @@ body.tavernDesign {
   --tavern-brass:#b99252;
   --tavern-paper:#ead6af;
   --tavern-ink:#352415;
-  background:linear-gradient(#110c09b3,#110c09d9),url('../assets/wapobook/leather.svg') center/cover fixed;
+  background:linear-gradient(#110c09a8,#110c09c4),url('../assets/tavern/inn-interior.webp') center top/cover fixed;
   color:var(--tavern-paper);
 }
 body.tavernDesign #app {
@@ -68,3 +68,8 @@ body.tavernDesign .pageContent .wapBook {
   body.tavernDesign .pageContent .wapBook {display:block;max-width:100%;padding:12px;}
   body.tavernDesign .pageContent .wapBook>.wapLeaf {width:100%;min-width:0;}
 }
+
+/* Restraint: minimal brass accents and readable parchment panels. */
+body.tavernDesign .portalPanel,body.tavernDesign .portalRoster {border:1px solid #a88a58;border-radius:8px;box-shadow:0 6px 18px #0006;}
+body.tavernDesign .portalPanelTitle {border-bottom:1px solid #a88a5877;}
+body.tavernDesign .page-home .bookBinding {display:none!important;}
