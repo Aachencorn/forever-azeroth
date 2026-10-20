@@ -1,0 +1,70 @@
+/* Tavern redesign v1 — design tokens and independently responsive UI.
+   Staged only: activate by adding tavernDesign to <body> after asset QA. */
+body.tavernDesign {
+  --tavern-wood:#231711;
+  --tavern-wood-light:#473020;
+  --tavern-brass:#b99252;
+  --tavern-paper:#ead6af;
+  --tavern-ink:#352415;
+  background:linear-gradient(#110c09b3,#110c09d9),url('../assets/wapobook/leather.svg') center/cover fixed;
+  color:var(--tavern-paper);
+}
+body.tavernDesign #app {
+  width:100%;max-width:none;height:auto;min-height:100dvh;aspect-ratio:auto;
+  margin:0;padding:0;overflow:visible;container-type:normal;
+}
+body.tavernDesign .header,
+body.tavernDesign.unifiedHeader.approvedDesign .header {
+  position:relative;inset:auto;width:100%;height:auto;min-height:72px;
+  background:linear-gradient(180deg,#342319f5,#170f0bea);
+  border:0;border-bottom:2px solid var(--tavern-brass);border-radius:0;
+}
+body.tavernDesign .header .nav {
+  position:relative;display:flex;align-items:center;gap:16px;
+  width:min(1440px,calc(100% - 32px));min-height:72px;margin:auto;padding:8px 0;
+}
+body.tavernDesign .header .logo {
+  position:relative;inset:auto;display:block;flex:0 0 156px;width:156px;
+  height:60px!important;aspect-ratio:auto;
+}
+body.tavernDesign .header .links,
+body.tavernDesign #app .header .links {
+  position:static;inset:auto;display:flex;flex:1;align-items:center;
+  justify-content:center;gap:4px;width:auto;height:auto;min-width:0;
+  padding:0;background:transparent;box-shadow:none;
+}
+body.tavernDesign .header .links a {
+  flex:0 1 auto;min-height:44px;height:auto;padding:8px 10px;
+  font-size:clamp(11px,.85vw,14px);white-space:nowrap;
+}
+body.tavernDesign #app .header .nav>.bgmPlayer {
+  position:relative;inset:auto;flex:0 0 auto;transform:none;margin:0;
+}
+body.tavernDesign #app::before,
+body.tavernDesign #app .approvedArtwork { display:none!important; }
+body.tavernDesign .pageContent,
+body.tavernDesign .page-home {width:min(1440px,calc(100% - 32px));max-width:none;margin-inline:auto;}
+body.tavernDesign .pageContent .wrap,
+body.tavernDesign .page-home .wrap {max-width:100%;width:100%;}
+body.tavernDesign .pageContent .wapBook {
+  width:100%;max-width:1280px;margin:24px auto;
+  background-color:var(--tavern-paper);color:var(--tavern-ink);
+}
+@media(max-width:1099px) {
+  body.tavernDesign .header .nav {min-height:68px;justify-content:space-between;}
+  body.tavernDesign .header .logo {flex-basis:132px;width:132px;height:56px!important;}
+  body.tavernDesign .header .menu {position:relative;inset:auto;display:flex;flex:0 0 44px;}
+  body.tavernDesign .header .links,
+  body.tavernDesign #app .header .links {display:none!important;position:absolute;left:0;right:0;top:100%;z-index:100;width:100%;max-height:75dvh;overflow:auto;padding:12px;flex-direction:column;background:#20150f;border:1px solid var(--tavern-brass);}
+  body.tavernDesign .header .links.open,
+  body.tavernDesign #app .header .links.open {display:flex!important;}
+  body.tavernDesign .header .links a {width:100%;justify-content:flex-start;}
+  body.tavernDesign #app .header .nav>.bgmPlayer {margin-left:auto;}
+}
+@media(max-width:600px) {
+  body.tavernDesign .pageContent,body.tavernDesign .page-home {width:calc(100% - 20px);}
+  body.tavernDesign .header .nav {width:calc(100% - 20px);gap:8px;}
+  body.tavernDesign .header .logo {flex-basis:104px;width:104px;height:50px!important;}
+  body.tavernDesign .pageContent .wapBook {display:block;max-width:100%;padding:12px;}
+  body.tavernDesign .pageContent .wapBook>.wapLeaf {width:100%;min-width:0;}
+}
