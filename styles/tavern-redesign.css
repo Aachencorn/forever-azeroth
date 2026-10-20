@@ -76,7 +76,8 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 .tavernWelcome {display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;padding:20px 0;color:#f9dba1;text-align:center;}
 .tavernWelcomeSign {display:flex;align-items:center;justify-content:center;width:100%;max-width:300px;min-height:190px;padding:16px 20px;border:10px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/900px auto;box-shadow:0 6px 12px #0009;transform:rotate(-1deg);}
 .tavernWelcome h1 {margin:0;line-height:0;}.tavernWelcome h1 img {display:block;width:100%;height:auto;max-height:155px;object-fit:contain;filter:drop-shadow(0 2px 2px #0008);}
-.tavernIntroduction {font-family:Georgia,'Batang',serif;font-size:13px;font-weight:600;line-height:1.7;margin:20px 0 0;text-shadow:0 2px 4px #000,0 0 8px #000;}
+.tavernIntroduction {position:relative;isolation:isolate;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;font-size:15px;font-weight:600;line-height:1.9;letter-spacing:.02em;margin:18px 0 0;padding:10px 14px;color:#fff0cd;text-shadow:0 2px 3px #000d;}
+.tavernIntroduction::before {content:'';position:absolute;inset:-4px -16px;z-index:-1;background:radial-gradient(ellipse,#160e08ed 25%,#160e08b3 55%,#160e0800 76%);filter:blur(3px);pointer-events:none;}
 .tavernNotices {display:grid;grid-template-rows:minmax(135px,1fr) minmax(135px,1fr);gap:14px;padding-top:8px;}
 .tavernNews ul {margin:0;padding:0;list-style:none;}
 .tavernNews li+li {border-top:1px solid #a67c3c55;}
@@ -136,7 +137,7 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
  .tavernHeader .links {top:100%;}
  .tavernHome {width:calc(100% - 32px);margin-top:22px;}
  .tavernTopGrid {display:flex;flex-direction:column;gap:20px;}
- .tavernWelcome {order:-1;min-height:220px;padding:12px 0;}.tavernWelcomeSign {max-width:310px;}.tavernIntroduction {font-size:12px;margin-top:14px;}
+ .tavernWelcome {order:-1;min-height:220px;padding:12px 0;}.tavernWelcomeSign {max-width:310px;}.tavernIntroduction {font-size:14px;line-height:1.85;margin-top:14px;padding:8px 10px;}
  .tavernLive {width:100%;}.tavernEmpty {min-height:100px;}.tavernEmpty small {max-width:100%;}
  .tavernNotices {display:flex;flex-direction:column;gap:20px;}.tavernPanelTitle h2 {font-size:19px;}.tavernPanelTitle>a {font-size:11px;}
  .tavernLive .tavernPanelTitle {padding-top:14px;}.tavernLive .tavernPanelBody {padding-bottom:16px;}
