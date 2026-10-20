@@ -13,11 +13,6 @@
 body {
   background:radial-gradient(ellipse at 50% 0,#382215 0,#100b09 65%,#070607 100%);
 }
-.header {
-  background:linear-gradient(180deg,#24160fee,#090909f7);
-  border-bottom:2px solid #a56a2f;
-  box-shadow:0 4px 16px #0009;
-}
 .logo {
   color:#f4bd64;
   text-shadow:0 2px 0 #432008,0 0 18px #b36c28;
@@ -107,17 +102,6 @@ body {
   max-width:none;
   margin:0 auto
 }
-.header {
-  height:88px;
-  position:relative;
-  top:auto;
-  z-index:20;
-  border:2px solid #92602c;
-  border-radius:11px;
-  background:linear-gradient(#17140f,#080b0d 55%,#19120d);
-  box-shadow:inset 0 0 0 2px #2b1a0e,0 3px 4px #000;
-  backdrop-filter:none
-}
 .nav {
   gap:12px;
   padding:0 18px 0 4px
@@ -128,24 +112,6 @@ body {
   align-self:stretch;
   position:relative;
   z-index:2
-}
-.headerLogoArt {
-  position:absolute!important;
-  inset:-16px 0 -12px!important;
-  width:auto!important;
-  height:auto!important;
-  background-image:var(--atlas)!important;
-  background-size:200% 200%!important;
-  background-position:100% 100%!important;
-  display:block!important;
-  border:0!important;
-  filter:drop-shadow(0 3px 2px #000);
-  border-radius:0!important
-}
-.headerLogoFallback {
-  position:absolute;
-  inset:0;
-  opacity:0
 }
 .links {
   gap:3px;
@@ -200,13 +166,6 @@ body {
   border:3px ridge #d39c45;
   background:linear-gradient(135deg,#61d7fb,#0878ad 43%,#032b48 45%,#1399d0);
   box-shadow:0 0 0 3px #352112,0 0 0 4px #996b2e,2px 3px 7px #000
-}
-.headerGem {
-  bottom:auto;
-  top:-12px;
-  width:15px;
-  height:15px;
-  background:linear-gradient(135deg,#ffdf83,#9e5e21)
 }
 .pageContent {
   min-height:0
@@ -810,242 +769,13 @@ body {
   float:left;
   margin-right:6px
 }
-/* Home portal: scenery, three live/data panels, twenty portrait sockets. */
-.page-home {
-  background:none!important
-}
-.page-home .portalHero {
-  height:355px;
-  min-height:0;
-  border:2px solid #93612f;
-  border-radius:7px;
-  margin:0;
-  position:relative;
-  overflow:hidden;
-  background:none!important;
-  box-shadow:inset 0 0 0 2px #20140a
-}
-.portalHero::before {
-  content:'';
-  position:absolute;
-  inset:0;
-  background-image:var(--atlas);
-  background-size:200% 200%;
-  background-position:0 100%;
-  z-index:0
-}
-.page-home .portalHeroInner {
-  height:100%;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0
-}
-.page-home .portalSearch {
-  position:relative;
-  left:auto;
-  top:auto;
-  transform:none;
-  margin:50px 0 0;
-  width:44%;
-  border-radius:30px;
-  min-height:42px;
-  padding:4px 12px;
-  background:#07131dee;
-  border:2px solid #b18746;
-  box-shadow:0 0 0 2px #33210d,0 4px 8px #0009
-}
-.portalSearch input {
-  font-size:12px
-}
-.portalMagnify {
-  font-size:27px;
-  color:#d9b364
-}
-.portalSearch .btn {
-  background:none;
-  box-shadow:none;
-  border:0;
-  color:#e5c180;
-  padding:5px;
-  font-size:11px
-}
-.page-home .bookShell {
-  background:none!important;
-  box-shadow:none;
-  border:0;
-  margin:0;
-  padding:0
-}
 .bookBinding {
   display:none
-}
-.page-home .bookPage {
-  background:none!important;
-  box-shadow:none;
-  border:0;
-  padding:0!important;
-  border-radius:0
-}
-.portalHome {
-  padding:8px 24px 25px;
-  background-image:var(--atlas);
-  background-size:200% 200%;
-  background-position:0 0;
-  border-radius:0 0 12px 12px
-}
-.portalSummary {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:9px;
-  margin:0 0 10px
-}
-.page-home .portalPanel {
-  border:2px ridge #a47a42;
-  background:linear-gradient(110deg,#302013,#171410)!important;
-  box-shadow:inset 0 0 0 2px #392718,0 2px 3px #38210e77;
-  border-radius:7px;
-  min-height:135px;
-  overflow:hidden;
-  color:#e3cba4
-}
-.portalPanelTitle {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:0;
-  padding:10px 12px 3px;
-  margin:0
-}
-.portalPanelTitle h2 {
-  font-size:13px;
-  color:#e5c58b;
-  margin:0
-}
-.portalPanelTitle>a {
-  font-size:9px;
-  color:#c4ab7e;
-  white-space:nowrap
-}
-.portalPanelBody {
-  padding:9px 12px;
-  min-height:0
-}
-.portalPanelBody p,.portalEmpty {
-  font-size:11px;
-  color:#b8a17e;
-  line-height:1.7
-}
-.portalEmpty {
-  padding:0;
-  margin:0
-}
-.portalPanelBody p {
-  margin:5px 0
-}
-.portalNews a {
-  display:block;
-  font-size:11px;
-  line-height:1.5;
-  margin:0 0 6px
-}
-.portalNews a+a {
-  padding-top:5px;
-  border-top:1px solid #aa875233
-}
-.portalEvent {
-  display:flex;
-  flex-direction:column;
-  gap:12px
-}
-.portalEvent strong {
-  font-size:12px
-}
-.portalEvent span {
-  font-size:10px;
-  color:#b4a187
-}
-.page-home .portalRoster {
-  background:transparent!important;
-  border:1px solid #a1764266;
-  min-height:200px;
-  color:#342311;
-  box-shadow:inset 0 0 10px #95603133
-}
-.portalRoster .portalPanelTitle h2 {
-  color:#2b2114;
-  font-size:18px
-}
-.portalRoster .portalPanelTitle>a {
-  color:#634722
 }
 .rosterNote {
   font-size:10px;
   margin-left:8px;
   color:#82633e
-}
-.portalMembers {
-  display:grid;
-  grid-template-columns:repeat(10,minmax(0,1fr));
-  gap:10px 14px;
-  padding:6px 20px 14px
-}
-.portalMembers .member {
-  background:none;
-  border:0;
-  box-shadow:none;
-  min-height:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  position:relative;
-  color:#241c13;
-  overflow:visible
-}
-.portalMembers .avatar {
-  width:64px;
-  height:64px;
-  max-width:100%;
-  aspect-ratio:1;
-  border-radius:50%;
-  border:3px ridge #b98d4e;
-  background:radial-gradient(#172027,#060c0f);
-  box-shadow:0 0 0 2px #372819,0 3px 5px #5d371c99;
-  display:grid;
-  place-items:center;
-  font:28px Georgia,serif;
-  color:#9f8c72;
-  overflow:hidden
-}
-.portalMembers .member::before {
-  content:'◆';
-  position:absolute;
-  top:-6px;
-  left:50%;
-  transform:translateX(-50%);
-  color:#2581ae;
-  text-shadow:0 0 2px #161008;
-  font-size:14px;
-  z-index:2
-}
-.portalMembers .member span {
-  display:block;
-  font-size:10px;
-  margin:4px 0 0;
-  text-align:center
-}
-.portalMembers .empty span {
-  display:none
-}
-.portalMembers .avatar img {
-  width:100%;
-  height:100%;
-  object-fit:cover
-}
-.portalMembers .member.empty {
-  opacity:1
 }
 .footer {
   background:none;
@@ -1614,9 +1344,6 @@ body {
     padding-left:30px;
     padding-right:12px
   }
-  .header {
-    height:77px
-  }
   .logo {
     width:170px
   }
@@ -1666,13 +1393,6 @@ body {
   }
   .wapControls .field {
     width:112px
-  }
-  .portalMembers {
-    gap:8px
-  }
-  .portalMembers .avatar {
-    width:58px;
-    height:58px
   }
   .chartRow {
     grid-template-columns:70px 1fr 82px;
@@ -1746,28 +1466,6 @@ body {
     width:55px;
     height:105px
   }
-  .portalMembers .avatar {
-    width:48px;
-    height:48px
-  }
-  .portalHome {
-    padding:8px 20px 22px
-  }
-  .portalPanelTitle {
-    padding:8px 7px 3px
-  }
-  .portalPanelTitle h2 {
-    font-size:11px
-  }
-  .portalPanelBody {
-    padding:7px
-  }
-  .portalPanelTitle>a {
-    font-size:8px
-  }
-  .portalMembers {
-    padding:8px
-  }
   .chartRow {
     grid-template-columns:58px 1fr 72px;
     font-size:10px
@@ -1812,9 +1510,6 @@ body {
   }
   #app::before {
     width:18px
-  }
-  .header {
-    height:68px
   }
   .nav {
     padding:0 10px
@@ -2007,49 +1702,9 @@ body {
   .favoriteGrid .wapPortrait {
     height:65px
   }
-  .page-home .portalHero {
-    height:275px
-  }
-  .page-home .portalSearch {
-    width:82%;
-    margin-top:65px
-  }
-  .portalSummary {
-    grid-template-columns:1fr;
-    gap:7px
-  }
-  .page-home .portalPanel {
-    min-height:95px
-  }
-  .portalPanelTitle h2 {
-    font-size:12px
-  }
-  .portalPanelTitle>a {
-    font-size:10px
-  }
-  .portalPanelBody {
-    padding:8px 10px
-  }
-  .portalHome {
-    padding:12px 18px 25px 26px
-  }
-  .portalMembers {
-    grid-template-columns:repeat(5,minmax(0,1fr));
-    gap:12px 7px
-  }
-  .portalMembers .avatar {
-    width:48px;
-    height:48px
-  }
-  .portalMembers .member span {
-    font-size:9px
-  }
   .rosterNote {
     font-size:9px;
     display:none
-  }
-  .portalRoster .portalPanelTitle h2 {
-    font-size:15px
   }
   .footer {
     font-size:9px
@@ -2183,13 +1838,6 @@ body {
   .wapPerson small {
     font-size:8px
   }
-  .portalMembers .avatar {
-    width:39px;
-    height:39px
-  }
-  .portalMembers {
-    gap:10px 4px
-  }
   .guildGrid {
     grid-template-columns:1fr
   }
@@ -2209,185 +1857,6 @@ body {
   }
   .liveGrid {
     grid-template-columns:1fr
-  }
-}
-/* Reset legacy homepage cover and header rules before the final composition. */
-.page-home {
-  width:100%;
-  margin:0;
-  padding:0;
-  min-height:0;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  overflow:visible;
-  isolation:auto
-}
-.page-home::before,.page-home::after {
-  display:none
-}
-.header .nav {
-  width:100%;
-  gap:12px
-}
-.header .logo {
-  flex:0 0 202px
-}
-.page-home .portalHeroInner {
-  min-height:0
-}
-.page-home .portalSearch {
-  width:44%;
-  margin:50px 0 0;
-  padding:4px 12px
-}
-.page-home .portalSearch .btn {
-  background:none;
-  box-shadow:none;
-  border:0;
-  color:#e5c180;
-  padding:5px;
-  font-size:11px
-}
-.page-home .bookShell {
-  width:100%;
-  margin:0
-}
-.page-home .bookPage {
-  width:100%;
-  margin:0;
-  min-height:0
-}
-.portalSummary .portalPanel:last-child {
-  grid-column:auto
-}
-.page-home .portalEmpty,.page-home .portalNews a,.page-home .portalEvent {
-  background:none;
-  border:0;
-  border-radius:0;
-  padding:0
-}
-.page-home .portalRoster .portalPanelTitle h2 {
-  color:#30210e
-}
-.page-home .portalPanelTitle {
-  border:0;
-  margin:0
-}
-.page-home .portalPanelTitle a {
-  color:#c8ac78
-}
-.page-home .portalPanelBody p {
-  color:#b8a17e
-}
-.page-home .portalMembers .member .avatar {
-  background:radial-gradient(#172027,#060c0f);
-  border:3px ridge #b98d4e;
-  box-shadow:0 0 0 2px #372819,0 3px 5px #5d371c99;
-  color:#9f8c72
-}
-.page-home .portalMembers .member span {
-  color:#30210e
-}
-.page-home .portalMembers .member.empty .avatar {
-  border-color:#a9844d
-}
-.page-home .portalMembers .member.empty {
-  opacity:1
-}
-.page-home .portalRoster .rosterNote {
-  color:#82633e
-}
-.page-home .portalHero {
-  margin:0;
-  min-height:0
-}
-.page-home .portalRoster {
-  margin:0
-}
-.header .bgmPlayer {
-  display:flex
-}
-@media(min-width:701px) {
-  .header .links {
-    display:flex;
-    position:static;
-    flex-direction:row;
-    background:none;
-    padding:0;
-    box-shadow:none;
-    gap:3px
-  }
-  .header .links a {
-    font-size:12px;
-    padding:11px 9px
-  }
-  .header .menu {
-    display:none
-  }
-}
-@media(max-width:1200px) and (min-width:701px) {
-  .header .logo {
-    flex-basis:170px
-  }
-  .header .links a {
-    font-size:10px;
-    padding:10px 5px
-  }
-}
-@media(max-width:900px) and (min-width:701px) {
-  .header .logo {
-    flex-basis:148px
-  }
-  .header .nav {
-    gap:2px
-  }
-  .header .links a {
-    font-size:9px;
-    padding:9px 3px
-  }
-}
-@media(max-width:700px) {
-  .header .logo {
-    flex-basis:140px
-  }
-  .header .nav {
-    gap:2px
-  }
-  .header .links {
-    top:66px;
-    background:#17140ff5
-  }
-  .header .links a {
-    font-size:13px;
-    padding:10px
-  }
-  .page-home .portalSearch {
-    width:82%;
-    margin-top:65px
-  }
-  .page-home .portalHero,.page-home .portalHeroInner {
-    min-height:0
-  }
-  .page-home .portalMembers {
-    padding:8px;
-    grid-template-columns:repeat(5,minmax(0,1fr))
-  }
-  .page-home .portalMembers .member .avatar {
-    width:48px;
-    height:48px
-  }
-  .page-home .portalMembers .member span {
-    font-size:9px
-  }
-  .page-home .portalSummary {
-    gap:7px
-  }
-  .page-home .portalRoster .portalPanelTitle {
-    padding:10px
-  }
-  .page-home .portalPanelBody {
-    padding:8px 10px
   }
 }
 @media(min-width:701px) {
@@ -2447,41 +1916,14 @@ body {
   .journalDetail {
     overflow:auto
   }
-  .header .links {
-    justify-content:space-evenly
-  }
-  .header .links a {
-    flex-shrink:0
-  }
-  .headerLogoArt {
-    mix-blend-mode:screen
-  }
 }
-.wapBook,.guildBookModal,.portalHome {
+
+.wapBook,.guildBookModal {
   background-size:200% 206.5%;
   background-repeat:no-repeat
 }
-.portalHome {
-  padding-left:8%;
-  padding-right:4%
-}
 .pageContent:not(.page-home) {
   padding-bottom:0
-}
-.page-home .portalMembers {
-  padding-left:8px;
-  padding-right:8px
-}
-.page-home .portalMembers .member .avatar {
-  height:auto;
-  aspect-ratio:1;
-  min-height:0
-}
-.page-home .portalRoster .portalPanelTitle h2 {
-  font-size:17px
-}
-.headerLogoArt {
-  mix-blend-mode:screen
 }
 @media(max-width:700px) {
   .wapBook,.pageContent:not(.page-home) .wrap.wapBook {
@@ -2502,18 +1944,10 @@ body {
     inset:-5px;
     background:url('../assets/wapobook/gold-corner.svg') left top/48px no-repeat,url('../assets/wapobook/gold-corner.svg') right bottom/48px no-repeat
   }
-  .portalHome {
-    padding-left:22px;
-    padding-right:18px
-  }
   .guildBookModal {
     background:linear-gradient(90deg,#ad7d40,#edcc90 8%,#f2d7a0 95%,#a27138);
     border:5px ridge #95612b;
     border-radius:12px
-  }
-  .page-home .portalMembers .member .avatar {
-    width:48px;
-    height:auto
   }
 }
 .pageContent:not(.page-home) .wrap.wapBook {
@@ -2544,12 +1978,6 @@ body {
   }
   .wapControls {
     left:6%
-  }
-  .page-home .portalHome {
-    background-size:213% 213.5%;
-    background-position:5.7% 0;
-    padding-left:4%;
-    padding-right:4%
   }
   .guildBookModal {
     background-size:213% 213.5%;

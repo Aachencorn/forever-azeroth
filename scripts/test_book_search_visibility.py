@@ -18,11 +18,11 @@ async def run():
     assert await field.input_value()=='검수 검색어'
   for width in [1024,768,390,320]:
    await p.set_viewport_size({'width':width,'height':844});reference=None
-   for route in ['','adventurers','guilds','world','updates','chronicle','favorites','live']:
-    await p.goto(BASE+'/#/'+route);n=p.locator('.portalHome' if not route else '.wapBook').first
+   for route in ['adventurers','guilds','world','updates','chronicle','favorites','live']:
+    await p.goto(BASE+'/#/'+route);n=p.locator('.wapBook').first
     styles=await n.evaluate('n=>{let c=getComputedStyle(n);return [c.borderImageSource,c.borderImageSlice,c.borderTopWidth,c.backgroundImage]}')
     if reference is None:reference=styles
-    assert styles==reference,(width,route,'Mobile frame differs from home',styles,reference)
+    assert styles==reference,(width,route,'Mobile frame differs across data pages',styles,reference)
   await b.close()
- print('PASS: actual typed search pixels visible on 4 routes × 2 widths; all 8 mobile books share frame and parchment at 4 widths.')
+ print('PASS: actual typed search pixels visible on 4 routes × 2 widths; all 7 mobile books share frame and parchment at 4 widths.')
 asyncio.run(run())

@@ -6,8 +6,8 @@
 .classSeal { position:absolute;right:4px;top:46%;width:25px;height:25px;border:2px ridge #e9ba61;border-radius:50%;color:#f8ebc0;background:radial-gradient(at 30% 20%,#f7f2c9,var(--seal) 40%,#0c1119 75%);box-shadow:0 1px 2px #000;font-size:17px;display:grid;place-items:center;pointer-events:none;z-index:4;text-shadow:0 1px #000; }
 .approvedDesign .wapPerson:not(:hover):not(:focus-within) .cardFavorite { opacity:0; }
 .approvedDesign .page-favorites .wapPerson .cardFavorite { opacity:1; }
-.approvedDesign .headerLogoArt { background-image:url('../assets/approved/home.webp')!important;background-size:511.33% 683.33%!important;background-position:5.67% 0%!important;mix-blend-mode:normal; }
-.approvedDesign .wapBook,.approvedDesign .portalHome { background-image:var(--approved-paper);background-size:232.727% 930.909%;background-position:53.653% 77.681%; }
+
+.approvedDesign .wapBook { background-image:var(--approved-paper);background-size:232.727% 930.909%;background-position:53.653% 77.681%; }
 .approvedDesign .pageHero::before { background-image:var(--approved)!important;background-size:186.18% 682.67%!important;background-position:84.39% 15.22%!important; }
 .approvedDesign .approvedPaper { display:none; }
 .approvedModalPaper { position:absolute;inset:0;z-index:0; }
@@ -40,16 +40,8 @@
  .approvedDesign [data-reference="live"] .approvedPaper { top:25.6%;right:3.2%; }
  .approvedDesign [data-reference="favorites"] .approvedArtwork { mask-size:100% 27%,6.85% 100%,4.8% 100%,2.8% 100%,100% 3%;mask-position:top,left,right,50.9% 0,bottom; }
  .approvedDesign [data-reference="favorites"] .approvedPaper { top:26.5%; }
- .approvedDesign .header { position:absolute;left:0;top:0;width:100%;height:12.5%;z-index:5;background:none;border:0;box-shadow:none;border-radius:0;backdrop-filter:none; }
- .approvedDesign .header .nav { position:static;width:100%;height:100%;min-height:0;padding:0;display:block; }
- .approvedDesign .header .logo { position:absolute;left:4.4%;top:0;width:16.8%;height:100%;display:block;filter:none; }
- .approvedDesign .headerLogoArt { opacity:0; }
- .approvedDesign .header .links { position:absolute;left:21.6%;top:33%;width:72.9%;height:56%;display:grid;grid-template-columns:.65fr 1.3fr 1.15fr 1.1fr 1.75fr 1fr 1.1fr 1fr;align-items:stretch;gap:0;padding:0;background:none;border:0;box-shadow:none; }
- .approvedDesign .header .links.splitNavigation { grid-template-columns:.7fr 1.3fr 1.1fr 1.15fr 1.15fr 1fr 1fr 1.1fr 1fr; }
- .approvedDesign .header .links a { color:transparent!important;background:none!important;box-shadow:none!important;border:0!important;border-radius:4px;padding:0;font-size:0;display:block;min-width:0;text-shadow:none; }
- .approvedDesign .header .links a:focus-visible,.approvedDesign .header .logo:focus-visible { outline:2px solid #ffd28a;outline-offset:-4px; }
- .approvedDesign .header .menu,.approvedDesign .frameGem { display:none; }
- .approvedDesign .header .bgmPlayer { position:absolute;top:calc(var(--u) * 1027);right:12px;background:#16110c;border-color:#765226;opacity:.75;transform:scale(.8);transform-origin:right top;margin:0;z-index:10;color:#e4c891; }
+
+.approvedDesign .frameGem { display:none; }
  .approvedDesign .footer { position:absolute;top:100%;left:0;width:100%;background:none;border:0;margin:0;padding:10px 130px;color:#9c8362;font-size:10px; }
  .approvedDesign .pageContent { position:static;margin:0;padding:0;min-height:0; }
  .approvedDesign .pageContent .pageHero { position:static;height:0;width:0;min-height:0;margin:0;padding:0;border:0;background:none!important;box-shadow:none;overflow:visible; }
@@ -174,41 +166,6 @@
  .approvedDesign .levelColumn b { font-size:calc(var(--u) * 15); }
  .approvedDesign .levelColumn>span { font-size:calc(var(--u) * 12); }
  .approvedDesign .levelTrack { height:calc(var(--u) * 97); }
- /* Original home scenery and roster/socket artwork. */
- .approvedDesign [data-reference="home"] .approvedPaper { top:50%;left:6%;right:4.5%;bottom:4%; }
- .approvedDesign [data-reference="home"] .approvedArtwork {
-  mask-image:linear-gradient(#000,#000),linear-gradient(#000,#000),linear-gradient(#000,#000),linear-gradient(#000,#000),linear-gradient(#000,#000),linear-gradient(#000,#000),linear-gradient(#000,#000);
-  mask-size:100% 55%,100% 6.5%,100% 7.6%,9% 100%,5.7% 100%,1% 16%,1% 16%;mask-position:top,0 69.7%,bottom,left,right,36.8% 59%,65.9% 59%;
- }
- .approvedDesign .page-home .portalHero { position:static;width:0;height:0;min-height:0;border:0;box-shadow:none;background:none!important;overflow:visible;margin:0; }
- .approvedDesign .portalHero::before { display:none; }
- .approvedDesign .page-home .portalHeroInner { position:static;height:0;min-height:0;padding:0; }
- .approvedDesign .page-home .portalSearch { position:absolute;left:32.85%;top:31.36%;width:37.4%;height:5.1%;padding:0;margin:0;transform:none;border:0;background:none;box-shadow:none;z-index:7; }
- .approvedDesign .portalSearch input { position:absolute;top:18%;left:10%;height:65%;width:83%;font-size:calc(var(--u) * 17);padding:0 4px;background:#06131d;color:#dfd8c8;border-radius:0; }
- .approvedDesign .portalMagnify { display:none; }
- .approvedDesign .portalSearch .btn { position:absolute;right:2%;top:10%;height:80%;width:7%;padding:0;color:transparent;background:none;border:0;box-shadow:none;font-size:0; }
- .approvedDesign .page-home .bookShell,.approvedDesign .page-home .bookPage,.approvedDesign .page-home .portalHome { position:static;margin:0;padding:0!important;background:none!important;border:0;box-shadow:none; }
- .approvedDesign .portalSummary { position:absolute;left:8.7%;top:50.25%;width:85.7%;height:15%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(var(--u) * 17);z-index:3;margin:0; }
- .approvedDesign .page-home .portalPanel { position:relative;min-height:0;border:0;border-radius:0;background:none!important;box-shadow:none;margin:0; }
- .approvedDesign .portalSummary .portalPanelTitle { position:absolute;top:0;left:0;width:100%;height:29%;padding:0;border:0;margin:0; }
- .approvedDesign .portalPanelTitle h2 { opacity:0; }
- .approvedDesign .portalPanelTitle>a { position:absolute;right:4%;top:20%;width:22%;height:60%;color:transparent!important;font-size:0; }
- .approvedDesign .portalPanelBody { position:absolute;top:31%;left:2%;width:96%;height:65%;padding:calc(var(--u) * 12) calc(var(--u) * 14);background:linear-gradient(110deg,#342619,#211b13);overflow:auto;color:#dec599;border-radius:2px; }
- .approvedDesign .portalPanelBody p,.approvedDesign .portalEmpty { font-size:calc(var(--u) * 14);line-height:1.8; }
- .approvedDesign .portalNews a { font-size:calc(var(--u) * 14); }
- .approvedDesign .portalEvent strong { font-size:calc(var(--u) * 17); }
- .approvedDesign .portalEvent span { font-size:calc(var(--u) * 13); }
- .approvedDesign .page-home .portalRoster { position:absolute;left:9%;top:66.3%;width:85.2%;height:27.3%;z-index:3;border:0;box-shadow:none;background:none!important; }
- .approvedDesign .portalRoster .portalPanelTitle { position:absolute;top:0;left:0;width:100%;height:19%;padding:0; }
- .approvedDesign .portalRoster .rosterNote { display:none; }
- .approvedDesign .portalMembers { position:absolute;left:1.1%;top:19%;width:97.8%;height:77%;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:calc(var(--u) * 10) calc(var(--u) * 17);padding:0!important; }
- .approvedDesign .portalMembers .member { height:100%;min-height:0;aspect-ratio:auto;padding:0;gap:0;overflow:visible;justify-content:flex-start; }
- .approvedDesign .portalMembers .member::before { display:none; }
- .approvedDesign .page-home .portalMembers .member .avatar { width:calc(var(--u) * 88);height:calc(var(--u) * 88);max-width:100%;border:0;border-radius:0;box-shadow:none;background-image:url('../assets/approved/home.webp');background-size:1704.44% 1138.89%;background-position:21.4% 78.6%;color:transparent;font-size:0;overflow:hidden;display:grid;place-items:center; }
- .approvedDesign .portalMembers .avatar img { height:74%;width:74%;border-radius:50%;object-fit:cover; }
- .approvedDesign .portalMembers .member span { font-size:calc(var(--u) * 13);margin:0;line-height:1.3;color:#302111; }
- .approvedDesign .portalMembers .member.empty span { display:none; }
- .approvedDesign .portalMembers .avatar.imageMissing::after { display:none; }
  .approvedDesign .bookListView { grid-template-columns:1fr 1fr;grid-template-rows:none;overflow:auto;align-content:start; }
  .approvedDesign .bookListView .wapPerson { height:calc(var(--u) * 110); }
  .approvedDesign .bookListView .wapPortrait { height:100%;width:calc(var(--u) * 75); }
@@ -235,15 +192,11 @@
 @media(max-width:1099px) {
  .approvedDesign #app { --u:1px; }
  .approvedDesign .approvedArtwork,.approvedDesign .approvedPaper { display:none; }
- .approvedDesign .headerLogoArt { inset:-5px 0!important; }
  .approvedDesign .wapBook { border-image:var(--approved) 32 60 35 70 stretch;border-width:15px!important;padding-left:16px!important;padding-right:16px!important; }
  .approvedDesign .wapLeaf { background:none!important; }
  .approvedDesign .personBookModal,.approvedDesign .guildBookModal { background-image:var(--approved-paper)!important;background-size:232.727% 930.909%!important;background-position:53.653% 77.681%!important; }
  .approvedDesign .approvedModalPaper { background-size:232.727% 930.909%; }
  .approvedDesign .classSeal { top:55px;width:24px;height:24px;font-size:16px; }
- .approvedDesign .portalHome { background-size:232.727% 930.909%!important;background-position:53.653% 77.681%!important; }
- .approvedDesign .portalMembers .avatar { background:#06131b!important;border-color:#b99452!important; }
- .approvedDesign .header .links a[aria-current="page"] { border-color:#d7a64c;color:#ffe0a2;background:#6c471d55; }
 }
 .artMaskDefinitions { position:absolute;width:0;height:0;overflow:hidden; }
 @media(min-width:1100px) {
@@ -254,24 +207,17 @@
  .paperTile:nth-child(even) { transform:scaleY(-1); }
  .paperTile img { position:absolute;width:232.727%;height:731.429%;max-width:none;left:-71.212%;top:-500%; }
  .paperLeaf::after { content:'';position:absolute;inset:0;background:linear-gradient(90deg,#b37d3433,#ffeac822 15%,#fff0c422 80%,#ae7a3033);pointer-events:none; }
- .approvedDesign .page-home .portalMembers { left:2.3%;width:96.3%;row-gap:0; }
- .approvedDesign .page-home .portalMembers .member .avatar { clip-path:polygon(50% 0,60% 5%,78% 9%,92% 24%,100% 50%,92% 76%,78% 91%,60% 95%,50% 100%,40% 95%,22% 91%,8% 76%,0 50%,8% 24%,22% 9%,40% 5%); }
- .approvedDesign .portalMembers .member span { margin-top:4px; }
- .approvedDesign .portalSearch input { border-radius:4px;background:#06131bf5; }
  .approvedDesign .page-news .journalDetail::after,.approvedDesign .page-chronicle .journalDetail::after { content:'✧';position:absolute;top:10px;right:8px;font:60px Georgia,serif;color:#92662b44;pointer-events:none; }
 }
 @media(min-width:1100px) {
  .paperLeaf { background:#ecd09a;box-shadow:inset 0 0 30px #a3763333; }
  .paperTile { opacity:.22; }
  .paperLeaf::after { background:radial-gradient(ellipse at center,#ffeac022,#92612718); }
- .approvedDesign .portalPanelBody { left:1%;width:98%; }
- .approvedDesign [data-reference="home"] .approvedPaper { background:#e8cca1; }
 }
 .approvedPagerCover { display:none; }
 @media(min-width:1100px) {
  .paperTile { opacity:.10; }
  .paperLeaf { background:radial-gradient(ellipse,#f2d59e,#e6bf84); }
- .approvedDesign #app[data-reference="home"] .paperLeaf { background:radial-gradient(ellipse,#e8c799,#dfb67f); }
  .approvedDesign .approvedPagerCover { display:block;position:absolute;top:calc(var(--u) * 950);height:calc(var(--u) * 48);width:calc(var(--u) * 140);background:#dfb983;z-index:2;pointer-events:none;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent),linear-gradient(transparent,#000 17%,#000 80%,transparent);mask-composite:intersect; }
  .approvedDesign .pagerCoverLeft { left:calc(var(--u) * 410); }
  .approvedDesign .pagerCoverRight { left:calc(var(--u) * 1010); }
@@ -296,8 +242,6 @@
  .approvedDesign .guildBookModal h1 { padding-left:190px; }
 }
 @media(min-width:1100px) {
- .approvedDesign .header .links { left:calc(var(--u) * 330);width:calc(var(--u) * 1110);grid-template-columns:90fr 162fr 125fr 124fr 236fr 135fr 130fr 108fr; }
- .approvedDesign .header .links.splitNavigation { grid-template-columns:90fr 162fr 125fr 124fr 146fr 103fr 111fr 113fr 136fr; }
  .approvedDesign .wapPortrait { height:calc(var(--u) * 68); }
  .approvedDesign .wapPerson strong { padding-right:calc(var(--u) * 30);font-size:calc(var(--u) * 16); }
  .approvedDesign .wapPerson small { font-size:calc(var(--u) * 10.5);line-height:1.1; }
@@ -315,36 +259,25 @@
  .approvedDesign .personBookModal .approvedModalPaper,.approvedDesign .guildBookModal .approvedModalPaper { background:radial-gradient(ellipse at center,#f6dca8,#e9c184 85%,#c59250)!important; }
 }
 @media(min-width:1100px) {
- .approvedDesign .portalSearch input { left:12%;width:81%; }
- .approvedDesign .portalSearch .btn { left:1%;right:auto;width:8%; }
  .approvedDesign .bookSearch input { left:15%;width:78%; }
  .approvedDesign .page-live .bookSearch input { left:12%;width:84%; }
  .approvedDesign .page-live .bookSearch::before { content:'';position:absolute;left:calc(var(--u) * 13);top:calc(var(--u) * 11);width:calc(var(--u) * 13);height:calc(var(--u) * 13);border:2px solid #896435;border-radius:50%; }
  .approvedDesign .page-live .bookSearch::after { content:'';position:absolute;left:calc(var(--u) * 25);top:calc(var(--u) * 25);width:calc(var(--u) * 8);height:2px;background:#896435;transform:rotate(45deg); }
 }
-.approvedDesign .headerLogoArt { background-size:613.6% 683.33%!important;background-position:5.452% 0%!important; }
 @media(min-width:1100px) {
- .approvedDesign [data-reference="live"] .header,.approvedDesign [data-reference="favorites"] .header { height:9%; }
- .approvedDesign [data-reference="live"] .header .links,.approvedDesign [data-reference="favorites"] .header .links { top:16%;height:65%; }
  .approvedDesign .personBookModal { grid-template-rows:min(22.135vw,340px) minmax(0,1fr); }
  .approvedDesign .personBookModal .wapDetailRow { padding:5px 0;line-height:1.3; }
 }
 @media(min-width:1100px) {
- .approvedDesign .headerLogoArt { display:none!important; }
  .paperLeaf::before { content:'';position:absolute;inset:0;background:url('../assets/wapobook/parchment.svg') center/115% 115%;opacity:.13; }
 }
 @media(max-width:1099px) {
- .approvedDesign .wapBook,.approvedDesign .portalHome { background-image:url('../assets/wapobook/parchment.svg')!important;background-size:cover!important;background-position:center!important; }
+
+.approvedDesign .wapBook { background-image:url('../assets/wapobook/parchment.svg')!important;background-size:cover!important;background-position:center!important; }
 }
 /* Show photos after successful decode, so a failed request never flashes a broken-image icon. */
 .archiveImage { visibility:hidden; }
 .archiveImage.imageReady { visibility:visible; }
-/* Keep the invisible hit targets as tall as the painted desktop tabs. */
-@media(min-width:1100px) {
- .approvedDesign .header .links { grid-template-rows:minmax(0,1fr);align-content:stretch; }
- .approvedDesign .header .links a { height:100%;min-height:44px;align-self:stretch;cursor:pointer; }
-
-}
 /* One continuous alpha-backed sheet per dialog; never stretch screenshot strips. */
 .approvedDesign .approvedModal { clip-path:none;isolation:isolate;filter:drop-shadow(0 10px 14px #0008); }
 .approvedDesign .approvedModal .approvedModalArtwork { display:none; }
@@ -352,7 +285,6 @@
 .approvedDesign .guildBookModal .approvedModalPaper { background:url('../assets/wapobook/guild-book.webp') center/100% 100% no-repeat!important; }
 .approvedDesign .personBookModal,.approvedDesign .guildBookModal { background:none!important; }
 .approvedDesign .guildBookModal .wapLeaf { background:none!important;box-shadow:none!important;border:0; }
-.approvedDesign [data-reference="home"] .logo::after { content:'';position:absolute;left:16.5%;top:49.7%;width:4.8%;height:15%;border-radius:50%;background:radial-gradient(ellipse at 65% 65%,#42321e,#17130d 75%);box-shadow:inset 1px 1px 2px #080705,1px 0 1px #a47b39;pointer-events:none; }
 @media(max-width:1099px) {
  /* A narrow screen reads the guild as one sheet; the background scrolls with its contents. */
  .approvedDesign .guildBookModal { background:url('../assets/wapobook/person-parchment.webp') center/100% 100% no-repeat local!important;padding:50px 26px 40px; }
@@ -363,87 +295,19 @@
 @media(min-width:1100px) {
  .approvedDesign #app .approvedPaper { display:block;left:6%;right:3%;top:25%;bottom:2%;background:url('../assets/wapobook/person-parchment.webp') center/125% 150% no-repeat; }
  .approvedDesign .approvedPaper .paperLeaf { display:none; }
- .approvedDesign #app[data-reference="home"] .approvedPaper { top:50%;bottom:3%;background:url('../assets/wapobook/person-parchment.webp') center/125% 160% no-repeat; }
  .approvedDesign .approvedPagerCover { display:none!important; }
- .approvedDesign .portalRoster .portalPanelTitle h2 { opacity:1;font-size:calc(var(--u) * 23);padding:calc(var(--u) * 13) calc(var(--u) * 24);margin:0;color:#241909; }
- .approvedDesign .page-home .portalMembers { height:76%;top:20%; }
 }
-/* Socket art stays circular, including unregistered or unavailable portraits. */
-.approvedDesign .page-home .portalMembers .member .avatar { clip-path:circle(49%);border-radius:50%;isolation:isolate; }
-.approvedDesign .page-home .portalMembers .member .avatar img { width:74%;height:74%;border-radius:50%;object-fit:cover; }
-.approvedDesign .portalMembers .member,.approvedDesign .portalMembers .member:hover { background:transparent!important;border:0!important;box-shadow:none!important; }
 
 @media(min-width:1100px) {
- .approvedDesign #app .approvedPaper,.approvedDesign #app[data-reference="home"] .approvedPaper { background-color:#f1e6d4;background-blend-mode:multiply; }
+
+.approvedDesign #app .approvedPaper { background-color:#f1e6d4;background-blend-mode:multiply; }
 }
 @media(min-width:1100px) {
  .approvedDesign .page-world .wapBook>.wapLeaf { overflow:auto!important; }
  .approvedDesign .page-world .statSection .bookEmpty { height:auto;min-height:0;padding:20px 12px; }
 }
-
-/* Home-based common header: real links replace page-specific painted menus. */
-.unifiedHeader .header { position:relative;height:clamp(92px,8.333333vw,128px);margin:0;padding:0;border:0;border-radius:0;isolation:isolate;z-index:20;background:#111214 url('../assets/approved/home.webp') center top/100% 800% no-repeat;box-shadow:none; }
-.unifiedHeader.approvedDesign .header { position:absolute;left:0;top:0;width:100%;height:12.5%; }
-.unifiedHeader .header::before,.unifiedHeader .header::after,.unifiedHeader .headerGem { display:none!important; }
-.unifiedHeader .header .nav { position:static;display:block;width:100%;max-width:none;height:100%;margin:0;padding:0;border:0;background:none; }
-.unifiedHeader .header .logo { position:absolute;left:5.2%;top:0;width:15.625%;height:auto!important;aspect-ratio:240 / 155;min-width:0;margin:0;padding:0;z-index:2; }
-.unifiedHeader .header .logo::after { content:'';position:absolute;left:12.8%;top:41.1%;width:5.2%;height:12.5%;border-radius:50%;background:radial-gradient(ellipse at 65% 65%,#42321e,#17130d 75%);box-shadow:inset 1px 1px 2px #080705;pointer-events:none; }
-.unifiedHeader .header .headerLogoArt { display:block!important;position:absolute;inset:0!important;opacity:1;mix-blend-mode:normal;background:url('../assets/approved/home.webp') 6.17284% 0 /640% 660.64516% no-repeat!important;clip-path:polygon(0 26%,15% 26%,15% 8%,40% 8%,50% 0,60% 8%,82% 8%,82% 26%,100% 26%,100% 81%,71% 81%,64% 91%,52% 100%,39% 91%,33% 81%,0 81%); }
-.unifiedHeader .headerLogoFallback { display:none; }
-.unifiedHeader .header .links { position:absolute;left:21.5%;right:6.2%;top:33%;width:auto;height:56%;display:grid;grid-template-columns:90fr 162fr 125fr 124fr 249fr 111fr 113fr 136fr;grid-template-rows:minmax(0,1fr);align-content:stretch;align-items:stretch;gap:0;padding:0;border:0;border-radius:4px;background:#121314;box-shadow:none; }
-.unifiedHeader .header .links a { display:flex;align-items:center;justify-content:center;align-self:stretch;height:100%;min-height:44px;min-width:0;padding:0 3px;border:1px solid transparent!important;border-radius:5px;font-size:clamp(10px,.96vw,15px);line-height:1.25;white-space:nowrap;color:#e4c287!important;background:transparent!important;box-shadow:none!important;text-shadow:0 1px 2px #000;cursor:pointer; }
-.unifiedHeader .header .links a:hover,.unifiedHeader .header .links a[aria-current="page"] { border-color:#bc8738!important;background:linear-gradient(#59401e88,#2a1b0c88)!important;color:#ffe4ad!important;box-shadow:inset 0 0 8px #b57e2a33!important; }
-.unifiedHeader .header .menu { display:none; }
-.unifiedHeader .header .logo:focus-visible,.unifiedHeader .header .links a:focus-visible { outline:2px solid #ffe2a1;outline-offset:-3px; }
-@media(max-width:1099px) {
- .unifiedHeader .header,.unifiedHeader.approvedDesign .header { position:relative;left:auto;top:auto;width:100%;height:96px;border:1px solid #a6783d;border-radius:8px;background:linear-gradient(#1b1814ee,#0c0d0eee),url('../assets/wapobook/leather.svg') center/cover; }
- .unifiedHeader .header .logo { left:12px;top:-2px;width:146px;aspect-ratio:240 / 155; }
- .unifiedHeader .header .nav>.bgmPlayer { position:absolute;right:64px;top:30px;left:auto;bottom:auto;transform:none;margin:0; }
- .unifiedHeader .header .bgmTitle,.unifiedHeader .header .bgmVolumeLabel,.unifiedHeader .header #bgmVolumeValue,.unifiedHeader .header .bgmPlayer input[type=range] { display:none; }
- .unifiedHeader .header .menu { position:absolute;display:flex;align-items:center;justify-content:center;right:12px;top:25px;width:44px;height:44px;margin:0; }
- .unifiedHeader .header .links { display:none!important;left:-1px;right:-1px;top:calc(100% - 1px);height:auto;width:auto;max-height:calc(100dvh - 110px);overflow-y:auto;padding:10px;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:5px;border:1px solid #a6783d;border-radius:0 0 8px 8px;background:#141310;box-shadow:0 8px 16px #0008; }
- .unifiedHeader .header .links.open { display:grid!important; }
- .unifiedHeader .header .links a { height:auto;min-height:44px;padding:10px 6px;font-size:13px; }
-}
-
-/* Override the former compact header variants on favorites/live as well. */
-@media(min-width:1100px) {
- .unifiedHeader #app .header .links { left:21.5%;right:6.2%;top:33%;height:56%;width:auto; }
-}
-@media(max-width:1099px) {
- .unifiedHeader .header .logo { width:clamp(110px,calc(100% - 138px),146px); }
- .unifiedHeader .page-home .portalHero { background-size:cover!important; }
-}
-@media(min-width:1100px) {
- .unifiedHeader:not(.approvedDesign) .header { height:auto;aspect-ratio:12; }
-}
-.unifiedHeader .header .headerLogoArt { mix-blend-mode:lighten; }
-.unifiedHeader .header .logo { mix-blend-mode:lighten;filter:none!important; }
-.unifiedHeader .header .headerLogoArt { clip-path:polygon(50% 0,55% 10%,65% 14%,74% 25%,77% 31%,95% 31%,95% 48%,100% 53%,96% 66%,96% 84%,75% 84%,65% 92%,52% 100%,40% 92%,29% 84%,4% 84%,1% 75%,5% 63%,5% 42%,13% 36%,26% 32%,29% 23%,38% 14%,46% 10%); }
-
-/* One binding asset and one news/events entry on every page. */
-.unifiedHeader #app::before { content:'';display:block;position:absolute;top:0;bottom:0;left:0;width:3.90625%;z-index:35;border:0;border-radius:0;box-shadow:none;pointer-events:none;background:url('../assets/approved/home.webp') left top/2560% auto repeat-y; }
-@media(min-width:1100px) {
- .unifiedHeader.approvedDesign #app::before { bottom:auto;height:min(66.666667vw,1024px); }
-}
-@media(max-width:1099px) {
- .unifiedHeader #app::before { width:18px;background-size:460.8px auto; }
-}
-.unifiedHeader .header .links .navLiveDot { display:inline-block;flex:0 0 auto;width:10px;height:10px;margin-right:7px;border-radius:50%;background:#ef4444;color:#ef4444;box-shadow:0 0 8px #ef444466; }
-@media(min-width:1100px) {
- .unifiedHeader.approvedDesign #app::before { background-size:2560% 100%;background-repeat:no-repeat; }
-}
-@media(max-width:1099px) {
- .unifiedHeader .header .links a[href="#/updates"] { grid-column:1/-1; }
-}
-
-/* Equal navigation tabs, with the combined title wrapping inside the same box. */
-.unifiedHeader .header .links { grid-template-columns:repeat(8,minmax(0,1fr)); }
-.unifiedHeader .header .links a { white-space:normal;text-align:center;font-size:clamp(10px,.9vw,14px); }
 .bookTurnBar { display:none; }
 @media(min-width:1100px) {
- /* Wrinkles and aged fibers remain visible behind the round roster portraits. */
- .approvedDesign #app[data-reference="home"] .approvedPaper { background-size:110% 115%;background-position:center bottom;background-color:#ead9bd; }
  /* Fade into the original leather edge, rather than ending a paper rectangle over it. */
  .approvedDesign #app .approvedPaper { bottom:3.4%; }
  .approvedDesign .wapBook .leafPager,.approvedDesign .wapBook .journalPager { display:none; }
@@ -458,34 +322,8 @@
  .approvedDesign .bookTurnBar .leafPager+.leafPager span { left:38%; }
  .approvedDesign .bookTurnBar button:disabled { opacity:.35; }
 }
-@media(max-width:1099px) {
- .unifiedHeader .header .links { grid-template-columns:repeat(2,minmax(0,1fr)); }
- .unifiedHeader .header .links a { font-size:13px; }
- .unifiedHeader .header .links a[href="#/updates"] { grid-column:auto; }
- .approvedDesign .page-home .portalRoster { background:url('../assets/wapobook/person-parchment.webp') center/110% 120% no-repeat!important;border:0;box-shadow:none; }
-}
-@media(max-width:1099px) {
- .unifiedHeader .header .links a { height:56px;min-height:56px;padding:8px 6px; }
-}
-
-.unifiedHeader .header .links a[href="#/updates"]>span { white-space:nowrap; }
 @media(min-width:1100px) {
  .approvedDesign .bookTurnBar .leafPager button { height:calc(var(--u) * 36);font-size:calc(var(--u) * 32); }
-}
-/* BGM stays in the upper-right header, above the navigation row. */
-.unifiedHeader #app .header .nav>.bgmPlayer { position:absolute;left:auto;bottom:auto;right:6.2%;top:clamp(4px,.65vw,10px);height:22px;display:flex;align-items:center;gap:5px;padding:1px 5px;margin:0;border:1px solid #a67b3b88;border-radius:5px;background:#100e0be8;transform:none;opacity:1;z-index:25; }
-.unifiedHeader #app .header .bgmTitle,.unifiedHeader #app .header .bgmVolumeLabel,.unifiedHeader #app .header #bgmVolumeValue { display:none; }
-.unifiedHeader #app .header .bgmToggle { min-height:0;height:18px;line-height:16px;padding:0 5px;font-size:9px; }
-.unifiedHeader #app .header .bgmPlayer input[type=range] { display:block;width:58px;height:12px;margin:0; }
-@media(max-width:1099px) {
- .unifiedHeader #app .header .nav>.bgmPlayer { right:12px;top:8px;width:110px;gap:3px;padding:1px 3px; }
- .unifiedHeader #app .header .bgmPlayer input[type=range] { width:49px;min-width:0; }
- .unifiedHeader #app .header .menu { top:43px; }
-}
-
-/* The whole blank book surface includes its own page edges and shadows. No footer strip. */
-@media(min-width:1100px) {
- .approvedDesign #app:not([data-reference="home"]) .approvedPaper { inset:0;background:url('../assets/wapobook/clean-open-book.webp') center/100% 100% no-repeat;background-blend-mode:normal; }
 }
 
 /* One complete book, with no page-specific decorative masks or border slices. */
@@ -500,26 +338,17 @@
  .approvedDesign .favoriteGrid { height:calc(var(--u) * 520); }
  .approvedDesign .page-favorites .wapControls { left:calc(var(--u) * 130);top:calc(var(--u) * 326);width:calc(var(--u) * 1280);height:calc(var(--u) * 94); }
  .approvedDesign .page-live .bookSort label { display:block; }
- .approvedDesign .page-live .bookSearch,.approvedDesign .page-home .portalSearch { left:calc(var(--u) * 1014);top:calc(var(--u) * 235);width:calc(var(--u) * 424);height:calc(var(--u) * 48);padding:0;border:2px solid #b38a43;background:#07131bef;border-radius:30px;box-shadow:0 1px 4px #0006; }
+
+.approvedDesign .page-live .bookSearch { left:calc(var(--u) * 1014);top:calc(var(--u) * 235);width:calc(var(--u) * 424);height:calc(var(--u) * 48);padding:0;border:2px solid #b38a43;background:#07131bef;border-radius:30px;box-shadow:0 1px 4px #0006; }
  .approvedDesign .page-favorites .bookSearch { left:calc(var(--u) * 1047);top:calc(var(--u) * 244);width:calc(var(--u) * 415);height:calc(var(--u) * 44); }
  .approvedDesign .page-live .bookSearch input { left:12%;width:82%;color:#e9d8b9; }
  .approvedDesign .page-live .bookSearch input::placeholder { color:#b6b6ae; }
  .approvedDesign .page-live .bookSearch::before { border-color:#c4984e; }
  .approvedDesign .page-live .bookSearch::after { background:#c4984e; }
- .approvedDesign .page-home .portalSearch input { left:12%;width:82%;font-size:calc(var(--u) * 13); }
- .approvedDesign .page-home .portalSearch .btn { left:2%;width:9%; }
- .approvedDesign .portalSummary { left:calc(var(--u) * 124);top:calc(var(--u) * 334);width:calc(var(--u) * 1290);height:calc(var(--u) * 180);gap:calc(var(--u) * 16); }
- .approvedDesign .portalSummary .portalPanel { background:linear-gradient(110deg,#342619,#211b13)!important;border:2px ridge #af8245;border-radius:7px;box-shadow:0 2px 3px #52331477; }
- .approvedDesign .portalSummary .portalPanelTitle { height:30%;padding:calc(var(--u) * 12) calc(var(--u) * 10);border-bottom:1px solid #9b6e3455; }
- .approvedDesign .portalSummary .portalPanelTitle h2 { opacity:1;color:#e7c782;font-size:calc(var(--u) * 15); }
- .approvedDesign .portalSummary .portalPanelTitle>a { color:#d2b271!important;font-size:calc(var(--u) * 11);width:auto;height:auto;right:3%;top:32%; }
- .approvedDesign .portalSummary .portalPanelBody { background:none;padding:calc(var(--u) * 10); }
- .approvedDesign .page-home .portalRoster { left:calc(var(--u) * 124);top:calc(var(--u) * 540);width:calc(var(--u) * 1290);height:calc(var(--u) * 390);background:none!important; }
- .approvedDesign .page-home .portalMembers { top:20%;height:76%; }
 }
 @media(max-width:1099px) {
- .approvedDesign .wapBook,.approvedDesign .portalHome { border-image:url('../assets/wapobook/clean-open-book.webp') 32 60 35 70 stretch!important;border-style:solid;border-width:15px!important;background:url('../assets/wapobook/person-parchment.webp') center/110% 120% no-repeat!important; }
- .approvedDesign .page-home .portalRoster { background:none!important; }
+
+.approvedDesign .wapBook { border-image:url('../assets/wapobook/clean-open-book.webp') 32 60 35 70 stretch!important;border-style:solid;border-width:15px!important;background:url('../assets/wapobook/person-parchment.webp') center/110% 120% no-repeat!important; }
 }
 /* Guild detail uses the same paper, gold corners and blue gems as the main book. */
 .approvedDesign .guildBookModal .approvedModalPaper { background:url('../assets/wapobook/clean-open-book.webp') 58.8235% 95.5414%/109.7143% 144.2254% no-repeat!important; }
@@ -531,16 +360,21 @@
 @media(min-width:1100px) {
  .approvedDesign #app[data-reference] .approvedArtwork { clip-path:none; }
  .approvedDesign .pageContent .pageHero { isolation:auto; }
- .approvedDesign .pageContent .bookSearch,.approvedDesign .page-home .portalSearch { left:calc(var(--u) * 1008);top:calc(var(--u) * 224);width:calc(var(--u) * 460);height:calc(var(--u) * 64);padding:0;border:2px solid #b38a43;border-radius:32px;background:#07131bf7;box-shadow:0 1px 4px #0006; }
- .approvedDesign .bookSearch input,.approvedDesign .page-live .bookSearch input,.approvedDesign .portalSearch input { left:13%;top:20%;width:82%;height:60%;background:none;color:#e9d8b9;font-size:calc(var(--u) * 14); }
- .approvedDesign .bookSearch::before,.approvedDesign .portalSearch::before { content:'';position:absolute;left:calc(var(--u) * 20);top:calc(var(--u) * 21);width:calc(var(--u) * 14);height:calc(var(--u) * 14);border:2px solid #c4984e;border-radius:50%;pointer-events:none; }
- .approvedDesign .bookSearch::after,.approvedDesign .portalSearch::after { content:'';position:absolute;left:calc(var(--u) * 33);top:calc(var(--u) * 36);width:calc(var(--u) * 11);height:2px;background:#c4984e;transform:rotate(45deg);pointer-events:none; }
+
+.approvedDesign .pageContent .bookSearch { left:calc(var(--u) * 1008);top:calc(var(--u) * 224);width:calc(var(--u) * 460);height:calc(var(--u) * 64);padding:0;border:2px solid #b38a43;border-radius:32px;background:#07131bf7;box-shadow:0 1px 4px #0006; }
+
+.approvedDesign .bookSearch input,.approvedDesign .page-live .bookSearch input { left:13%;top:20%;width:82%;height:60%;background:none;color:#e9d8b9;font-size:calc(var(--u) * 14); }
+
+.approvedDesign .bookSearch::before { content:'';position:absolute;left:calc(var(--u) * 20);top:calc(var(--u) * 21);width:calc(var(--u) * 14);height:calc(var(--u) * 14);border:2px solid #c4984e;border-radius:50%;pointer-events:none; }
+
+.approvedDesign .bookSearch::after { content:'';position:absolute;left:calc(var(--u) * 33);top:calc(var(--u) * 36);width:calc(var(--u) * 11);height:2px;background:#c4984e;transform:rotate(45deg);pointer-events:none; }
 }
 @media(min-width:1100px) {
  .approvedDesign .liveScenery { height:calc(var(--u) * 72); }
 }
 @media(max-width:1099px) {
- .approvedDesign .wapBook,.approvedDesign .portalHome { border-style:solid!important; }
+
+.approvedDesign .wapBook { border-style:solid!important; }
 }
 @media(max-width:1099px) {
  /* Plain scenery keeps the small-screen banner free of baked-in book controls. */

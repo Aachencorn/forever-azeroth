@@ -38,13 +38,13 @@ async def run():
      assert await p.locator('[role="dialog"]').count()==1
      assert await p.evaluate('''()=>{let n=document.querySelector('[role="dialog"]');return n.scrollWidth<=n.clientWidth+1}'''),('Modal horizontal scroll',width,route)
    if width<=1000:
-    await p.goto(BASE+'/#/adventurers');await p.locator('.menu').click();assert await p.locator('.links').is_visible();await p.get_by_role('link',name='♜ 길드 도감',exact=True).click();await p.wait_for_timeout(40);assert await p.locator('h1').inner_text()=='길드 도감'
+    await p.goto(BASE+'/#/adventurers');await p.locator('.menu').click();assert await p.locator('.links').is_visible();await p.get_by_role('link',name='길드 도감',exact=True).click();await p.wait_for_timeout(40);assert await p.locator('h1').inner_text()=='길드 도감'
   # Click the painted desktop menu centers rather than navigating by URL.
   for width in [1536,1366,1100]:
    await p.set_viewport_size({'width':width,'height':1024})
    for href in ['#/adventurers','#/guilds','#/world','#/updates','#/chronicle','#/favorites','#/live','#/']:
     await p.goto(BASE+'/#/');await p.wait_for_timeout(30)
-    a=p.locator('.header .links a[href="'+href+'"]')
+    a=p.locator('.tavernHeader .links a[href="'+href+'"]')
     r=await a.bounding_box();assert r and r['height']>=44,('Collapsed menu hit target',width,href,r)
     await p.mouse.click(r['x']+r['width']/2,r['y']+r['height']/2)
     await p.wait_for_timeout(40);assert await p.evaluate('location.hash')==href,('Menu click failed',width,href)
