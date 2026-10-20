@@ -418,3 +418,4 @@
  .unifiedHeader:not(.approvedDesign) .header { height:auto;aspect-ratio:12; }
 }
 .unifiedHeader .header .headerLogoArt { mix-blend-mode:lighten; }
+.unifiedHeader .header .logo { mix-blend-mode:lighten;filter:none!important; }
