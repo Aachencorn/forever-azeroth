@@ -26,6 +26,8 @@ async def run():
     if w<1100:
      bgm=await p.locator('.header .bgmPlayer').bounding_box();assert logo['x']+logo['width']<=bgm['x']+1,(w,route,'Logo overlaps controls')
      await p.locator('.menu').click();assert await p.locator('.menu').get_attribute('aria-expanded')=='true'
+    sizes=await p.locator('.header .links a').evaluate_all('(ns)=>ns.map(n=>[n.getBoundingClientRect().width,n.getBoundingClientRect().height])')
+    assert max(x[0] for x in sizes)-min(x[0] for x in sizes)<.6 and max(x[1] for x in sizes)-min(x[1] for x in sizes)<.6,(w,route,'Unequal menu buttons',sizes)
     header=await p.locator('.header').bounding_box();links=await p.locator('.links').bounding_box()
     relative=[round((links['x']-header['x'])/header['width'],3),round((links['y']-header['y'])/header['height'],3)]
     if route!='admin':

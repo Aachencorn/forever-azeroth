@@ -436,3 +436,40 @@
 @media(max-width:1099px) {
  .unifiedHeader .header .links a[href="#/updates"] { grid-column:1/-1; }
 }
+
+/* Equal navigation tabs, with the combined title wrapping inside the same box. */
+.unifiedHeader .header .links { grid-template-columns:repeat(8,minmax(0,1fr)); }
+.unifiedHeader .header .links a { white-space:normal;text-align:center;font-size:clamp(10px,.9vw,14px); }
+.bookTurnBar,.bookLowerEdge { display:none; }
+@media(min-width:1100px) {
+ /* Wrinkles and aged fibers remain visible behind the round roster portraits. */
+ .approvedDesign #app[data-reference="home"] .approvedPaper { background-size:110% 115%;background-position:center bottom;background-color:#ead9bd; }
+ /* Fade into the original leather edge, rather than ending a paper rectangle over it. */
+ .approvedDesign #app .approvedPaper { bottom:3.4%; }
+ .approvedDesign #app .bookLowerEdge { display:block;position:absolute;left:0;right:0;bottom:0;height:4.3%;z-index:2;pointer-events:none;background:url('../assets/approved/home.webp') center bottom/100% 2325.5814% no-repeat;mask-image:linear-gradient(transparent,#000 45%); }
+ .approvedDesign .wapBook .leafPager,.approvedDesign .wapBook .journalPager { display:none; }
+ .approvedDesign .bookTurnBar { display:grid;position:absolute;left:calc(var(--u) * 124);top:calc(var(--u) * 955);width:calc(var(--u) * 1290);height:calc(var(--u) * 44);grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:calc(var(--u) * 72);z-index:4;background:none;border:0; }
+ .approvedDesign .bookTurnBar .leafPager { display:block;position:relative;width:100%;height:100%;margin:0;padding:0;background:none;border:0; }
+ .approvedDesign .bookTurnBar .leafPager button { position:absolute;top:0;width:calc(var(--u) * 66);height:calc(var(--u) * 40);margin:0;padding:0;line-height:1;border:calc(var(--u) * 2) ridge #ae7d3a;border-radius:4px;background:linear-gradient(#3a2516,#17130f);color:#e8bd6c;font-size:calc(var(--u) * 36);box-shadow:none; }
+ .approvedDesign .bookTurnBar .leafPager button:first-child { left:36%;visibility:visible;clip-path:polygon(18% 0,100% 0,100% 100%,18% 100%,0 50%); }
+ .approvedDesign .bookTurnBar .leafPager button:last-child { visibility:hidden; }
+ .approvedDesign .bookTurnBar .leafPager+.leafPager button:first-child { visibility:hidden; }
+ .approvedDesign .bookTurnBar .leafPager+.leafPager button:last-child { left:55%;visibility:visible;clip-path:polygon(0 0,82% 0,100% 50%,82% 100%,0 100%); }
+ .approvedDesign .bookTurnBar .leafPager span { position:absolute;left:51%;top:calc(var(--u) * 6);font-size:calc(var(--u) * 21);font-weight:700;letter-spacing:3px; }
+ .approvedDesign .bookTurnBar .leafPager+.leafPager span { left:38%; }
+ .approvedDesign .bookTurnBar button:disabled { opacity:.35; }
+}
+@media(max-width:1099px) {
+ .unifiedHeader .header .links { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .unifiedHeader .header .links a { font-size:13px; }
+ .unifiedHeader .header .links a[href="#/updates"] { grid-column:auto; }
+ .approvedDesign .page-home .portalRoster { background:url('../assets/wapobook/person-parchment.webp') center/110% 120% no-repeat!important;border:0;box-shadow:none; }
+}
+@media(max-width:1099px) {
+ .unifiedHeader .header .links a { height:56px;min-height:56px;padding:8px 6px; }
+}
+
+.unifiedHeader .header .links a[href="#/updates"]>span { white-space:nowrap; }
+@media(min-width:1100px) {
+ .approvedDesign .bookTurnBar .leafPager button { height:calc(var(--u) * 36);font-size:calc(var(--u) * 32); }
+}
