@@ -2,33 +2,7 @@ const KEY='forever-azeroth-v1';
 const seed={people:[{id:'wak',name:'우왁굳',race:'미확인',className:'미확인',soop:'',image:'',returning:'unknown',characters:[{id:'wak-main',name:'미확인',level:'',race:'',className:'',spec:'',role:'',guildId:'',main:true}],past:{participated:'unknown',level:'',className:'',spec:'',raids:[]}}],guilds:[],events:[],chronicle:[],reports:[],slots:['wak',...Array(19).fill('')],featuredEvent:'',settings:{siteName:'와포북'}};
 let data;try{data=JSON.parse(localStorage.getItem(KEY))||structuredClone(seed)}catch{data=structuredClone(seed)};
 
-// One-time example data for preview; preserve any existing local edits.
-if(!localStorage.getItem('fa-example-data-20261015')){
-  for(const [id,name] of [['wafo','와포동'],['jindeugi','진드기']]){
-    if(!data.guilds.some(g=>g.name===name))data.guilds.push({id,name,leader:'',total:'',description:'테스트용 길드',verified:''});
-  }
-  const examples=[
-    ['wak','우왁굳','왁두',40,'나이트엘프','도적','잠행','딜러','와포동'],
-    ['aachencorn-demo','아헨콘','아헨콘',50,'스카이본','드루이드','조화','딜러','진드기'],
-    ['neez-demo','니즈','블니즈컨',50,'인간','성기사','보호','탱커','진드기']
-  ];
-  for(const [id,name,nickname,level,race,className,spec,role,guildName] of examples){
-    let p=data.people.find(x=>x.name===name);
-    if(!p){p={id,name,soop:'',image:'',returning:'unknown',characters:[],past:{participated:'unknown',level:'',className:'',spec:'',raids:[]}};data.people.push(p);}
-    if(!Array.isArray(p.characters))p.characters=[];
-    const guildId=data.guilds.find(g=>g.name===guildName).id;
-    const sample={id:id+'-main',name:nickname,level,race,className,spec,role,guildId,main:true};
-    const old=p.characters.find(c=>c.name===nickname);
-    if(!old){
-      if(p.characters.length===1&&p.characters[0].name==='미확인')p.characters=[sample];
-      else {sample.main=p.characters.length===0;p.characters.push(sample);}
-    }
-  }
-  if(!Array.isArray(data.slots))data.slots=['wak',...Array(19).fill('')];
-  data.slots[0]='wak';
-  localStorage.setItem(KEY,JSON.stringify(data));
-  localStorage.setItem('fa-example-data-20261015','yes');
-}
+// Preserve existing saved records. Never insert design-mockup or preview records automatically.
 const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slug=()=>Math.random().toString(36).slice(2,10);
@@ -231,7 +205,7 @@ async function loadOfficialNews(){
   const parsed=await res.json();
   officialNews=validOfficialNews(parsed.items);
   officialNewsLoaded=true;
-  if(route()==='/'||route()==='/news')render();
+  if(['/', '/news', '/updates', '/events'].includes(route()))render();
  }catch{officialNewsLoaded=false}
 }
 
@@ -256,4 +230,5 @@ function newsPage(){const items=newsItems().filter(x=>newsFilter==='all'||(x.cat
 function eventsHub(){const arr=data.events;layout(head('와포북 소식 · 이벤트','모험가들이 함께하는 이벤트')+'<div class="wapChronTabs"><a href="#/updates">소식 · 패치노트</a><a class="active" href="#/events">이벤트</a></div>'+bookFrame('<h2>이벤트 목록</h2><div class="wapTimeline">'+(arr.map(e=>'<a class="wapEventLink" href="#/event/'+e.id+'"><small>'+esc(e.date||'일정 미정')+'</small><strong>'+esc(e.title)+'</strong></a>').join('')||'<p>등록된 이벤트가 없습니다.</p>')+'</div>','<h2>이벤트 안내</h2><p>왼쪽에서 이벤트를 선택하면 상세 내용을 확인할 수 있습니다.</p>'))}
 
 function render(){const r=route().split('?')[0];if(r==='/'){home();animateHomeStats()}else if(r==='/adventurers')peopleList();else if(r.startsWith('/adventurer/'))profile(r.split('/')[2]);else if(r==='/guilds')guildList();else if(r.startsWith('/guild/'))guildDetail(r.split('/')[2]);else if(r==='/world')world();else if(r==='/live')livePage();else if(r==='/news'||r==='/updates')newsPage();else if(r==='/events')eventsHub();else if(r.startsWith('/event/'))eventDetail(r.split('/')[2]);else if(r==='/chronicle')chronicle();else if(r==='/favorites')favorites();else if(r==='/report')report();else if(r==='/admin')admin();else notFound()}
-window.addEventListener('hashchange',()=>{profileTab='character';filter='';bookIndex=0;bookQuery='';render();window.scrollTo(0,0)});render();loadOfficialNews();
+function onArchiveHashChange(){profileTab='character';filter='';bookIndex=0;bookQuery='';render();window.scrollTo(0,0)}
+window.addEventListener('hashchange',onArchiveHashChange);render();loadOfficialNews();
