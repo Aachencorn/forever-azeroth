@@ -57,3 +57,34 @@
   .header .links { top: 62px; }
   .headerLogoArt { height: 50px; }
 }
+
+
+/* The approved mockup uses a 1536px fixed canvas. Override THAT canvas,
+   rather than only its nested .wrap elements. Keep its 3:2 coordinates. */
+@media (min-width:1100px) {
+  body.approvedDesign #app {
+    width: min(calc(100vw - 24px), 1920px);
+    max-width: none;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+  /* The original BGM was placed below the 1024-unit canvas; dock it in
+     the upper-right book margin instead, so it is visible on every page. */
+  body.approvedDesign .header .bgmPlayer {
+    top: calc(var(--u) * 132);
+    right: calc(var(--u) * 60);
+    transform: none;
+    opacity: 1;
+    z-index: 15;
+    max-width: 225px;
+    background: linear-gradient(180deg,#30231c,#17120f);
+    border: 1px solid #a47a42;
+    box-shadow: 0 2px 8px #0009;
+  }
+  /* Header artwork includes the original thick band. Make the interactive
+     navigation occupy a slimmer central strip without moving hit targets. */
+  body.approvedDesign .header .links {
+    top: 37%;
+    height: 40%;
+  }
+}
