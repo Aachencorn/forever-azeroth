@@ -183,3 +183,86 @@ body.tavernDesign.approvedDesign .page-home .portalMembers .member .avatar img {
  body.tavernDesign.approvedDesign .page-home .portalSearch {padding:6px;}
  body.tavernDesign.approvedDesign .page-home .portalSearch input {font-size:13px;}
 }
+
+/* The old screenshot-positioned controls must become document-flow controls. */
+body.tavernDesign.approvedDesign #app .pageContent .wrap.wapBook {
+ position:relative!important;inset:auto!important;
+ width:min(1280px,100%)!important;height:auto!important;min-height:560px;
+ margin:24px auto!important;padding:32px!important;
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;
+ background:#ead6af!important;color:#352415;
+ border:12px solid transparent!important;
+ border-image:url('../assets/wapobook/clean-open-book.webp') 32 60 35 70 stretch!important;
+}
+body.tavernDesign.approvedDesign #app .wapBook>.wapLeaf {
+ position:relative!important;inset:auto!important;width:auto!important;height:auto!important;
+ min-width:0;min-height:420px;overflow:visible!important;
+}
+body.tavernDesign.approvedDesign #app .pageContent .wapControls,
+body.tavernDesign.approvedDesign #app .pageContent .bookFilters,
+body.tavernDesign.approvedDesign #app .pageContent .bookSearch,
+body.tavernDesign.approvedDesign #app .pageContent .bookSort {
+ position:relative!important;inset:auto!important;transform:none!important;
+ width:auto!important;max-width:100%;height:auto!important;margin:8px 0!important;
+}
+body.tavernDesign.approvedDesign #app .pageContent .wapControls {
+ display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+ padding:12px;border-radius:8px;background:#d4b989;
+}
+body.tavernDesign.approvedDesign #app .pageContent .bookSearch input {
+ position:relative!important;inset:auto!important;width:100%!important;
+ height:42px!important;padding:8px 12px!important;font-size:14px!important;
+ color:#302115;background:#fff9e9;border:1px solid #ad8d5a;border-radius:8px;
+}
+body.tavernDesign.approvedDesign #app .pageContent .bookSearch::before,
+body.tavernDesign.approvedDesign #app .pageContent .bookSearch::after,
+body.tavernDesign.approvedDesign #app .page-home .portalSearch::before,
+body.tavernDesign.approvedDesign #app .page-home .portalSearch::after {display:none!important;}
+body.tavernDesign.approvedDesign #app .pageContent .wapGrid,
+body.tavernDesign.approvedDesign #app .pageContent .guildGrid,
+body.tavernDesign.approvedDesign #app .pageContent .favoriteGrid,
+body.tavernDesign.approvedDesign #app .pageContent .liveGrid {
+ position:relative!important;inset:auto!important;width:100%!important;
+ height:auto!important;min-height:0!important;overflow:visible;
+}
+body.tavernDesign.approvedDesign #app .approvedPaper {display:none!important;}
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanel {
+ background:linear-gradient(145deg,#302116,#20150e)!important;color:#ead6af;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanelTitle h2,
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanelTitle>a,
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanelBody,
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanelBody p,
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalEmpty {
+ color:#ead6af!important;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanelTitle {
+ height:auto;padding:0 0 12px;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanelBody {padding:12px 0;}
+body.tavernDesign.approvedDesign #app .page-home .portalRoster {
+ background:linear-gradient(#ead6af,#d5b888)!important;
+}
+body.tavernDesign.approvedDesign #app .footer {
+ position:relative!important;inset:auto!important;width:100%;height:auto;
+ padding:24px;background:#180f0bcf;border-top:1px solid #92744a;
+}
+@media(max-width:1099px) {
+ body.tavernDesign.approvedDesign #app .pageContent .wrap.wapBook {
+  grid-template-columns:minmax(0,1fr);padding:20px!important;
+ }
+ body.tavernDesign.approvedDesign #app .pageContent .wrap.wapBook>.wapLeaf {
+  min-height:0;
+ }
+}
+@media(max-width:650px) {
+ body.tavernDesign.approvedDesign #app .pageContent .wrap.wapBook {
+  padding:14px!important;margin:14px auto!important;border-width:5px!important;
+ }
+ body.tavernDesign.approvedDesign #app .page-home .portalMembers .member .avatar {
+  width:100%!important;max-width:72px;height:auto!important;aspect-ratio:1;
+ }
+ body.tavernDesign.approvedDesign #app .page-home .portalSummary {gap:12px;}
+ body.tavernDesign.approvedDesign #app .page-home .portalPanel,
+ body.tavernDesign.approvedDesign #app .page-home .portalRoster {padding:14px;}
+}
