@@ -419,3 +419,4 @@
 }
 .unifiedHeader .header .headerLogoArt { mix-blend-mode:lighten; }
 .unifiedHeader .header .logo { mix-blend-mode:lighten;filter:none!important; }
+.unifiedHeader .header .headerLogoArt { clip-path:polygon(50% 0,55% 10%,65% 14%,74% 25%,77% 31%,95% 31%,95% 48%,100% 53%,96% 66%,96% 84%,75% 84%,65% 92%,52% 100%,40% 92%,29% 84%,4% 84%,1% 75%,5% 63%,5% 42%,13% 36%,26% 32%,29% 23%,38% 14%,46% 10%); }
