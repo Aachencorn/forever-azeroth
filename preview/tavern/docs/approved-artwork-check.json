@@ -1,0 +1,231 @@
+{
+  "lossless_originals": 10,
+  "common_book_comparisons": [
+    {
+      "page": "home",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "home",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "home",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "home",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0056
+    },
+    {
+      "page": "home",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "adventurers",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "guilds",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "world",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "news",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "events",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "chronicle",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.1097
+    },
+    {
+      "page": "favorites",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "favorites",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "book-top",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "book-left",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "book-right",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "binding",
+      "mean_absolute_rgb_error": 0.0
+    },
+    {
+      "page": "live",
+      "area": "book-bottom",
+      "mean_absolute_rgb_error": 0.0
+    }
+  ],
+  "layout": "card and both popup reference coordinates passed"
+}

@@ -1,0 +1,47 @@
+/* Responsive foundation for the approved WAPO BOOK design.
+ * Keep the 1536:1024 artwork coordinate system intact until visual QA.
+ * This sheet intentionally does NOT scale the book independently of its art.
+ */
+html { min-width: 0; }
+body { min-width: 0; overflow-x: clip; }
+#app { min-width: 0; }
+img, video { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; }
+:where(a,button,input,select,textarea):focus-visible { outline: 2px solid #f3cf83; outline-offset: 2px; }
+
+/* Keep the approved header and BGM artwork alignment unchanged on desktop.
+ * Its coordinates are derived from the same container width as the background. */
+@media (min-width: 1100px) {
+  body.approvedDesign #app {
+    width: min(100%, 1536px);
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+}
+/* Tablet and small laptop: real reflow, not a scaled desktop screenshot. */
+@media (max-width: 1099px) {
+  .wapBook, .portalHome, .bookShell { max-width: 100%; }
+  .wapLeaf, .portalPanel { min-width: 0; }
+  .wapDetailRow, .wapGuildNumbers { overflow-wrap: anywhere; }
+}
+@media (max-width: 650px) {
+  .wrap { width: calc(100% - 20px); }
+  .wapBook { grid-template-columns: minmax(0,1fr); padding: 10px; }
+  .wapLeaf { width: 100%; }
+  .wapBook:after { display: none; }
+  .wapControls, .bookFilters { max-width: 100%; flex-wrap: wrap; }
+  .wapControls .field { min-width: 0; }
+  .portalMembers, .peopleGrid, .guildGrid, .liveGrid { min-width: 0; }
+  .wapDetailPhoto img, .wapPortrait img { object-fit: cover; }
+}
+
+/* Desktop banner: the old 90.82% artwork box ended before the right-hand
+   ornamental frame, exposing a dark vertical strip below the header.
+   Fill only the inner framed region; keep the header, links and book untouched. */
+@media (min-width: 1100px) {
+  body.unifiedHeader.approvedDesign #app[data-reference] .approvedArtwork {
+    left: 5.208333%;
+    width: 92.95%;
+    max-width: none;
+  }
+}
