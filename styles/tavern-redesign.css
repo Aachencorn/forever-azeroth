@@ -266,3 +266,48 @@ body.tavernDesign.approvedDesign #app .footer {
  body.tavernDesign.approvedDesign #app .page-home .portalPanel,
  body.tavernDesign.approvedDesign #app .page-home .portalRoster {padding:14px;}
 }
+
+/* Reference-composition pass: a readable central inn sign between noticeboards. */
+body.tavernDesign.approvedDesign #app .page-home .portalHero {
+ min-height:clamp(280px,34vw,460px);
+ display:flex;flex-direction:column;justify-content:center;gap:16px;
+ text-align:center;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalHero::before {
+ content:"와포북";
+ display:block!important;position:relative;inset:auto;
+ width:auto;height:auto;opacity:1;pointer-events:none;
+ margin:32px auto 0;padding:14px 46px;
+ font-family:serif;font-size:clamp(42px,6vw,90px);font-weight:900;
+ letter-spacing:.08em;line-height:1.15;color:#f7dc94;
+ text-shadow:0 3px 1px #241006,0 6px 9px #120801,0 0 22px #7c4e22;
+ border:2px solid #b58b48;border-radius:12px;
+ background:linear-gradient(135deg,#302014e8,#4d2d1be8 52%,#25170fea);
+ box-shadow:0 12px 28px #0008,inset 0 0 0 4px #24170e;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalHero::after {
+ content:"아제로스의 모든 모험가를 위한 기록서";
+ display:block!important;position:relative;inset:auto;
+ width:auto;height:auto;opacity:1;pointer-events:none;
+ color:#f2dfb8;font-size:clamp(13px,1.4vw,18px);
+ letter-spacing:.06em;text-shadow:0 2px 6px #000;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalHeroInner {
+ min-height:0;align-items:center;padding:4px 18px 24px;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalSummary {
+ align-items:stretch;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalSummary .portalPanel {
+ border:7px solid #5a3c25!important;border-radius:5px;
+ box-shadow:0 0 0 1px #bc9659,0 10px 25px #0009,inset 0 0 0 1px #ad8651!important;
+}
+body.tavernDesign.approvedDesign #app .page-home .portalRoster {
+ border:8px solid #53361f!important;border-radius:5px;
+}
+@media(max-width:650px) {
+ body.tavernDesign.approvedDesign #app .page-home .portalHero {min-height:260px;}
+ body.tavernDesign.approvedDesign #app .page-home .portalHero::before {
+  margin-top:20px;padding:12px 24px;font-size:40px;
+ }
+}
