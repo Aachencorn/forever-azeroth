@@ -34,3 +34,14 @@ button, input, select, textarea { max-width: 100%; }
   .portalMembers, .peopleGrid, .guildGrid, .liveGrid { min-width: 0; }
   .wapDetailPhoto img, .wapPortrait img { object-fit: cover; }
 }
+
+/* Desktop banner: the old 90.82% artwork box ended before the right-hand
+   ornamental frame, exposing a dark vertical strip below the header.
+   Fill only the inner framed region; keep the header, links and book untouched. */
+@media (min-width: 1100px) {
+  body.unifiedHeader.approvedDesign #app[data-reference] .approvedArtwork {
+    left: 5.208333%;
+    width: 92.95%;
+    max-width: none;
+  }
+}
