@@ -18,9 +18,6 @@ body.tavernDesign #app::before,body.tavernDesign #app::after {display:none;}
 .tavernHeader .links a:hover,.tavernHeader .links a[aria-current=page] {color:#ffe5a9;background:linear-gradient(#5a4125,#302415);border-color:#a37b3f;box-shadow:inset 0 0 0 2px #20170e;}
 .tavernNavIcon {color:#d3ac66;font-size:15px;}
 .tavernHeader .navLiveDot {display:block;width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:#ef4444;box-shadow:0 0 6px #e4333366;}
-.tavernUtilities {display:flex;align-items:center;justify-content:center;gap:10px;max-width:1440px;min-height:34px;margin:0 auto 6px;}
-.tavernUtilities .tavernSearch {width:min(460px,100%);height:34px;}
-.tavernUtilities .tavernSearch input {height:32px;font-size:12px;}
 
 .tavernSearch {display:flex;align-items:center;gap:0;min-width:0;height:38px;border:1px solid #b2894e;border-radius:22px;background:#0b100e;box-shadow:inset 0 1px 4px #000;}
 .tavernSearch input {width:100%;min-width:0;height:36px;padding:0 0 0 13px;border:0;border-radius:22px;background:none;color:#f3ddb2;font-size:11px;outline-offset:0;}
@@ -124,7 +121,6 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
  .tavernHeader .tavernNav {grid-template-columns:130px minmax(0,1fr) 110px;}
  .tavernHeader .tavernBrand {width:130px;}
  .tavernHeader .tavernNavIcon {display:none;}
- .tavernDesign.approvedDesign .pageHero>.wrap {top:calc(var(--u) * 185);}
 }
 @media(max-width:1099px) {
  body.tavernDesign {background-size:auto max(941px,100vh);background-attachment:scroll;}
@@ -147,8 +143,6 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
  .tavernDesign .tavernHeader {padding:9px 10px 0;}
  .tavernHeader .tavernNav {grid-template-columns:minmax(0,1fr) 110px 42px;grid-template-areas:'brand bgm menu';gap:8px;padding:3px 9px 4px;}
  .tavernBrand {height:58px;width:110px;}.tavernBrand img {width:110px;max-height:70px;}
- .tavernUtilities {gap:8px;}
- .tavernUtilities .tavernSearch {width:100%;}
  .tavernHeader .links {top:100%;}
  .tavernHome {width:calc(100% - 32px);margin-top:22px;}
  .tavernTopGrid {display:flex;flex-direction:column;gap:20px;}
