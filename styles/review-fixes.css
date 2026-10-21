@@ -1,8 +1,5 @@
 /* Final QA: measured against all ten approved screens and populated test books. */
 [hidden] { display:none!important; }
-.header .nav,.header .links { flex-wrap:nowrap; }
-.header .logo { height:100%; }
-.page-home .portalRoster::before,.page-home .portalRoster::after { content:none; background-image:none; }
 .personLink { min-width:0; }
 .personBookModal { overflow-x:hidden; }
 .detailNew { right:0;top:0;width:118px;height:118px;transform:none;background:none;border:0;box-shadow:none;padding:0;overflow:hidden; }
@@ -32,18 +29,6 @@
  .pageContent.page-favorites .wrap.wapBook { height:700px;min-height:700px;padding-top:128px; }
  .pageContent.page-news .wrap.wapBook,.pageContent.page-events .wrap.wapBook,.pageContent.page-chronicle .wrap.wapBook { padding-top:72px; }
  .page-news .wapLeaf,.page-events .wapLeaf,.page-chronicle .wapLeaf { overflow:visible; }
- .page-home .portalHome { padding-bottom:45px; }
-}
-@media(max-width:1000px) {
- .header .nav { align-items:center;padding:0 10px;gap:8px; }
- .header .logo { flex:0 0 150px; }
- .header .links { display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;background:#17140ff8;border:1px solid #a77837;box-shadow:0 7px 15px #0009;border-radius:5px;padding:12px;flex-direction:column;align-items:stretch;gap:4px; }
- .header .links.open { display:flex; }
- .header .links a { font-size:13px;padding:10px; }
- .header .menu { display:block;margin-left:auto; }
- .header .bgmPlayer { position:static;transform:none;margin-left:auto;margin-right:0; }
- .header .bgmPlayer input[type=range] { display:none; }
- .headerLogoArt { inset:-7px 0 -7px!important; }
 }
 @media(min-width:701px) and (max-width:900px) {
  .wapBook,.pageContent:not(.page-home) .wrap.wapBook { height:auto;min-height:650px;grid-template-columns:minmax(0,1fr);grid-template-rows:auto;padding:106px 28px 30px;gap:25px;background:linear-gradient(90deg,#af8246,#efd29c 6%,#f0cf92 50%,#ebc68a 96%,#ad7a38);border:4px ridge #92612e;border-radius:10px; }
@@ -79,14 +64,6 @@
  .wapPortrait,.favoriteGrid .wapPortrait { height:72px; }
  .wapPerson small { line-height:1.3;font-size:9px; }
  .leafPager { padding-bottom:6px; }
- .page-home .portalHome { background:url('../assets/wapobook/parchment.svg') center/cover;border:3px ridge #92602e;border-radius:10px;padding:12px 14px 25px; }
- .page-home .portalRoster .portalPanelTitle a { color:#76501f; }
- .page-home .portalMembers { gap:12px 6px;padding:8px 2px; }
- .page-home .portalMembers .member { aspect-ratio:auto;gap:3px; }
- .page-home .portalMembers .member .avatar { width:44px; }
- .page-home .portalMembers .member span { font-size:9px; }
- .page-home .portalPanel { min-height:100px; }
- .page-home .portalSearch input { font-size:11px; }
  .guildBookModal { padding:45px 22px 32px 30px; }
  .personBookModal { padding:45px 25px 35px; }
  .detailNew { width:88px;height:88px; }
@@ -100,8 +77,6 @@
  .wapPerson strong { font-size:12px; }
  .wapPerson small { font-size:10px; }
  .wapPortrait,.favoriteGrid .wapPortrait { height:83px; }
- .page-home .portalMembers .member .avatar { width:38px; }
- .header .logo { flex-basis:125px; }
  .personBookModal { grid-template-columns:minmax(0,1fr); }
  .wapDetailInfo h1 { font-size:25px; }
  .wapDetailRow { overflow-wrap:anywhere; }

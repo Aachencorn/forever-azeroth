@@ -9,7 +9,6 @@ const recordLink=(type,id)=>`#/${type}/${encodeURIComponent(id)}`;
 const action=(fn,value)=>`${fn}(${esc(JSON.stringify(value))})`;
 layout=function(body){
  baseLayout(body);
- document.querySelector('.header').insertAdjacentHTML('beforeend','<span class="frameGem headerGem" aria-hidden="true"></span>');
  const hero=document.querySelector('.pageHero');
  if(hero){hero.insertAdjacentHTML('beforeend','<span class="frameGem" aria-hidden="true"></span>');}
  const search=document.querySelector('.wapControls .bookSearch');

@@ -1,0 +1,185 @@
+/* Exterior and home only. Book data styles remain in exact-design.css. */
+body.tavernDesign {
+ --inn-gold:#b48b4d;--inn-paper:#eed3a0;--inn-ink:#382615;
+ margin:0;padding:0;color:#ead4a9;
+ background-color:#21150e;
+ background-image:linear-gradient(#160d0710,#160d0720),url('../assets/inn-interior.webp');
+ background-position:center top;background-size:100% auto;background-repeat:no-repeat;background-attachment:fixed;
+ font-family:'Noto Sans KR','Malgun Gothic',sans-serif;
+}
+body.tavernDesign #app {background:none;box-shadow:none;border:0;}
+body.tavernDesign #app::before,body.tavernDesign #app::after {display:none;}
+.tavernDesign .tavernHeader {position:relative;z-index:40;width:100%;padding:10px 18px 0;isolation:isolate;}
+.tavernHeader .tavernNav {display:grid;grid-template-columns:144px minmax(0,1fr) 118px;align-items:center;gap:10px;max-width:1440px;min-height:72px;margin:auto;padding:4px 10px 4px 0;position:relative;background:linear-gradient(#211c16f5,#0e100ef5);border:1px solid #937044;border-radius:5px;box-shadow:0 3px 0 #160e08,0 5px 15px #0008,inset 0 0 0 3px #302315;}
+.tavernBrand {display:flex;align-items:center;justify-content:center;width:144px;height:62px;position:relative;filter:drop-shadow(0 3px 3px #0009);}
+.tavernBrand img {width:140px;height:auto;max-height:95px;object-fit:contain;}
+.tavernHeader .links {display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:2px;min-width:0;position:static;background:none;border:0;padding:0;box-shadow:none;}
+.tavernHeader .links a {display:flex;justify-content:center;align-items:center;gap:5px;min-width:0;min-height:46px;padding:7px 3px;border:1px solid transparent;border-radius:3px;color:#efd4a3;font-size:16px;font-weight:600;line-height:1.35;text-align:center;white-space:normal;word-break:keep-all;}
+.tavernHeader .links a:hover,.tavernHeader .links a[aria-current=page] {color:#ffe5a9;background:linear-gradient(#5a4125,#302415);border-color:#a37b3f;box-shadow:inset 0 0 0 2px #20170e;}
+.tavernNavIcon {color:#d3ac66;font-size:15px;}
+.tavernHeader .navLiveDot {display:block;width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:#ef4444;box-shadow:0 0 6px #e4333366;}
+.tavernUtilities {display:flex;align-items:center;justify-content:center;gap:10px;max-width:1440px;min-height:34px;margin:0 auto 6px;}
+.tavernUtilities .tavernSearch {width:min(460px,100%);height:34px;}
+.tavernUtilities .tavernSearch input {height:32px;font-size:12px;}
+
+.tavernSearch {display:flex;align-items:center;gap:0;min-width:0;height:38px;border:1px solid #b2894e;border-radius:22px;background:#0b100e;box-shadow:inset 0 1px 4px #000;}
+.tavernSearch input {width:100%;min-width:0;height:36px;padding:0 0 0 13px;border:0;border-radius:22px;background:none;color:#f3ddb2;font-size:11px;outline-offset:0;}
+.tavernSearch input::placeholder {color:#b9b09d;}
+.tavernSearch button {flex:0 0 32px;width:32px;height:34px;min-height:0;padding:0;background:none;border:0;box-shadow:none;color:#d5ae69;font-size:26px;}
+.tavernHeader .bgmPlayer {display:flex;align-items:center;justify-content:center;gap:5px;position:static;margin:0;padding:5px;border:1px solid #876539;border-radius:4px;background:#17140f;transform:none;}
+.tavernHeader .bgmTitle,.tavernHeader .bgmVolumeLabel,.tavernHeader #bgmVolumeValue {display:none;}
+.tavernHeader .bgmToggle {min-width:40px;min-height:26px;padding:2px 4px;font-size:10px;line-height:20px;}
+.tavernHeader #bgmVolume {display:block;width:55px;height:20px;min-width:0;margin:0;accent-color:#d9af64;}
+.tavernHeader .menu {display:none;}
+.tavernDesign .footer {background:#130f0acc;color:#c7aa78;border:0;text-align:center;font-size:10px;line-height:1.8;}
+.tavernDesign .footer a {color:#e0c18c;margin-left:15px;}
+/* Desktop book coordinates and pixels are preserved. Only the painted exterior is hidden. */
+@media(min-width:1100px) {
+ .tavernDesign.approvedDesign #app[data-reference] .approvedPaper {clip-path:inset(28.2% 0 0 3.5%);}
+ .tavernDesign.approvedDesign #app[data-reference] .approvedArtwork {display:none;}
+ .tavernDesign.approvedDesign .pageHero>.wrap {opacity:1;pointer-events:auto;left:calc(var(--u) * 124);top:calc(var(--u) * 150);width:calc(var(--u) * 780);height:auto;overflow:visible;padding:0;}
+ .tavernDesign.approvedDesign .pageHero h1 {font-family:Georgia,'Batang',serif;font-size:calc(var(--u) * 42);line-height:1.3;color:#f5dba5;text-shadow:0 2px 6px #000;margin:0 0 10px;}
+ .tavernDesign.approvedDesign .pageHero p {font-size:calc(var(--u) * 15);color:#f0d7ad;text-shadow:0 1px 5px #000;margin:0;}
+}
+/* Separate homepage: no legacy portal/book classes or screenshot coordinates. */
+body.tavernHomeView #app {container-type:normal;width:100%;max-width:none;height:auto;min-height:100dvh;aspect-ratio:auto;overflow:visible;margin:0;padding:0;}
+body.tavernHomeView main.page-home {display:block;position:relative;inset:auto;width:100%;max-width:none;height:auto;min-height:0;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible;}
+body.tavernHomeView main.page-home::before,body.tavernHomeView main.page-home::after {display:none;}
+body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;padding:12px 15px;}
+.tavernHome {width:min(1240px,calc(100% - 48px));margin:56px auto 0;}
+.tavernTopGrid {display:grid;grid-template-columns:250fr 460fr 390fr;gap:36px;align-items:stretch;min-height:310px;margin-left:80px;}
+.tavernPanel {position:relative;isolation:isolate;min-width:0;color:var(--inn-ink);background:none;border:1px solid transparent;border-radius:2px;}
+/* Nine-slice preserves the parchment edge and grain at every panel proportion. */
+.tavernPanel::after {content:'';position:absolute;inset:-3px;z-index:-1;border:12px solid transparent;border-image:url('../assets/tavern/parchment-panel.webp') 52 fill stretch;filter:drop-shadow(0 4px 5px #0008);pointer-events:none;}
+.tavernLive::after {inset:0;border-width:12px;filter:drop-shadow(0 1px 2px #22120566);}
+.tavernNews::before,.tavernEvents::before,.tavernWorld::before {content:'';position:absolute;inset:-3px;z-index:-2;border:6px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/900px auto;box-shadow:0 3px 8px #0007;pointer-events:none;}
+.tavernNews::after,.tavernEvents::after,.tavernWorld::after {inset:2px;}
+.tavernPanelTitle {display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;padding:14px 18px 8px;}
+.tavernPanelTitle h2 {font-family:'Batang',Georgia,serif;font-size:18px;font-weight:800;line-height:1.4;letter-spacing:-.4px;margin:0;}
+.tavernPanelTitle>a {flex-shrink:0;color:#614021;font-size:10px;white-space:nowrap;}
+.tavernPanelTitle>a:hover {text-decoration:underline;}
+.tavernPanelBody {padding:0 18px 14px;}
+.tavernLive {align-self:stretch;position:relative;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/max(900px,130%) auto;border:9px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;border-radius:3px;display:flex;flex-direction:column;box-shadow:0 0 0 1px #b98a47,0 8px 14px #0009;}
+.tavernLive::before,.tavernRoster::before {content:none;}
+.tavernLive .tavernPanelTitle {justify-content:center;padding:8px 8px 6px;}
+.tavernLive .tavernPanelTitle>a {display:none;}
+.tavernLive .tavernPanelBody {padding:0 15px 12px;display:flex;flex-direction:column;flex:1;}
+.tavernLiveNote {display:flex;align-items:center;justify-content:center;gap:5px;font-size:9px;color:#735631;margin:0 0 8px;line-height:1.5;}
+.tavernStatusDot {width:5px;height:5px;background:#977c50;border-radius:50%;}
+.tavernStations {padding:0;margin:0;list-style:none;}
+.tavernStations li+li {border-top:1px solid #a77b3a44;}
+.tavernStations a {display:flex;align-items:center;gap:10px;min-height:36px;padding:3px 0;color:#3b2916;}
+.tavernStations strong {display:block;font-size:12px;}.tavernStations small {display:block;font-size:9px;color:#82623c;margin-top:2px;}
+.tavernStations .tavernAvatar {flex:0 0 30px;width:30px;height:30px;}
+.tavernStationLink {margin-left:auto;color:#6b4b26;font-size:18px;}
+.tavernButton {display:block;width:max-content;max-width:100%;margin:12px auto 0;padding:5px 20px;border:1px solid #87622e;border-radius:3px;background:linear-gradient(#574021,#2a2014);box-shadow:inset 0 0 0 1px #17120b;color:#f0d49b;font-size:11px;line-height:1.5;text-align:center;}
+.tavernButton:hover {background:#634925;color:#fff1c9;}
+.tavernEmpty {display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100px;flex:1;text-align:center;}
+.tavernEmpty>span {font-size:35px;color:#8d683a;opacity:.6;}
+.tavernEmpty p {font-size:12px;margin:10px 0;}.tavernEmpty small {max-width:170px;font-size:11px;line-height:1.7;color:#856441;}
+.tavernWelcome {display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;padding:8px 0;color:#f9dba1;text-align:center;}
+.tavernWelcomeSign {display:flex;align-items:center;justify-content:center;width:100%;max-width:300px;min-height:164px;padding:10px 20px;border:10px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/900px auto;box-shadow:0 6px 12px #0009;transform:rotate(-1deg);}
+.tavernWelcome h1 {margin:0;line-height:0;}.tavernWelcome h1 img {display:block;width:100%;height:auto;max-height:155px;object-fit:contain;filter:drop-shadow(0 2px 2px #0008);}
+.tavernHeroSearch {width:min(460px,100%);height:50px;flex-shrink:0;margin:14px 0 0;padding:0 4px;border:2px solid #c7a061;background:#0d100ef5;box-shadow:0 3px 8px #0008,inset 0 1px 4px #000;}
+.tavernHeroSearch input {height:44px;padding-left:16px;font-size:15px;}
+.tavernHeroSearch input::placeholder {color:#e2d2b4;}
+.tavernHeroSearch button {flex-basis:44px;width:44px;height:44px;font-size:30px;}
+.tavernIntroduction {position:relative;isolation:isolate;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;font-size:15px;font-weight:600;line-height:1.8;letter-spacing:.02em;margin:12px 0 0;padding:8px 10px;color:#fff0cd;text-shadow:0 2px 3px #000d;}
+.tavernIntroduction::before {content:'';position:absolute;inset:-4px -16px;z-index:-1;background:radial-gradient(ellipse,#160e08ed 25%,#160e08b3 55%,#160e0800 76%);filter:blur(3px);pointer-events:none;}
+.tavernNotices {display:grid;grid-template-rows:minmax(135px,1fr) minmax(135px,1fr);gap:14px;padding-top:8px;}
+.tavernNews ul {margin:0;padding:0;list-style:none;}
+.tavernNews li+li {border-top:1px solid #a67c3c55;}
+.tavernNews li a {display:flex;align-items:center;gap:10px;min-height:29px;color:#4e351c;font-size:10px;}
+.tavernNews li a>span {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0;}.tavernNews time {margin-left:auto;flex-shrink:0;font-size:9px;color:#7b5c35;}
+.tavernEvent {display:flex;align-items:center;gap:10px;color:#422c16;min-height:42px;}
+.tavernEvent+.tavernEvent {margin-top:4px;}.tavernEventIcon {display:grid;place-items:center;width:32px;height:32px;flex-shrink:0;border:1px solid #a37a37;border-radius:4px;background:#3b321f;color:#cfa45b;font-size:24px;}
+.tavernEvent strong {display:block;font-size:11px;line-height:1.5;}.tavernEvent small {display:block;font-size:9px;color:#7c5c33;margin-top:2px;}.tavernEvent b {display:grid;place-items:center;margin-left:auto;flex-shrink:0;width:23px;height:24px;border:1px solid #9d773b;border-radius:3px;background:#352919;color:#e5c486;font-size:21px;}
+.tavernEmptyText {font-size:12px;line-height:1.8;margin:8px 0;color:#745330;}.tavernEmptyText small {font-size:11px;}
+.tavernBottomGrid {display:grid;grid-template-columns:minmax(0,2.15fr) minmax(0,1fr);gap:36px;align-items:stretch;margin-top:20px;}
+.tavernRoster {position:relative;min-width:0;padding:0 10px 10px;border:8px solid transparent;border-image:url('../assets/tavern/walnut-board.webp') 100 stretch;border-radius:2px;background:#2e1c10 url('../assets/tavern/walnut-board.webp') center/max(900px,130%) auto;box-shadow:0 0 0 1px #b28a49,0 5px 15px #0009;}
+.tavernRoster .tavernPanelTitle {padding:0 4px 8px;color:#f4d390;}.tavernRoster .tavernPanelTitle h2 {font-size:18px;}.tavernRoster .tavernPanelTitle>a {color:#d3b279;}
+.tavernMembers {display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:5px;align-items:start;}
+.tavernMember {display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;color:#efd8a7;}
+.tavernAvatar {display:grid;place-items:center;position:relative;width:100%;aspect-ratio:1;max-width:43px;border:2px solid #ad874a;border-radius:50%;background:radial-gradient(#26302a,#0c100e);box-shadow:0 0 0 1px #130f08,inset 0 0 4px #000a;color:#cfb98d;font:19px Georgia,serif;overflow:hidden;}
+.tavernAvatar img {width:100%;height:100%;object-fit:cover;}.tavernAvatar.imageMissing::after {content:'♟';color:#c7aa74;font-size:20px;}
+.tavernMemberName {max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px;line-height:1.5;}.tavernMemberEmpty .tavernMemberName {font-size:0;}.tavernMemberEmpty .tavernAvatar {color:#a99877;}
+.tavernMember:hover .tavernAvatar {border-color:#ffe3a4;box-shadow:0 0 5px #d6ad5666;}
+.tavernWorld .tavernPanelTitle {justify-content:center;padding-top:10px;}.tavernWorld .tavernPanelTitle>a {display:none;}
+.tavernWorldStats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:8px 16px 18px;}
+.tavernWorldStats a {display:flex;justify-content:center;align-items:center;gap:8px;color:#473018;font-size:10px;line-height:1.5;min-width:0;}.tavernWorldStats a+a {border-left:1px solid #b08a5066;padding-left:8px;}
+.tavernWorldStats a>span:first-child {font-size:28px;color:#78542b;text-shadow:1px 1px #e9ce94;}.tavernWorldStats strong {display:block;font-size:22px;font-weight:800;line-height:1.2;}.tavernWorldStats .tavernUnknown {font-size:15px;margin-top:5px;}
+@media(min-width:1800px) {
+ body.tavernDesign {background-size:max(1672px,100%) auto;}
+ .tavernHome {margin-top:80px;}
+}
+@media(max-width:1300px) {
+ .tavernBrand {width:130px;}.tavernBrand img {width:125px;}
+ .tavernHeader #bgmVolume {width:43px;}
+ .tavernTopGrid {margin-left:40px;gap:24px;grid-template-columns:250fr 420fr 390fr;}
+ .tavernBottomGrid {gap:24px;}
+ .tavernMembers {grid-template-columns:repeat(10,minmax(0,1fr));row-gap:8px;}
+}
+/* The utility row leaves the full navigation width available on laptops. */
+@media(min-width:1100px) and (max-width:1499px) {
+ .tavernHeader .tavernNav {grid-template-columns:130px minmax(0,1fr) 110px;}
+ .tavernHeader .tavernBrand {width:130px;}
+ .tavernHeader .tavernNavIcon {display:none;}
+ .tavernDesign.approvedDesign .pageHero>.wrap {top:calc(var(--u) * 185);}
+}
+@media(max-width:1099px) {
+ body.tavernDesign {background-size:auto max(941px,100vh);background-attachment:scroll;}
+ .tavernHeader .tavernNav {grid-template-columns:minmax(0,1fr) 110px 42px;grid-template-areas:'brand bgm menu';padding:4px 8px;gap:12px;}
+ .tavernBrand {grid-area:brand;}
+ .tavernHeader .bgmPlayer {grid-area:bgm;}
+ .tavernHeader .menu {grid-area:menu;display:block;width:42px;height:42px;min-height:42px;margin:0;padding:0;border:1px solid #9a7847;background:#302416;color:#e5c793;box-shadow:none;}
+ .tavernHeader .links {display:none;position:absolute;top:100%;left:-1px;right:-1px;width:auto;max-height:70dvh;overflow:auto;grid-template-columns:repeat(2,minmax(0,1fr));padding:10px;background:#17150ff7;border:1px solid #9a7847;box-shadow:0 5px 15px #000a;z-index:10;}
+ .tavernHeader .links.open {display:grid;}.tavernHeader .links a {font-size:16px;min-height:48px;}
+ .tavernHome {margin-top:36px;}
+ .tavernTopGrid {margin-left:0;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:24px;}
+ .tavernWelcome {grid-column:2;grid-row:1;}.tavernLive {grid-column:1;grid-row:1;}.tavernNotices {grid-column:1/-1;grid-template-columns:1fr 1fr;grid-template-rows:auto;padding:0;gap:24px;}
+ .tavernBottomGrid {grid-template-columns:1fr 1fr;}
+ .tavernMembers {grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;}
+ .tavernWorldStats {grid-template-columns:1fr;padding:4px 20px 18px;gap:10px;}.tavernWorldStats a {justify-content:flex-start;font-size:12px;gap:20px;}.tavernWorldStats a+a {border:0;padding:0;}.tavernWorldStats strong {font-size:21px;}
+ /* Mobile book content, filters and page turns retain their existing rules. */
+ .tavernDesign .pageContent .pageHero::before {background-image:linear-gradient(#25150b88,#25150b88)!important;}
+}
+@media(max-width:650px) {
+ .tavernDesign .tavernHeader {padding:9px 10px 0;}
+ .tavernHeader .tavernNav {grid-template-columns:minmax(0,1fr) 110px 42px;grid-template-areas:'brand bgm menu';gap:8px;padding:3px 9px 4px;}
+ .tavernBrand {height:58px;width:110px;}.tavernBrand img {width:110px;max-height:70px;}
+ .tavernUtilities {gap:8px;}
+ .tavernUtilities .tavernSearch {width:100%;}
+ .tavernHeader .links {top:100%;}
+ .tavernHome {width:calc(100% - 32px);margin-top:22px;}
+ .tavernTopGrid {display:flex;flex-direction:column;gap:20px;}
+ .tavernWelcome {order:-1;min-height:220px;padding:12px 0;}.tavernWelcomeSign {max-width:310px;}.tavernIntroduction {font-size:14px;line-height:1.85;margin-top:12px;padding:8px 10px;}
+ .tavernLive {width:100%;}.tavernEmpty {min-height:100px;}.tavernEmpty small {max-width:100%;}
+ .tavernNotices {display:flex;flex-direction:column;gap:20px;}.tavernPanelTitle h2 {font-size:19px;}.tavernPanelTitle>a {font-size:11px;}
+ .tavernLive .tavernPanelTitle {padding-top:14px;}.tavernLive .tavernPanelBody {padding-bottom:16px;}
+ .tavernBottomGrid {display:flex;flex-direction:column;gap:20px;margin-top:20px;}
+ .tavernRoster {padding:5px 9px 12px;}.tavernMembers {grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 8px;}.tavernAvatar {max-width:45px;}.tavernMemberName {font-size:10px;}
+ .tavernWorldStats {grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px 12px 18px;}.tavernWorldStats a {flex-direction:column;gap:3px;text-align:center;font-size:10px;}.tavernWorldStats a+a {border-left:1px solid #b08a5066;padding-left:7px;}
+ body.tavernHomeView .footer {margin-top:24px;}
+}
+
+/* Preserve the production mobile book width while removing its outer leather case. */
+@media(min-width:701px) and (max-width:1099px) {
+ body.tavernDesign:not(.tavernHomeView) {padding:8px 10px 0;}
+ body.tavernDesign:not(.tavernHomeView) #app {border:6px solid transparent;}
+ body.tavernDesign:not(.tavernHomeView) .tavernHeader {margin-left:-30px;width:calc(100% + 42px);padding:0 0 10px;}
+}
+@media(max-width:700px) {
+ body.tavernDesign:not(.tavernHomeView) {padding:6px 5px 0;}
+ body.tavernDesign:not(.tavernHomeView) #app {border:4px solid transparent;}
+ body.tavernDesign:not(.tavernHomeView) .tavernHeader {margin-left:-22px;width:calc(100% + 30px);padding:0 0 10px;}
+}
+
+@media(max-width:700px) {
+ /* The existing favorites tabs add a row to the same toolbar. */
+ .tavernDesign .page-favorites .wrap.wapBook {padding-top:138px;}
+}
+
+.tavernLive .tavernButton {margin-top:8px;}
+@media(max-width:360px) {
+ .tavernDesign .page-favorites .wrap.wapBook {padding-top:154px;}
+}
