@@ -42,8 +42,8 @@ body.tavernDesign #app::before,body.tavernDesign #app::after {display:none;}
  .tavernDesign.approvedDesign .pageHero p {font-size:calc(var(--u) * 15);color:#f0d7ad;text-shadow:0 1px 5px #000;margin:0;}
 }
 /* Separate homepage: no legacy portal/book classes or screenshot coordinates. */
-body.tavernHomeView #app {container-type:normal;width:100%;max-width:none;height:auto;min-height:100dvh;aspect-ratio:auto;overflow:visible;margin:0;padding:0;}
-body.tavernHomeView main.page-home {display:block;position:relative;inset:auto;width:100%;max-width:none;height:auto;min-height:0;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible;}
+body.tavernHomeView #app {display:flex;flex-direction:column;container-type:normal;width:100%;max-width:none;height:auto;min-height:100dvh;aspect-ratio:auto;overflow:visible;margin:0;padding:0;}
+body.tavernHomeView main.page-home {flex:1;display:block;position:relative;inset:auto;width:100%;max-width:none;height:auto;min-height:0;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible;}
 body.tavernHomeView main.page-home::before,body.tavernHomeView main.page-home::after {display:none;}
 body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;padding:12px 15px;}
 .tavernHome {width:min(1240px,calc(100% - 48px));margin:56px auto 0;}
@@ -110,7 +110,7 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 .tavernWorldStats a>span:first-child {font-size:28px;color:#78542b;text-shadow:1px 1px #e9ce94;}.tavernWorldStats strong {display:block;font-size:22px;font-weight:800;line-height:1.2;}.tavernWorldStats .tavernUnknown {font-size:15px;margin-top:5px;}
 @media(min-width:1800px) {
  body.tavernDesign {background-size:max(1672px,100%) auto;}
- .tavernHome {margin-top:80px;}
+ .tavernHome {width:min(1440px,calc(100% - 96px));}
 }
 @media(max-width:1300px) {
  .tavernBrand {width:130px;}.tavernBrand img {width:125px;}
@@ -182,4 +182,20 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 .tavernLive .tavernButton {margin-top:8px;}
 @media(max-width:360px) {
  .tavernDesign .page-favorites .wrap.wapBook {padding-top:154px;}
+}
+
+/* Balance the home composition against viewport height without scaling its text. */
+@media(min-width:1100px) {
+ body.tavernHomeView main.page-home {display:flex;align-items:center;padding:clamp(24px,4dvh,64px) 0;}
+ body.tavernHomeView .tavernHome {margin:0 auto;}
+ body.tavernHomeView .tavernTopGrid {min-height:clamp(340px,46dvh,580px);}
+ body.tavernHomeView .tavernBottomGrid {min-height:clamp(128px,16dvh,220px);margin-top:clamp(20px,3dvh,44px);}
+ body.tavernHomeView .tavernLive .tavernStations {display:flex;flex:1;flex-direction:column;justify-content:center;}
+ body.tavernHomeView .tavernNews,body.tavernHomeView .tavernEvents {display:flex;flex-direction:column;}
+ body.tavernHomeView .tavernNotices .tavernPanelBody {display:flex;flex:1;flex-direction:column;justify-content:center;}
+ body.tavernHomeView .tavernRoster {display:flex;flex-direction:column;}
+ body.tavernHomeView .tavernMembers {flex:1;align-content:center;}
+ body.tavernHomeView .tavernWorld {display:flex;flex-direction:column;}
+ body.tavernHomeView .tavernWorldStats {flex:1;align-items:center;}
+ body.tavernHomeView .footer {margin:0;}
 }
