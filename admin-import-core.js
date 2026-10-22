@@ -7,6 +7,7 @@ const ROLES=['탱커','딜러','힐러','미확인'];
 const text=v=>String(v??'').trim();
 function account(value){
  if(!text(value))return '';
+ if(/^[a-zA-Z0-9_]{2,25}$/.test(text(value)))return text(value).toLowerCase();
  let u;try{u=new URL(text(value));}catch{throw Error('올바른 SOOP 방송국 URL을 입력하세요.');}
  const hosts=['ch.sooplive.co.kr','ch.sooplive.com','bj.afreecatv.com'];
  const m=['www.sooplive.com','www.sooplive.co.kr'].includes(u.hostname)?u.pathname.match(/^\/station\/([a-zA-Z0-9_]{2,25})(?:\/.*)?$/):u.pathname.match(/^\/([a-zA-Z0-9_]{2,25})(?:\/.*)?$/);
@@ -89,5 +90,18 @@ function profilePlan(base,report){
  }
  return {next,results};
 }
-const api={account,imageURL,plan,profilePlan,CLASSES,RACES,ROLES};root.WapoImport=api;if(typeof module!=='undefined')module.exports=api;
+function directoryRequests(people){
+ const accounts=[],results=[],groups=new Map();
+ for(const p of people){
+  if(!text(p.soop)){results.push({name:p.name,status:'실패',detail:'SOOP 계정 ID 또는 방송국 주소가 없습니다.'});continue;}
+  try{const aid=account(p.soop);if(!groups.has(aid))groups.set(aid,[]);groups.get(aid).push(p);}catch(e){results.push({name:p.name,status:'실패',detail:e.message});}
+ }
+ for(const [aid,items] of groups){
+  if(items.length!==1){for(const p of items)results.push({name:p.name,status:'중복',detail:'같은 SOOP ID가 여러 모험가에 연결되어 있습니다. 수동 확인 필요'});continue;}
+  const p=items[0];accounts.push({accountId:aid,stationUrl:'https://www.sooplive.com/station/'+aid,requested:{nickname:true,profileImage:!p.image,live:{status:true,title:true,thumbnail:true,viewerCount:true,category:true}},preserveExistingImage:Boolean(p.image),preserveDisplayName:true});
+  results.push({name:p.name,status:'성공',detail:aid+' · 프로필/닉네임/LIVE 조회 대상 준비 · 실제 API 조회 아님'});
+ }
+ return {request:{schema:'wapobook-soop-directory-requests-v1',accounts},results};
+}
+const api={account,imageURL,plan,profilePlan,directoryRequests,CLASSES,RACES,ROLES};root.WapoImport=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

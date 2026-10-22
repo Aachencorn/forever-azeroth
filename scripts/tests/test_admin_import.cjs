@@ -17,3 +17,12 @@ let report={schema:'wapobook-soop-profiles-v1',results:[{accountId:'existing',st
 let profiles=I.profilePlan(p.next,report);assert.equal(profiles.next.people[0].image,base.people[0].image);assert.equal(profiles.next.people[1].image,image);assert.deepEqual(profiles.results.map(r=>r.status),['중복','성공','실패','이미지 없음']);
 assert.equal(I.imageURL('https://profile.img.sooplive.com/LOGO/te/test0/test0.jpg.evil','test0'),'');assert.equal(I.imageURL('https://liveimg.sooplive.com/thumb.jpg','test0'),'');
 console.log('PASS: 180 rows, duplicate/conflict handling, links, defaults, existing records and profile protection');
+assert.equal(I.account('EcVhAo'),'ecvhao');
+const targets=I.directoryRequests([...base.people,...p.next.people.slice(1),{id:'duplicate',name:'중복',soop:'test0'},{id:'invalid',name:'오류',soop:'https://evil.test/id'}]);
+assert.equal(targets.request.accounts.length,180);
+assert.equal(targets.request.accounts.some(r=>r.accountId==='test0'),false);
+assert.equal(targets.request.accounts.every(r=>r.requested.nickname&&r.requested.live.status&&r.requested.live.thumbnail),true);
+assert.equal(targets.request.accounts.find(r=>r.accountId==='existing').preserveExistingImage,true);
+assert.equal(targets.request.accounts.find(r=>r.accountId==='existing').requested.profileImage,false);
+assert.equal(JSON.stringify(base),original);
+console.log('PASS: direct streamer IDs, both profile and LIVE targets, duplicate exclusion, existing names/photos preserved');

@@ -31,7 +31,7 @@ def build(path=ROOT/'downloads/wapobook-admin-template.xlsx'):
  ('작성 순서','길드 정보 → 모험가 정보 → 이전 시즌 참여 기록. 빈 양식이며 예시 데이터는 등록되지 않습니다.'),
  ('행 추가','150명 제한이 없습니다. 마지막 셀에서 Tab 또는 행 삽입으로 추가하세요. 드롭다운은 엑셀 마지막 행까지 적용됩니다.'),
  ('필수값','버튜버명 또는 길드명만 필수입니다. 캐릭터·사진·이전 시즌 정보는 모르면 비워 두세요.'),
- ('방송국 주소','https://www.sooplive.com/station/계정ID. ch.sooplive.co.kr, ch.sooplive.com 및 구 bj.afreecatv.com 주소도 인식합니다.'),
+ ('방송국 주소','계정 ID만 입력하거나 https://www.sooplive.com/station/계정ID 주소를 입력하세요. ch.sooplive.co.kr, ch.sooplive.com, bj.afreecatv.com도 인식합니다.'),
  ('프로필 사진','사진 열은 없습니다. 승인된 SOOP 조회 결과를 계정ID로 연결합니다. 기존 사진은 덮어쓰지 않습니다.'),
  ('등록 전 확인','관리자 → 엑셀 일괄 등록 → 업로드 → 결과 확인 → 성공 행 병합. 업로드만으로 저장되지 않습니다.'),
  ('중복과 업데이트','기존 SOOP 계정 우선, 다음은 정확히 일치하는 버튜버명으로 연결합니다. 기존 값은 유지하고 빈 항목만 채웁니다.'),

@@ -48,6 +48,15 @@ async def run():
   async with p.expect_download() as d:await p.get_by_role('button',name='사진 조회 요청 JSON 다운로드').click()
   await (await d.value).save_as(str(QA/'requests-180.json'))
   assert len(json.load(open(str(QA/'requests-180.json')))['accounts'])==180
+  snapshot=await p.evaluate('JSON.stringify(data)')
+  async with p.expect_download() as d:await p.get_by_role('button',name='SOOP ID 조회 대상 다운로드',exact=True).click()
+  await (await d.value).save_as(str(QA/'directory-180.json'))
+  targets=json.loads((QA/'directory-180.json').read_text())
+  assert len(targets['accounts'])==180
+  assert all(r['requested']['nickname'] and r['requested']['live']['status'] for r in targets['accounts'])
+  assert await p.evaluate('JSON.stringify(data)')==snapshot
+  assert await p.get_by_role('button',name='성공 항목 병합 승인',exact=True).is_disabled()
+
   await p.reload();await p.get_by_role('button',name='엑셀 일괄 등록',exact=True).click()
   assert await p.evaluate('data.people.length')==181
   await p.locator('#adminWorkbook').set_input_files(str(QA/'import-180.xlsx'));await p.wait_for_function('adminImportState?.results?.length===182')
