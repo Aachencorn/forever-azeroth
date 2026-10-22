@@ -1,0 +1,27 @@
+{
+  "enabled": false,
+  "statusAccessVerified": false,
+  "videoAnalysisPermitted": false,
+  "realPilotPassed": false,
+  "migrationApproved": false,
+  "publicationEnabled": false,
+  "permissionReferences": [],
+  "analysisIntervalSeconds": 600,
+  "statusFreshnessSeconds": 120,
+  "maxConcurrent": 2,
+  "leaseSeconds": 300,
+  "minimumConfidence": 0.99,
+  "minimumEvidenceFrames": 2,
+  "minimumFrameSeparationSeconds": 5,
+  "maximumEvidenceFrames": 3,
+  "maxAutomaticLevelIncrease": 1,
+  "estimatedCostPerAnalysisUsd": null,
+  "dailyBudgetUsd": null,
+  "approvedAccounts": {
+    "ecvhao": {
+      "analysisAllowed": true,
+      "permissionReference": "관리자 확인: ecvhao 및 VOD 190574265의 캡처·자동 분석·추출 정보 공개 전부 가능 (2026-10-23)",
+      "testVodUrl": "https://vod.sooplive.com/player/190574265"
+    }
+  }
+}
