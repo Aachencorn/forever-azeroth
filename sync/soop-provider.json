@@ -1,0 +1,15 @@
+{
+  "enabled": false,
+  "policyReviewed": false,
+  "profileLinkingPermitted": false,
+  "reviewReference": "",
+  "documentationUrl": "https://openapi.sooplive.com/",
+  "sourceType": "station-profile",
+  "endpointTemplate": "",
+  "accountIdPath": "",
+  "profileImagePath": "",
+  "secretHeaders": {},
+  "requestIntervalSeconds": 2,
+  "cacheHours": 24,
+  "notes": "실제 문서와 앱 권한을 확인한 후 엔드포인트 및 응답 필드를 설정합니다. 방송 썸네일/추측 URL/비공식 우회는 사용하지 않습니다."
+}
