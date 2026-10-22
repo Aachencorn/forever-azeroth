@@ -1,0 +1,10 @@
+{
+  "schema": "wapobook-soop-requests-v1",
+  "accounts": [
+    {"accountId":"ecvhao","stationUrl":"https://www.sooplive.com/station/ecvhao"},
+    {"accountId":"neez0611","stationUrl":"https://www.sooplive.com/station/neez0611"},
+    {"accountId":"mygomiee","stationUrl":"https://www.sooplive.com/station/mygomiee"},
+    {"accountId":"hachi97","stationUrl":"https://www.sooplive.com/station/hachi97"},
+    {"accountId":"lina0108","stationUrl":"https://www.sooplive.com/station/lina0108"}
+  ]
+}

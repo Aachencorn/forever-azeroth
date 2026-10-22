@@ -1,0 +1,19 @@
+.importHeading {display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.importTools {margin:18px 0;flex-wrap:wrap;gap:10px;}
+.importTools label {position:relative;cursor:pointer;}
+.importTools input {display:block;max-width:240px;font-size:12px;margin-top:8px;}
+.importCounts {display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;}
+.importCounts>span {background:#c7a46b22;border-radius:6px;padding:8px 14px;}
+#importMessage {padding:14px 0;line-height:1.6;overflow-wrap:anywhere;}
+.importResultScroll {overflow:auto;max-height:540px;margin-top:18px;}
+.importResults {border-collapse:collapse;width:100%;font-size:13px;text-align:left;}
+.importResults th,.importResults td {padding:10px 12px;vertical-align:top;border-bottom:1px solid #ac885533;min-width:70px;overflow-wrap:anywhere;}
+.importResults th {position:sticky;top:0;background:#2c2218;color:#f3ddb4;}
+.importBadge {white-space:nowrap;color:#ba9d72;}
+.importBadge[data-status="성공"] {color:#6cba94;}.importBadge[data-status="실패"] {color:#e89a88;}
+@media(max-width:650px){.importHeading .btn,.importTools>.btn{width:100%;}.importResults th,.importResults td{padding:8px;}}
+.page-other .adminLayout>aside,.page-other .adminLayout>#adminContent {min-width:0;max-width:100%;}
+#adminContent .adminActions {flex-wrap:wrap;}
+#adminContent .adminActions .btn {max-width:100%;white-space:normal;}
+
+.importProfilePreview {display:block;width:48px;height:48px;object-fit:cover;border-radius:50%;margin-bottom:6px;}

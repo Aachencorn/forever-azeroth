@@ -1,0 +1,67 @@
+name: Review SOOP profile URLs
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Five-account pilot first; batch requires a passing pilot report
+        type: choice
+        options: [pilot, batch]
+        default: pilot
+      request_path:
+        description: Request JSON committed under sync/requests/ (pilot uses the five supplied accounts)
+        default: sync/pilot-requests.json
+        required: true
+      pilot_proof_path:
+        description: For batch, reviewed passing pilot report committed under sync/reviews/
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: soop-profile-sync
+  cancel-in-progress: false
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment: soop-profile-sync
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require explicit environment approval configuration
+        env:
+          APPROVED: ${{ vars.SOOP_SYNC_APPROVED }}
+        run: test "$APPROVED" = "true"
+      - uses: actions/cache@v4
+        with:
+          path: .cache/soop-profiles.json
+          key: soop-profile-urls-${{ hashFiles('sync/soop-provider.json') }}-${{ github.run_id }}
+          restore-keys: soop-profile-urls-${{ hashFiles('sync/soop-provider.json') }}-
+      - name: Resolve verified profile URLs only
+        env:
+          REQUEST_PATH: ${{ inputs.request_path }}
+          PROOF_PATH: ${{ inputs.pilot_proof_path }}
+          MODE: ${{ inputs.mode }}
+          SOOP_CLIENT_ID: ${{ secrets.SOOP_CLIENT_ID }}
+          SOOP_API_TOKEN: ${{ secrets.SOOP_API_TOKEN }}
+        run: |
+          python - <<'PY'
+          import os, pathlib, subprocess
+          request=pathlib.PurePosixPath(os.environ['REQUEST_PATH'])
+          proof=pathlib.PurePosixPath(os.environ['PROOF_PATH']) if os.environ['PROOF_PATH'] else None
+          assert '..' not in request.parts and not request.is_absolute()
+          assert str(request)=='sync/pilot-requests.json' or str(request).startswith('sync/requests/')
+          if proof: assert '..' not in proof.parts and not proof.is_absolute() and str(proof).startswith('sync/reviews/')
+          cmd=['python','scripts/sync_soop_profiles.py','--mode',os.environ['MODE'],'--requests',str(request)]
+          if proof:cmd+=['--pilot-proof',str(proof)]
+          subprocess.run(cmd,check=True)
+          PY
+      - name: Upload review report; never write website data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: soop-profile-review-${{ github.run_id }}
+          path: artifacts/soop-profiles.json
+          retention-days: 7
+          if-no-files-found: warn

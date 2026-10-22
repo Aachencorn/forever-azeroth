@@ -1,0 +1,46 @@
+{
+  "schema": "wapobook-soop-pilot-observation-v1",
+  "observedDate": "2026-10-22",
+  "summary": {
+    "accountIdExtracted": 5,
+    "profileVerified": 0,
+    "environmentBlocked": 5
+  },
+  "results": [
+    {
+      "accountId": "ecvhao",
+      "stationUrl": "https://www.sooplive.com/station/ecvhao",
+      "idExtraction": "success",
+      "profileLookup": "unverified",
+      "reason": "Environment proxy CONNECT 403; not an account/no-image response"
+    },
+    {
+      "accountId": "neez0611",
+      "stationUrl": "https://www.sooplive.com/station/neez0611",
+      "idExtraction": "success",
+      "profileLookup": "unverified",
+      "reason": "Environment proxy CONNECT 403; not an account/no-image response"
+    },
+    {
+      "accountId": "mygomiee",
+      "stationUrl": "https://www.sooplive.com/station/mygomiee",
+      "idExtraction": "success",
+      "profileLookup": "unverified",
+      "reason": "Environment proxy CONNECT 403; not an account/no-image response"
+    },
+    {
+      "accountId": "hachi97",
+      "stationUrl": "https://www.sooplive.com/station/hachi97",
+      "idExtraction": "success",
+      "profileLookup": "unverified",
+      "reason": "Environment proxy CONNECT 403; not an account/no-image response"
+    },
+    {
+      "accountId": "lina0108",
+      "stationUrl": "https://www.sooplive.com/station/lina0108",
+      "idExtraction": "success",
+      "profileLookup": "unverified",
+      "reason": "Environment proxy CONNECT 403; not an account/no-image response"
+    }
+  ]
+}
