@@ -218,3 +218,13 @@ body.tavernHomeView .footer {position:relative;inset:auto;margin:34px 0 0;paddin
 .worldFootnote {border:0;padding-top:14px;font-size:11px;line-height:1.8;color:#806442;}
 @media(min-width:1100px) {.page-world .worldSection {padding:14px 0;}.page-world .worldChart {gap:8px;}}
 @media(max-width:480px) {.page-world .worldSection header {display:block;}.page-world .worldSection header p {margin-top:4px;}.worldLevels {grid-template-columns:1fr;}}
+
+/* Non-home scenes must fill tall viewports even when the book is shorter. */
+body.tavernDesign:not(.tavernHomeView) {min-height:100dvh;background-size:cover;}
+@media(min-width:1800px) {
+ /* Grow the complete book coordinate system together; keep its 3:2 ratio. */
+ body.tavernDesign.approvedDesign #app {
+  width:min(calc(100% - 48px),max(1536px,calc((100dvh - 44px) * 1.5)),3072px);
+  max-width:3072px;
+ }
+}
