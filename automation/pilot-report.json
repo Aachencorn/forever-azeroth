@@ -1,0 +1,14 @@
+{
+  "schema": "wapobook-real-analysis-pilot-v1",
+  "status": "not-run",
+  "candidateAccount": "ecvhao",
+  "candidateVodUrl": "https://vod.sooplive.com/player/190574265",
+  "userConfirmedCaptureAnalysisAndPublicationPermission": true,
+  "platformAccessMethodVerified": false,
+  "realBroadcastsAnalyzed": 0,
+  "characterAccuracy": null,
+  "levelAccuracy": null,
+  "guildAccuracy": null,
+  "costPerAnalysisUsd": null,
+  "reason": "영상 페이지 접근 시 환경 프록시 CONNECT 403. 실제 영상·프레임을 확보하지 못했으며 OCR/영상 모델은 미연결입니다."
+}

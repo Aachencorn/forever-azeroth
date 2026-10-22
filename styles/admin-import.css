@@ -17,3 +17,5 @@
 #adminContent .adminActions .btn {max-width:100%;white-space:normal;}
 
 .importProfilePreview {display:block;width:48px;height:48px;object-fit:cover;border-radius:50%;margin-bottom:6px;}
+
+#adminContent details pre {white-space:pre-wrap;overflow-wrap:anywhere;max-width:360px;font-size:11px;}

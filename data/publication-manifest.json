@@ -1,0 +1,8 @@
+{
+  "schema": "wapobook-publication-manifest-v1",
+  "enabled": false,
+  "source": "data/published-archive.json",
+  "analysisIntervalSeconds": 600,
+  "stage": "implementation-only",
+  "blockedBy": ["공식 제3자 방송 상태 조회 방식 미검증", "허용된 영상 접근 방식 미검증", "실제 3~5개 방송 정확도·비용 시험 미실시", "기존 데이터 공용 저장소 이전 전"]
+}
