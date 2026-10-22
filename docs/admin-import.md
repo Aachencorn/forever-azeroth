@@ -38,7 +38,7 @@
 
 웹 열람 도구로도 5개 페이지에서 프로필 메타데이터를 읽지 못했습니다. **실제 프로필 조회 성공 0건, 미확인 5건**입니다. 시험 계정은 `sync/pilot-requests.json`에만 있고 홈페이지의 모험가 데이터로 등록하지 않습니다.
 
-공식 [SOOP 공지](https://sotong.sooplive.com/?b_no=9999&board_type=servicenotice&check_content=true&check_title=true&page=2&work=view)의 검색 색인에는 API별 Public/Consent Scope 체계가 설명되어 있습니다. Public이라는 명칭만으로 모든 API의 무인 대량 수집이나 사진 재사용 권한이 생긴다고 해석하지 않습니다. [Open API 문서](https://openapi.sooplive.co.kr/apidoc), [개발자 포털](https://openapi.sooplive.com/), [서비스 약관](https://www.sooplive.com/policy/policy1.html)의 현재 상세 본문 및 프로필 이미지 이용 조건은 이 환경에서 확인하지 못했습니다. 공식 프로필 조회 엔드포인트, 인증 방식, 허용 Scope와 외부 사이트 링크/캐시 허용 여부를 **확정하지 않았습니다**.
+공식 [SOOP 공지](https://sotong.sooplive.com/?b_no=9999&board_type=servicenotice&check_content=true&check_title=true&page=2&work=view)의 검색 색인에는 API별 Public/Consent Scope 체계가 설명되어 있습니다. Public이라는 명칭만으로 모든 API의 무인 대량 수집이나 사진 재사용 권한이 생긴다고 해석하지 않습니다. [Open API 문서](https://openapi.sooplive.co.kr/apidoc), [개발자 포털](https://developers.sooplive.co.kr/), [서비스 약관](https://www.sooplive.com/policy/policy1.html)의 현재 상세 본문 및 프로필 이미지 이용 조건은 이 환경에서 확인하지 못했습니다. 공식 프로필 조회 엔드포인트, 인증 방식, 허용 Scope와 외부 사이트 링크/캐시 허용 여부를 **확정하지 않았습니다**.
 
 따라서 자동 수집은 기본 비활성입니다. 비공식 웹 API·DOM 스크래핑·추측한 LOGO 경로·방송 썸네일로 우회하지 않습니다. URL을 연결하는 방식도 재사용 권한이 자동으로 허용된다고 간주하지 않습니다.
 
@@ -74,3 +74,22 @@ python scripts/test_book_ui.py
 ## 의존성
 
 엑셀 해석기는 로컬에 포함한 ExcelJS 4.4.0(MIT)이며 관리자에서 파일 업로드할 때만 로드합니다. CDN에 업로드 파일을 보내지 않습니다. 원본은 npm `exceljs@4.4.0`의 `dist/exceljs.min.js`입니다. SHA-256: `7e49da68588e250dbb8bba190d2caa8ab3787cc0284bda1d8b2f805c4df742c9`. 라이선스는 `vendor/exceljs-LICENSE.txt`입니다. 브라우저 파서는 표 장식 관계(`tableParts`)와 그림을 읽지 않고 셀 값만 읽으므로 openpyxl/Excel 양식 모두를 지원합니다.
+
+
+## 추가 공식 문서 조사 및 수동 등록 검증 (2026-10-22)
+
+사용자가 제공한 [broad-stream](https://developers.sooplive.co.kr/docs/api/broad-stream), [broad-watch](https://developers.sooplive.co.kr/docs/api/broad-watch)를 직접 열람하고 공식 도메인의 사용자·방송국·프로필·stationinfo 관련 문서를 추가 검색했습니다. 두 본문 모두 작업 환경의 CONNECT 단계에서 403으로 차단됐으며 웹 열람 도구도 본문을 제공하지 못했습니다. 개발자 사이트 첫 화면은 제목만 확인할 수 있었습니다. 따라서 아래를 구분합니다.
+
+| 조사 항목 | 확인 결과 |
+|---|---|
+| 두 문서가 프로필 조회와 관련 있는지 | 본문 접근 불가로 미확인. 경로 이름만으로 송출·시청 전용이라고 확정하지 않습니다. |
+| ID로 타 방송국/사용자의 프로필을 조회하는 공식 API | 공식 명세에서 확인하지 못했습니다. API가 없다고 단정하지 않습니다. |
+| 두 API 응답의 프로필 이미지 URL 포함 여부 | 응답 스키마 미확인. 썸네일 필드를 프로필로 취급하지 않습니다. |
+| 사용자 인증/승인 Scope | 해당 API별 인증 방식·권한명·조회 대상 범위를 미확인 상태로 둡니다. |
+| 150명 이상 일괄 사진 조회 | 임의 계정 조회 허용 범위·호출 한도·이미지 외부 사용 조건 미확인으로 보류합니다. 엑셀 180명 등록 검증과는 별개입니다. |
+
+추가 검색의 비공식 사용 사례는 SOOP의 공식 API 명세나 이용 허가로 간주하지 않았습니다. 특히 로그인한 본인 정보가 반환되는 API가 있더라도 관리자 토큰으로 타인 150명의 정보를 조회할 수 있다는 뜻은 아닙니다. 허용된 조회 방법을 확정하지 못했으므로 공급자 설정은 계속 비활성이고 인증·수집 실행은 하지 않았습니다.
+
+수동 등록은 관리자 → 엑셀 일괄 등록 → **사진 수동 등록·수정**에서 모험가를 선택하고 확인한 HTTPS 프로필 이미지 URL을 입력하여 저장합니다. 기존 모험가 수정 화면도 계속 사용할 수 있습니다. 사진 URL만 갱신하며 저장 실패 시 이전 값을 복구합니다. 직접 작성한 사진은 자동 조회 결과나 엑셀 재업로드로 덮어쓰지 않습니다. 수동 URL 등록·재접속 후 유지·180명 재업로드 후 사진 보존을 실제 Chromium UI로 검증했습니다. 업로드 파일과 시험용 URL은 격리된 브라우저에서만 사용했습니다.
+
+수동 등록도 현재 브라우저 저장 범위가 유지됩니다. 원본 사진 파일 업로드/서버 저장 기능이나 모든 방문자에게의 공개 배포를 새로 추가한 것은 아닙니다. main/운영 홈페이지는 변경하지 않았습니다.

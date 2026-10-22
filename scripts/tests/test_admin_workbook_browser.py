@@ -22,7 +22,14 @@ async def run():
   await p.goto(BASE+'/#/admin')
   await p.get_by_role('button',name='엑셀 일괄 등록',exact=True).click()
   assert await p.get_by_role('link',name='엑셀 양식 다운로드').count()==1
-  await p.evaluate("data.people[0].image='https://example.com/manual.jpg';save();localStorage.setItem('fa-favs',JSON.stringify({people:['wak'],guilds:[]}));")
+  await p.get_by_role('button',name='사진 수동 등록·수정',exact=True).click()
+  await p.locator('#editForm [name="personId"]').select_option('wak')
+  await p.locator('#editForm [name="image"]').fill('https://example.com/manual.jpg')
+  await p.get_by_role('button',name='저장하고 공개',exact=True).click()
+  assert await p.evaluate('data.people[0].image')=='https://example.com/manual.jpg'
+  await p.reload();await p.get_by_role('button',name='엑셀 일괄 등록',exact=True).click()
+  assert await p.evaluate('data.people[0].image')=='https://example.com/manual.jpg'
+  await p.evaluate("localStorage.setItem('fa-favs',JSON.stringify({people:['wak'],guilds:[]}));")
   before=await p.evaluate('JSON.stringify(data)')
   await p.locator('#adminWorkbook').set_input_files(str(QA/'import-180.xlsx'))
   await p.wait_for_function('adminImportState?.next?.people?.length===181',timeout=30000)
@@ -62,7 +69,7 @@ async def run():
   await p.locator('#bookSearch').fill('테스트179');await p.wait_for_timeout(150)
   assert await p.locator('.wapPerson').count()==1
   assert not errors,errors
-  print('PASS: browser XLSX 180 rows, preview/approval, backup, persistence, duplicates, formula rejection, request export, profile preview, search and five viewports')
+  print('PASS: manual image UI/persistence/protection, browser XLSX 180 rows, preview/approval, backup, persistence, duplicates, formula rejection, request export, profile preview, search and five viewports')
   await browser.close()
 fixtures()
 asyncio.run(run())

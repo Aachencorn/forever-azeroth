@@ -9,7 +9,7 @@ function renderImportPanel(){
  node.innerHTML=`<div class="importHeading"><h2>엑셀 일괄 등록</h2><a class="btn secondary" href="downloads/wapobook-admin-template.xlsx" download>엑셀 양식 다운로드</a></div>
  <p>길드·모험가·이전 시즌 기록을 한 번에 확인하고, 기존 정보의 빈 항목만 채웁니다. 기존 사진과 데이터는 유지합니다.</p>
  <p class="notice">병합 결과는 현재 브라우저에 저장됩니다. 다른 방문자에게 공개되는 서버 동기화 기능은 아닙니다.</p>
- <div class="adminActions importTools"><label class="btn">엑셀 파일 업로드<input id="adminWorkbook" type="file" accept=".xlsx" onchange="readAdminWorkbook(this.files[0])" ${adminImportBusy?'disabled':''}></label><button class="btn secondary" onclick="downloadProfileRequests()">사진 조회 요청 JSON 다운로드</button><label class="btn secondary">사진 조회 결과 업로드<input id="adminProfiles" type="file" accept=".json" onchange="readProfileReport(this.files[0])" ${adminImportBusy?'disabled':''}></label></div>
+ <div class="adminActions importTools"><label class="btn">엑셀 파일 업로드<input id="adminWorkbook" type="file" accept=".xlsx" onchange="readAdminWorkbook(this.files[0])" ${adminImportBusy?'disabled':''}></label><button class="btn secondary" onclick="openManualProfileForm()">사진 수동 등록·수정</button><button class="btn secondary" onclick="downloadProfileRequests()">사진 조회 요청 JSON 다운로드</button><label class="btn secondary">사진 조회 결과 업로드<input id="adminProfiles" type="file" accept=".json" onchange="readProfileReport(this.files[0])" ${adminImportBusy?'disabled':''}></label></div>
  <p class="muted">SOOP 조회는 관리자 승인형 작업으로 분리됩니다. 현재 실조회 5개 검증·API 이용 권한 확인이 완료되지 않아 자동 수집은 비활성 상태입니다. 조회 실패 시 기본 이미지가 유지되며 기존 ‘모험가 → 수정’에서 사진 URL을 수동 등록할 수 있습니다.</p>
  <p><a href="https://github.com/Aachencorn/forever-azeroth/blob/feat/admin-xlsx-soop-profiles/docs/admin-import.md" target="_blank" rel="noopener noreferrer">입력·사진 동기화 안내 ↗</a></p>
  <div id="importMessage" role="status" aria-live="polite">${adminImportBusy?'파일을 읽고 있습니다…':st?esc(st.message):'양식을 작성하고 업로드해 주세요. 업로드만으로 저장되지 않습니다.'}</div>
@@ -68,3 +68,14 @@ function downloadProfileRequests(){
  importDownload('wapobook-profile-requests.json',{schema:'wapobook-soop-requests-v1',accounts:rows});if(errors.length)alert('잘못된 방송국 URL은 제외했습니다: '+errors.join(', '));
 }
 if(route().split('?')[0]==='/admin')render();
+
+function openManualProfileForm(){
+ if(!data.people.length){alert('먼저 모험가를 등록하세요.');return;}
+ formShell('프로필 사진 수동 등록',`<p>직접 확인한 방송국 프로필 이미지 URL을 입력하세요. 방송 썸네일은 사용하지 마세요. 사진 URL만 변경하며 다른 모험가 정보는 유지합니다.</p>`+sel('모험가','personId',data.people.map(p=>[p.id,p.name]),data.people[0].id)+field('확인한 프로필 사진 URL','image','','url'),f=>{
+  const person=data.people.find(p=>p.id===f.get('personId')),value=String(f.get('image')||'').trim();
+  if(!person){alert('모험가를 다시 선택하세요.');return;}
+  try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password)throw Error();}catch{alert('올바른 HTTPS 이미지 URL을 입력하세요.');return;}
+  const previous=person.image;person.image=value;
+  try{save();adminImportState=null;render();}catch{person.image=previous;alert('저장하지 못했습니다. 기존 사진은 유지됩니다.');}
+ });
+}
